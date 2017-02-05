@@ -1,0 +1,119 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-size: 2vw;
+}
+.container {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+.row{
+	padding:0;
+	margin:0;
+}
+#navMobile{
+	display: none;
+}
+
+
+/* NAVIGATION */
+#navOrdi{
+	background: #E1E8E8 url("img/fondNul.jpg");
+	margin-top: 160px;
+}
+#titre{
+	color:  #778888;
+	text-align: center;
+	padding-top: 2vw;
+	font-size: 2.5vw;
+	font-weight: bold;
+}
+#formulaire div{
+	margin-top: 1vw;
+}
+#imgUser{
+	width: 46px;
+	border: solid 1px #CCC;
+}
+#imgPassword{
+	width: 46px;
+	border: solid 1px #CCC;
+}
+#divBouton1{
+	margin-bottom: 1vw;
+	float: right;
+}
+#bouton1{
+	font-weight: bold;
+	margin-top: 1.5vw;
+	font-size: 1.4vw;
+}
+#bouton1:hover{
+	background-color: #FFF;
+	color: #286090;
+}
+#logo{
+	width: 14vw;
+	margin-left: -48px;
+	margin-bottom: -10px;
+	position: absolute;
+}
+
+
+/* FOOTER */
+footer{
+	position: fixed;
+	bottom: 0;
+	padding-bottom: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 100%;
+}
+#bouton2{
+	width: 150px; 
+	margin-bottom: 5px;
+}
+#bouton2:hover{
+	background-color: #FFF;
+	color: #286090;
+}
+
+
+/* ADAPTATIONS */
+@media screen and (max-width: 500px) {
+	body{
+		min-height: 570px;
+		font-size: 3vw;
+	}
+	#navOrdi{
+		display: none;
+	}
+	#navMobile{
+		margin-top: 50px;
+		background: #E1E8E8 url("img/fondNul.jpg");
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 50px;
+	}
+	/* NAVIGATION */
+	#titre{
+		font-size: 4vw;
+	}
+	#bouton1{
+		font-size: 3vw;
+	}
+	#logo{
+		display: none;
+	}
+
+	/* FOOTER */
+	footer{
+		position: relative;
+		bottom: 0;
+	}
+	#bouton2{
+		font-size: 11px;
+		width: 105px;
+	}
+}
