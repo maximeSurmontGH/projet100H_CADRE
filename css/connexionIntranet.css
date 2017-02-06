@@ -12,10 +12,6 @@ body{
 	padding:0;
 	margin:0;
 }
-#navMobile{
-	display: none;
-}
-
 
 /* NAVIGATION */
 #navOrdi{
@@ -32,13 +28,8 @@ body{
 #formulaire div{
 	margin-top: 1vw;
 }
-#imgUser{
-	width: 46px;
-	border: solid 1px #CCC;
-}
-#imgPassword{
-	width: 46px;
-	border: solid 1px #CCC;
+#formulaire input{
+	min-width: 100px;
 }
 #divBouton1{
 	margin-bottom: 1vw;
@@ -59,7 +50,18 @@ body{
 	margin-bottom: -10px;
 	position: absolute;
 }
-
+.notification{
+	font-size: 12px;
+	text-align: center;
+	border-radius: 0px 0px 0px 0px;
+	width: 100%;
+}
+.disparaitreAlerte{
+	display: none;
+}
+.apparaitreAlerte{
+	display: inline-block;
+}
 
 /* FOOTER */
 footer{
@@ -71,7 +73,7 @@ footer{
 	width: 100%;
 }
 #bouton2{
-	width: 150px; 
+	width: 150px;
 	margin-bottom: 5px;
 }
 #bouton2:hover{
@@ -79,41 +81,42 @@ footer{
 	color: #286090;
 }
 
-
 /* ADAPTATIONS */
+@media screen and (max-width: 780px) {
+	#titre{
+		font-size: 20px;
+	}
+	#bouton1{
+		font-size: 12px;
+	}
+	img{
+		display: none;
+	}
+}
 @media screen and (max-width: 500px) {
 	body{
 		min-height: 570px;
 		font-size: 3vw;
 	}
-	#navOrdi{
-		display: none;
-	}
-	#navMobile{
-		margin-top: 50px;
-		background: #E1E8E8 url("img/fondNul.jpg");
-		display: inline-block;
-		width: 100%;
-		margin-bottom: 50px;
-	}
+
 	/* NAVIGATION */
 	#titre{
 		font-size: 4vw;
 	}
-	#bouton1{
-		font-size: 3vw;
-	}
 	#logo{
 		display: none;
+	}
+	#navOrdi{
+		margin-top: 60px;
 	}
 
 	/* FOOTER */
 	footer{
 		position: relative;
-		bottom: 0;
 	}
 	#bouton2{
-		font-size: 11px;
+		margin-top: 10px;
+		font-size: 12px;
 		width: 105px;
 	}
 }

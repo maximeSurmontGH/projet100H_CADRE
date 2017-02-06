@@ -110,7 +110,7 @@ footer img:hover{
 	width: 40px;
 }
 .apparaitreAlerte{
-	display: relative;
+	display: inline-block;;
 }
 .disparaitreAlerte{
 	display: none;

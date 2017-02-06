@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Page où l'on peut voir et rechercher dans l'annuaire de l'entreprise">
+    <meta name="description" content="Page ou l'on peut récupérer les différentes ressources de l'entreprise">
     <meta name="author" content="maxime SURMONT">
-    <title> L'Annuaire </title>
+    <title> Ressources de l'entreprise </title>
     <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
-    <link href="css/annuaireEmployes.css" rel="stylesheet">
-    <script type="text/javascript" src="js/annuaireEmployes.js"></script>
+    <link href="css/ressourcesEmployes.css" rel="stylesheet">
+    <script type="text/javascript" src="js/ressourcesEmployes.js"></script>
   </head>
 
   <body>
     <div class="alert alert-danger alert-dismissable fade in notification disparaitreAlerte" id="notification">
       <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
-      <strong>Erreur!</strong> La personne ou poste recherchée n'est pas présent dans la base de donnée.
+      <strong>Erreur!</strong> La ressource recherchée n'est pas présent dans la base de donnée.
     </div>
 
     <div class="container">
@@ -37,39 +37,41 @@
             </div>
 
             <div class="row">
-              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="annuaire">
+              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="ressources">
                 <a href="#">
-                <img src="img/Annuaire.png" alt="icône d l'annuaire"> </a>
+                <img src="img/RessourcePeda.png" alt="icône des ressources pédagogique"> </a>
               </div>
              </div>
 
             <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="annuaire">
+                <a href="#">
+                <img src="img/Annuaire.png" alt="icône de l'annuaire"> </a>
+              </div>
               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
                 <a href="#">
                 <img src="img/Demandes.png" alt="icône des demandes"> </a>
-              </div>
-              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="ressources">
-                <a href="#">
-                <img src="img/RessourcePeda.png" alt="icône des ressources pédagogique"> </a>
               </div>
             </div>
           </nav>
 
           <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-            <h1 id="titre" >Annuaire CADRE</h1>
-            <p>Recherche dans l'annuaire :</p>
+            <h1 id="titre" >Ressources de CADRE</h1>
+            <p>Recherche de ressources :</p>
             <form id="formulaire">
                 <div class="input-group">
                   <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
-                  <input type="text" class="form-control" id="inputSearch" placeholder="nom ou poste de(s) personne(s) recherchée(s)">
+                  <input type="text" class="form-control" id="inputSearch" placeholder="ressource(s) recherché(s)">
                 </div>
                 <div id="boutonSearch">
                   <a class="btn btn-primary" id="boutonSearch" href="#">Rechercher</a>
                 </div>
             </form>
 
-            <table id="tableauDuPersonnel">
-            </table>
+            <form id="formulaire2">
+              <table id="tableauDuPersonnel">
+              </table>
+            </form>
           </section>
 
         </div>

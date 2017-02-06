@@ -7,13 +7,13 @@
 	border-radius: 0px 10px 0 0px;
 }
 #demandes{
-	border-radius: 0px 0px 0px 10px;
+	border-radius: 0px 0px 10px 0px;
 }
 #annuaire{
-	border-radius: 0px 0px 0px 0px;
+	border-radius: 0px 0px 0px 10px;
 }
 #ressources{
-	border-radius: 0px 0px 10px 0px;
+	border-radius: 0px 0px 0px 0px;
 }
 
 /* SECTION */
@@ -53,6 +53,19 @@ th{
 }
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+#boutonDL{
+  width: 150px;
+	margin-top: -30px;
+  float: right;
+}
+.selectRessource{
+  text-align: center;
+  vertical-align: middle;
+}
+.selectRessource input{
+  width: 20px;
+  height: 20px;
 }
 
 /* ADAPTATIONS */

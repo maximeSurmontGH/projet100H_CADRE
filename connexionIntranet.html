@@ -11,65 +11,41 @@
     	<link href="css/bootstrap.css" rel="stylesheet">
     	<link href="css/connexionIntranet.css" rel="stylesheet">
     	<script type="text/javascript" src="js/connexionIntranet.js"></script>
-  	</head>	
+  	</head>
 
-  	<body> 
+  	<body>
     <div class="container">
 
-		  <!-- Visible sur Ordinateur -->
   		<nav class="row" id="navOrdi">
-     	 	<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-	 	     	<div class="row" id="titre"> 
+     	 	<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+	 	     	<div class="row" id="titre">
             <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">CONNEXION INTRANET</p>
-          </div> 
+          </div>
 	  	    <form id="formulaire">
-	      		<div class="row" id="divIdentifiant"> 
-              <div class="input-group col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3"> 
-                <span class="input-group-btn" id="user"> <img src="img/User.png" class="btn" id="imgUser"> </span>
-                <input type="text" class="form-control" id="inputUser">
+	      		<div class="row" id="divIdentifiant">
+              <div class="input-group col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                <div class="input-group-addon "><span class="glyphicon glyphicon-user" id="user"> </span></div>
+                <input type="text" class="form-control" id="inputUser" placeholder="votre identifiant">
               </div>
             </div>
-            <div class="row" id="divMotDePasse" class="inputConnection"> 
-              <div class="input-group col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3"> 
-                <span class="input-group-btn" id="password"> <img src="img/Password.png" class="btn" id="imgPassword"> </span>
-                <input type="password" class="form-control" id="inputPassword">
+            <div class="row" id="divMotDePasse" class="inputConnection">
+              <div class="input-group col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                <div class="input-group-addon "><span class="glyphicon glyphicon-log-out" id="password"> </span></div>
+                <input type="password" class="form-control" id="inputPassword" placeholder="votre mot de passe">
               </div>
             </div>
-	     			<div class="row" id="divBouton1"> 
+	     			<div class="row" id="divBouton1">
               <a class="btn btn-primary" id="bouton1" href="#">Connexion</a>
             </div>
-	    		</form> 
+	    		</form>
 	    		<img src="img/logo.png" id="logo">
         </div>
     	</nav>
+			<div class="alert alert-danger alert-dismissable fade in notification disparaitreAlerte" id="notification">
+	      <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
+	      <strong>Erreur!</strong> Mot de passe erronné.Si oublié addressez vous au service informatique.
+	    </div>
 
-    	<!-- Visible sur Smartphone -->
-  		<nav class="row" id="navMobile">
-      	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-          <div class="row" id="titre"> 
-            <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">CONNECTION INTRANET</p>
-          </div> 
-          <form id="formulaire">
-            <div class="row" id="divIdentifiant"> 
-              <div class="input-group col-xs-8 col-xs-offset-2"> 
-                <span class="input-group-btn" id="user"> <img src="img/User.png" class="btn" id="imgUser"> </span>
-                <input type="text" class="form-control" id="inputUser">
-              </div>
-            </div>             
-            <div class="row" id="divMotDePasse" class="inputConnection"> 
-              <div class="input-group col-xs-8 col-xs-offset-2"> 
-                <span class="input-group-btn" id="password"> <img src="img/Password.png" class="btn" id="imgPassword"> </span>
-                <input type="password" class="form-control" id="inputPassword">
-              </div>
-            </div>
-            <div class="row" id="divBouton1"> 
-              <a class="btn btn-primary" id="bouton1" href="#">Connexion</a>
-            </div>
-          </form> 
-          <img src="img/logo.png" id="logo">
-        </div>
-    	</nav>
-      
     	<footer id="footer">
       	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
     	</footer>

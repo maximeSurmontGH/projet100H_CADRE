@@ -1,15 +1,17 @@
-function aide(){
-	document.getElementById("user").onclick=function(){
-		var input = document.getElementById("inputUser");
-		input.placeholder = "votre identifiant ici";
-		}
-	document.getElementById("password").onclick=function(){
-		var input = document.getElementById("inputPassword");
-		input.placeholder = "votre mot de passe ici";
-		}
+function erreurConnexion(){
+	document.getElementById("bouton1").onclick=function(){
+		document.getElementById("notification").className='alert alert-danger alert-dismissable fade in notification apparaitreAlerte';
+	}
 }
 
+function suppressionNotification(){
+	document.getElementById("notification").onclick=function(){
+		document.getElementById("notification").className='alert alert-danger alert-dismissable fade in notification  disparaitreAlerte';
+	}
+}
 
 window.onload = function(){
-	aide();
+	erreurConnexion();
+	suppressionNotification();
+
 };
