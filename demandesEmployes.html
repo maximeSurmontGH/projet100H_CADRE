@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page pour réaliser des demandes d'attestations">
+    <meta name="author" content="maxime SURMONT">
+    <title> Demandes d'attestations </title>
+    <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/pagesIntranet.css" rel="stylesheet">
+    <link href="css/demandesEmployes.css" rel="stylesheet">
+    <script type="text/javascript" src="js/demandesEmployes.js"></script>
+  </head>
+
+  <body>
+    <div class="alert alert-info alert-dismissable notification disparaitreAlerte" id="notification">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
+      <strong>Info :</strong> Votre demande a bien été envoyée.
+    </div>
+
+    <div class="container">
+      <div>
+        <div class="row">
+          <nav class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="rappels">
+                <a href="#">
+                <img src="img/RappelsPerso.png" alt="icône des rappels personnels"> </a>
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="calendrier">
+                <a href="#">
+                <img src="img/CalendrierValidites.png" alt="icône du calendrier des validités"> </a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="ressources">
+                <a href="#">
+                <img src="img/RessourcePeda.png" alt="icône des ressources pédagogique"> </a>
+              </div>
+             </div>
+
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="annuaire">
+                <a href="#">
+                <img src="img/Annuaire.png" alt="icône de l'annuaire"> </a>
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
+                <a href="#">
+                <img src="img/Demandes.png" alt="icône des demandes"> </a>
+              </div>
+            </div>
+          </nav>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <h1 id="titre" >Demandes d'attestations</h1>
+            <p>Effectuer une demande :</p>
+            <form id="formulaireDemandes" method="post">
+              <div class="input-group">
+                <div class="input-group-addon" > <span> Nom :</span> </div>
+                <input type="text" class="form-control" id="inputNom">
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon" > <span> Prénom :</span> </div>
+                <input type="text" class="form-control" id="inputPrenom">
+              </div>
+              <select class="form-control">
+                <option> </option>
+                <option> demande 1</option>
+                <option> demande 2</option>
+                <option> demande 3</option>
+                <option> demande 4</option>
+              </select>
+              <div id="boutonSearch">
+                <a class="btn btn-primary" id="boutonSearch" href="#">Envoyer</a>
+              </div>
+
+            </form>
+
+            <p>Votre historique :</p>
+            <div class="alert alert-warning alert-dismissable demandeHist disparaitreAlerte" id="notification2">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Demande 4</strong>, 3 mars 2016, en cours
+            </div>
+            <div class="alert alert-success alert-dismissable demandeHist">
+              <strong>Demande 1</strong>, 23 novembre 2016, accordée
+            </div>
+            <div class="alert alert-success alert-dismissable demandeHist">
+              <strong>Demande 2</strong>, 29 juin 2016, accordée
+            </div>
+            <div class="alert alert-danger alert-dismissable demandeHist" id="lastOne">
+              <strong>Demande 3</strong>, 12 navril 2014, non-accordée
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <footer id="footer">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitreAlerte">
+      	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
+      	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
+      	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
+      	<p id="maillingAnnonceNum" class="apparaitreAlerte">7</p>
+      </footer>
+    </div>
+  </body>
+</html>
