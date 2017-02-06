@@ -10,13 +10,6 @@ function maillingAnnonce(){
 
 
 
-
-
-
-
-
-
-
 window.onload = function(){
 	maillingAnnonce();
 };
