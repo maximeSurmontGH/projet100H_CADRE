@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Page du calendrier des rappels personnels">
+    <meta name="description" content="Page du calendrier de l'annuaire de l'entreprise">
     <meta name="author" content="maxime SURMONT">
-    <title> Vos Rappels </title>
+    <title> L'Annuaire </title>
     <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
-    <link href="css/rappelsEmployes.css" rel="stylesheet">
-    <script type="text/javascript" src="js/rappelsEmployes.js"></script>
+    <link href="css/annuaireEmployes.css" rel="stylesheet">
+    <script type="text/javascript" src="js/annuaireEmployes.js"></script>
   </head>
 
   <body>
     <div class="container">
 
       <!-- Visible sur Ordinateur -->
-      <div >
+      <div id="navOrdi">
         <div class="row">
-          <nav class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="navOrdi">
+          <nav class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 
             <div class="row">
               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
@@ -53,12 +53,24 @@
           </nav>
 
           <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-            <h1 id="titre" >Vos Rappels Personnels</h1>
+            <h1 id="titre" >Annuaire CADRE</h1>
+            <p>Recherche dans l'annuaire :</p>
+            <form id="formulaire">
+                <div class="input-group">
+                  <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
+                  <input type="text" class="form-control" id="inputSearch" placeholder="nom ou poste de(s) personne(s) recherché(s)">
+                </div>
+                <div id="boutonSearch">
+                  <a class="btn btn-primary" id="boutonSearch" href="#">Rechercher</a>
+                </div>
+            </form>
+
+            <table id="tableauDuPersonnel">
+            </table>
           </section>
+
         </div>
       </div>
-
-
 
       <footer id="footer">
       	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitreAlerte">

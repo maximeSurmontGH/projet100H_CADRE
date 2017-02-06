@@ -1,161 +1,28 @@
-body{
-	margin: 0;
-	padding: 0;
-	font-size: 2vw;
-	background: #F9F9F9 url("img/fondNul.jpg");
-}
-.container {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-}
-.row{
-	padding:0;
-	margin:0;
-}
-#navMobile{
-	display: none;
-}
-
-#navOrdi{
-	background-color: red;
-}
 
 /* NAVIGATION */
-nav {
-	margin-top: 100px;
-	min-width: 350px;
-	max-width: 350px;
-	background-color: green;
-}
-nav div {
-	padding: 10px;
-	width: 90%;
-}
-nav div img{
-	width: 100%;
-}
-#test {
-	text-decoration:none;
-}
 #rappels{
-	background-color: #2E64FE;
+  border-radius: 0px 0px 0px 0px;
 }
 #calendrier{
-	background-color: #0489B1;
 	border-radius: 0px 10px 0 0px;
 }
 #demandes{
-	background-color: #81BEF7;
 	border-radius: 10px 0px 0 0px;
 }
 #annuaire{
-	background-color: #81DAF5;
 	border-radius: 0px 0px 0px 10px;
 }
 #ressources{
-	background-color: #58ACFA;
 	border-radius: 0px 0px 10px 0px;
 }
-.iconSignification{
-	color: white;
-	text-align: center;
-	margin-top: 10px;
-	font-weight: bold;
-
-}
-
-
-
-/* SECTION */
-section {
-	min-width: 750px;
-}
-#titre{
-	text-align: center;
-	margin-top: 50px;
-}
-
-
-/* FOOTER */
-footer{
-	position: fixed;
-	bottom: 0;
-	padding-bottom: 5px;
-	padding-right: 15px;
-	padding-left: 15px;
-	width: 100%;
-}
-footer img{
-	width: 60px;
-	position: absolute;
-	right: 15px;
-	bottom: 3px;
-}
-footer img:hover{
-	width: 70px;
-	right: 10px;
-	bottom: -2px;
-}
-#maillingAnnonceNum{
-	position: absolute;
-	top: -8px;
-	right: 63px;
-	color: white;
-	font-size: 20px;
-	font-weight: bold;
-}
-#imgAlerte{
-	position: absolute;
-	top: -15px;
-	right: 50px;
-	width: 40px;
-}
-.apparaitreAlerte{
-	display: relative;
-}
-.disparaitreAlerte{
-	display: none;
-}
-#bouton2, #bouton1 {
-	width: 150px; 
-	margin-bottom: 5px;
-}
-#bouton2:hover, #bouton1:hover{
-	background-color: #FFF;
-	color: #286090;
-}
-
 
 /* ADAPTATIONS */
-@media screen and (max-width: 500px) {
-	body{
-		min-height: 570px;
-	}
-	#navOrdi{
-		display: none;
-	}
-	#navMobile{
-		display: inline-block;
-		width: 100%;
-	}
+@media screen and (max-width: 650px) {
+
 	/* SECTION */
-	
+
 	/* NAVIGATION */
-	
+
 	/* FOOTER */
-	footer{
-		position: relative;
-	}
-	footer img{
-		bottom: 54px;
-	}
-	footer img:hover{
-		width: 70px;
-		right: 10px;
-		bottom: 49px;
-	}
-	#bouton2, #bouton1 {
-		display: block;
-	}
+
 }

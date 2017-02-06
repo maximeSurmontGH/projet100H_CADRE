@@ -1,0 +1,162 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-size: 2vw;
+	background: #F9F9F9 url("img/fondNul.jpg");
+	overflow: scroll;
+}
+.container {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+.row{
+	padding:0;
+	margin:0;
+}
+
+/* NAVIGATION */
+nav {
+	margin-top: 90px;
+}
+.row{
+	min-width: 180px;
+}
+nav div {
+	padding: 10px;
+	width: 90%;
+}
+nav div img{
+	width: 100%;
+}
+#test {
+	text-decoration:none;
+}
+#rappels{
+	background-color: #2E64FE;
+}
+#calendrier{
+	background-color: #0489B1;
+}
+#demandes{
+	background-color: #81BEF7;
+}
+#annuaire{
+	background-color: #81DAF5;
+}
+#ressources{
+	background-color: #58ACFA;
+}
+.iconSignification{
+	color: white;
+	text-align: center;
+	margin-top: 10px;
+	font-weight: bold;
+
+}
+
+/* SECTION */
+h1{
+	color: #286090;
+}
+#titre{
+	text-align: center;
+	margin-top: 30px;
+}
+
+/* FOOTER */
+footer{
+	position: fixed;
+	bottom: 0;
+	padding-bottom: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 100%;
+	background: #F9F9F9 url("img/fondNul.jpg");
+	padding-top: 10px;
+}
+footer img{
+	width: 60px;
+	position: absolute;
+	right: 15px;
+	bottom: 3px;
+}
+footer img:hover{
+	width: 70px;
+	right: 10px;
+	bottom: -2px;
+}
+#maillingAnnonceNum{
+	position: absolute;
+	top: -8px;
+	right: 63px;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+#imgAlerte{
+	position: absolute;
+	top: -15px;
+	right: 50px;
+	width: 40px;
+}
+.apparaitreAlerte{
+	display: relative;
+}
+.disparaitreAlerte{
+	display: none;
+}
+#bouton2, #bouton1 {
+	width: 150px;
+	margin-bottom: 5px;
+}
+#bouton2:hover, #bouton1:hover{
+	background-color: #FFF;
+	color: #286090;
+}
+
+
+/* ADAPTATIONS */
+@media screen and (max-width: 650px) {
+	body{
+		min-width: 650px;
+	}
+	/* SECTION */
+	h1{
+		font-size: 30px;
+	}
+
+	/* NAVIGATION */
+	nav{
+		margin-top: 0;
+		min-width: none;
+		max-width: none;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	nav .row{
+		width: 100%;
+	}
+	nav div {
+		min-width: 45px;
+	}
+	nav div a img{
+		min-width: 20px;
+	}
+
+	/* FOOTER */
+	footer{
+		position: relative;
+	}
+	footer img{
+		bottom: 54px;
+	}
+	footer img:hover{
+		width: 70px;
+		right: 10px;
+		bottom: 49px;
+	}
+	#bouton2, #bouton1 {
+		display: block;
+	}
+}
