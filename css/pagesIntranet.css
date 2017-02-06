@@ -86,6 +86,15 @@ footer img:hover{
 	right: 10px;
 	bottom: -2px;
 }
+.notification{
+	width: 200px;
+	font-size: 12px;
+	position: absolute;
+	right: 10px;
+	top: 20px;
+	margin-right: 10px;
+	z-index: 99;
+}
 #maillingAnnonceNum{
 	position: absolute;
 	top: -8px;
