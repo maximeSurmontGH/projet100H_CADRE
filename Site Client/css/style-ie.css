@@ -32,25 +32,5 @@ li.span2 .project-details {
     width: 120px;
 	}
 
-/*** Flexslider ***/
-.flex-direction-nav a {margin: 0px 0px 0px 0px;}
-.flex-direction-nav .flex-next {background-position: 100% 0; right: 20px; }
-.flex-direction-nav .flex-prev {left: 20px;}
-.flexslider:hover .flex-next {opacity: 0.8; right: 20px;}
-.flexslider:hover .flex-prev {opacity: 0.8; left: 20px;}
-
-
 /*** Blog ***/
 #blogCarousel .carousel-inner .item a img {margin-right: 90px;}
-.post-info h4 {clear:both;}
-.blog-details-preview {display: none; border:1px solid #000;}
-.blog-post-hover {width:220px; height:179px;}
-.blog-post-hover a{ font-size: 20px; line-height: 24px;}
-.sidebar iframe {width:300px;}
-.post-data-3 {display:none;}
-.post-data li {padding: 0px 7px;}
-
-
-/*** MISC ***/
-.client-logos li:first-child {display: none;}
-.img-feed li a {width:60px; height:60px; display: block;}
