@@ -147,7 +147,9 @@ a:hover {
   margin-left: -20px;
   *zoom: 1;
 }
-
+span a.download{
+  font-size: 10px;
+}
 .row:before,
 .row:after {
   display: table;
