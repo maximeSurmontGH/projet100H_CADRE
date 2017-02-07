@@ -66,6 +66,11 @@ textarea {
   vertical-align: middle;
 }
 
+textarea.span12{
+  height: 200px;
+  resize: none;
+}
+
 button,
 input {
   *overflow: visible;
