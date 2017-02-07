@@ -29,6 +29,6 @@ function suppressionNotification(){
 
 window.onload = function(){
 	maillingAnnonce();
-	apparitionNotification()
+	apparitionNotification();
 	suppressionNotification();
 };
