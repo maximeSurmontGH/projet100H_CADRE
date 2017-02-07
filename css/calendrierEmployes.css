@@ -1,0 +1,173 @@
+
+/* NAVIGATION */
+#rappels{
+  border-radius: 10px 0px 0px 0px;
+}
+#calendrier{
+	border-radius: 0px 0px 0 0px;
+}
+#demandes{
+	border-radius: 0px 10px 0 0px;
+}
+#annuaire{
+	border-radius: 0px 0px 0px 10px;
+}
+#ressources{
+	border-radius: 0px 0px 10px 0px;
+}
+
+/* SECTION */
+section{
+  color: #555555;
+  margin-bottom: 90px;
+}
+#calendar-wrap{
+  margin-top: 40px;
+}
+#placementMois{
+  text-align: center;
+}
+#calendar-wrap h2{
+  display: inline-flex;
+}
+#calendar{
+  width: 100%;
+  margin-top: 10px;
+}
+#calendar ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  clear: both;
+  width: 100%;
+}
+#calendar li{
+  display: block;
+  float: left;
+  width: 14.36%;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #999999;
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+.weekdays{
+  height: 40px;
+  background: #555555;
+}
+.weekdays li{
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 29px;
+  border: none;
+  padding: 10px 6px;
+  color: #FFF;
+  font-size: 13px;
+}
+.days li{
+  height: 100px;
+  overflow: auto;
+  font-size: 11px;
+}
+.days li:hover{
+  background-color: #EEE;
+}
+.date{
+  text-align: center;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #888888;
+  color: #FFF;
+  width: 25px;
+  border-radius: 5px;
+}
+.event{
+  clear: both;
+  display: block;
+  margin-bottom: 5px;
+  padding: 5px;
+  color: #FFF;
+}
+.event-time{
+  color: #EEE;
+}
+.fine{
+  background-color: rgba(10, 140, 20, 0.6);
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.inProcess{
+  background-color: rgba(200, 200, 0, 0.7);
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.bad{
+  background-color: rgba(140, 20, 10, 0.6);
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.other-mounth{
+  background-color: lightgrey;
+}
+
+.sous-titre{
+  display: block;
+  color: #286090;
+  margin-top: 60px;
+}
+
+.input-group-addon{
+  width: 100px;
+}
+form div{
+  margin-bottom: 20px;
+}
+.form-control{
+  width: 280px;
+}
+.boutonSearch{
+  float: right;
+  margin-top: 10px;
+  min-width: 110px;
+}
+.boutonSearch a{
+  float: right;
+}
+.demandeHist{
+  font-size: 18px;
+  width: 100%;
+}
+#divInputNom1, #divInputNom2, #select3{
+  margin-top: 30px;
+}
+#messageCompteur{
+  margin-top: 60px;
+  font-size: 18px;
+}
+
+
+/* ADAPTATIONS */
+@media screen and (max-width: 800px) {
+
+	/* SECTION */
+  .weekdays{
+    display: none;
+  }
+  #calendar{
+    margin-left: 30px;
+  }
+  #calendar li{
+    height: auto;
+    border: 1px solid #ededed;
+    width: 50%;
+    padding: 10px;
+    margin-bottom: -1px;
+  }
+  #calendar li.other-mounth{
+    display: none;
+  }
+	/* NAVIGATION */
+
+	/* FOOTER */
+
+}

@@ -3,40 +3,40 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Page du calendrier des rappels personnels">
+    <meta name="description" content="Page du calendrier des demandes">
     <meta name="author" content="maxime SURMONT">
-    <title> Vos Rappels </title>
+    <title> Calendrier des demandes </title>
     <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
-    <link href="css/rappelsEmployes.css" rel="stylesheet">
-    <script type="text/javascript" src="js/rappelsEmployes.js"></script>
+    <link href="css/calendrierEmployes.css" rel="stylesheet">
+    <script type="text/javascript" src="js/calendrierEmployes.js"></script>
+
   </head>
 
   <body>
     <div class="container">
 
-      <!-- Visible sur Ordinateur -->
       <div >
         <div class="row">
           <nav class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="navOrdi">
 
             <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="rappels">
+                <a href="#">
+                <img src="img/RappelsPerso.png" alt="icône des drappels"> </a>
+              </div>
               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
                 <a href="#">
                 <img src="img/Demandes.png" alt="icône des demandes"> </a>
               </div>
-              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="calendrier">
-                <a href="#">
-                <img src="img/CalendrierValidites.png" alt="icône du calendrier des validités"> </a>
-              </div>
             </div>
 
             <div class="row">
-              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="rappels">
+              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="calendrier">
                 <a href="#">
-                <img src="img/RappelsPerso.png" alt="icône des rappels personnels"> </a>
+                <img src="img/CalendrierValidites.png" alt="icône du calendrier des demandes"> </a>
               </div>
              </div>
 
@@ -53,7 +53,91 @@
           </nav>
 
           <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-            <h1 id="titre" >Vos Rappels Personnels</h1>
+            <h1 id="titre" >Calendrier de vos Demandes</h1>
+
+            <div id="calendar-wrap">
+              <div id="placementMois">
+                <span class="glyphicon glyphicon-chevron-left" id="flecheLeft"></span>
+                <h2 id="choixMoisAnnee"></h2>
+                <span class="glyphicon glyphicon-chevron-right" id="flecheRight"></span>
+              </div>
+              <div id="calendar">
+                <ul class="weekdays">
+                  <li>Lundi</li>
+                  <li>Mardi</li>
+                  <li>Mercredi</li>
+                  <li>Jeudi</li>
+                  <li>Vendredi</li>
+                  <li>Samedi</li>
+                  <li>Diamnche</li>
+                </ul>
+                <div id="pourLaSuppression">
+                </div>
+              </div>
+            </div>
+
+            <div style="opacity:0;margin-bottom:-30px"> f </div> <!--horreur-->
+
+            <h2 class="sous-titre">Demande de Congé</h2>
+            <form class="formulaireDemandes" method="post">
+              <div class="input-group" id="divInputNom1">
+                <div class="input-group-addon" > <span> Nom :</span> </div>
+                <input type="text" class="form-control" id="inputNom1">
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon" > <span> Prénom :</span> </div>
+                <input type="text" class="form-control" id="inputPrenom1">
+              </div>
+              <select class="form-control">
+                <option> </option>
+                <option> Type de congé 1</option>
+                <option> Type de congé 2</option>
+                <option> Type de congé 3</option>
+                <option> Type de congé 4</option>
+              </select>
+              <div id="boutonSearch" class="boutonSearch">
+                <a class="btn btn-primary" id="boutonSearch1" href="#">Envoyer</a>
+              </div>
+            </form>
+
+            <h2 class="sous-titre">Demande de Prêt de Véhicule</h2>
+            <form class="formulaireDemandes" method="post">
+              <div class="input-group" id="divInputNom2">
+                <div class="input-group-addon" > <span> Nom :</span> </div>
+                <input type="text" class="form-control" id="inputNom2">
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon" > <span> Prénom :</span> </div>
+                <input type="text" class="form-control" id="inputPrenom2">
+              </div>
+              <select class="form-control">
+                <option> </option>
+                <option> Véhicule 1</option>
+                <option> Véhicule 2</option>
+                <option> Véhicule 3</option>
+                <option> Véhicule 4</option>
+              </select>
+              <div id="boutonSearch" class="boutonSearch">
+                <a class="btn btn-primary" id="boutonSearch2" href="#">Envoyer</a>
+              </div>
+            </form>
+
+            <h2 class="sous-titre">Vos compteur</h2>
+            <form class="formulaireDemandes" method="post">
+              <select class="form-control" id="select3">
+                <option> </option>
+                <option> Compteur de type 1</option>
+                <option> Compteur de type 2</option>
+                <option> Compteur de type 3</option>
+                <option> Compteur de type 4</option>
+              </select>
+              <div id="boutonSearch" class="boutonSearch">
+                <a class="btn btn-primary" id="boutonSearch3" href="#">Envoyer</a>
+              </div>
+            </form>
+            <div id="messageCompteur"></div>
+
+
           </section>
         </div>
       </div>

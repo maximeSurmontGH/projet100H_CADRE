@@ -278,12 +278,26 @@ function ajoutInfo(nb, notif, message, heure){
   li.appendChild(div);
 }
 
+function compteurInfos(){
+	document.getElementById("boutonSearch3").onclick=function(){
+		document.getElementById("messageCompteur").innerHTML = "Vous en etes à 6 jours de congés payés";
+		document.getElementById("messageCompteur").className = "alert alert-info alert-dismissable"
+	}
+}
+
 
 window.onload = function(){
 	maillingAnnonce();
 	creationTableau();
-  ajoutInfo(25, "info", "Réunion en salle Q13", "15h00 à 16h00");
-  ajoutInfo(7, "fine", "Bon retour de vacances", "");
-  ajoutInfo(12, "bad", "Délais de livraison chez e fournisseur 'HEI' J-3", "");
-  ajoutInfo(15, "bad", "Réunion retour livraison", "18h30 à 19h00");
+	ajoutInfo(20, "inProcess", "Demande de congés payé", "");
+	ajoutInfo(21, "inProcess", "Demande de congés payé", "");
+	ajoutInfo(22, "inProcess", "Demande de congés payé", "");
+	ajoutInfo(23, "inProcess", "Demande de congés payé", "");
+	ajoutInfo(24, "inProcess", "Demande de congés payé", "");
+	ajoutInfo(25, "inProcess", "Demande de congés payé", "");
+	ajoutInfo(26, "inProcess", "Demande de congés payé", "");
+  ajoutInfo(7, "bad", "Refus de prêt du véhicule HG-379", "");
+	ajoutInfo(25, "fine", "Acceptation du prêt du véhicule HG-379", "");
+	ajoutInfo(26, "fine", "Acceptation du prêt du véhicule HG-379", "");
+	compteurInfos();
 };
