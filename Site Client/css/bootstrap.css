@@ -66,7 +66,7 @@ textarea {
   vertical-align: middle;
 }
 
-textarea.span12{
+textarea.span12, textarea.span8{
   height: 200px;
   resize: none;
 }
