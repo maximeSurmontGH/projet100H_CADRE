@@ -110,6 +110,10 @@ section{
   background-color: lightgrey;
 }
 
+.cara{
+  clear: both;
+}
+
 .sous-titre{
   display: block;
   color: #286090;

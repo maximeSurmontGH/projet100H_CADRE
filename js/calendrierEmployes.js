@@ -93,6 +93,7 @@ function creationTableau(){
     nbJour:31,
     moisAvant : novembre
   }
+	janvier.moisAvant = decembre;
   //creation des jours de la semaine
   var lundi = {
     jour : "LUNDI",
@@ -100,27 +101,27 @@ function creationTableau(){
   }
   var mardi = {
     jour : "MARDI",
-    nb : 1
+    nb : 2
   }
   var mercredi = {
     jour : "MERCREDI",
-    nb : 1
+    nb : 3
   }
   var jeudi = {
     jour : "JEUDI",
-    nb : 1
+    nb : 4
   }
   var vendredi = {
     jour : "VENDREDI",
-    nb : 1
+    nb : 5
   }
   var samedi = {
     jour : "SAMEDI",
-    nb : 1
+    nb : 6
   }
   var dimanche = {
     jour : "DIMANCHE",
-    nb : 1
+    nb : 7
   }
   // recuperation de la date du jour
   var ajd = new Date();
@@ -161,24 +162,32 @@ function creationTableau(){
   if (mois==12) var mois = decembre;
   //change la date pour la date actuel
   document.getElementById("choixMoisAnnee").innerHTML=mois.mois+" "+annee;
-  // crée le caledndrier
+  // crée le caledndriee
   createurTableau(jourDeLaSemaine, mois, jour);
 	//changement de mois
 	document.getElementById("flecheLeft").onclick=function(){
-		if(mois.nb==1) mois = decembre;
-		if(mois.nb==2) mois = janvier;
-		if (mois.nb==3 && bisextile) mois = fevrier2;
-	  if (mois.nb==3 && !bisextile) mois = fevrier;
-	  if (mois.nb==4 && bisextile) mois = mars2;
-	  if (mois.nb==4 && !bisextile) mois = mars;
-		if(mois.nb==5) mois = avril;
-		if(mois.nb==6) mois = mai;
-		if(mois.nb==7) mois = juin;
-		if(mois.nb==8) mois = juillet;
-		if(mois.nb==9) mois = aout;
-		if(mois.nb==10) mois = septembre;
-		if(mois.nb==11) mois = octobre;
-		if(mois.nb==12) mois = novembre;
+		if(annee%4==0){
+	    var bisextile=true;
+	  }
+	  else {
+	    var bisextile=false;
+	  }
+		if(mois.nb==1) {
+			mois = decembre; annee-=1;
+		}
+		else if(mois.nb==2) mois = janvier;
+		else if (mois.nb==3 && bisextile) mois = fevrier2;
+	  else if (mois.nb==3 && !bisextile) mois = fevrier;
+	  else if (mois.nb==4 && bisextile) mois = mars2;
+	  else if (mois.nb==4 && !bisextile) mois = mars;
+		else if(mois.nb==5) mois = avril;
+		else if(mois.nb==6) mois = mai;
+		else if(mois.nb==7) mois = juin;
+		else if(mois.nb==8) mois = juillet;
+		else if(mois.nb==9) mois = aout;
+		else if(mois.nb==10) mois = septembre;
+		else if(mois.nb==11) mois = octobre;
+		else if(mois.nb==12) mois = novembre;
 		// suppression de l'ancien mois
 		var element = document.getElementById("pourLaSuppression");
 		while (element.firstChild) {
@@ -186,24 +195,44 @@ function creationTableau(){
 		}
 		//change la date pour la date actuel
 	  document.getElementById("choixMoisAnnee").innerHTML=mois.mois+" "+annee;
+		// détermine le jour de la semaine du dernier jour du mois précédant
+		while(jour!=0){
+			if (jourDeLaSemaine.nb == 1) jourDeLaSemaine = dimanche;
+			else if (jourDeLaSemaine.nb == 2) jourDeLaSemaine = lundi;
+			else if (jourDeLaSemaine.nb == 3) jourDeLaSemaine = mardi;
+			else if (jourDeLaSemaine.nb == 4) jourDeLaSemaine = mercredi;
+			else if (jourDeLaSemaine.nb == 5) jourDeLaSemaine = jeudi;
+			else if (jourDeLaSemaine.nb == 6) jourDeLaSemaine = vendredi;
+			else if (jourDeLaSemaine.nb == 7) jourDeLaSemaine = samedi;
+			jour--;
+		}
+		if (jour == 00) jour=mois.nbJour;
 	  // crée le caledndrier
 	  createurTableau(jourDeLaSemaine, mois, jour);
 	}
 	document.getElementById("flecheRight").onclick=function(){
+		if(annee%4==0){
+			var bisextile=true;
+		}
+		else {
+			var bisextile=false;
+		}
 		if (mois.nb==1 && bisextile) mois = fevrier2;
-	  if (mois.nb==1 && !bisextile) mois = fevrier;
-	  if (mois.nb==2 && bisextile) mois = mars2 ;
-	  if (mois.nb==2 && !bisextile) mois = mars;
-		if(mois.nb==3) mois = avril;
-		if(mois.nb==4) mois = mai;
-		if(mois.nb==5) mois = juin;
-		if(mois.nb==6) mois = juillet;
-		if(mois.nb==7) mois = aout;
-		if(mois.nb==8) mois = septembre;
-		if(mois.nb==9) mois = octobre;
-		if(mois.nb==10) mois = novembre;
-		if(mois.nb==11) mois = decembre;
-		if(mois.nb==12) mois = janvier;
+	  else if (mois.nb==1 && !bisextile) mois = fevrier;
+	  else if (mois.nb==2 && bisextile) mois = mars2 ;
+	  else if (mois.nb==2 && !bisextile) mois = mars;
+		else if(mois.nb==3) mois = avril;
+		else if(mois.nb==4) mois = mai;
+		else if(mois.nb==5) mois = juin;
+		else if(mois.nb==6) mois = juillet;
+		else if(mois.nb==7) mois = aout;
+		else if(mois.nb==8) mois = septembre;
+		else if(mois.nb==9) mois = octobre;
+		else if(mois.nb==10) mois = novembre;
+		else if(mois.nb==11) mois = decembre;
+		else if(mois.nb==12) {
+			mois = janvier; annee+=1;
+		}
 		// suppression de l'ancien mois
 		var element = document.getElementById("pourLaSuppression");
 		while (element.firstChild) {
@@ -211,14 +240,25 @@ function creationTableau(){
 		}
 		//change la date pour la date actuel
 	  document.getElementById("choixMoisAnnee").innerHTML=mois.mois+" "+annee;
+		// détermine le jour de la semaine du dernier jour du mois précédant
+		while(jour<=mois.moisAvant.nbJour){
+			if (jourDeLaSemaine.nb == 1) jourDeLaSemaine = mardi;
+			else if (jourDeLaSemaine.nb == 2) jourDeLaSemaine = mercredi;
+			else if (jourDeLaSemaine.nb == 3) jourDeLaSemaine = jeudi;
+			else if (jourDeLaSemaine.nb == 4) jourDeLaSemaine = vendredi;
+			else if (jourDeLaSemaine.nb == 5) jourDeLaSemaine = samedi;
+			else if (jourDeLaSemaine.nb == 6) jourDeLaSemaine = dimanche;
+			else if (jourDeLaSemaine.nb == 7) jourDeLaSemaine = lundi;
+			jour++;
+		}
+		if (jour == mois.moisAvant.nbJour+1) jour=1;
 	  // crée le caledndrier
 	  createurTableau(jourDeLaSemaine, mois, jour);
 	}
 }
 
 function createurTableau(jourDeLaSemaine, mois, jour){
-    jourDeLaSemaineActuel = jourDeLaSemaine;
-    jourActuel = jour%7-jourDeLaSemaine.nb-1; //nous permet de savoir quel jour de la semaine fut le permier jour du mois
+    jourActuel = jour%7 - jourDeLaSemaine.nb; //nous permet de savoir quel jour de la semaine fut le permier jour du mois
 		if (jourActuel<0) jourActuel+=7;
     jourCumul = 1;
     var divCalendar = document.getElementById("pourLaSuppression");
@@ -246,17 +286,22 @@ function createurTableau(jourDeLaSemaine, mois, jour){
         jourCumul++;
       }
     }
+		var depasse = 0;
     //remplir le tableau jusqu'a la fin du mois
-    while(jourCumul<=mois.nbJour){
+    while(depasse==0){
       for(var i=0; i<7; i++){
         var li = document.createElement('li');
-        if (jourCumul<=mois.nbJour) li.className = "day";
+        if (depasse==0) li.className = "day";
         else li.className = "day other-mounth";
         var div = document.createElement('div');
         div.className = "date";
         div.innerHTML = jourCumul;
         li.appendChild(div);
         ul.appendChild(li);
+				if (jourCumul>=mois.nbJour){
+					jourCumul=0;
+					depasse=1;
+				}
         jourCumul++;
       }
     }

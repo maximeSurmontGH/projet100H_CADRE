@@ -3,7 +3,7 @@ body{
 	padding: 0;
 	font-size: 2vw;
 	background: #F9F9F9 url("img/fondNul.jpg");
-	overflow: scroll;
+	overflow: auto;
 }
 .container {
 	padding: 0;
