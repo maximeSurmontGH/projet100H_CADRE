@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Page où l'on peut voir et rechercher dans l'annuaire de l'entreprise">
+    <meta name="description" content="Page ou l'on peut voir les différentes ressources de l'entreprise">
     <meta name="author" content="maxime SURMONT">
-    <title> L'Annuaire de CADRE </title>
+    <title> Ressources de l'entreprise </title>
     <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
-    <link href="css/annuaireDirection.css" rel="stylesheet">
-    <script type="text/javascript" src="js/annuaireDirection.js"></script>
+    <link href="css/ressourcesDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/ressourcesDirection.js"></script>
   </head>
 
   <body>
     <div class="alert alert-danger alert-dismissable fade in notification disparaitreAlerte" id="notification">
       <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
-      <strong>Erreur!</strong> Personne non ajouté. Merci de réessayer plus tard.
+      <strong>Erreur!</strong> La ressource recherchée n'est pas présent dans la base de donnée.
     </div>
 
     <div class="container">
@@ -37,20 +37,20 @@
             </div>
 
             <div class="row">
-              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="annuaire">
+              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="ressources">
                 <a href="#">
-                <img src="img/Annuaire.png" alt="icône d l'annuaire"> </a>
+                <img src="img/RessourcePeda.png" alt="icône des ressources pédagogique"> </a>
               </div>
              </div>
 
             <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="annuaire">
+                <a href="#">
+                <img src="img/Annuaire.png" alt="icône de l'annuaire"> </a>
+              </div>
               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
                 <a href="#">
                 <img src="img/Demandes.png" alt="icône des demandes"> </a>
-              </div>
-              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="ressources">
-                <a href="#">
-                <img src="img/RessourcePeda.png" alt="icône des ressources pédagogique"> </a>
               </div>
             </div>
           </nav>
@@ -58,27 +58,14 @@
           <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <h1 id="titre" >Annuaire CADRE</h1>
 
-            <p>Contenu de l'annuaire :</p>
+            <p id="sousTitre1">Contenu de l'annuaire :</p>
             <table id="tableauDuPersonnel">
               <tr>
-                <th >Nom</th>
-                <th >Prénom</th>
-                <th >Poste</th>
-                <th >Téléphone</th>
-                <th >Adresse</th>
-                <th >E-mail</th>
+                <th >Nom du fichier</th>
+                <th >Taille</th>
+                <th >Type</th>
+                <th >Corps de métier</th>
                 <th id="action">Action</th>
-              </tr>
-              <tr>
-                <form method="post">
-                  <td><input type="text" name="nom" id="nom"></td>
-                  <td><input type="text" name="prenom" id="prenom"></td>
-                  <td><input type="text" name="poste" id="poste"></td>
-                  <td><input type="text" name="telephone" id="telephone"></td>
-                  <td><input type="text" name="adresse" id="adresse"></td>
-                  <td><input type="text" name="email" id="email" ></td>
-                  <td><a href="#"><span class="glyphicon glyphicon-plus" id="boutonAdd"></span></a></td>
-                </form>
               </tr>
             </table>
 
@@ -92,9 +79,25 @@
                   <a class="btn btn-primary" id="boutonSearch" href="#">Rechercher</a>
                 </div>
             </form>
-
             <table id="tableauDuPersonnel2">
             </table>
+
+            <p>Ajout d'un fichier :</p>
+            <form id="formulaire">
+              <div class="input-group">
+                <div class="input-group-addon descriptionAjout" > <span> Nom du fichier : </span> </div>
+                <input type="text" class="form-control">
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon descriptionAjout" > <span> Corps de métier : </span> </div>
+                <input type="text" class="form-control">
+              </div>
+
+              <div id="boutonAdd2">
+                <a class="btn btn-primary" id="boutonAdd2" href="#">Ajouter</a>
+              </div>
+              <input type="file" name="fichier" id="choixDuFichier"/>
+            </form>
           </section>
 
         </div>

@@ -74,6 +74,7 @@ footer{
 	width: 100%;
 	background: #F9F9F9 url("img/fondNul.jpg");
 	padding-top: 10px;
+	z-index: 999;
 }
 footer img{
 	width: 60px;
