@@ -1,6 +1,0 @@
-package projet.cadre.servlets;
-
-@WebServlet("/ac")
-public class Test extends HttpServlet {
-
-}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cadre - Devis</title>
+
+<!-- CSS
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/jquery.lightbox-0.5.css">
+<link rel="stylesheet" href="css/custom-styles.css">
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" href="img/favicon.png.ico">
+
+<!-- JS
+================================================== -->
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.custom.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+
+
+</head>
+
+<body>
+	<!-- Color Bars (above header)-->
+    <div class="color-bar-1"></div>
+    <div class="color-bar-2 color-bg"></div>
+
+    <div class="container">
+
+       <div class="row header" th:insert="~{commun :: header}"><!-- Begin Header -->
+      </div>
+
+      </div><!-- End Header -->
+
+    <!-- Page Content
+    ================================================== -->
+    <h2>Demande de devis</h2>
+    <div class="row"><!--Container row-->
+        <form action="#" id="devis-form">
+        <div class="span6">
+
+            <h3>Emmeteur</h3>
+
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4" size="16" type="text" placeholder="Nom de la société">
+                </div>
+
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    <input class="span4" size="16" type="text" placeholder="Nom">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span4" size="16" type="text" placeholder="Adresse Email">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-tag"></i></span>
+                    <input class="span4" size="16" type="text" placeholder="Numéro de téléphone">
+                </div>
+            </div>
+             <div class="span6">
+
+            <h3>Zone d'intervention</h3>
+
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4" size="16" type="text" placeholder="Adresse">
+                </div>
+
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4" size="16" type="text" placeholder="Code Postal">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4" size="16" type="text" placeholder="Ville">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-file"></i></span>
+                    <input class="span4" size="16" type="text" placeholder="Service">
+                </div>
+            </div>
+
+            <div class="span12">
+             <h3>Détails de l'intervention</h3>
+                <textarea class="span12" placeholder="Description de l'intervention" ></textarea>
+                <div>
+                <label for="fichier">Joindre un fichier (PDF,images,...) :</label>
+                <input type="file" name="fichier" />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="span2 offset5">
+                <input type="submit" class="btn btn-inverse" value="Envoyer la demande" />
+                </div>
+            </div>
+
+
+
+       </form>
+
+        </div> <!--End page content column-->
+
+    </div> <!-- End Container -->
+        <!-- Footer Area
+        ================================================== -->
+<div class="footer-container"><!-- Begin Footer -->
+        <div class="container">
+            <div class="row footer-row">
+                <div class="span3 footer-col">
+                   <img src="img/LogoTransparent.png" alt="Cadre" /><br /><br />
+
+                </div>
+                <div class="span3 footer-col">
+                    <address>
+                        <strong>Cadre</strong><br />
+                        ZONE ARTISANALE DU BOIS NICOLAS <br/>
+                        ST MARTIN EN CAMPAGNE <br/>
+                        76370 PETIT-CAUX
+                    </address>
+                </div>
+                <div class="span3 footer-col">
+
+                </div>
+                <div class="span3 footer-col">
+                   <button> Acéder à mon espace personnel</button>
+                </div>
+            </div>
+
+            <div class="row"><!-- Begin Sub Footer -->
+                <div class="span12 footer-col footer-sub">
+                    <div class="row no-margin">
+                        <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span></div>
+                        <div class="span6">
+                            <span class="right">
+                            <a href="index">Accueil</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="entreprise">L'entreprise</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="prestations">Nos prestations</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="contact">Contact</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="devis">Votre Devis</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Sub Footer -->
+
+        </div>
+
+    </div><!-- End Footer -->
+
+    <!-- Scroll to Top -->
+    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+</body>
+</html>

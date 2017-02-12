@@ -1,3 +1,0 @@
-INDEX VERSION 1.129+C:\Users\Chloé\Desktop\projet100H_CADRE\Site JEE\.metadata\.plugins\org.eclipse.jdt.core
-3926838764.index
-4169734539.index

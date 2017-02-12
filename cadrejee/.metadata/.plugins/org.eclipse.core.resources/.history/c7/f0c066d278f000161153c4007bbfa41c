@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fragments</title>
+</head>
+<body>
+   <div th:fragment="menu">
+            <div class="navbar hidden-phone">
+
+            <ul class="nav">
+
+           <li><a href="index">Accueil</a></li>
+           <li><a href="lentreprise">L'entreprise</a></li>
+           <li><a href="prestations">Nos prestations</a></li>
+           <li class="active"><a href="contact">Contact</a></li>
+           <li><a href="devis">Votre Devis</a></li>
+
+            </ul>
+
+            </div>
+
+</body>
+</html>

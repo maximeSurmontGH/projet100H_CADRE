@@ -1,4 +1,0 @@
-INDEX VERSION 1.3+C:\Users\Chloé\Desktop\projet100H_CADRE\Site JEE\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3926838764.index
-1463355186.index
-4169734539.index

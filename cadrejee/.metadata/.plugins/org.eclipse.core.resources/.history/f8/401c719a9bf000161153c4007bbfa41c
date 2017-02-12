@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fragments</title>
+</head>
+<body>
+
+<!-- HEADER -->
+
+    <div th:fragment="header">
+
+        <!-- Logo -->
+        <div class="span5 logo">
+        		<a href="index"><img src="img/Logo.png" alt="" /></a>
+            	<h5> Travaux métalliques depuis 1996 </h5>
+        </div>
+
+        <!-- Main Navigation-->
+       <div class="span7 navigation">
+            <div class="navbar hidden-phone">
+
+            <ul class="nav">
+           <li class="active"><a href="index">Accueil</a></li>
+           <li><a href="entreprise">L'entreprise</a></li>
+           <li><a href="prestations">Nos prestations</a></li>
+           <li><a href="contact">Contact</a></li>
+           <li><a href="devis">Votre Devis</a></li>
+
+            </ul>
+
+            </div>
+
+            <!-- Mobile Nav -->
+            <form action="#" id="mobile-nav" class="visible-phone">
+                <div class="mobile-nav-select">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                    <option value="">Naviger...</option>
+                    <option value="index">Accueil</option>
+                    <option value="entreprise">L'entreprise</option>
+                    <option value="prestations">Nos prestations</option>
+                    <option value="contact">Contact</option>
+                    <option value="devis">Votre Devis</option>
+                </select>
+                </div>
+                </form>
+
+        </div>
+</div>
+  <!-- Footer Area -->
+
+	<div th:fragment="footer"><!-- Begin Footer -->
+    	<div class="container">
+        	<div class="row footer-row">
+                <div class="span3 footer-col">
+                   <img src="img/LogoTransparent.png" alt="Cadre" /><br /><br />
+
+                </div>
+                <div class="span3 footer-col">
+                    <address>
+                        <strong>Cadre</strong><br />
+                        ZONE ARTISANALE DU BOIS NICOLAS <br/>
+                        ST MARTIN EN CAMPAGNE <br/>
+                        76370 PETIT-CAUX
+                    </address>
+                </div>
+                <div class="span3 footer-col">
+
+                </div>
+                <div class="span3 footer-col">
+                   <button> Accéder à mon espace personnel</button>
+                </div>
+            </div>
+
+            <div class="row"><!-- Begin Sub Footer -->
+                <div class="span12 footer-col footer-sub">
+                    <div class="row no-margin">
+                        <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span></div>
+                        <div class="span6">
+                            <span class="right">
+                            <a href="index">Accueil</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="entreprise">L'entreprise</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="prestations">Nos prestations</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="contact">Contact</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="devis">Votre Devis</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Sub Footer -->
+
+        </div>
+    </div>
+
+</body>
+</html>
