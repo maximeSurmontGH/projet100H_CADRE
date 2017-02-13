@@ -63,6 +63,9 @@ h1{
 	text-align: center;
 	margin-top: 30px;
 }
+.lastElement{
+	margin-bottom: 90px;
+}
 
 /* FOOTER */
 footer{

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page où l'on peut choisir quoi modifier dans le site vitrine">
+    <meta name="author" content="maxime SURMONT">
+    <title> Modification du Site </title>
+    <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/pagesIntranet.css" rel="stylesheet">
+    <link href="css/modificationDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/modificationDirection.js"></script>
+  </head>
+
+  <body>
+    <div class="alert alert-danger alert-dismissable fade in notification disparaitreAlerte" id="notification">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
+      <strong>Erreur!</strong> Personne non ajouté. Merci de réessayer plus tard.
+    </div>
+
+    <div class="container">
+      <div>
+        <div class="row">
+          <nav class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="rappels">
+                <a href="#">
+                <img src="img/Modifications.png" alt="icône des modifications du site"> </a>
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="calendrier">
+                <a href="#">
+                <img src="img/CalendrierValidites.png" alt="icône du calendrier des validités"> </a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="annuaire">
+                <a href="#">
+                <img src="img/Annuaire.png" alt="icône d l'annuaire"> </a>
+              </div>
+             </div>
+
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
+                <a href="#">
+                <img src="img/Demandes.png" alt="icône des demandes"> </a>
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="ressources">
+                <a href="#">
+                <img src="img/RessourcePeda.png" alt="icône des ressources pédagogique"> </a>
+              </div>
+            </div>
+          </nav>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
+            <h1 id="titre" >Modification du site vitrine</h1>
+            <div>
+              <a id="boutonAccueil" href="#">Page "ACCUEIL"</a>
+            </div>
+            <div>
+              <a id="boutonEntreprise" href="#">Page "L'ENTREPRISE"</a>
+            </div>
+            <div>
+              <a id="boutonPrestations" href="#">Page "NOS PRESTATIONS"</a>
+            </div>
+            <div>
+              <a id="boutonContact" href="#">Page "CONTACT"</a>
+            </div>
+
+            <table id="tableauDesModifications">
+            </table>
+
+            <a href="#" id="boutonRetour"> Retour </a>
+          </section>
+
+        </div>
+      </div>
+
+      <footer id="footer">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitreAlerte">
+      	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
+      	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
+      	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
+      	<p id="maillingAnnonceNum" class="apparaitreAlerte">7</p>
+      </footer>
+    </div>
+  </body>
+</html>

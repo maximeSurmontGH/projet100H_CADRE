@@ -1,0 +1,94 @@
+
+/* NAVIGATION */
+#rappels{
+  border-radius: 10px 0px 0px 0px;
+}
+#calendrier{
+	border-radius: 0px 0px 0 0px;
+}
+#demandes{
+	border-radius: 0px 10px 0px 0px;
+}
+#annuaire{
+	border-radius: 0px 0px 0px 10px;
+}
+#ressources{
+	border-radius: 0px 0px 10px 0px;
+}
+
+/* SECTION */
+section p{
+  color: #555555;
+  font-size: 22px;
+  margin-top: 70px;
+}
+section span{
+  color: #555555;
+  font-size: 18px;
+}
+.inputSearch{
+  max-width: 500px;
+}
+.boutonSearch{
+  width: 150px;
+	margin-top: 10px;
+  float: right;
+}
+.input-group{
+  margin-bottom: 10px;
+}
+
+form{
+  margin-top: 20px;
+}
+table {
+    margin-top: 40px;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 80px;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+td{
+  color: #555555;
+}
+th{
+  color: #333333;
+  position: relative;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+table span{
+  margin-left: 30%;
+}
+
+.descriptionAjout{
+  width: 130px;
+}
+select{
+  font-size: 16px;
+  color: #888888;
+}
+
+
+/* ADAPTATIONS */
+@media screen and (max-width: 650px) {
+
+	/* SECTION */
+  section p{
+    margin-top: 60px;
+  }
+  table {
+      margin-bottom: 30px;
+  }
+
+	/* NAVIGATION */
+
+	/* FOOTER */
+
+}

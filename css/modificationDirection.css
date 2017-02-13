@@ -1,0 +1,96 @@
+
+/* NAVIGATION */
+#rappels{
+  border-radius: 10px 0px 0px 0px;
+}
+#calendrier{
+	border-radius: 0px 10px 0 0px;
+}
+#demandes{
+	border-radius: 0px 0px 0px 10px;
+}
+#annuaire{
+	border-radius: 0px 0px 0px 0px;
+}
+#ressources{
+	border-radius: 0px 0px 10px 0px;
+}
+
+/* SECTION */
+section p{
+  color: #555555;
+  margin-top: 100px;
+  font-size: 22px;
+}
+
+.mesBtns{
+  width: 30vw;
+  margin-top: 50px;
+  font-size: 2.2vw;
+  margin-left: 27%;
+}
+.apparait{
+  display: block;
+}
+.disparait{
+  display: none;
+}
+table {
+    margin-top: 60px;
+    width: 100%;
+    font-size: 16px;
+}
+table span {
+  margin-left: 40%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+td{
+  color: #555555;
+}
+th{
+  color: #333333;
+  background-color: #cccccc;
+}
+tr:nth-child(odd) {
+    background-color: #eeeeee;
+}
+.inputTextarea{
+  width: 100%;
+}
+.colonneLarge{
+  width: 50%;
+}
+.colonneFine{
+  width: 60px;
+}
+
+#boutonRetour{
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 90px;
+}
+
+/* ADAPTATIONS */
+@media screen and (max-width: 650px) {
+	/* SECTION */
+  section p{
+    margin-top: 60px;
+  }
+  #titre{
+    margin-left: 36px;
+  }
+  table {
+      margin-bottom: 30px;
+  }
+  .mesBtns{
+    width: 250px;
+    margin-top: 50px;
+    font-size: 16px;
+  }
+	/* NAVIGATION */
+	/* FOOTER */
+}
