@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Page où l'on peut choisir quoi modifier dans le site vitrine">
     <meta name="author" content="maxime SURMONT">
-    <title> Modification du Site </title>
+    <title> Gestion des demandes</title>
     <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
-    <link href="css/modificationDirection.css" rel="stylesheet">
-    <script type="text/javascript" src="js/modificationDirection.js"></script>
+    <link href="css/demandesDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/demandesDirection.js"></script>
   </head>
 
   <body>
@@ -28,25 +28,25 @@
             <div class="row">
               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="rappels">
                 <a href="#">
-                <img src="img/CalendrierValidites.png" alt="icône du calendrier des validités"> </a>
+                <img src="img/Modifications.png" alt="icône des modifications du site"> </a>
               </div>
               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="calendrier">
                 <a href="#">
-                <img src="img/Annuaire.png" alt="icône de l'annuaire de l'entreprise"> </a>
+                <img src="img/CalendrierValidites.png" alt="icône ucalendrier des validités"> </a>
               </div>
             </div>
 
             <div class="row">
               <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="annuaire">
                 <a href="#">
-                <img src="img/Modifications.png" alt="icône des modifications du site"> </a>
+                <img src="img/Demandes.png" alt="icône des demandes employés"> </a>
               </div>
              </div>
 
             <div class="row">
               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
                 <a href="#">
-                <img src="img/Demandes.png" alt="icône des demandes"> </a>
+                <img src="img/Annuaire.png" alt="icône de l'annuaire de l'entreprise"> </a>
               </div>
               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="ressources">
                 <a href="#">
@@ -56,22 +56,31 @@
           </nav>
 
           <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
-            <h1 id="titre" >Modification du site vitrine</h1>
+            <h1 id="titre" >Gestion des demandes employés</h1>
             <div>
-              <a id="boutonAccueil" href="#">Page "ACCUEIL"</a>
+              <a id="boutonVehicules1" href="#">Gérer les prêt de véhicules</a>
             </div>
             <div>
-              <a id="boutonEntreprise" href="#">Page "L'ENTREPRISE"</a>
+              <a id="boutonConges" href="#">Gérer les congés</a>
             </div>
             <div>
-              <a id="boutonPrestations" href="#">Page "NOS PRESTATIONS"</a>
+              <a id="boutonAttestations" href="#">Gérer les attestations</a>
             </div>
             <div>
-              <a id="boutonContact" href="#">Page "CONTACT"</a>
+              <a id="boutonVehicules2" href="#">Gérer les véhicules</a>
+            </div>
+            <div>
+              <a id="boutonDevis" href="#">Gérer les devis</a>
             </div>
 
-            <table id="tableauDesModifications">
+            <p id="sousTitre1"></p>
+            <table id="tableauDesDemandes1">
             </table>
+            <p id="sousTitre2"></p>
+            <table id="tableauDesDemandes2">
+            </table>
+
+
 
             <a href="#" id="boutonRetour"> Retour </a>
           </section>

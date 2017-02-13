@@ -81,6 +81,11 @@ function gestionnairePage2(pageModifiee){
 	document.getElementById("boutonRetour").onclick=function(){
 		gestionnairePage();
 	}
+	for (var i = 1; i < 10; i++) {
+		document.getElementById("a"+i).onclick=function(){
+			document.getElementById("notification").className='alert alert-success alert-dismissable fade in notification apparaitreAlerte';
+		}
+	}
 }
 
 function createurDeLigne (element, action, num){
@@ -122,5 +127,5 @@ function createurDeLigne (element, action, num){
 window.onload = function(){
 	maillingAnnonce();
 	suppressionNotification();
-	gestionnairePage(0);
+	gestionnairePage();
 };

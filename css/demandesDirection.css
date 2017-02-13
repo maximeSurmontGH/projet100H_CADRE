@@ -17,7 +17,7 @@
 }
 
 /* SECTION */
-section p{
+.sectionP{
   color: #555555;
   margin-top: 100px;
   font-size: 22px;
@@ -25,6 +25,7 @@ section p{
 #titre{
   margin-bottom: 60px;
 }
+
 .mesBtns{
   width: 30vw;
   margin-top: 40px;
@@ -37,8 +38,8 @@ section p{
 .disparait{
   display: none;
 }
-table {
-    margin-top: 60px;
+.table {
+    margin-top: 30px;
     width: 100%;
     font-size: 16px;
 }
