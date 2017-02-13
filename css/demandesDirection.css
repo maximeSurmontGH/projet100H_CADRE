@@ -46,6 +46,9 @@
 table span {
   margin-left: 40%;
 }
+.spanSpe{
+  margin-left: 15%;
+}
 td, th {
     border: 1px solid #dddddd;
     text-align: left;
