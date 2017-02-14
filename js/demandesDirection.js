@@ -207,6 +207,34 @@ function gestionnairePage2(pageModifiee){
 		th3.innerHTML = "Action";
 		tr.appendChild(th3);
 		table.appendChild(tr);
+		var tr = document.createElement('tr');
+		var td1 = document.createElement('td');
+		var input1 = document.createElement('input');
+		input1.type="text";
+		td1.appendChild(input1);
+		var td2 = document.createElement('td');
+		var input2 = document.createElement('input');
+		input2.type="text";
+		td2.appendChild(input2);
+		var td3 = document.createElement('td');
+		td3.className="colonneFine";
+		var a = document.createElement('a');
+		a.href="#";
+		var span = document.createElement('span');
+		span.className=" glyphicon glyphicon-plus";
+		a.appendChild(span);
+		td3.appendChild(a);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		table.appendChild(tr);
+
+		createurDeLigneV("Utilitaire 1", "535 BGC 59");
+		createurDeLigneV("Voiture commerciale 1", "397 ADD 59");
+		createurDeLigneV("Voiture commerciale 2", "048 SOA 59");
+		createurDeLigneV("Voiture commerciale 2", "162 NXI 59");
+		createurDeLigneV("Voiture touristique 1", "110 BKQ 59");
+		createurDeLigneV("Utilitaire 2", "610 MP 59");
 	}
 
 	if(pageModifiee=="devis"){
@@ -231,6 +259,8 @@ function gestionnairePage2(pageModifiee){
 		th5.innerHTML = "Action";
 		tr.appendChild(th5);
 		table.appendChild(tr);
+
+		createurDeLigneD("OVH","SURMONT Maxime");
 	}
 
 	document.getElementById("boutonRetour").onclick=function(){
@@ -400,6 +430,66 @@ function remplissageJMA(){
 	}
 }
 
+function createurDeLigneV(nom, immatriculation){
+	var table = document.getElementById("tableauDesDemandes1");
+	var tr = document.createElement('tr');
+	var td1 = document.createElement('td');
+	td1.innerHTML = nom;
+	var td2 = document.createElement('td');
+	td2.innerHTML = immatriculation;
+	var td3 = document.createElement('td');
+	td3.className="colonneFine";
+	var a = document.createElement('a');
+	a.href="#";
+	var span = document.createElement('span');
+	span.className=" glyphicon glyphicon-minus";
+	a.appendChild(span);
+	td3.appendChild(a);
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+	table.appendChild(tr);
+}
+
+function createurDeLigneD(entreprise, nom){
+	var table = document.getElementById("tableauDesDemandes1");
+	table.className = "table";
+	var tr = document.createElement('tr');
+	var td1 = document.createElement('td');
+	td1.innerHTML = entreprise;
+	tr.appendChild(td1);
+	var td2 = document.createElement('td');
+	td2.innerHTML = nom;
+	tr.appendChild(td2);
+	var td3 = document.createElement('td');
+	td3.className="colonneFine";
+	var a = document.createElement('a');
+	a.href="#";
+	var span = document.createElement('span');
+	span.className=" glyphicon glyphicon-search";
+	a.appendChild(span);
+	td3.appendChild(a);
+	tr.appendChild(td3);
+	var td4 = document.createElement('td');
+	td4.className="colonneFine";
+	var a = document.createElement('a');
+	a.href="#";
+	var span = document.createElement('span');
+	span.className=" glyphicon glyphicon-new-window";
+	a.appendChild(span);
+	td4.appendChild(a);
+	tr.appendChild(td4);
+	var td5 = document.createElement('td');
+	td5.className="colonneFine";
+	var a = document.createElement('a');
+	a.href="#";
+	var span = document.createElement('span');
+	span.className=" glyphicon glyphicon-minus";
+	a.appendChild(span);
+	td5.appendChild(a);
+	tr.appendChild(td5);
+	table.appendChild(tr);
+}
 
 //fct accept refus passer ds l autre tableau
 //faire des pages de tableau
