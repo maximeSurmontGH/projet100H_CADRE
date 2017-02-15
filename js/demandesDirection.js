@@ -18,13 +18,15 @@ function gestionnairePage(){
 	document.getElementById("boutonConges").className = "btn btn-primary mesBtns apparait";
 	document.getElementById("boutonAttestations").className = "btn btn-primary mesBtns apparait";
 	document.getElementById("boutonVehicules2").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonDevis").className = "btn btn-primary mesBtns apparait lastElement";
+	document.getElementById("boutonDevis").className = "btn btn-primary mesBtns apparait";
+	document.getElementById("boutonMotDePasse").className = "btn btn-primary mesBtns apparait lastElement";
 	document.getElementById("boutonRetour").className = "btn btn-primary mesBtns disparait";
 	document.getElementById("boutonVehicules1").onclick=function(){var pageModifiee = "vehicules1"; gestionnairePage2(pageModifiee);}
 	document.getElementById("boutonConges").onclick=function(){ var pageModifiee = "conges"; gestionnairePage2(pageModifiee);}
 	document.getElementById("boutonAttestations").onclick=function(){ var pageModifiee = "attestations"; gestionnairePage2(pageModifiee);}
 	document.getElementById("boutonVehicules2").onclick=function(){ var pageModifiee = "vehicules2"; gestionnairePage2(pageModifiee);}
 	document.getElementById("boutonDevis").onclick=function(){ var pageModifiee = "devis"; gestionnairePage2(pageModifiee);}
+	document.getElementById("boutonMotDePasse").onclick=function(){ var pageModifiee = "motDePasse"; gestionnairePage2(pageModifiee);}
 	while(document.getElementById("tableauDesDemandes1").firstChild) {
   	document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
 	}
@@ -45,6 +47,7 @@ function gestionnairePage2(pageModifiee){
 	document.getElementById("boutonAttestations").className = "disparait";
 	document.getElementById("boutonVehicules2").className = "disparait";
 	document.getElementById("boutonDevis").className = "disparait";
+	document.getElementById("boutonMotDePasse").className = "disparait";
 	document.getElementById("boutonRetour").className = "btn btn-primary btn-lg";
 
 	if(pageModifiee=="vehicules1"){
@@ -261,6 +264,63 @@ function gestionnairePage2(pageModifiee){
 		table.appendChild(tr);
 
 		createurDeLigneD("OVH","SURMONT Maxime");
+	}
+
+	if(pageModifiee=="motDePasse"){
+		document.getElementById("sousTitre1").innerHTML = "Vos comptes employés : ";
+		document.getElementById("sousTitre1").className = "sectionP";
+		var table = document.getElementById("tableauDesDemandes1");
+		table.className = "table";
+		var tr = document.createElement('tr');
+		var th1 = document.createElement('th');
+		th1.innerHTML = "Nom";
+		tr.appendChild(th1);
+		var th2 = document.createElement('th');
+		th2.innerHTML = "Prénom";
+		tr.appendChild(th2);
+		var th3 = document.createElement('th');
+		th3.innerHTML = "Identifiant";
+		tr.appendChild(th3);
+		var th4 = document.createElement('th');
+		th4.innerHTML = "Mot de passe";
+		tr.appendChild(th4);
+		var th5 = document.createElement('th');
+		th5.innerHTML = "Action";
+		tr.appendChild(th5);
+		table.appendChild(tr);
+		var tr = document.createElement('tr');
+		var td1 = document.createElement('td');
+		var input1 = document.createElement('input');
+		input1.type="text";
+		td1.appendChild(input1);
+		var td2 = document.createElement('td');
+		var input2 = document.createElement('input');
+		input2.type="text";
+		td2.appendChild(input2);
+		var td3 = document.createElement('td');
+		var input3 = document.createElement('input');
+		input3.type="text";
+		td3.appendChild(input3);
+		var td4 = document.createElement('td');
+		var input4 = document.createElement('input');
+		input4.type="text";
+		td4.appendChild(input4);
+		var td5 = document.createElement('td');
+		td5.className="colonneFine";
+		var a = document.createElement('a');
+		a.href="#";
+		var span = document.createElement('span');
+		span.className=" glyphicon glyphicon-plus";
+		a.appendChild(span);
+		td5.appendChild(a);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		tr.appendChild(td5);
+		table.appendChild(tr);
+
+		createurDeLigneMdP("SURMONT", "Maxime", "C30291", "kegkmex9");
 	}
 
 	document.getElementById("boutonRetour").onclick=function(){
@@ -487,6 +547,33 @@ function createurDeLigneD(entreprise, nom){
 	span.className=" glyphicon glyphicon-minus";
 	a.appendChild(span);
 	td5.appendChild(a);
+	tr.appendChild(td5);
+	table.appendChild(tr);
+}
+
+function createurDeLigneMdP(nom, prenom, identifiant, mdp){
+	var table = document.getElementById("tableauDesDemandes1");
+	var tr = document.createElement('tr');
+	var td1 = document.createElement('td');
+	td1.innerHTML = nom;
+	var td2 = document.createElement('td');
+	td2.innerHTML = prenom;
+	var td3 = document.createElement('td');
+	td3.innerHTML = identifiant;
+	var td4 = document.createElement('td');
+	td4.innerHTML = mdp;
+	var td5 = document.createElement('td');
+	td5.className="colonneFine";
+	var a = document.createElement('a');
+	a.href="#";
+	var span = document.createElement('span');
+	span.className="glyphicon glyphicon-remove";
+	a.appendChild(span);
+	td5.appendChild(a);
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+	tr.appendChild(td4);
 	tr.appendChild(td5);
 	table.appendChild(tr);
 }

@@ -141,10 +141,8 @@ footer img:hover{
 
 	/* NAVIGATION */
 	nav{
-		margin-top: 0;
 		min-width: none;
 		max-width: none;
-		margin-top: 20px;
 		margin-bottom: 10px;
 	}
 	nav .row{
