@@ -1,3 +1,36 @@
+function disparaitre(){
+	if (window.matchMedia("(max-width: 650px)").matches){
+		document.getElementById("navigation").className="disparaitreAlerte";
+		document.getElementById("iconePasla").id="iconeMenu";
+	}
+	window.onresize=function(){
+  	if (window.matchMedia("(max-width: 650px)").matches){
+    	document.getElementById("navigation").className="disparaitreAlerte";
+			document.getElementById("iconePasla").id="iconeMenu";
+			ouvrirPetitMenu();
+  	}
+		else{
+			document.getElementById("navigation").className="col-lg-3 col-md-3 col-sm-3 col-xs-3";
+			document.getElementById("iconeMenu").id="iconePasla";
+			document.getElementById("navigation").parentNode.className="";
+		}
+	}
+}
+
+function ouvrirPetitMenu (){
+	document.getElementById("iconeMenu").onclick=function(){
+		document.getElementById("navigation").className="petitMenu";
+		document.getElementById("navigation").parentNode.className="opaque";
+	}
+	document.getElementById("navigation").parentNode.onclick=function(){
+		document.getElementById("navigation").parentNode.className="";
+		document.getElementById("navigation").id="iconePasla";
+
+	}
+}
+
+
+
 function maillingAnnonce(){
 	document.getElementById("mailling").onclick=function(){
 		var p = document.getElementById("maillingAnnonceNum");
@@ -9,7 +42,7 @@ function maillingAnnonce(){
 
 function suppressionNotification(){
 	document.getElementById("notification").onclick=function(){
-		document.getElementById("notification").className='disparaitreAlerte';
+	document.getElementById("notification").className='disparaitreAlerte';
 	}
 }
 
@@ -585,4 +618,6 @@ window.onload = function(){
 	maillingAnnonce();
 	suppressionNotification();
 	gestionnairePage();
+	disparaitre();
+	ouvrirPetitMenu();
 };

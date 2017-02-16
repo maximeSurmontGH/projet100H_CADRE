@@ -71,7 +71,6 @@ function remplisseur(prenom, nom, poste, numero, adresse, email){
 function remplissageRecherche(){
 	document.getElementById("boutonSearch").onclick=function(){
 		var table = document.getElementById("tableauDuPersonnel2");
-
 		var tr2 = document.createElement('tr');
 		var td1_1 = document.createElement('th');
 		td1_1.innerHTML = "Prénom";
