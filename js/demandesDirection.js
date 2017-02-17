@@ -13,6 +13,7 @@ function disparaitre(){
 			document.getElementById("navigation").className="col-lg-3 col-md-3 col-sm-3 col-xs-3";
 			document.getElementById("iconeMenu").id="iconePasla";
 			document.getElementById("navigation").parentNode.className="";
+
 		}
 	}
 }
@@ -23,8 +24,7 @@ function ouvrirPetitMenu (){
 		document.getElementById("navigation").parentNode.className="opaque";
 	}
 	document.getElementById("navigation").parentNode.onclick=function(){
-		document.getElementById("navigation").parentNode.className="";
-		document.getElementById("navigation").id="iconePasla";
+		document.getElementById("navigation").parentNode.className="disparaitreAlerte";
 
 	}
 }
