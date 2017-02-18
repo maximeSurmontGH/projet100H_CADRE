@@ -52,7 +52,31 @@ nav div img{
 	text-align: center;
 	margin-top: 10px;
 	font-weight: bold;
-
+}
+#iconePasla{
+  display: none;
+}
+#iconeMenu{
+  margin-top: 30px;
+  left: 30px;
+  font-size: 25px;
+  position: absolute;
+}
+.petitMenu{
+  position: absolute;
+  margin-top: 10%;
+  width:200px;
+  z-index: 999;
+}
+.opaque{
+  position: fixed;
+  display: block;
+  z-index: 990;
+  right:0;
+  left:0;
+  bottom:0;
+  top:0;
+  background-color: rgba(33,33,33,0.5);
 }
 
 /* SECTION */
@@ -154,11 +178,12 @@ footer img:hover{
 	nav div a img{
 		min-width: 20px;
 	}
+	.lastElement{
+		margin-bottom: 180px;
+	}
 
 	/* FOOTER */
-	footer{
-		position: relative;
-	}
+
 	footer img{
 		bottom: 54px;
 	}
