@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import projet.cadre.model.Devis;
+import projet.cadre.model.Contact;
 
-public class DevisDao {
+public class ContactDao {
 	
-public Devis saveDevis(Devis devis){
+public Contact saveDevis(Contact contact){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO devis(nomSociete, nomDemandeur, mail, telephone, adresse,codePostal,ville,service, message) VALUES(?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO devis(nomContact,mailContact,societeContact,messageContact) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1,devis.getNomSociete());
 			stmt.setString(2,devis.getNomDemandeur());
 			stmt.setString(3,devis.getMail());
@@ -32,6 +32,5 @@ public Devis saveDevis(Devis devis){
 		return devis;
 	}
 
+
 }
-
-

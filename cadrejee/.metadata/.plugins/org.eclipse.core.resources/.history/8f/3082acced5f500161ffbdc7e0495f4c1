@@ -1,0 +1,24 @@
+package projet.cadre.dao;
+
+import java.sql.Connection;
+import java.sql.Statement;
+
+import org.junit.Before;
+
+public class DevisDaoTestCase {
+	
+	private DevisDao devisDao = new DevisDao();
+
+	@Before
+	public void initDb() throws Exception {
+		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+			Statement stmt = connection.createStatement()) {
+			stmt.executeUpdate("DELETE FROM devis");
+			stmt.executeUpdate("INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`codePostal`,`ville`,`service`,`message`) VALUES ('Konbi','Pelletier Chloe','chlo.pelletier@gmail.com', '0614348499', '6 Rue de la Tour Roland','60310','Lassigny', 'Marketing', 'Message de Test')");
+			stmt.executeUpdate("INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`codePostal`,`ville`,`service`,`message`) VALUES ('HEI','Surmont Maxime','max.s@gmail.com', '0614348499', '13 Rue de Toul','59000','Lille', 'Compta', 'Message de Test 2')");
+
+		}
+	}
+	
+
+}
