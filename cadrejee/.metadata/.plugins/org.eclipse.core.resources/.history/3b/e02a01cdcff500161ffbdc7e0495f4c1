@@ -1,0 +1,29 @@
+package projet.cadre.managers;
+
+import projet.cadre.dao.Devis;
+
+public class CadreLibrary {
+	
+	private static class CadreLibraryHolder {
+		private final static CadreLibrary instance = new CadreLibrary();
+	}
+	
+	public static CadreLibrary getInstance() {
+		return CadreLibraryHolder.instance;
+	}
+	
+	private Devis devisDao = new Devis();
+	
+	private CadreLibrary() {
+	}
+	
+	//Ajouter un devis à notre bdd 
+	
+	public void saveDevis(String nomSociete, String nomDemandeur, String mail, String telephone, String adresse, String codePostal, String ville, String service, String message ){
+		devisDao.saveDevis(nomSociete, nomDemandeur, mail, telephone, adresse, codePostal, ville, service, message);
+		
+	}
+	
+	
+
+}

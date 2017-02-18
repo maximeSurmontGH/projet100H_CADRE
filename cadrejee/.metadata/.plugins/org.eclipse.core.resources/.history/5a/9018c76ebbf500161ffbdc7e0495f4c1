@@ -1,0 +1,5 @@
+package projet.cadre.dao;
+
+public class DevisDao {
+
+}

@@ -1,0 +1,36 @@
+package projet.cadre.model;
+
+public class Devis {
+	private String nomSociete ;
+	private String nomDemandeur ;
+	private String mail ;
+	private String telephone ;
+	private String adresse ;
+	private String codePostal ;
+	private String ville ;
+	private String service ;
+	private String message;
+	
+	
+	public Devis(){
+		
+	}
+	
+	public Devis (String nomSociete, String nomDemandeur, String mail, String telephone, String adresse, String codePostal, String ville, String service, String message){
+		super();
+		this.nomSociete=nomSociete;
+		this.nomDemandeur=nomDemandeur;
+		this.mail=mail;
+		this.telephone=telephone;
+		this.adresse=adresse;
+		this.codePostal=codePostal;
+		this.ville=ville;
+		this.service=service;
+		
+		
+		
+	}
+	
+		
+
+}

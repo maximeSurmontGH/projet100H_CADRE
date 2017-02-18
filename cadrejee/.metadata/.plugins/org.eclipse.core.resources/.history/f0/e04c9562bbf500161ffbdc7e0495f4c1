@@ -1,0 +1,36 @@
+package projet.cadre.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Devis {
+	
+public void saveDevis(String nomSociete, String nomDemandeur, String mail, String telephone, String adresse, String codePostal, String ville, String service, String message) {
+		
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO devis(nomSociete, nomDemandeur, mail, telephone, adresse,codePostal,ville,service, message) VALUES(?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1,nomSociete);
+			stmt.setString(2,nomDemandeur);
+			stmt.setString(3,mail);
+			stmt.setString(4,telephone);
+			stmt.setString(5,adresse);
+			stmt.setString(6,codePostal);
+			stmt.setString(7,ville);
+			stmt.setString(8,service);
+			stmt.setString(9,message);
+			stmt.executeUpdate();
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+	}
+
+}
+
+

@@ -1,0 +1,18 @@
+package projet.cadre.managers;
+
+public class CadreLibrary {
+	
+	private static class CadreLibraryHolder {
+		private final static CadreLibrary instance = new CadreLibrary();
+	}
+	
+	public static CadreLibrary getInstance() {
+		return CadreLibraryHolder.instance;
+	}
+	
+	private CadreLibrary() {
+	}
+	
+	
+
+}

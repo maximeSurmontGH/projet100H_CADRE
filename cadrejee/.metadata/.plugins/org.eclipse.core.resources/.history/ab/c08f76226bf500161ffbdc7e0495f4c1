@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cadre - Devis</title>
+
+<!-- CSS
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/jquery.lightbox-0.5.css">
+<link rel="stylesheet" href="css/custom-styles.css">
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" href="img/favicon.png.ico">
+
+<!-- JS
+================================================== -->
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.custom.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+
+
+</head>
+
+<body>
+	<!-- Bandeaux -->
+	<div th:insert="~{commun :: bandeaux}"></div>
+    <div class="container">
+       <!-- Header -->
+       <div class="row header" th:insert="~{commun :: header(devis)}"><!-- Begin Header -->
+       </div>
+
+    <!-- Page Content -->
+    <h2>Demande de devis</h2>
+    <div class="row"><!--Container row-->
+        <form id="devis-form" method="post">
+        <div class="span6">
+            <h3>Emmeteur</h3>
+
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4" name="nomSociete" id="nomSociete" size="16" type="text" placeholder="Nom de la société">
+                </div>
+
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    <input class="span4" name="nomDemandeur" id="nomDemandeur" size="16" type="text" placeholder="Nom">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span4" name="mail" id="mail" size="16" type="text" placeholder="Adresse Email">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-tag"></i></span>
+                    <input class="span4" name="telephone" id="telephone" size="16" type="text" placeholder="Numéro de téléphone">
+                </div>
+            </div>
+             <div class="span6">
+
+            <h3>Zone d'intervention</h3>
+
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4" name="adresse" id="adresse" size="16" type="text" placeholder="Adresse">
+                </div>
+
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4" name="codePostal" id="codePostal" size="16" type="text" placeholder="Code Postal">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4" name="ville" id="ville" size="16" type="text" placeholder="Ville">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-file"></i></span>
+                    <input class="span4" name="service" id="service" size="16" type="text" placeholder="Service">
+                </div>
+            </div>
+
+            <div class="span12">
+             <h3>Détails de l'intervention</h3>
+                <textarea class="span12" name="message" id="message" placeholder="Description de l'intervention" ></textarea>
+                <div>
+                <label for="fichier">Joindre un fichier (PDF,images,...) :</label>
+                <input type="file" name="fichier" />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="span2 offset5">
+                <button type="submit" class="btn btn-inverse" value="Envoyer la demande"></button>
+                </div>
+            </div>
+
+
+
+       </form>
+
+        </div> <!--End page content column-->
+
+    </div> <!-- End Container -->
+  <!-- Footer Area
+        ================================================== -->
+
+	<div class="footer-container" th:insert="~{commun :: footer}"><!-- Begin Footer -->
+    </div><!-- End Footer -->
+
+    <!-- Scroll to Top -->
+    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+</body>
+</html>
