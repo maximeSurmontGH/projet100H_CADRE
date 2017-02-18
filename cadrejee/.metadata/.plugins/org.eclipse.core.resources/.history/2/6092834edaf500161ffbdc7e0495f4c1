@@ -12,6 +12,7 @@ public class ContactDao {
 public Contact saveContact(Contact contact){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO contact(nomContact,mailContact,societeContact,messageContact) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1,contact.getNomContact());
 			stmt.setString(2,contact.getMailContact());

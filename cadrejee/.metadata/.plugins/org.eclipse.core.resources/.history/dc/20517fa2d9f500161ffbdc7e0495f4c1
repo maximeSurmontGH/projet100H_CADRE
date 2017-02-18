@@ -14,10 +14,6 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import projet.cadre.managers.CadreLibrary;
-import projet.cadre.model.Contact;
-
-
 @WebServlet("/contact")
 public class ContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,16 +30,6 @@ public class ContactServlet extends HttpServlet {
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
 		templateEngine.process("page-contact", context, resp.getWriter());
-
-}
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nomContact = req.getParameter("nomContact");
-		String mailContact = req.getParameter("mailContact"); 
-		String societeContact = req.getParameter("societeContact"); 
-		String messageContact = req.getParameter("messageContact"); 
-		Contact contact= new Contact(nomContact, mailContact, societeContact, messageContact);
-		CadreLibrary.getInstance().saveContact(contact);
-		resp.sendRedirect("contact");
 
 }
 	

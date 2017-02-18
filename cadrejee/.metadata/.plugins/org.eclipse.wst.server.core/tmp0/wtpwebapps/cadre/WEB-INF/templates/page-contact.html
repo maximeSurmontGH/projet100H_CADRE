@@ -41,20 +41,20 @@
         <div class="span8"><!--Begin page content column-->
 
             <h2>Pour nous contacter</h2>
-            <form action="#" id="contact-form">
+            <form id="contact-form" method="post">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
-                    <input class="span4" size="16" type="text" placeholder="Nom">
+                    <input class="span4" size="16" type="text" id="nomContact" name="nomContact" placeholder="Nom">
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span4" size="16" type="text" placeholder="Adresse Email">
+                    <input class="span4" size="16" type="text" id="mailContact" name="mailContact" placeholder="Adresse Email">
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-globe"></i></span>
-                    <input class="span4"  size="16" type="text" placeholder="Société">
+                    <input class="span4"  size="16" type="text" id="societeContact" name="societeContact" placeholder="Société">
                 </div>
-                <textarea class="span8"></textarea>
+                <textarea class="span8" id="messageContact" name="messageContact"></textarea>
                 <div class="row">
                     <div class="span2">
                         <input type="submit" class="btn btn-inverse" value="Envoyer le message">

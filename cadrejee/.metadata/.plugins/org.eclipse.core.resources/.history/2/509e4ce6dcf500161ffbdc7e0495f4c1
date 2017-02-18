@@ -39,9 +39,9 @@ public class ContactServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nomContact = req.getParameter("nomContact");
 		String mailContact = req.getParameter("mailContact"); 
-		String societeContact = req.getParameter("societeContact"); 
+		String nomSociete = req.getParameter("nomSociete"); 
 		String messageContact = req.getParameter("messageContact"); 
-		Contact contact= new Contact(nomContact, mailContact, societeContact, messageContact);
+		Contact contact= new Contact(nomContact, mailContact, nomSociete, messageContact);
 		CadreLibrary.getInstance().saveContact(contact);
 		resp.sendRedirect("contact");
 
