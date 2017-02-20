@@ -17,11 +17,6 @@
 }
 
 /* SECTION */
-section p{
-  color: #555555;
-  margin-top: 60px;
-  font-size: 22px;
-}
 .input-group-addon{
   width: 100px;
 }
@@ -39,19 +34,4 @@ form div{
 .demandeHist{
   font-size: 18px;
   width: 100%;
-}
-#lastOne{
-  margin-bottom: 90px;
-}
-
-
-/* ADAPTATIONS */
-@media screen and (max-width: 650px) {
-
-	/* SECTION */
-
-	/* NAVIGATION */
-
-	/* FOOTER */
-
 }

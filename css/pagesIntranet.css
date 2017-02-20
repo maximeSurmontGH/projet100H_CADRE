@@ -2,7 +2,7 @@ body{
 	margin: 0;
 	padding: 0;
 	font-size: 2vw;
-	background: #F9F9F9 url("img/fondNul.jpg");
+	background: #F9F9F9;
 	overflow: auto;
 }
 .container {
@@ -85,10 +85,36 @@ h1{
 }
 #titre{
 	text-align: center;
-	margin-top: 30px;
+	margin-top: 50px;
 }
-.lastElement{
-	margin-bottom: 90px;
+section p{
+  color: #555555;
+  margin-top: 60px;
+  font-size: 22px;
+}
+form{
+  margin-bottom: 90px;
+}
+table {
+    margin-top: 30px;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+td{
+  color: #555555;
+}
+th{
+  color: #333333;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 /* FOOTER */
@@ -99,7 +125,7 @@ footer{
 	padding-right: 15px;
 	padding-left: 15px;
 	width: 100%;
-	background: #F9F9F9 url("img/fondNul.jpg");
+	background: #F9F9F9;
 	padding-top: 10px;
 	z-index: 9;
 }
@@ -137,10 +163,10 @@ footer img:hover{
 	right: 50px;
 	width: 40px;
 }
-.apparaitreAlerte{
+.apparaitre{
 	display: inline-block;;
 }
-.disparaitreAlerte{
+.disparaitre{
 	display: none;
 }
 #bouton2, #bouton1 {
@@ -158,11 +184,6 @@ footer img:hover{
 	body{
 		min-width: 650px;
 	}
-	/* SECTION */
-	h1{
-		font-size: 30px;
-	}
-
 	/* NAVIGATION */
 	nav{
 		min-width: none;
@@ -178,7 +199,10 @@ footer img:hover{
 	nav div a img{
 		min-width: 20px;
 	}
-
+	/* SECTION */
+	h1{
+		font-size: 30px;
+	}
 	/* FOOTER */
 	#bouton2, #bouton1 {
 		width: 130px;

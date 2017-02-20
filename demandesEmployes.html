@@ -11,18 +11,14 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
     <link href="css/demandesEmployes.css" rel="stylesheet">
+    <script type="text/javascript" src="js/pagesIntranet.js"></script>
     <script type="text/javascript" src="js/demandesEmployes.js"></script>
   </head>
 
   <body>
-    <div class="alert alert-info alert-dismissable notification disparaitreAlerte" id="notification">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
-      <strong>Info :</strong> Votre demande a bien été envoyée.
-    </div>
-
     <div class="container">
       <div>
-        <a><span class="disparaitreAlerte" id="iconeMenu"></span></a>
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
         <div class="row">
           <div>
             <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -30,7 +26,7 @@
               <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="rappels">
                   <a href="#">
-                  <img src="img/Modifications.png" alt="icône des modifications du site"> </a>
+                  <img src="img/RappelsPerso.png" alt="icône des rappels personnels">
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="calendrier">
                   <a href="#">
@@ -94,7 +90,7 @@
             <div class="alert alert-success alert-dismissable demandeHist">
               <strong>Demande 2</strong>, 29 juin 2016, accordée
             </div>
-            <div class="alert alert-danger alert-dismissable demandeHist" id="lastOne">
+            <div class="alert alert-danger alert-dismissable demandeHist">
               <strong>Demande 3</strong>, 12 navril 2014, non-accordée
             </div>
           </section>
@@ -103,11 +99,11 @@
       </div>
 
       <footer id="footer">
-      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitreAlerte">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitre">
       	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
       	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
       	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
-      	<p id="maillingAnnonceNum" class="apparaitreAlerte">7</p>
+      	<p id="maillingAnnonceNum" class="apparaitre">7</p>
       </footer>
     </div>
   </body>

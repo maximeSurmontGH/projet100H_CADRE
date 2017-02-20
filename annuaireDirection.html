@@ -11,18 +11,15 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
     <link href="css/annuaireDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/pagesIntranet.js"></script>
     <script type="text/javascript" src="js/annuaireDirection.js"></script>
   </head>
 
   <body>
-    <div class="alert alert-danger alert-dismissable fade in notification disparaitreAlerte" id="notification">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
-      <strong>Erreur!</strong> Personne non ajouté. Merci de réessayer plus tard.
-    </div>
 
     <div class="container">
       <div>
-        <a><span class="disparaitreAlerte" id="iconeMenu"></span></a>
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
         <div class="row">
           <div>
             <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -39,16 +36,16 @@
               </div>
 
               <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="demandes">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="annuaire">
                   <a href="#">
-                  <img src="img/Demandes.png" alt="icône des demandes employés"> </a>
+                  <img src="img/Annuaire.png" alt="icône de l'annuaire de l'entreprise"> </a>
                 </div>
                </div>
 
               <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="annuaire">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
                   <a href="#">
-                  <img src="img/Annuaire.png" alt="icône de l'annuaire de l'entreprise"> </a>
+                  <img src="img/Demandes.png" alt="icône des demandes employés"> </a>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="ressources">
                   <a href="#">
@@ -68,20 +65,16 @@
                 <th >Prénom</th>
                 <th >Poste</th>
                 <th >Téléphone</th>
-                <th >Adresse</th>
                 <th >E-mail</th>
                 <th id="action">Action</th>
               </tr>
               <tr>
-                <form method="post">
-                  <td><input type="text" name="nom" id="nom"></td>
-                  <td><input type="text" name="prenom" id="prenom"></td>
-                  <td><input type="text" name="poste" id="poste"></td>
-                  <td><input type="text" name="telephone" id="telephone"></td>
-                  <td><input type="text" name="adresse" id="adresse"></td>
-                  <td><input type="text" name="email" id="email" ></td>
-                  <td><a href="#"><span class="glyphicon glyphicon-plus" id="boutonAdd"></span></a></td>
-                </form>
+                <td><input type="text" id="nom" class="form-control"></td>
+                <td><input type="text" id="prenom" class="form-control"></td>
+                <td><input type="text" id="poste" class="form-control"></td>
+                <td><input type="text" id="telephone" class="form-control"></td>
+                <td><input type="text" id="email" class="form-control"></td>
+                <td><a href="#"><span class="glyphicon glyphicon-plus" id="boutonAdd"></span></a></td>
               </tr>
             </table>
 
@@ -104,11 +97,11 @@
       </div>
 
       <footer id="footer">
-      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitreAlerte">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="disparaitre">
       	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
       	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
       	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
-      	<p id="maillingAnnonceNum" class="apparaitreAlerte">7</p>
+      	<p id="maillingAnnonceNum" class="disparaitre"></p>
       </footer>
     </div>
   </body>

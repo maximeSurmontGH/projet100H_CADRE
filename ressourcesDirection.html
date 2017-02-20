@@ -11,18 +11,14 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
     <link href="css/ressourcesDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/pagesIntranet.js"></script>
     <script type="text/javascript" src="js/ressourcesDirection.js"></script>
   </head>
 
   <body>
-    <div class="alert alert-danger alert-dismissable fade in notification disparaitreAlerte" id="notification">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
-      <strong>Erreur!</strong> La ressource recherchée n'est pas présent dans la base de donnée.
-    </div>
-
     <div class="container">
       <div>
-        <a><span class="disparaitreAlerte" id="iconeMenu"></span></a>
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
         <div class="row">
           <div>
             <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -39,20 +35,20 @@
               </div>
 
               <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="demandes">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="ressources">
                   <a href="#">
-                  <img src="img/Demandes.png" alt="icône des demandes employés"> </a>
+                  <img src="img/RessourcePeda.png" alt="icône des ressources pédagogique"> </a>
                 </div>
                </div>
 
               <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
+                  <a href="#">
+                  <img src="img/Demandes.png" alt="icône des demandes employés"> </a>
+                </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="annuaire">
                   <a href="#">
                   <img src="img/Annuaire.png" alt="icône de l'annuaire de l'entreprise"> </a>
-                </div>
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="ressources">
-                  <a href="#">
-                  <img src="img/RessourcePeda.png" alt="icône des ressources pédagogique"> </a>
                 </div>
               </div>
             </nav>
@@ -107,11 +103,11 @@
       </div>
 
       <footer id="footer">
-      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitreAlerte">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitre">
       	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
       	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
       	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
-      	<p id="maillingAnnonceNum" class="apparaitreAlerte">7</p>
+      	<p id="maillingAnnonceNum" class="apparaitre">7</p>
       </footer>
     </div>
   </body>

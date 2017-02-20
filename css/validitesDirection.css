@@ -1,4 +1,3 @@
-
 /* NAVIGATION */
 #rappels{
   border-radius: 10px 0px 0px 0px;
@@ -17,11 +16,6 @@
 }
 
 /* SECTION */
-section p{
-  color: #555555;
-  font-size: 22px;
-  margin-top: 70px;
-}
 section span{
   color: #555555;
   font-size: 18px;
@@ -37,36 +31,9 @@ section span{
 .input-group{
   margin-bottom: 10px;
 }
-
-form{
-  margin-top: 20px;
-}
-table {
-    margin-top: 40px;
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 80px;
-}
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-td{
-  color: #555555;
-}
-th{
-  color: #333333;
-  position: relative;
-}
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
 table span{
   margin-left: 30%;
 }
-
 .descriptionAjout{
   width: 130px;
 }
@@ -86,9 +53,4 @@ select{
   table {
       margin-bottom: 30px;
   }
-
-	/* NAVIGATION */
-
-	/* FOOTER */
-
 }

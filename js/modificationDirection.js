@@ -1,110 +1,9 @@
-function disparaitre(){
-	if (window.matchMedia("(max-width: 650px)").matches){
-		document.getElementById("navigation").className="disparaitreAlerte";
-		document.getElementById("iconeMenu").className="iconeMenu glyphicon glyphicon-th";
-		document.getElementById("section").className="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1";
-		ouvrirPetitMenu();
-	}
-}
-
-function ouvrirPetitMenu (){
-	document.getElementById("iconeMenu").onclick=function(){
-		var width = window.innerWidth;
-		if (width>500){
-			var marginLeft = window.innerWidth*40/100;
-		}
-		else if (width>350){
-			var marginLeft = window.innerWidth*30/100;
-		}
-		else if (width>200){
-			var marginLeft = window.innerWidth*20/100;
-		}
-		document.getElementById("navigation").className="petitMenu";
-		document.getElementById("navigation").style.left=marginLeft+"px";
-		document.getElementById("navigation").parentNode.className="opaque";
-	}
-	document.getElementById("navigation").parentNode.onclick=function(){
-		document.getElementById("navigation").parentNode.className="disparaitreAlerte";
-	}
-}
-
-function gestionFooter(){
-	var heightWindow = window.innerHeight;
-	var heightSection = document.getElementById("section");
-	var heightNavigation = document.getElementById("navigation");
-	var heightSection2 = parseInt(getComputedStyle(heightSection).height, 10);
-	var heightNavigation2 = parseInt(getComputedStyle(heightNavigation).height, 10);
-  heightNavigation2 += 90;
-	if (heightNavigation2>heightSection2){
-		var res = heightWindow - heightNavigation2 - 70;
-	}
-	else{
-		var res = heightWindow - heightSection2 - 70;
-	}
-	if (res>0){
-		document.getElementById("footer").style.top=res+"px";
-	}
-	else{
-		document.getElementById("footer").style.top=0;
-	}
-}
-
-window.onresize=function(){
-	if (window.matchMedia("(max-width: 650px)").matches){
-		document.getElementById("navigation").parentNode.className="disparaitreAlerte";
-		document.getElementById("navigation").className="disparaitreAlerte";
-		document.getElementById("iconeMenu").className="iconeMenu glyphicon glyphicon-th";
-		document.getElementById("section").className="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1";
-		ouvrirPetitMenu();
-	}
-	else{
-		document.getElementById("navigation").style.left=0;
-		document.getElementById("navigation").className="col-lg-3 col-md-3 col-sm-3 col-xs-3";
-		document.getElementById("section").className="col-lg-8 col-md-8 col-sm-8 col-xs-8";
-		document.getElementById("iconeMenu").className="disparaitreAlerte";
-		document.getElementById("navigation").parentNode.className="";
-	}
-	var heightWindow = window.innerHeight;
-	var heightSection = document.getElementById("section");
-	var heightNavigation = document.getElementById("navigation");
-	var heightSection2 = parseInt(getComputedStyle(heightSection).height, 10);
-	var heightNavigation2 = parseInt(getComputedStyle(heightNavigation).height, 10);
-	heightNavigation2 += 90;
-	if (heightNavigation2>heightSection2){
-		var res = heightWindow - heightNavigation2 - 70;
-	}
-	else{
-		var res = heightWindow - heightSection2 - 70;
-	}
-	if (res>0){
-		document.getElementById("footer").style.top=res+"px";
-	}
-	else{
-		document.getElementById("footer").style.top=0;
-	}
-}
-
-function maillingAnnonce(){
-	document.getElementById("mailling").onclick=function(){
-		var p = document.getElementById("maillingAnnonceNum");
-		var img =  document.getElementById("imgAlerte");
-		p.className="disparaitreAlerte";
-		img.className="disparaitreAlerte";
-		}
-}
-
-function suppressionNotification(){
-	document.getElementById("notification").onclick=function(){
-		document.getElementById("notification").className='disparaitreAlerte';
-	}
-}
-
 function gestionnairePage(){
-	document.getElementById("boutonAccueil").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonEntreprise").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonPrestations").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonContact").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonRetour").className = "btn btn-primary mesBtns disparait";
+	document.getElementById("boutonAccueil").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonEntreprise").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonPrestations").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonContact").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonRetour").className = "btn btn-primary mesBtns disparaitre";
 	document.getElementById("boutonAccueil").onclick=function(){var pageModifiee = "acceuil"; gestionnairePage2(pageModifiee);}
 	document.getElementById("boutonEntreprise").onclick=function(){ var pageModifiee = "entreprise"; gestionnairePage2(pageModifiee);}
 	document.getElementById("boutonPrestations").onclick=function(){ var pageModifiee = "prestations"; gestionnairePage2(pageModifiee);}
@@ -115,10 +14,10 @@ function gestionnairePage(){
 }
 
 function gestionnairePage2(pageModifiee){
-	document.getElementById("boutonAccueil").className = "disparait";
-	document.getElementById("boutonEntreprise").className = "disparait";
-	document.getElementById("boutonPrestations").className = "disparait";
-	document.getElementById("boutonContact").className = "disparait";
+	document.getElementById("boutonAccueil").className = "disparaitre";
+	document.getElementById("boutonEntreprise").className = "disparaitre";
+	document.getElementById("boutonPrestations").className = "disparaitre";
+	document.getElementById("boutonContact").className = "disparaitre";
 	document.getElementById("boutonRetour").className = "btn btn-primary btn-lg";
 
 	var table = document.getElementById("tableauDesModifications");
@@ -169,7 +68,7 @@ function gestionnairePage2(pageModifiee){
 	}
 	for (var i = 1; i < 10; i++) {
 		document.getElementById("a"+i).onclick=function(){
-			document.getElementById("notification").className='alert alert-success alert-dismissable fade in notification apparaitreAlerte';
+			createurDeNotifications(1, "Modification effectuée.");
 		}
 	}
 }
@@ -212,7 +111,7 @@ function createurDeLigne (element, action, num){
 
 window.onload = function(){
 	maillingAnnonce();
-	suppressionNotification();
+	supprimeurDeNotifications();
 	gestionnairePage();
 	disparaitre();
 	gestionFooter();

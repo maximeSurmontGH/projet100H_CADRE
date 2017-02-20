@@ -7,21 +7,16 @@
 	border-radius: 0px 10px 0 0px;
 }
 #demandes{
-	border-radius: 0px 0px 10px 0px;
+	border-radius: 0px 0px 0px 10px;
 }
 #annuaire{
-	border-radius: 0px 0px 0px 10px;
+	border-radius: 0px 0px 10px 0px;
 }
 #ressources{
 	border-radius: 0px 0px 0px 0px;
 }
 
 /* SECTION */
-section p{
-  color: #555555;
-  margin-top: 100px;
-  font-size: 22px;
-}
 #inputSearch{
   max-width: 500px;
 }
@@ -30,29 +25,8 @@ section p{
 	margin-top: 10px;
   float: right;
 }
-form{
-  margin-bottom: 90px;
-}
 table {
-    margin-top: 60px;
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 16px;
-    margin-bottom: 100px;
-}
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-td{
-  color: #555555;
-}
-th{
-  color: #333333;
-}
-tr:nth-child(even) {
-    background-color: #dddddd;
+    margin-bottom: 90px;
 }
 #boutonDL{
   width: 150px;
@@ -66,18 +40,4 @@ tr:nth-child(even) {
 .selectRessource input{
   width: 20px;
   height: 20px;
-}
-
-/* ADAPTATIONS */
-@media screen and (max-width: 650px) {
-
-	/* SECTION */
-  section p{
-    margin-top: 60px;
-  }
-
-	/* NAVIGATION */
-
-	/* FOOTER */
-
 }

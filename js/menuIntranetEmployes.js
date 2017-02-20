@@ -1,3 +1,5 @@
+
+
 function maillingAnnonce(){
 	document.getElementById("mailling").onclick=function(){
 		var p = document.getElementById("maillingAnnonceNum");
@@ -6,6 +8,7 @@ function maillingAnnonce(){
 		img.className="disparaitreAlerte";
 		}
 }
+
 
 function Notifications(){
 	var footer = document.getElementByTagName(footer);

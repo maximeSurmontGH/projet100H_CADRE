@@ -1,119 +1,17 @@
-function disparaitre(){
-	if (window.matchMedia("(max-width: 650px)").matches){
-		document.getElementById("navigation").className="disparaitreAlerte";
-		document.getElementById("iconeMenu").className="iconeMenu glyphicon glyphicon-th";
-		document.getElementById("section").className="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1";
-		ouvrirPetitMenu();
-	}
-}
-
-function ouvrirPetitMenu (){
-	document.getElementById("iconeMenu").onclick=function(){
-		var width = window.innerWidth;
-		if (width>500){
-			var marginLeft = window.innerWidth*40/100;
-		}
-		else if (width>350){
-			var marginLeft = window.innerWidth*30/100;
-		}
-		else if (width>200){
-			var marginLeft = window.innerWidth*20/100;
-		}
-		document.getElementById("navigation").className="petitMenu";
-		document.getElementById("navigation").style.left=marginLeft+"px";
-		document.getElementById("navigation").parentNode.className="opaque";
-	}
-	document.getElementById("navigation").parentNode.onclick=function(){
-		document.getElementById("navigation").parentNode.className="disparaitreAlerte";
-	}
-}
-
-function gestionFooter(){
-	var heightWindow = window.innerHeight;
-	var heightSection = document.getElementById("section");
-	var heightNavigation = document.getElementById("navigation");
-	var heightSection2 = parseInt(getComputedStyle(heightSection).height, 10);
-	var heightNavigation2 = parseInt(getComputedStyle(heightNavigation).height, 10);
-  heightNavigation2 += 90;
-	if (heightNavigation2>heightSection2){
-		var res = heightWindow - heightNavigation2 - 70;
-	}
-	else{
-		var res = heightWindow - heightSection2 - 70;
-	}
-	if (res>0){
-		document.getElementById("footer").style.top=res+"px";
-	}
-	else{
-		document.getElementById("footer").style.top=0;
-	}
-}
-
-window.onresize=function(){
-	if (window.matchMedia("(max-width: 650px)").matches){
-		document.getElementById("navigation").parentNode.className="disparaitreAlerte";
-		document.getElementById("navigation").className="disparaitreAlerte";
-		document.getElementById("iconeMenu").className="iconeMenu glyphicon glyphicon-th";
-		document.getElementById("section").className="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1";
-		ouvrirPetitMenu();
-	}
-	else{
-		document.getElementById("navigation").style.left=0;
-		document.getElementById("navigation").className="col-lg-3 col-md-3 col-sm-3 col-xs-3";
-		document.getElementById("section").className="col-lg-8 col-md-8 col-sm-8 col-xs-8";
-		document.getElementById("iconeMenu").className="disparaitreAlerte";
-		document.getElementById("navigation").parentNode.className="";
-	}
-	var heightWindow = window.innerHeight;
-	var heightSection = document.getElementById("section");
-	var heightNavigation = document.getElementById("navigation");
-	var heightSection2 = parseInt(getComputedStyle(heightSection).height, 10);
-	var heightNavigation2 = parseInt(getComputedStyle(heightNavigation).height, 10);
-	heightNavigation2 += 90;
-	if (heightNavigation2>heightSection2){
-		var res = heightWindow - heightNavigation2 - 70;
-	}
-	else{
-		var res = heightWindow - heightSection2 - 70;
-	}
-	if (res>0){
-		document.getElementById("footer").style.top=res+"px";
-	}
-	else{
-		document.getElementById("footer").style.top=0;
-	}
-}
-
-
-function maillingAnnonce(){
-	document.getElementById("mailling").onclick=function(){
-		var p = document.getElementById("maillingAnnonceNum");
-		var img =  document.getElementById("imgAlerte");
-		p.className="disparaitreAlerte";
-		img.className="disparaitreAlerte";
-		}
-}
-
-function suppressionNotification(){
-	document.getElementById("notification").onclick=function(){
-	document.getElementById("notification").className='disparaitreAlerte';
-	}
-}
-
 function gestionnairePage(){
-	document.getElementById("boutonVehicules1").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonConges").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonAttestations").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonVehicules2").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonDevis").className = "btn btn-primary mesBtns apparait";
-	document.getElementById("boutonMotDePasse").className = "btn btn-primary mesBtns apparait lastElement";
-	document.getElementById("boutonRetour").className = "btn btn-primary mesBtns disparait";
-	document.getElementById("boutonVehicules1").onclick=function(){var pageModifiee = "vehicules1"; gestionnairePage2(pageModifiee);}
-	document.getElementById("boutonConges").onclick=function(){ var pageModifiee = "conges"; gestionnairePage2(pageModifiee);}
-	document.getElementById("boutonAttestations").onclick=function(){ var pageModifiee = "attestations"; gestionnairePage2(pageModifiee);}
-	document.getElementById("boutonVehicules2").onclick=function(){ var pageModifiee = "vehicules2"; gestionnairePage2(pageModifiee);}
-	document.getElementById("boutonDevis").onclick=function(){ var pageModifiee = "devis"; gestionnairePage2(pageModifiee);}
-	document.getElementById("boutonMotDePasse").onclick=function(){ var pageModifiee = "motDePasse"; gestionnairePage2(pageModifiee);}
+	document.getElementById("boutonVehicules1").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonConges").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonAttestations").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonVehicules2").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonDevis").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonMotDePasse").className = "btn btn-primary mesBtns apparaitre lastElement";
+	document.getElementById("boutonRetour").className = "btn btn-primary mesBtns disparaitre";
+	document.getElementById("boutonVehicules1").onclick=function(){var pageModifiee = "vehicules1"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
+	document.getElementById("boutonConges").onclick=function(){ var pageModifiee = "conges"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
+	document.getElementById("boutonAttestations").onclick=function(){ var pageModifiee = "attestations"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
+	document.getElementById("boutonVehicules2").onclick=function(){ var pageModifiee = "vehicules2"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
+	document.getElementById("boutonDevis").onclick=function(){ var pageModifiee = "devis"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
+	document.getElementById("boutonMotDePasse").onclick=function(){ var pageModifiee = "motDePasse"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
 	while(document.getElementById("tableauDesDemandes1").firstChild) {
   	document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
 	}
@@ -129,17 +27,16 @@ function gestionnairePage(){
 }
 
 function gestionnairePage2(pageModifiee){
-	document.getElementById("boutonVehicules1").className = "disparait";
-	document.getElementById("boutonConges").className = "disparait";
-	document.getElementById("boutonAttestations").className = "disparait";
-	document.getElementById("boutonVehicules2").className = "disparait";
-	document.getElementById("boutonDevis").className = "disparait";
-	document.getElementById("boutonMotDePasse").className = "disparait";
+	document.getElementById("boutonVehicules1").className = "disparaitre";
+	document.getElementById("boutonConges").className = "disparaitre";
+	document.getElementById("boutonAttestations").className = "disparaitre";
+	document.getElementById("boutonVehicules2").className = "disparaitre";
+	document.getElementById("boutonDevis").className = "disparaitre";
+	document.getElementById("boutonMotDePasse").className = "disparaitre";
 	document.getElementById("boutonRetour").className = "btn btn-primary btn-lg";
 
 	if(pageModifiee=="vehicules1"){
 		document.getElementById("sousTitre1").innerHTML = "Demandes en cours : ";
-		document.getElementById("sousTitre1").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes1");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -161,7 +58,6 @@ function gestionnairePage2(pageModifiee){
 		table.appendChild(tr);
 
 		document.getElementById("sousTitre2").innerHTML = "Historique des demandes : ";
-		document.getElementById("sousTitre2").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes2");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -189,7 +85,6 @@ function gestionnairePage2(pageModifiee){
 
 	if(pageModifiee=="conges"){
 		document.getElementById("sousTitre1").innerHTML = "Demandes en cours : ";
-		document.getElementById("sousTitre1").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes1");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -211,7 +106,6 @@ function gestionnairePage2(pageModifiee){
 		table.appendChild(tr);
 
 		document.getElementById("sousTitre2").innerHTML = "Historique des demandes : ";
-		document.getElementById("sousTitre2").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes2");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -239,7 +133,6 @@ function gestionnairePage2(pageModifiee){
 
 	if(pageModifiee=="attestations"){
 		document.getElementById("sousTitre1").innerHTML = "Demandes en cours : ";
-		document.getElementById("sousTitre1").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes1");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -258,7 +151,6 @@ function gestionnairePage2(pageModifiee){
 		table.appendChild(tr);
 
 		document.getElementById("sousTitre2").innerHTML = "Historique des demandes : ";
-		document.getElementById("sousTitre2").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes2");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -283,7 +175,6 @@ function gestionnairePage2(pageModifiee){
 
 	if(pageModifiee=="vehicules2"){
 		document.getElementById("sousTitre1").innerHTML = "Vos véhicules : ";
-		document.getElementById("sousTitre1").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes1");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -329,7 +220,6 @@ function gestionnairePage2(pageModifiee){
 
 	if(pageModifiee=="devis"){
 		document.getElementById("sousTitre1").innerHTML = "Demandes en cours : ";
-		document.getElementById("sousTitre1").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes1");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -355,7 +245,6 @@ function gestionnairePage2(pageModifiee){
 
 	if(pageModifiee=="motDePasse"){
 		document.getElementById("sousTitre1").innerHTML = "Vos comptes employés : ";
-		document.getElementById("sousTitre1").className = "sectionP";
 		var table = document.getElementById("tableauDesDemandes1");
 		table.className = "table";
 		var tr = document.createElement('tr');
@@ -412,6 +301,8 @@ function gestionnairePage2(pageModifiee){
 
 	document.getElementById("boutonRetour").onclick=function(){
 		gestionnairePage();
+		disparaitre();
+		gestionFooter();
 	}
 }
 
@@ -670,7 +561,7 @@ function createurDeLigneMdP(nom, prenom, identifiant, mdp){
 
 window.onload = function(){
 	maillingAnnonce();
-	suppressionNotification();
+	supprimeurDeNotifications();
 	gestionnairePage();
 	disparaitre();
 	gestionFooter();

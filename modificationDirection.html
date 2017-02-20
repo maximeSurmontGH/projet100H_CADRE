@@ -11,37 +11,33 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/pagesIntranet.css" rel="stylesheet">
     <link href="css/modificationDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/pagesIntranet.js"></script>
     <script type="text/javascript" src="js/modificationDirection.js"></script>
   </head>
 
   <body>
-    <div class="disparaitreAlerte" id="notification">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
-      <strong>Succès!</strong> Modification bien prise en compte.
-    </div>
-
     <div class="container">
       <div>
-        <a><span class="disparaitreAlerte" id="iconeMenu"></span></a>
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
         <div class="row">
           <div>
             <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 
               <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="rappels">
-                  <a href="#">
-                  <img src="img/Modifications.png" alt="icône des modifications du site"> </a>
-                </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="calendrier">
                   <a href="#">
                   <img src="img/CalendrierValidites.png" alt="icône ucalendrier des validités"> </a>
                 </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" id="demandes">
+                  <a href="#">
+                  <img src="img/Demandes.png" alt="icône des demandes employés"> </a>
+                </div>
               </div>
 
               <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="demandes">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="rappels">
                   <a href="#">
-                  <img src="img/Demandes.png" alt="icône des demandes employés"> </a>
+                  <img src="img/Modifications.png" alt="icône des modifications du site"> </a>
                 </div>
                </div>
 
@@ -83,11 +79,11 @@
       </div>
 
       <footer id="footer">
-      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitreAlerte">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitre">
       	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
       	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
       	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
-      	<p id="maillingAnnonceNum" class="apparaitreAlerte">7</p>
+      	<p id="maillingAnnonceNum" class="apparaitre">7</p>
       </footer>
     </div>
   </body>

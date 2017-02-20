@@ -4,10 +4,10 @@
   border-radius: 0px 0px 0px 0px;
 }
 #calendrier{
-	border-radius: 0px 10px 0 0px;
+	border-radius: 10px 0px 0 0px;
 }
 #demandes{
-	border-radius: 10px 0px 0 0px;
+	border-radius: 0px 10px 0 0px;
 }
 #annuaire{
 	border-radius: 0px 0px 0px 10px;
@@ -17,10 +17,6 @@
 }
 
 /* SECTION */
-section{
-  color: #555555;
-  margin-bottom: 90px;
-}
 #calendar-wrap{
   margin-top: 40px;
 }
@@ -132,8 +128,4 @@ section{
   #calendar li.other-mounth{
     display: none;
   }
-	/* NAVIGATION */
-
-	/* FOOTER */
-
 }

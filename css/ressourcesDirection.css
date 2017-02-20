@@ -7,23 +7,18 @@
 	border-radius: 0px 10px 0 0px;
 }
 #demandes{
-	border-radius: 0px 0px 10px 0px;
+	border-radius: 0px 0px 0px 10px;
 }
 #annuaire{
-	border-radius: 0px 0px 0px 10px;
+	border-radius: 0px 0px 10px 0px;
 }
 #ressources{
 	border-radius: 0px 0px 0px 0px;
 }
 
 /* SECTION */
-section p{
-  color: #555555;
-  margin-top: -50px;
-  font-size: 22px;
-}
 #sousTitre1{
-  margin-top: 100px;
+  margin-top: 70px;
 }
 #inputSearch{
   max-width: 500px;
@@ -32,30 +27,6 @@ section p{
   width: 150px;
 	margin-top: 10px;
   float: right;
-}
-form{
-  margin-bottom: 90px;
-}
-table {
-    margin-top: 40px;
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 16px;
-    margin-bottom: 100px;
-}
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-td{
-  color: #555555;
-}
-th{
-  color: #333333;
-}
-tr:nth-child(even) {
-    background-color: #dddddd;
 }
 #nom{
   width: 6vw;
@@ -82,14 +53,9 @@ tr:nth-child(even) {
   margin-left: 40%;
 }
 #boutonAdd2{
-  margin-bottom: 50px;
   width: 150px;
 	margin-top: 10px;
   float: right;
-}
-.break{
-  word-wrap: break-word;
-  width: 100px;
 }
 .boutons{
   margin-left: 15%;
@@ -106,19 +72,7 @@ tr:nth-child(even) {
 #choixDuFichier{
   font-size: 14px;
 }
+
 /* ADAPTATIONS */
 @media screen and (max-width: 650px) {
-
-	/* SECTION */
-  section p{
-    margin-top: 60px;
-  }
-  table {
-      margin-bottom: 30px;
-  }
-
-	/* NAVIGATION */
-
-	/* FOOTER */
-
 }

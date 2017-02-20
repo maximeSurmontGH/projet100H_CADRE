@@ -14,8 +14,8 @@ body{
 }
 
 /* NAVIGATION */
-#navOrdi{
-	background: #E1E8E8 url("img/fondNul.jpg");
+#navigation{
+	background: #E1E8E8;
 	margin-top: 160px;
 }
 #titre{
@@ -83,6 +83,7 @@ footer{
 
 /* ADAPTATIONS */
 @media screen and (max-width: 780px) {
+	/* NAVIGATION */
 	#titre{
 		font-size: 20px;
 	}
@@ -93,12 +94,12 @@ footer{
 		display: none;
 	}
 }
+
 @media screen and (max-width: 500px) {
 	body{
 		min-height: 570px;
 		font-size: 3vw;
 	}
-
 	/* NAVIGATION */
 	#titre{
 		font-size: 4vw;
@@ -106,16 +107,15 @@ footer{
 	#logo{
 		display: none;
 	}
-	#navOrdi{
+	#navigation{
 		margin-top: 60px;
 	}
-
 	/* FOOTER */
 	footer{
 		position: relative;
 	}
 	#bouton2{
-		margin-top: 10px;
+		margin-top: 20px;
 		font-size: 12px;
 		width: 105px;
 	}

@@ -17,10 +17,6 @@
 }
 
 /* SECTION */
-section{
-  color: #555555;
-  margin-bottom: 90px;
-}
 #calendar-wrap{
   margin-top: 40px;
 }
@@ -109,11 +105,9 @@ section{
 .other-mounth{
   background-color: lightgrey;
 }
-
 .cara{
   clear: both;
 }
-
 .sous-titre{
   display: block;
   color: #286090;
@@ -170,8 +164,4 @@ form div{
   #calendar li.other-mounth{
     display: none;
   }
-	/* NAVIGATION */
-
-	/* FOOTER */
-
 }
