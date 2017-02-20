@@ -53,10 +53,10 @@ nav div img{
 	margin-top: 10px;
 	font-weight: bold;
 }
-#iconePasla{
+.iconePasla{
   display: none;
 }
-#iconeMenu{
+.iconeMenu{
   margin-top: 30px;
   left: 30px;
   font-size: 25px;
@@ -93,7 +93,7 @@ h1{
 
 /* FOOTER */
 footer{
-	position: fixed;
+	position: relative;
 	bottom: 0;
 	padding-bottom: 5px;
 	padding-right: 15px;
@@ -178,21 +178,10 @@ footer img:hover{
 	nav div a img{
 		min-width: 20px;
 	}
-	.lastElement{
-		margin-bottom: 180px;
-	}
 
 	/* FOOTER */
-
-	footer img{
-		bottom: 54px;
-	}
-	footer img:hover{
-		width: 70px;
-		right: 10px;
-		bottom: 49px;
-	}
 	#bouton2, #bouton1 {
-		display: block;
+		width: 130px;
+		font-size: 16px;
 	}
 }
