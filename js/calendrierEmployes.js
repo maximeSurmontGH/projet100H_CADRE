@@ -299,6 +299,7 @@ function createurTableau(jourDeLaSemaine, mois, jour){
     divCalendar.appendChild(ul);
 }
 
+// fonction pour ajouter différentes notifs de différents styles.
 function ajoutInfo(nb, notif, message, heure){
   var li = document.getElementsByTagName("li")[nb+8];
   var div = document.createElement('div');
@@ -314,6 +315,7 @@ function ajoutInfo(nb, notif, message, heure){
   li.appendChild(div);
 }
 
+// fonction qui permettra de compter les jours en fonction du compteur demandé et l'affichera.
 function compteurInfos(){
 	document.getElementById("boutonSearch3").onclick=function(){
 		document.getElementById("messageCompteur").innerHTML = "Vous en etes à 6 jours de congés payés";

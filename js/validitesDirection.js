@@ -1,11 +1,10 @@
+// remplisseur du tableau des validités.
 function remplissageRecherche(){
 	var nb=0;
 	document.getElementById("boutonSearch1").onclick=function(){
 		if(nb==0){
 			nb++;
-
 			var div = document.getElementById("tableauDesValidites1");
-
 			var tab = document.createElement('table')
 			var tr2 = document.createElement('tr');
 			var td1_1 = document.createElement('th');
@@ -94,6 +93,7 @@ function remplissageRecherche(){
 	}
 }
 
+// pour générer les jours mois années des balises selection.
 function remplissageJMA(){
 	var sel1_2 = document.getElementById('JoursF');
 	for(var i = 1; i<32; i++){

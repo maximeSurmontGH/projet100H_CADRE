@@ -1,3 +1,4 @@
+// fonction pour gérer la ffichage des éléments de la page. (menu)
 function gestionnairePage(){
 	document.getElementById("boutonVehicules1").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonConges").className = "btn btn-primary mesBtns apparaitre";
@@ -26,6 +27,7 @@ function gestionnairePage(){
 	document.getElementById("tableauDesDemandes2").className = "";
 }
 
+// fonction pour gérer la ffichage des éléments de la page. (les différentes pages)
 function gestionnairePage2(pageModifiee){
 	document.getElementById("boutonVehicules1").className = "disparaitre";
 	document.getElementById("boutonConges").className = "disparaitre";
@@ -306,6 +308,7 @@ function gestionnairePage2(pageModifiee){
 	}
 }
 
+// createur de ligne des tableaux véhicules (demandes de pret) et congés
 function createurDeLigneVC(nom, type, dateD, dateF, genre, num){
 	if (genre=="actuel"){
 		var table = document.getElementById("tableauDesDemandes1");
@@ -367,6 +370,7 @@ function createurDeLigneVC(nom, type, dateD, dateF, genre, num){
 	table.appendChild(tr);
 }
 
+// createur de ligne du tableau attestation
 function createurDeLigneA(nom, type, date, genre, num){
 	if (genre=="actuel"){
 		var table = document.getElementById("tableauDesDemandes1");
@@ -468,6 +472,7 @@ function remplissageJMA(){
 	}
 }
 
+// createur de ligne du tableau vehicules(gestion des véhicules de la boite)
 function createurDeLigneV(nom, immatriculation){
 	var table = document.getElementById("tableauDesDemandes1");
 	var tr = document.createElement('tr');
@@ -489,6 +494,7 @@ function createurDeLigneV(nom, immatriculation){
 	table.appendChild(tr);
 }
 
+// createur de ligne du tableau devis
 function createurDeLigneD(entreprise, nom){
 	var table = document.getElementById("tableauDesDemandes1");
 	table.className = "table";
@@ -529,6 +535,7 @@ function createurDeLigneD(entreprise, nom){
 	table.appendChild(tr);
 }
 
+// createur de ligne du tableau de gestion des mots de passe
 function createurDeLigneMdP(nom, prenom, identifiant, mdp){
 	var table = document.getElementById("tableauDesDemandes1");
 	var tr = document.createElement('tr');
@@ -555,9 +562,6 @@ function createurDeLigneMdP(nom, prenom, identifiant, mdp){
 	tr.appendChild(td5);
 	table.appendChild(tr);
 }
-
-//fct accept refus passer ds l autre tableau
-//faire des pages de tableau
 
 window.onload = function(){
 	maillingAnnonce();

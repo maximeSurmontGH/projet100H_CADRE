@@ -1,3 +1,4 @@
+// fonction pour gérer la ffichage des éléments de la page. (menu)
 function gestionnairePage(){
 	document.getElementById("boutonAccueil").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonEntreprise").className = "btn btn-primary mesBtns apparaitre";
@@ -13,6 +14,7 @@ function gestionnairePage(){
 	}
 }
 
+// fonction pour gérer la ffichage des éléments de la page. (les différentes pages)
 function gestionnairePage2(pageModifiee){
 	document.getElementById("boutonAccueil").className = "disparaitre";
 	document.getElementById("boutonEntreprise").className = "disparaitre";
@@ -29,7 +31,7 @@ function gestionnairePage2(pageModifiee){
 	th2.innerHTML = "Action";
 	tr.appendChild(th2);
 	var th3 = document.createElement('th');
-	th3.innerHTML = "Envoit";
+	th3.innerHTML = "Envoi";
 	tr.appendChild(th3);
 	table.appendChild(tr);
 
@@ -73,6 +75,7 @@ function gestionnairePage2(pageModifiee){
 	}
 }
 
+// createur de ligne des différents tableaux
 function createurDeLigne (element, action, num){
 	var table = document.getElementById("tableauDesModifications");
 	var tr = document.createElement('tr');
@@ -106,8 +109,6 @@ function createurDeLigne (element, action, num){
 	tr.appendChild(td3);
 	table.appendChild(tr);
 }
-
-//fct verification jpg png
 
 window.onload = function(){
 	maillingAnnonce();

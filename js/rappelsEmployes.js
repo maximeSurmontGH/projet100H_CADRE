@@ -299,6 +299,7 @@ function createurTableau(jourDeLaSemaine, mois, jour){
     divCalendar.appendChild(ul);
 }
 
+// fonction pour ajouter différentes notifs de différents styles.
 function ajoutInfo(nb, notif, message, heure){
   var li = document.getElementsByTagName("li")[nb+8];
   var div = document.createElement('div');
@@ -320,7 +321,7 @@ window.onload = function(){
 	creationTableau();
   ajoutInfo(25, "info", "Réunion en salle Q13", "15h00 à 16h00");
   ajoutInfo(7, "fine", "Bon retour de vacances", "");
-  ajoutInfo(12, "bad", "Délais de livraison chez e fournisseur 'HEI' J-3", "");
+  ajoutInfo(12, "bad", "Délais de livraison chez le fournisseur 'HEI' J-3", "");
   ajoutInfo(15, "bad", "Réunion retour livraison", "18h30 à 19h00");
 	disparaitre();
 	gestionFooter();

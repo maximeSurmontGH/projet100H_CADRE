@@ -1,4 +1,4 @@
-// fonction pour demander à remplir le tableau, sera à remplacer par la suite.
+// fonction pour demander à remplir le tableau annuaire employe, sera à remplacer par la suite.
 function remplissageTableau(){
 	remplisseur("chloe","PELLETIER","présidente","06 40 40 04 78","chloe.pelletier@hei.fr");
 	remplisseur("chloe","PELLETIER","présidente","06 40 40 04 78","chloe.pelletier@hei.fr");

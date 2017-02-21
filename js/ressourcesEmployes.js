@@ -1,3 +1,4 @@
+// rempllisseur du tableau des ressources employés.
 function remplissageTableau(){
 	var nb = 0;
 	document.getElementById("boutonSearch").onclick=function(){
@@ -6,13 +7,10 @@ function remplissageTableau(){
 			while (element.firstChild) {
 		  	element.removeChild(element.firstChild);
 			}
-
 			createurDeNotifications(4, "Employé non trouvé."); //a supprimer
 		}
 		nb++;
-
 		var table = document.getElementById("tableauDuPersonnel");
-
 		var tr1 = document.createElement('tr');
 		var td1_1 = document.createElement('th');
 		td1_1.innerHTML = "Nom du fichier";

@@ -1,3 +1,4 @@
+//fonction pour remplir le tableau de l annuaire employe
 function remplissageTableau(){
 	var nb = 0;
 	document.getElementById("boutonSearch").onclick=function(){
@@ -6,7 +7,6 @@ function remplissageTableau(){
 			while (element.firstChild) {
 		  	element.removeChild(element.firstChild);
 			}
-
 			createurDeNotifications(4, "Employé non trouvé."); //a supprimer
 		}
 		nb++;
@@ -19,7 +19,7 @@ function remplissageTableau(){
 		var td1_2 = document.createElement('th');
 		td1_2.innerHTML = "Poste";
 		var td1_3 = document.createElement('th');
-		td1_3.innerHTML = "Tel";
+		td1_3.innerHTML = "Téléphone";
 		var td1_4 = document.createElement('th');
 		td1_4.innerHTML = "Mail";
 		tr1.appendChild(td1_1);
@@ -28,53 +28,33 @@ function remplissageTableau(){
 		tr1.appendChild(td1_4);
 		table.appendChild(tr1);
 
-		var tr2 = document.createElement('tr');
-		var td1_1 = document.createElement('td');
-		td1_1.innerHTML = "Kahina HASSAM";
-		var td1_2 = document.createElement('td');
-		td1_2.innerHTML = "Boss";
-		var td1_3 = document.createElement('td');
-		td1_3.innerHTML = "non disponible";
-		var td1_4 = document.createElement('td');
-		td1_4.innerHTML = "kahina.hassam@hei.yncrea.fr";
-		tr2.appendChild(td1_1);
-		tr2.appendChild(td1_2);
-		tr2.appendChild(td1_3);
-		tr2.appendChild(td1_4);
-		table.appendChild(tr2);
+		remplisseur("Kahina HASSAM", "Boss", "non disponible", "kahina.hassam@hei.yncrea.fr");
+		remplisseur("Chloé PELLETIER", "Fille du patron", "06 14 34 84 99", "chloé.pelletier@hei.fr");
+		remplisseur("Maxime SURMONT", "Stagiaire non payé", "06 40 40 04 78", "maxime.surmont@hei.fr");
 
-		var tr2 = document.createElement('tr');
-		var td1_1 = document.createElement('td');
-		td1_1.innerHTML = "Chloé PELLETIER";
-		var td1_2 = document.createElement('td');
-		td1_2.innerHTML = "Fille du patron";
-		var td1_3 = document.createElement('td');
-		td1_3.innerHTML = "06 14 34 84 99";
-		var td1_4 = document.createElement('td');
-		td1_4.innerHTML = "chloé.pelletier@hei.fr";
-		tr2.appendChild(td1_1);
-		tr2.appendChild(td1_2);
-		tr2.appendChild(td1_3);
-		tr2.appendChild(td1_4);
-		table.appendChild(tr2);
-
-		var tr2 = document.createElement('tr');
-		var td1_1 = document.createElement('td');
-		td1_1.innerHTML = "Maxime SURMONT";
-		var td1_2 = document.createElement('td');
-		td1_2.innerHTML = "Stagiaire non payé";
-		var td1_3 = document.createElement('td');
-		td1_3.innerHTML = "06 40 40 04 78";
-		var td1_4 = document.createElement('td');
-		td1_4.innerHTML = "maxime.surmont@hei.fr";
-		tr2.appendChild(td1_1);
-		tr2.appendChild(td1_2);
-		tr2.appendChild(td1_3);
-		tr2.appendChild(td1_4);
-		table.appendChild(tr2);
 		disparaitre();
 		gestionFooter();
 	}
+}
+
+// remplisseur de ligne du tableau
+function remplisseur(nom, poste, numero, email){
+	var table = document.getElementById("tableauDuPersonnel");
+
+	var tr2 = document.createElement('tr');
+	var td1_1 = document.createElement('td');
+	td1_1.innerHTML = nom;
+	var td1_2 = document.createElement('td');
+	td1_2.innerHTML = poste;
+	var td1_3 = document.createElement('td');
+	td1_3.innerHTML = numero;
+	var td1_4 = document.createElement('td');
+	td1_4.innerHTML = email;
+	tr2.appendChild(td1_1);
+	tr2.appendChild(td1_2);
+	tr2.appendChild(td1_3);
+	tr2.appendChild(td1_4);
+	table.appendChild(tr2);
 }
 
 
