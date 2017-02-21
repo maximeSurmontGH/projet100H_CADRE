@@ -1,0 +1,5 @@
+package projet.cadre.filters;
+
+public class AuthentificationFilter {
+
+}

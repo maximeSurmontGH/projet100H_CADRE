@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="utf-8">
+   		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="description" content="Page de connection à l'intranet">
+    	<meta name="author" content="maxime SURMONT">
+    	<title> Connexion Intranet</title>
+    	<link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
+
+    	<link href="css/bootstrap.css" rel="stylesheet">
+    	<link href="css/connexionIntranet.css" rel="stylesheet">
+    	<script type="text/javascript" src="js/connexionIntranet.js"></script>
+  	</head>
+
+  	<body>
+    <div class="container">
+
+  		<nav class="row" id="navigation">
+     	 	<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+	 	     	<div class="row" id="titre">
+            <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">CONNEXION INTRANET</p>
+          </div>
+	  	    <form id="formulaire" method="post">
+	      		<div class="row" id="divIdentifiant">
+              <div class="input-group col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                <div class="input-group-addon "><span class="glyphicon glyphicon-user" id="user"> </span></div>
+                <input type="text" class="form-control" name="inputUser" id="inputUser" placeholder="votre identifiant">
+              </div>
+            </div>
+            <div class="row inputConnection" id="divMotDePasse">
+              <div class="input-group col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                <div class="input-group-addon "><span class="glyphicon glyphicon-log-out" id="password"> </span></div>
+                <input type="password" class="form-control" id="inputPassword" placeholder="votre mot de passe">
+              </div>
+            </div>
+	     			<div class="row" id="divBouton1">
+              <input type="submit" class="btn btn-primary" id="bouton1" >Connexion</input>
+            </div>
+	    		</form>
+
+	    		<img src="img/logo.png" id="logo">
+        </div>
+    	</nav>
+			<div class="alert alert-danger alert-dismissable fade in notification disparaitreAlerte" id="notification">
+	      <a href="#" class="close" data-dismiss="alert" aria-label="close" id="notif">&times;</a>
+	      <strong>Erreur!</strong> Mot de passe erronné.Si oublié addressez vous au service informatique.
+	    </div>
+
+    	<footer id="footer">
+      	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
+    	</footer>
+      </div>
+	</body>
+</html>
