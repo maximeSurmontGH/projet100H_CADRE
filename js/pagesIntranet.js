@@ -132,6 +132,7 @@ function lienAssocié(a){
 	if (a=="ressources"){
 		return("#");
 	}
+	if (a=="rappels"){
 		return("#");
 	}
 	if (a=="annuaire"){
