@@ -112,6 +112,7 @@ function remplissageRecherche(){
 
 
 window.onload = function(){
+	gestionnaireDeMenu(8);
 	maillingAnnonce();
 	remplissageTableau();
 	remplissageRecherche();

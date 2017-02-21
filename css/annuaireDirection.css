@@ -1,5 +1,5 @@
 /* NAVIGATION */
-#rappels{
+#modifications{
   border-radius: 10px 0px 0px 0px;
 }
 #calendrier{
@@ -54,9 +54,6 @@
 table{
   font-size: 1.2vw;
 }
-.form-control{
-  height: 2.5vw;
-}
 
 /* ADAPTATIONS */
 @media screen and (max-width: 1100px) {
@@ -64,8 +61,4 @@ table{
 	table{
 		font-size: 11px;
 	}
-  .form-control{
-    height: 25px;
-  }
-
 }

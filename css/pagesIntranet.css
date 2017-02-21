@@ -32,7 +32,7 @@ nav div img{
 #test {
 	text-decoration:none;
 }
-#rappels{
+#rappels, #modifications{
 	background-color: #2E64FE;
 }
 #calendrier{
@@ -111,16 +111,24 @@ td{
   color: #555555;
 }
 th{
-  color: #333333;
+  color: #444444;
 }
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+table .form-control{
+  height: 2.5vw;
+	min-height: 25px;
+	min-width: 50px;
 }
 #calendar-wrap{
   margin-top: 40px;
 }
 #placementMois{
   text-align: center;
+	color: #555555;
+  margin-top: 60px;
+  font-size: 22px;
 }
 #calendar-wrap h2{
   display: inline-flex;
@@ -291,6 +299,9 @@ footer img:hover{
 	h1{
 		font-size: 30px;
 	}
+	table .form-control{
+    height: 25px;
+  }
 	/* FOOTER */
 	#bouton2, #bouton1 {
 		width: 130px;

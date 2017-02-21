@@ -59,6 +59,7 @@ function remplisseur(nom, poste, numero, email){
 
 
 window.onload = function(){
+	gestionnaireDeMenu(2);
 	maillingAnnonce();
 	remplissageTableau();
 	supprimeurDeNotifications();

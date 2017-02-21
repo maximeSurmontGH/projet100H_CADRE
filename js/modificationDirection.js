@@ -69,8 +69,10 @@ function gestionnairePage2(pageModifiee){
 		gestionnairePage();
 	}
 	for (var i = 1; i < 10; i++) {
-		document.getElementById("a"+i).onclick=function(){
-			createurDeNotifications(1, "Modification effectuée.");
+		if (document.getElementById("a"+i) != null){
+			document.getElementById("a"+i).onclick=function(){
+				createurDeNotifications(1, "Modification effectuée.");
+			}
 		}
 	}
 }
@@ -111,6 +113,7 @@ function createurDeLigne (element, action, num){
 }
 
 window.onload = function(){
+	gestionnaireDeMenu(6);
 	maillingAnnonce();
 	supprimeurDeNotifications();
 	gestionnairePage();

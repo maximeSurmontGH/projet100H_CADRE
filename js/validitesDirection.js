@@ -149,6 +149,7 @@ function remplissageJMA(){
 
 
 window.onload = function(){
+	gestionnaireDeMenu(10);
 	maillingAnnonce();
 	remplissageRecherche();
 	supprimeurDeNotifications();

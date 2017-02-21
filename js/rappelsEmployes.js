@@ -317,6 +317,7 @@ function ajoutInfo(nb, notif, message, heure){
 
 
 window.onload = function(){
+  gestionnaireDeMenu(7);
 	maillingAnnonce();
 	creationTableau();
   ajoutInfo(25, "info", "Réunion en salle Q13", "15h00 à 16h00");

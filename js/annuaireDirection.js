@@ -46,7 +46,7 @@ function remplisseur(prenom, nom, poste, numero, email){
 	var span1_7_1 = document.createElement('span');
 	var span1_7_2 = document.createElement('span');
 	span1_7_1.className="glyphicon glyphicon-minus boutons";
-	span1_7_2.className="glyphicon glyphicon-search boutons";
+	span1_7_2.className="glyphicon glyphicon-pencil boutons";
 	tr2.appendChild(td1_1);
 	tr2.appendChild(td1_2);
 	tr2.appendChild(td1_3);
@@ -118,7 +118,7 @@ function remplissageRecherche(){
 		var span1_7_1 = document.createElement('span');
 		var span1_7_2 = document.createElement('span');
 		span1_7_1.className="glyphicon glyphicon-minus boutons";
-		span1_7_2.className="glyphicon glyphicon-search boutons";
+		span1_7_2.className="glyphicon glyphicon-pencil boutons";
 		tr2.appendChild(td1_1);
 		tr2.appendChild(td1_2);
 		tr2.appendChild(td1_3);
@@ -136,6 +136,7 @@ function remplissageRecherche(){
 
 
 window.onload = function(){
+	gestionnaireDeMenu(1);
 	remplissageTableau();
 	remplissageRecherche();
 	disparaitre();

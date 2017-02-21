@@ -69,6 +69,7 @@ function remplissageTableau(){
 }
 
 window.onload = function(){
+	gestionnaireDeMenu(9);
 	maillingAnnonce();
 	remplissageTableau();
 	supprimeurDeNotifications();

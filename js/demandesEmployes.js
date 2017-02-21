@@ -1,7 +1,7 @@
 
 window.onload = function(){
+	gestionnaireDeMenu(5);
 	maillingAnnonce();
-	apparitionNotification();
 	supprimeurDeNotifications();
 	disparaitre();
 	gestionFooter();

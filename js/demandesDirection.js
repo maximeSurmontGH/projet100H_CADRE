@@ -194,10 +194,12 @@ function gestionnairePage2(pageModifiee){
 		var td1 = document.createElement('td');
 		var input1 = document.createElement('input');
 		input1.type="text";
+		input1.className = "form-control";
 		td1.appendChild(input1);
 		var td2 = document.createElement('td');
 		var input2 = document.createElement('input');
 		input2.type="text";
+		input2.className = "form-control";
 		td2.appendChild(input2);
 		var td3 = document.createElement('td');
 		td3.className="colonneFine";
@@ -270,18 +272,22 @@ function gestionnairePage2(pageModifiee){
 		var td1 = document.createElement('td');
 		var input1 = document.createElement('input');
 		input1.type="text";
+		input1.className = "form-control";
 		td1.appendChild(input1);
 		var td2 = document.createElement('td');
 		var input2 = document.createElement('input');
 		input2.type="text";
+		input2.className = "form-control";
 		td2.appendChild(input2);
 		var td3 = document.createElement('td');
 		var input3 = document.createElement('input');
 		input3.type="text";
+		input3.className = "form-control";
 		td3.appendChild(input3);
 		var td4 = document.createElement('td');
 		var input4 = document.createElement('input');
 		input4.type="text";
+		input4.className = "form-control";
 		td4.appendChild(input4);
 		var td5 = document.createElement('td');
 		td5.className="colonneFine";
@@ -510,7 +516,7 @@ function createurDeLigneD(entreprise, nom){
 	var a = document.createElement('a');
 	a.href="#";
 	var span = document.createElement('span');
-	span.className=" glyphicon glyphicon-search";
+	span.className=" glyphicon glyphicon-pencil";
 	a.appendChild(span);
 	td3.appendChild(a);
 	tr.appendChild(td3);
@@ -564,6 +570,7 @@ function createurDeLigneMdP(nom, prenom, identifiant, mdp){
 }
 
 window.onload = function(){
+	gestionnaireDeMenu(4);
 	maillingAnnonce();
 	supprimeurDeNotifications();
 	gestionnairePage();

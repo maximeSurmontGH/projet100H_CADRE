@@ -325,6 +325,7 @@ function compteurInfos(){
 
 
 window.onload = function(){
+  gestionnaireDeMenu(3);
 	maillingAnnonce();
 	creationTableau();
 	ajoutInfo(20, "inProcess", "Demande de congés payé", "");

@@ -10,5 +10,5 @@ function maillingAnnonce(){
 }
 
 window.onload = function(){
-	annonces();
+
 };

@@ -1,3 +1,144 @@
+// fonctions pour gérer le menu.
+function gestionnaireDeMenu(nb){
+	if(nb == 1){
+		createurDeMenu("modifications", "calendrier", "annuaire", "demandes", "ressources");
+	}
+	if(nb == 2){
+		createurDeMenu("rappels", "calendrier", "annuaire", "demandes", "ressources");
+	}
+	if(nb == 3){
+		createurDeMenu("rappels", "demandes", "calendrier", "annuaire", "ressources");
+	}
+	if(nb == 4){
+		createurDeMenu("modifications", "calendrier", "demandes", "annuaire", "ressources");
+	}
+	if(nb == 5){
+		createurDeMenu("rappels", "calendrier", "demandes", "annuaire", "ressources");
+	}
+	if(nb == 6){
+		createurDeMenu("calendrier", "demandes","modifications", "annuaire", "ressources");
+	}
+	if(nb == 7){
+		createurDeMenu("calendrier", "demandes", "rappels", "annuaire", "ressources");
+	}
+	if(nb == 8){
+		createurDeMenu("modifications", "calendrier", "ressources", "demandes", "annuaire");
+	}
+	if(nb == 9){
+		createurDeMenu("rappels", "calendrier", "ressources", "demandes", "annuaire");
+	}
+	if(nb == 10){
+		createurDeMenu("modifications", "demandes", "calendrier", "annuaire", "ressources");
+	}
+}
+
+function createurDeMenu(a, b, c, d, e){
+	var nav = document.getElementById("navigation");
+
+	var div1 = document.createElement('div');
+	div1.className = "row";
+	var div1_1 = document.createElement('div');
+	div1_1.className = "col-lg-5 col-md-5 col-sm-5 col-xs-5";
+	div1_1.id=a;
+	var a1_1 = document.createElement('a');
+	var img1_1 = document.createElement('img');
+	img1_1.src = imgAssocié(a);
+	a1_1.appendChild(img1_1);
+	a1_1.href = lienAssocié(a);
+	div1_1.appendChild(a1_1);
+	div1.appendChild(div1_1);
+	var div1_2 = document.createElement('div');
+	div1_2.className = "col-lg-5 col-md-5 col-sm-5 col-xs-5";
+	div1_2.id=b;
+	var a1_2 = document.createElement('a');
+	a1_2.href = lienAssocié(b);
+	var img1_2 = document.createElement('img');
+	img1_2.src = imgAssocié(b);
+	a1_2.appendChild(img1_2);
+	div1_2.appendChild(a1_2);
+	div1.appendChild(div1_2);
+	nav.appendChild(div1);
+
+	var div2 = document.createElement('div');
+	div2.className = "row";
+	var div2_1 = document.createElement('div');
+	div2_1.className = "col-lg-10 col-md-10 col-sm-10 col-xs-10";
+	div2_1.id=c;
+	var a2_1 = document.createElement('a');
+	a2_1.href = lienAssocié(c);
+	var img2_1 = document.createElement('img');
+	img2_1.src = imgAssocié(c);
+	a2_1.appendChild(img2_1);
+	div2_1.appendChild(a2_1);
+	div2.appendChild(div2_1);
+	nav.appendChild(div2);
+
+	var div3 = document.createElement('div');
+	div3.className = "row";
+	var div3_1 = document.createElement('div');
+	div3_1.className = "col-lg-5 col-md-5 col-sm-5 col-xs-5";
+	div3_1.id=d;
+	var a3_1 = document.createElement('a');
+	a3_1.href = lienAssocié(d);
+	var img3_1 = document.createElement('img');
+	img3_1.src = imgAssocié(d);
+	a3_1.appendChild(img3_1);
+	div3_1.appendChild(a3_1);
+	div3.appendChild(div3_1);
+	var div3_2 = document.createElement('div');
+	div3_2.className = "col-lg-5 col-md-5 col-sm-5 col-xs-5";
+	div3_2.id=e;
+	var a3_2 = document.createElement('a');
+	a3_2.href = lienAssocié(e);
+	var img3_2 = document.createElement('img');
+	img3_2.src = imgAssocié(e);
+	a3_2.appendChild(img3_2);
+	div3_2.appendChild(a3_2);
+	div3.appendChild(div3_2);
+	nav.appendChild(div3);
+}
+
+function imgAssocié(a){
+	if (a=="modifications"){
+		return("img/Modifications.png");
+	}
+	if (a=="calendrier"){
+		return("img/CalendrierValidites.png");
+	}
+	if (a=="demandes"){
+		return("img/Demandes.png");
+	}
+	if (a=="ressources"){
+		return("img/RessourcePeda.png");
+	}
+	if (a=="rappels"){
+		return("img/RappelsPerso.png");
+	}
+	if (a=="annuaire"){
+		return("img/Annuaire.png");
+	}
+}
+
+function lienAssocié(a){
+	if (a=="modifications"){
+		return("#");
+	}
+	if (a=="calendrier"){
+		return("#");
+	}
+	if (a=="demandes"){
+		return("#");
+	}
+	if (a=="ressources"){
+		return("#");
+	}
+		return("#");
+	}
+	if (a=="annuaire"){
+		return("#");
+	}
+}
+
 // fonction pour faire disparaitre le menu de gauche lorsque la page est trop petite et faire reaparraitre celui ci si la fentre est assez grande.
 function disparaitre(){
 	if (window.matchMedia("(max-width: 650px)").matches){
