@@ -1,0 +1,64 @@
+/* NAVIGATION */
+#modifications{
+  border-radius: 10px 0px 0px 0px;
+}
+#calendrier{
+	border-radius: 0px 10px 0 0px;
+}
+#demandes{
+	border-radius: 0px 0px 0px 10px;
+}
+#annuaire{
+	border-radius: 0px 0px 0px 0px;
+}
+#ressources{
+	border-radius: 0px 0px 10px 0px;
+}
+
+/* SECTION */
+#inputSearch{
+  max-width: 500px;
+}
+#boutonSearch{
+  width: 150px;
+	margin-top: 10px;
+  float: right;
+}
+#nom{
+  width: 6vw;
+}
+#prenom{
+  width: 6vw;
+}
+#poste{
+  width: 6vw;
+}
+#telephone{
+  width: 8vw;
+}
+#email{
+  width: 12vw;
+}
+#action{
+  position: relative;
+}
+#boutonAdd{
+  margin-left: 40%;
+}
+.boutons{
+  margin-left: 15%;
+}
+#formulaire{
+  margin-top: 30px;
+}
+table{
+  font-size: 1.2vw;
+}
+
+/* ADAPTATIONS */
+@media screen and (max-width: 1100px) {
+	/* SECTION */
+	table{
+		font-size: 11px;
+	}
+}

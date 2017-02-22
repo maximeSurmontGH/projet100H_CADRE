@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page du calendrier des rappels personnels">
+    <meta name="author" content="maxime SURMONT">
+    <title> Vos Rappels </title>
+    <link rel="shortcut icon" href="../img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/pagesIntranet.css" rel="stylesheet">
+    <link href="../css/rappelsEmployes.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/pagesIntranet.js"></script>
+    <script type="text/javascript" src="../js/rappelsEmployes.js"></script>
+
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div >
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
+        <div class="row">
+          <div th:insert="~{commun :: divNavigationIntranet}">
+          </div>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
+            <h1 id="titre" >Vos Rappels Personnels</h1>
+
+            <div id="calendar-wrap">
+              <div id="placementMois">
+                <span class="glyphicon glyphicon-chevron-left" id="flecheLeft"></span>
+                <h2 id="choixMoisAnnee"></h2>
+                <span class="glyphicon glyphicon-chevron-right" id="flecheRight"></span>
+              </div>
+              <div id="calendar">
+                <ul class="weekdays">
+                  <li>Lundi</li>
+                  <li>Mardi</li>
+                  <li>Mercredi</li>
+                  <li>Jeudi</li>
+                  <li>Vendredi</li>
+                  <li>Samedi</li>
+                  <li>Dimanche</li>
+                </ul>
+                <div id="pourLaSuppression">
+                </div>
+              </div>
+            </div>
+
+
+          </section>
+        </div>
+      </div>
+
+      <footer th:insert="~{commun :: footerIntranet}" id="footer">
+      </footer>
+    </div>
+  </body>
+</html>

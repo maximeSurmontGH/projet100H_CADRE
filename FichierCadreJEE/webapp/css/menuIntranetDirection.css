@@ -1,0 +1,25 @@
+
+/* NAVIGATION */
+#navigation {
+	margin-top: 130px;
+}
+
+/* SECTION */
+
+/* FOOTER */
+#maillingAnnonceNum{
+	position: absolute;
+	top: 1.3vw;
+	right: 2.7vw;
+	color: white;
+	font-size: 3.3vw;
+	font-weight: bold;
+}
+#imgAlerte{
+	position: absolute;
+	top: 0.3vw;
+	right: 0.3vw;
+	width: 7.0vw;
+}
+
+/* ADAPTATIONS */

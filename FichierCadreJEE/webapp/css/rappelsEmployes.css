@@ -1,0 +1,44 @@
+
+/* NAVIGATION */
+#rappels{
+  border-radius: 0px 0px 0px 0px;
+}
+#calendrier{
+	border-radius: 10px 0px 0 0px;
+}
+#demandes{
+	border-radius: 0px 10px 0 0px;
+}
+#annuaire{
+	border-radius: 0px 0px 0px 10px;
+}
+#ressources{
+	border-radius: 0px 0px 10px 0px;
+}
+
+/* SECTION */
+#calendar{
+  margin-bottom: 550px;
+}
+
+/* ADAPTATIONS */
+@media screen and (max-width: 800px) {
+
+	/* SECTION */
+  .weekdays{
+    display: none;
+  }
+  #calendar{
+    margin-left: 30px;
+  }
+  #calendar li{
+    height: auto;
+    border: 1px solid #ededed;
+    width: 50%;
+    padding: 10px;
+    margin-bottom: -1px;
+  }
+  #calendar li.other-mounth{
+    display: none;
+  }
+}

@@ -1,0 +1,37 @@
+
+/* NAVIGATION */
+#rappels{
+  border-radius: 10px 0px 0px 0px;
+}
+#calendrier{
+	border-radius: 0px 10px 0 0px;
+}
+#ressources{
+	border-radius: 0px 0px 10px 0px;
+}
+#annuaire{
+	border-radius: 0px 0px 0px 10px;
+}
+#demandes{
+	border-radius: 0px 0px 0px 0px;
+}
+
+/* SECTION */
+.input-group-addon{
+  width: 100px;
+}
+form div{
+  margin-bottom: 10px;
+}
+.form-control{
+  width: 200px;
+}
+#boutonSearch{
+  float: right;
+  margin-top: 10px;
+  min-width: 110px;
+}
+.demandeHist{
+  font-size: 18px;
+  width: 100%;
+}

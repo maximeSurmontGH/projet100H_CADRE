@@ -1,0 +1,58 @@
+
+/* NAVIGATION */
+#modifications{
+  border-radius: 0px 0px 0px 0px;
+}
+#calendrier{
+	border-radius: 10px 0px 0 0px;
+}
+#demandes{
+	border-radius: 0px 10px 0px 0px;
+}
+#annuaire{
+	border-radius: 0px 0px 0px 10px;
+}
+#ressources{
+	border-radius: 0px 0px 10px 0px;
+}
+
+/* SECTION */
+#titre{
+  margin-bottom: 60px;
+}
+.mesBtns{
+  width: 30vw;
+  margin-top: 40px;
+  font-size: 2.2vw;
+  margin-left: 27%;
+}
+table span {
+  margin-left: 40%;
+}
+.inputTextarea{
+  width: 100%;
+}
+.colonneLarge{
+  width: 50%;
+}
+.colonneFine{
+  width: 60px;
+}
+#boutonRetour{
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* ADAPTATIONS */
+@media screen and (max-width: 650px) {
+	/* SECTION */
+  #titre{
+    margin-left: 36px;
+  }
+  .mesBtns{
+    width: 250px;
+    margin-top: 50px;
+    font-size: 16px;
+  }
+}

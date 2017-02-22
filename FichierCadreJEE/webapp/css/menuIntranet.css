@@ -1,0 +1,166 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-size: 2vw;
+	background: #F9F9F9 url("img/fondNul.jpg");
+}
+.container {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+.row{
+	padding:0;
+	margin:0;
+}
+#navMobile{
+	display: none;
+}
+
+/* NAVIGATION */
+#liensIcons{
+	text-decoration: none;
+}
+nav div img{
+	width: 100%;
+}
+nav div {
+	padding-bottom: 5px;
+	padding-top: 10px;
+	margin-top: 1%;
+	margin-left: 1.5%;
+	border-radius: 15px;
+	width: 90%;
+}
+#rappels{
+	background-color: #2E64FE;
+}
+#rappels:hover{
+	transform: translateY(-0.5em);
+}
+#calendrier{
+	background-color: #0489B1;
+}
+#calendrier:hover{
+	transform: translateY(-0.5em);
+}
+#demandes{
+	background-color: #81BEF7;
+}
+#demandes:hover{
+	transform: translateY(-0.5em);
+}
+#annuaire{
+	background-color: #81DAF5;
+}
+#annuaire:hover{
+	transform: translateY(-0.5em);
+}
+#ressources{
+	background-color: #58ACFA;
+}
+#ressources:hover{
+	transform: translateY(-0.5em);
+}
+.iconSignification{
+	color: white;
+	text-align: center;
+	margin-top: 10px;
+	font-weight: bold;
+
+}
+
+/* SECTION */
+#messageBienvenue{
+	text-align: center;
+	font-size: 2.4vw;
+	color: #666666;
+	margin-top: 3.0vw;
+}
+#messageBienvenue span{
+	color: #555555;
+	font-weight: bold;
+}
+
+/* FOOTER */
+footer{
+	position: fixed;
+	bottom: 0;
+	padding-bottom: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 100%;
+}
+footer img{
+	width: 60px;
+	position: absolute;
+	right: 15px;
+	bottom: 3px;
+}
+footer img:hover{
+	width: 70px;
+	right: 10px;
+	bottom: -2px;
+}
+.apparaitreAlerte{
+	display: relative;
+}
+.disparaitreAlerte{
+	display: none;
+}
+#bouton2, #bouton1 {
+	width: 150px;
+	margin-bottom: 5px;
+}
+#bouton2:hover, #bouton1:hover{
+	background-color: #FFF;
+	color: #286090;
+}
+
+/* ADAPTATIONS */
+@media screen and (max-width: 500px) {
+	body{
+		min-height: 570px;
+	}
+	#navOrdi{
+		display: none;
+	}
+	#navMobile{
+		display: inline-block;
+		width: 100%;
+	}
+	/* SECTION */
+	#messageBienvenue{
+		font-size: 14px;
+		margin-top: 40px;
+	}
+	/* NAVIGATION */
+	.row{
+		margin-bottom: 10px;
+	}
+	nav div div{
+		transform: translateY(-0.5em);
+	}
+	nav {
+		font-size: 12px;
+	}
+	#navigation {
+		margin-top: 30px;
+    margin-top: 0;
+	}
+	/* FOOTER */
+	footer{
+		position: relative;
+	}
+	footer img{
+		bottom: 54px;
+	}
+	footer img:hover{
+		width: 70px;
+		right: 10px;
+		bottom: 49px;
+	}
+	#bouton2, #bouton1 {
+		display: block;
+	}
+}
