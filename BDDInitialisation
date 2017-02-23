@@ -1,0 +1,174 @@
+CREATE TABLE `employes` (
+
+  `idEmploye` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `nomEmploye` varchar(50) NOT NULL,
+  `prenomEmploye` varchar(50) NOT NULL,
+  `identifiant` varchar(30) NOT NULL,
+  `motDePasse` varchar(30) NOT NULL,
+  `poste` varchar(30) NOT NULL,
+  `telephone` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `estConnecte` varchar(1) NOT NULL,
+  
+  PRIMARY KEY (`idEmploye`)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `contact` (
+
+  `idContact` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `nomContact` varchar(30) NOT NULL,
+  `mailContact` varchar(128) NOT NULL,
+  `societeContact` varchar(30) NOT NULL,
+  `messageContact` varchar(2000) NOT NULL,
+
+  PRIMARY KEY (`idContact`)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `devis` (
+
+  `idDevis` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `nomSociete` varchar(30) NOT NULL,
+  `nomDemandeur` varchar(30) NOT NULL,
+  `mail` varchar(128) NOT NULL,
+  `telephone` varchar(30) NOT NULL,
+  `adresse` varchar(50) NOT NULL,
+  `codePostal` varchar(5) NOT NULL,
+  `ville` varchar(30) NOT NULL,
+  `service` varchar(30) NOT NULL,
+  `message` varchar(2000) NOT NULL,
+  
+  PRIMARY KEY (`idDevis`)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `vehicules` (
+
+  `immatriculation` varchar(30) NOT NULL,
+  `typeVehicule` varchar(30) NOT NULL,
+  `disponibilite` varchar(1) NOT NULL,
+  
+  PRIMARY KEY (`immatriculation`)
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE `demandesVehicule` (
+
+  //`immatriculation` varchar(30) NOT NULL,
+  //`idEmploye` mediumint(9) NOT NULL,
+  `etat` varchar(30) NOT NULL,
+  `dateDebut` varchar(30) NOT NULL,
+  `dateFin` varchar(30) NOT NULL,
+  
+  PRIMARY KEY (``)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `validites` (
+
+  `idValidite` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `typeValidite` varchar(30) NOT NULL,
+  
+  PRIMARY KEY (`idValidite`)
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE `demandesValidite` (
+
+  //`idAttestation` mediumint(9) NOT NULL,
+  //`idEmploye` mediumint(9) NOT NULL,
+  `etat` varchar(30) NOT NULL,
+  `dateDebut` varchar(30) NOT NULL,
+  `dateFin` varchar(30) NOT NULL,
+  
+  PRIMARY KEY (`idAttestation`)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `attestations` (
+
+  `idAttestation` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `typeAttestation` varchar(30) NOT NULL,
+  
+  PRIMARY KEY (`idAttestation`)
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE `demandesAttestation` (
+
+  //`idAttestation` mediumint(9) NOT NULL,
+  //`idEmploye` mediumint(9) NOT NULL,
+  `etat` varchar(30) NOT NULL,
+  `date` varchar(30) NOT NULL,
+  
+  PRIMARY KEY (`idAttestation`)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `rappels` (
+
+  `idRappel` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `dateRappel` varchar(30) NOT NULL,
+  `messageRappel` varchar(256) NOT NULL,
+  //`idEmploye` mediumint(9) NOT NULL,
+  
+  PRIMARY KEY (`idRappels`)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `ressources` (
+
+  `idRessource` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `contenuRessource` varchar(50) NOT NULL,
+  `corpsDeMetier` varchar(30) NOT NULL,
+  `cheminRessource` varchar(50) NOT NULL,
+  
+  PRIMARY KEY (`idRessource`)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `elementSite` (
+
+  `idElement` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `contenuElement` varchar(2 000),
+  `cheminElement` varchar(50),
+  
+  PRIMARY KEY (`idElement`)
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `conges` (
+
+  `idConge` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `typeConge` varchar(30) NOT NULL,
+  
+  PRIMARY KEY (`idConge`)
+) DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `demandesConge` (
+
+  //`idConge` mediumint(9) NOT NULL,
+  //`idEmploye` mediumint(9) NOT NULL,
+  `dateDebut` varchar(30) NOT NULL,
+  `dateFin` varchar(30) NOT NULL,
+  `etat` varchar(30) NOT NULL,
+
+  PRIMARY KEY (``)
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE `compteurConges` (
+
+  //`idConge` mediumint(9) NOT NULL,
+  //`idEmploye` mediumint(9) NOT NULL,
+  `compteur` mediumint(9) NOT NULL,
+  
+  PRIMARY KEY (``)
+) DEFAULT CHARSET=utf8;
