@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page ou l'on peut voir les différentes ressources de l'entreprise">
+    <meta name="author" content="maxime SURMONT">
+    <title> Ressources de l'entreprise </title>
+    <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/pagesIntranet.css" rel="stylesheet">
+    <link href="css/ressourcesDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/pagesIntranet.js"></script>
+    <script type="text/javascript" src="js/ressourcesDirection.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
+        <div class="row">
+          <div>
+            <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            </nav>
+          </div>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
+            <h1 id="titre" >Ressources CADRE</h1>
+
+            <p id="sousTitre1">Liste des ressources :</p>
+            <table id="tableauDuPersonnel">
+              <tr>
+                <th >Nom du fichier</th>
+                <th >Taille</th>
+                <th >Type</th>
+                <th >Corps de métier</th>
+                <th id="action">Action</th>
+              </tr>
+            </table>
+
+            <p>Recherche dans la liste des ressources:</p>
+            <form id="formulaire">
+                <div class="input-group">
+                  <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
+                  <input type="text" class="form-control" id="inputSearch" placeholder="nom du fichier ou poste concerné par la ressource recerchée">
+                </div>
+                <div id="boutonSearch">
+                  <a class="btn btn-primary" id="boutonSearch" href="#">Rechercher</a>
+                </div>
+            </form>
+            <table id="tableauDuPersonnel2">
+            </table>
+
+            <p>Ajout d'un fichier :</p>
+            <form id="formulaire">
+              <div class="input-group">
+                <div class="input-group-addon descriptionAjout" > <span> Nom du fichier : </span> </div>
+                <input type="text" class="form-control">
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon descriptionAjout" > <span> Corps de métier : </span> </div>
+                <input type="text" class="form-control">
+              </div>
+
+              <div id="boutonAdd2">
+                <a class="btn btn-primary" id="boutonAdd2" href="#">Ajouter</a>
+              </div>
+              <input type="file" name="fichier" id="choixDuFichier"/>
+            </form>
+          </section>
+
+        </div>
+      </div>
+
+      <footer id="footer">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitre">
+      	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
+      	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
+      	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
+      	<p id="maillingAnnonceNum" class="apparaitre">7</p>
+      </footer>
+    </div>
+  </body>
+</html>

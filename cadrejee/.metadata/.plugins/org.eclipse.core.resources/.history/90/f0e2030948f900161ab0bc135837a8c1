@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page où l'on peut voir et rechercher dans l'annuaire de l'entreprise">
+    <meta name="author" content="maxime SURMONT">
+    <title> L'Annuaire de CADRE </title>
+    <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/pagesIntranet.css" rel="stylesheet">
+    <link href="css/annuaireDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/pagesIntranet.js"></script>
+    <script type="text/javascript" src="js/annuaireDirection.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div>
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
+        <div class="row">
+          <div>
+            <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            </nav>
+          </div>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
+            <h1 id="titre" >Annuaire CADRE</h1>
+
+            <p>Contenu de l'annuaire :</p>
+            <table id="tableauDuPersonnel">
+              <tr>
+                <th >Nom</th>
+                <th >Prénom</th>
+                <th >Poste</th>
+                <th >Téléphone</th>
+                <th >E-mail</th>
+                <th id="action">Action</th>
+              </tr>
+              <tr>
+                <td><input type="text" id="nom" class="form-control"></td>
+                <td><input type="text" id="prenom" class="form-control"></td>
+                <td><input type="text" id="poste" class="form-control"></td>
+                <td><input type="text" id="telephone" class="form-control"></td>
+                <td><input type="text" id="email" class="form-control"></td>
+                <td><a href="#"><span class="glyphicon glyphicon-plus" id="boutonAdd"></span></a></td>
+              </tr>
+            </table>
+
+            <p>Recherche dans l'annuaire :</p>
+            <form id="formulaire">
+                <div class="input-group">
+                  <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
+                  <input type="text" class="form-control" id="inputSearch" placeholder="nom ou poste de(s) personne(s) recherchée(s)">
+                </div>
+                <div id="boutonSearch">
+                  <a class="btn btn-primary" id="boutonSearch" href="#">Rechercher</a>
+                </div>
+            </form>
+
+            <table id="tableauDuPersonnel2">
+            </table>
+          </section>
+
+        </div>
+      </div>
+
+      <footer id="footer">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="disparaitre">
+      	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
+      	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
+      	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
+      	<p id="maillingAnnonceNum" class="disparaitre"></p>
+      </footer>
+    </div>
+  </body>
+</html>

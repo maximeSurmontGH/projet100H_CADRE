@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page ou l'on peut voir les différentes ressources de l'entreprise">
+    <meta name="author" content="maxime SURMONT">
+    <title> Validités des employés </title>
+    <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/pagesIntranet.css" rel="stylesheet">
+    <link href="css/validitesDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/pagesIntranet.js"></script>
+    <script type="text/javascript" src="js/validitesDirection.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
+        <div class="row">
+          <div>
+            <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            </nav>
+          </div>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
+            <h1 id="titre" >Validités des employés</h1>
+
+            <p>Rechercher un employé :</p>
+            <form id="formulaire1">
+                <div class="input-group">
+                  <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
+                  <input type="text" class="form-control inputSearch" placeholder="nom de(s) la personne(s) recherchée(s)">
+                </div>
+                <div>
+                  <a class="btn btn-primary boutonSearch" id="boutonSearch1" href="#">Rechercher</a>
+                </div>
+            </form>
+            <div id="tableauDesValidites1">
+           </div>
+
+            <p>Rechercher un type de validité :</p>
+            <form id="formulaire2">
+                <div class="input-group">
+                  <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
+                  <input type="text" class="form-control inputSearch" placeholder="nom de la validité recherchée">
+                </div>
+                <div>
+                  <a class="btn btn-primary boutonSearch" id="boutonSearch2" href="#">Rechercher</a>
+                </div>
+            </form>
+            <div id="tableauDesValidites2">
+            </div>
+
+            <p>Ajouter une validité :</p>
+            <form id="formulaire3">
+              <div class="row">
+                <div class="input-group col-lg-5 col-md-5 col-sm- col-xs-5">
+                  <div class="input-group-addon descriptionAjout" > <span> Nom : </span> </div>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="input-group col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                  <div class="input-group-addon descriptionAjout" > <span> Prénom : </span> </div>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+
+
+              <div>
+                <span> Date de Début : </span>
+                <select id="JoursD"></select>
+                <select id="MoisD"></select>
+                <select id="AnneesD"></select>
+              </div>
+
+
+              <div>
+                <span> Date de Fin : </span>
+                <select id="JoursF"></select>
+                <select id="MoisF"></select>
+                <select id="AnneesF"></select>
+              </div>
+
+              <select>
+                <option value="">Type de la validité</option>
+              </select>
+
+              <div>
+                <a class="btn btn-primary boutonSearch" id="boutonAdd" href="#">Ajouter</a>
+              </div>
+            </form>
+          </section>
+
+        </div>
+      </div>
+
+      <footer id="footer">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitre">
+      	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
+      	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
+      	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
+      	<p id="maillingAnnonceNum" class="apparaitre">7</p>
+      </footer>
+    </div>
+  </body>
+</html>

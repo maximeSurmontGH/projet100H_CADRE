@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadre - Contact</title>
+
+<!-- CSS
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrapSite.css">
+<link rel="stylesheet" href="css/bootstrap-responsiveSite.css">
+<link rel="stylesheet" href="css/jquery.lightbox-0.5.css">
+<link rel="stylesheet" href="css/custom-styles.css">
+
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" href="img/favicon.png.ico">
+
+<!-- JS
+================================================== -->
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/bootstrapSite.js"></script>
+<script src="js/jquery.custom.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+</head>
+
+<body>
+	<!-- Bandeaux -->
+	<div th:insert="~{commun :: bandeaux}"></div>
+	<!-- Header -->
+    <div class="container">
+  	<div class="row header" th:insert="~{commun :: header(contact)}"><!-- Begin Header -->
+    </div>
+
+
+    <!-- Page Content
+    ================================================== -->
+    <div class="row"><!--Container row-->
+
+        <div class="span8"><!--Begin page content column-->
+
+            <h2>Pour nous contacter</h2>
+            <form id="contact-form" method="post">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    <input class="span4" size="16" type="text" id="nomContact" name="nomContact" placeholder="Nom">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span4" size="16" type="text" id="mailContact" name="mailContact" placeholder="Adresse Email">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-globe"></i></span>
+                    <input class="span4"  size="16" type="text" id="societeContact" name="societeContact" placeholder="Société">
+                </div>
+                <textarea class="span8" id="messageContact" name="messageContact"></textarea>
+                <div class="row">
+                    <div class="span2">
+                        <input type="submit" class="btn btn-inverse" value="Envoyer le message">
+                    </div>
+                </div>
+            </form>
+
+								<h5 class="title-bg" >Nous trouver</h5>
+								<img src="img/map.JPG" alt="map">
+        </div> <!--End page content column-->
+
+
+        <!-- Sidebar
+        ================================================== -->
+        <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+            <h5 class="title-bg">Nos Contacts</h5>
+            <address>
+            <strong>C.A.D.R.E</strong><br>
+             ZONE ARTISANALE DU BOIS NICOLAS <br/>
+            ST MARTIN EN CAMPAGNE <br/>
+            76370 PETIT-CAUX   <br/>
+            <abbr title="Téléphone">Tel:</abbr>02 35 83 68 03 <br/>
+            <abbr title="Numéro Fax">Fax:</abbr>02 35 83 26 98
+            </address>
+             <address>
+            <strong>Siège social</strong><br>
+            <a href="mailto:#">sarl.cadre@wanadoo.fr</a>
+            </address>
+
+            <address>
+            <strong>Michel PAILLART</strong><br>
+            <p>DECT : XXX </p>
+            </address>
+
+             <address>
+            <strong>Dominique LUCAS</strong><br>
+            <p>DECT : XXX </p>
+            </address>
+						<address>
+						<strong>Michel PAILLART</strong><br>
+						<p>DECT : XXX </p>
+						</address>
+
+						 <address>
+						<strong>Dominique LUCAS</strong><br>
+						<p>DECT : XXX </p>
+						</address>
+						<address>
+						<strong>Michel PAILLART</strong><br>
+						<p>DECT : XXX </p>
+						</address>
+
+						 <address>
+						<strong>Dominique LUCAS</strong><br>
+						<p>DECT : XXX </p>
+						</address>
+
+
+        </div><!-- End sidebar column -->
+				</div>
+			</div> <!-- End Container -->
+  <!-- Footer Area
+        ================================================== -->
+
+	<div class="footer-container" th:insert="~{commun :: footer}"><!-- Begin Footer -->
+    </div><!-- End Footer -->
+
+    <!-- Scroll to Top -->
+    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
+</body>
+</html>

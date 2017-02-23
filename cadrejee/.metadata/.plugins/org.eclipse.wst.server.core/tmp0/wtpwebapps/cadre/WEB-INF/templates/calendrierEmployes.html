@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page du calendrier des demandes">
+    <meta name="author" content="maxime SURMONT">
+    <title> Calendrier des demandes </title>
+    <link rel="shortcut icon" href="../img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/pagesIntranet.css" rel="stylesheet">
+    <link href="../css/calendrierEmployes.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/pagesIntranet.js"></script>
+    <script type="text/javascript" src="../js/calendrierEmployes.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div >
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
+        <div class="row">
+          <div th:insert="~{communIntranet :: divNavigationIntranet}">
+          </div>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
+            <h1 id="titre" >Calendrier de vos Demandes</h1>
+
+            <div id="calendar-wrap">
+              <div id="placementMois">
+                <span class="glyphicon glyphicon-chevron-left" id="flecheLeft"></span>
+                <h2 id="choixMoisAnnee"></h2>
+                <span class="glyphicon glyphicon-chevron-right" id="flecheRight"></span>
+              </div>
+              <div id="calendar">
+                <ul class="weekdays">
+                  <li>Lundi</li>
+                  <li>Mardi</li>
+                  <li>Mercredi</li>
+                  <li>Jeudi</li>
+                  <li>Vendredi</li>
+                  <li>Samedi</li>
+                  <li>Dimanche</li>
+                </ul>
+                <div id="pourLaSuppression">
+                </div>
+              </div>
+            </div>
+
+            <div class="cara"> </div>
+
+            <h2 class="sous-titre">Demande de Congés</h2>
+            <form class="formulaireDemandes" method="post">
+              <div class="input-group" id="divInputNom1">
+                <div class="input-group-addon" > <span> Nom :</span> </div>
+                <input type="text" class="form-control" id="inputNom1">
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon" > <span> Prénom :</span> </div>
+                <input type="text" class="form-control" id="inputPrenom1">
+              </div>
+              <select class="form-control">
+                <option> </option>
+                <option> Type de congé 1</option>
+                <option> Type de congé 2</option>
+                <option> Type de congé 3</option>
+                <option> Type de congé 4</option>
+              </select>
+              <div id="boutonSearch" class="boutonSearch">
+                <a class="btn btn-primary" id="boutonSearch1" href="#">Envoyer</a>
+              </div>
+            </form>
+
+            <h2 class="sous-titre">Demande de Prêts de Véhicule</h2>
+            <form class="formulaireDemandes" method="post">
+              <div class="input-group" id="divInputNom2">
+                <div class="input-group-addon" > <span> Nom :</span> </div>
+                <input type="text" class="form-control" id="inputNom2">
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon" > <span> Prénom :</span> </div>
+                <input type="text" class="form-control" id="inputPrenom2">
+              </div>
+              <select class="form-control">
+                <option> </option>
+                <option> Véhicule 1</option>
+                <option> Véhicule 2</option>
+                <option> Véhicule 3</option>
+                <option> Véhicule 4</option>
+              </select>
+              <div id="boutonSearch" class="boutonSearch">
+                <a class="btn btn-primary" id="boutonSearch2" href="#">Envoyer</a>
+              </div>
+            </form>
+
+            <h2 class="sous-titre">Vos compteurs</h2>
+            <form class="formulaireDemandes" method="post">
+              <select class="form-control" id="select3">
+                <option> </option>
+                <option> Compteur de type 1</option>
+                <option> Compteur de type 2</option>
+                <option> Compteur de type 3</option>
+                <option> Compteur de type 4</option>
+              </select>
+              <div id="boutonSearch" class="boutonSearch">
+                <a class="btn btn-primary" id="boutonSearch3" href="#">Envoyer</a>
+              </div>
+            </form>
+            <div id="messageCompteur"></div>
+
+
+          </section>
+        </div>
+      </div>
+
+      <footer th:insert="~{communIntranet :: footerIntranet}" id="footer">
+      </footer>
+    </div>
+  </body>
+</html>

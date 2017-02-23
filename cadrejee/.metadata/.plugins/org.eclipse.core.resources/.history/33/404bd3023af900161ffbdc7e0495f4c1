@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cadre</title>
+
+<!-- CSS
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrapSite.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/prettyPhoto.css" />
+<link rel="stylesheet" href="css/flexslider.css" />
+<link rel="stylesheet" href="css/custom-styles.css">
+
+
+<!-- Favicon
+================================================== -->
+<link rel="shortcut icon" href="img/favicon.png.ico">
+
+<!-- JS
+================================================== -->
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/jquery.custom.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $("#btn-blog-next").click(function () {
+      $('#blogCarousel').carousel('next')
+    });
+     $("#btn-blog-prev").click(function () {
+      $('#blogCarousel').carousel('prev')
+    });
+
+     $("#btn-client-next").click(function () {
+      $('#clientCarousel').carousel('next')
+    });
+     $("#btn-client-prev").click(function () {
+      $('#clientCarousel').carousel('prev')
+    });
+
+});
+
+ $(window).load(function(){
+
+    $('.flexslider').flexslider({
+        animation: "slide",
+        slideshow: true,
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+    });
+});
+
+</script>
+
+</head>
+
+<body class="home">
+   <!-- Bandeaux -->
+	<div th:insert="~{commun :: bandeaux}"></div>
+
+    <div class="container">
+	<!-- Header -->
+     <div class="row header" th:insert="~{commun :: header('index')}"><!-- Begin Header -->
+      </div><!-- End Header -->
+    
+    <div class="row headline"><!-- Begin Headline -->
+
+     	<!-- Slider Carousel
+        ================================================== -->
+        <div class="span8">
+        	<div class="flexslider">
+              <ul class="slides">
+                <li><a href=""><img src="img/gallery/exterieurBT.png" alt="slider" /></a></li>
+                <li><a href=""><img src="img/gallery/exterieurBT.png" alt="slider" /></a></li>
+                <li><a href=""><img src="img/gallery/exterieurBT.png" alt="slider" /></a></li>
+              </ul>
+            </div>
+        </div>
+
+        <!-- Headline Text
+        ================================================== -->
+
+        <div class="span4">
+        	<h3>Bienvenue sur le site de l'entreprise CADRE</h3>
+            <p class="lead">Cadre est une SAS basée à Petit Caux en Seine-Maritime (76). </p>
+            <p>
+            Notre entreprise compte 42 employés et est active depuis 20 ans.<br/>
+            Nous sommes spécialisé dans les travaux de menuiserie métallique et de serrurerie. <br/>
+            Notre activité se déploit sur trois grands pôles : <br/>
+                - La fabrication <br/>
+                - L'installation et la modification <br/>
+                - L'entretien, la maintenance et l'expertise <br/>
+            Nous nous occupons également de la maintenance des centrales nucléaires de Paluel et de Penly grâce à notre personnel habilité.</p>
+            <a href="entreprise"><i class="icon-plus-sign"></i>En savoir plus...</a>
+        </div>
+    </div><!-- End Headline -->
+    
+
+
+    </div>
+    <!-- Footer -->
+
+	<div class="footer-container" th:insert="~{commun :: footer}"><!-- Begin Footer -->
+    </div>
+
+    <!-- Scroll to Top -->
+    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
+</body>
+</html>

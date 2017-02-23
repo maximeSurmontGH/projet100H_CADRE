@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page où l'on peut choisir quoi modifier dans le site vitrine">
+    <meta name="author" content="maxime SURMONT">
+    <title> Modification du Site </title>
+    <link rel="shortcut icon" href="img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/pagesIntranet.css" rel="stylesheet">
+    <link href="css/modificationDirection.css" rel="stylesheet">
+    <script type="text/javascript" src="js/pagesIntranet.js"></script>
+    <script type="text/javascript" src="js/modificationDirection.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <a><span class="disparaitre" id="iconeMenu"></span></a>
+        <div class="row">
+          <div>
+            <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            </nav>
+          </div>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
+            <h1 id="titre" >Modification du site vitrine</h1>
+            <div>
+              <a id="boutonAccueil" href="#">Page "ACCUEIL"</a>
+            </div>
+            <div>
+              <a id="boutonEntreprise" href="#">Page "L'ENTREPRISE"</a>
+            </div>
+            <div>
+              <a id="boutonPrestations" href="#">Page "NOS PRESTATIONS"</a>
+            </div>
+            <div>
+              <a id="boutonContact" href="#">Page "CONTACT"</a>
+            </div>
+
+            <table id="tableauDesModifications">
+            </table>
+
+            <a href="#" id="boutonRetour"> Retour </a>
+          </section>
+
+        </div>
+      </div>
+
+      <footer id="footer">
+      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitre">
+      	<a href="#"> <img src="img/Mailling.png" alt="icône du mailling" id="mailling"></a>
+      	<a class="btn btn-primary btn-lg " id="bouton1" href="#">Déconnexion</a>
+      	<a class="btn btn-primary btn-lg " id="bouton2" href="#">Retour au Site</a>
+      	<p id="maillingAnnonceNum" class="apparaitre">7</p>
+      </footer>
+    </div>
+  </body>
+</html>

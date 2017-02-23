@@ -15,5 +15,11 @@
 		<filter-name>AuthentificationFilterDirection</filter-name>
 		<url-pattern>/menuIntranetDirection</url-pattern>
 	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterDirection</filter-name>
+		<url-pattern>/direction</url-pattern>
+	</filter-mapping>
+	
 
 </web-app>

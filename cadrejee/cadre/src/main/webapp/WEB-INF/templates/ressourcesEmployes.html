@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page ou l'on peut récupérer les différentes ressources de l'entreprise">
+    <meta name="author" content="maxime SURMONT">
+    <title> Ressources de l'entreprise </title>
+    <link rel="shortcut icon" href="../img/favicon.png.ico" type="image/x-icon" />
+
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/pagesIntranet.css" rel="stylesheet">
+    <link href="../css/ressourcesEmployes.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/pagesIntranet.js"></script>
+    <script type="text/javascript" src="../js/ressourcesEmployes.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <a><span class="disparaitreAlerte" id="iconeMenu"></span></a>
+        <div class="row">
+          <div th:insert="~{communIntranet :: divNavigationIntranet}">
+          </div>
+
+          <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
+            <h1 id="titre" >Ressources de CADRE</h1>
+            <p>Recherche de ressources :</p>
+            <form id="formulaire">
+                <div class="input-group">
+                  <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
+                  <input type="text" class="form-control" id="inputSearch" placeholder="ressource(s) recherché(s)">
+                </div>
+                <div id="boutonSearch">
+                  <a class="btn btn-primary" id="boutonSearch" href="#">Rechercher</a>
+                </div>
+            </form>
+
+            <form id="formulaire2">
+              <table id="tableauDuPersonnel">
+              </table>
+            </form>
+          </section>
+
+        </div>
+      </div>
+
+      <footer th:insert="~{communIntranet :: footerIntranet}" id="footer">
+      </footer>
+    </div>
+  </body>
+</html>

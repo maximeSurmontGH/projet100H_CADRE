@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cadre - L'entreprise </title>
+
+<!-- CSS
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrapSite.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/flexslider.css" />
+<link rel="stylesheet" href="css/custom-styles.css">
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" href="img/favicon.png.ico">
+
+<!-- JS
+================================================== -->
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/jquery.custom.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript">
+     $(window).load(function(){
+
+    $('.flexslider').flexslider({
+        animation: "slide",
+        slideshow: true,
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+    });
+});
+</script>
+
+</head>
+
+<body>
+	<!-- Bandeaux -->
+	<div th:insert="~{commun :: bandeaux}"></div>
+
+    <div class="container main-container">
+    <!-- Header -->
+ 	<div class="row header" th:insert="~{commun :: header(entreprise)}"><!-- Begin Header -->  
+    </div><!-- End Header -->
+
+    <!-- Page Content
+    ================================================== -->
+
+    <!-- Title Header -->
+    <div class="row">
+        <div class="span12">
+            <h2>Historique</h2>
+
+
+            <!-- Carousel
+            ================================================== -->
+            <div class="row">
+                <div class="span6">
+                    <div class="flexslider">
+                      <ul class="slides">
+                        <li><img src="img/gallerie_entreprise/entreprise2.JPG" alt="slider" /></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="span6">
+
+                        <p class="historique">Au début de la construction de la Centrale de PALUEL a été créée la société TRAMETNOR . Cette société basée à Saint Valéry a vu le jour pour assurer sur PALUEL une grande partie des travaux de montage pour le compte des Travaux Métalliques de l’Artois (Titulaire du contrat des charpentes secondaires).</p>
+
+                        <p class="historique">En 1985 , TRAMETNOR s'est vu confier par les Travaux Métalliques de l'Artois des activités de Montages similaires sur la centrale de Penly , tout en assurant dans un premier temps la terminaison des travaux sur PALUEL , puis des travaux de modifications et d'entretien .</p>
+                        <p class="historique">En 1990 , TRAMETNOR a changé de nom pour s'appeler CADRE qui sous sa nouvelle dénomination a poursuivi l'activité commencée sur Paluel et Penly</p>
+
+                        <p class="historique">L'année 1996 marque un virage pour l'entreprise CADRE : changement d'actionnariat et le début du désengagement progressif de la Société Travaux Métalliques de l'Artois. Puis CADRE a voulu être connu et reconnu par EDF en particulier en effectuant les démarches auprès de l'UTO et du CEFRI.</p>
+
+
+                </div>
+
+            </div>
+
+            <h2>Cadre et EDF</h2>
+            <div class="row">
+            <div class="span6">
+            <p class="edf"> Depuis plus de <b>10 ans </b>, nous avons les <b>qualifications </b>pour répondre aux appels d'offres lancés par EDF. CADRE travaille essentiellement sur les Centrales de <b>Penly et Paluel</b>.
+            </p>
+            </div>
+            <div class="span6">
+            <p class="edf">
+            Sans qu'il soit question d'astreinte CADRE est en permanence disponible pour répondre aux <b>sollicitations urgentes </b> d'EDF. CADRE participe régulièrement aux <b>CIESCT</b> sur PENLY.
+            </p>
+            </div>
+            <div class="span12">
+            <p class="edf">
+            CADRE est adhérent au <a href="http://www.sifop.com/GIPNO/index.html"> <abbr title="Groupement des Industriels Prestataires Nord-Ouest"><b>GIPNO</b></abbr> </a>depuis sa création et fait d'ailleurs régulièrement appel à cette association. La dernière sollicitation est l'organisation d'une sensibilisation sur le risque FME le 18 septembre 2016 dans nos locaux de Saint Martin en Campagne .</p>
+            </div>
+
+            </div>
+
+           <h2>Nos équipes</h2>
+            <div class="row">
+                <div class="span6">
+                    <img src="img/gallery/gallery-img-1-3col.jpg" alt="image">
+                    <h5>Penly</h5>
+
+
+                </div>
+
+                <div class="span6">
+                    <img src="img/gallery/gallery-img-1-3col.jpg" alt="image">
+                    <h5>Paluel</h5>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Title Header -->
+
+    <div id="disparition">
+    <h2>Ils nous font confiance </h2>
+    <div class="row">
+
+        <div class="span2">
+
+            <div class="flexslider">
+                <ul class="slides">
+                    <li ><img src="img/gallerie_client/spie.png" alt="slider" /></li>
+                    <li><img src="img/gallerie_client/sade.png" alt="slider" /></li>
+                </ul>
+            </div>
+        </div>
+        <div class="span2">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li><img src="img/gallerie_client/edf.png" alt="slider" /></li>
+                    <li><img src="img/gallerie_client/ponticelli.png" alt="slider" /></li>
+                </ul>
+            </div>
+        </div>
+         <div class="span2">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li><img src="img/gallerie_client/neom.png" alt="slider" /></li>
+                    <li><img src="img/gallerie_client/sfee.png" alt="slider" /></li>
+                    <li><img src="img/gallerie_client/nordon.png" alt="slider" /></li>
+                </ul>
+            </div>
+        </div>
+         <div class="span2">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li><img src="img/gallerie_client/omexom.png" alt="slider" /></li>
+                    <li><img src="img/gallerie_client/prezioso.png" alt="slider" /></li>
+                    <li><img src="img/gallerie_client/endel.png" alt="slider" /></li>
+                </ul>
+            </div>
+        </div>
+         <div class="span2">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li><img src="img/gallerie_client/orys.png" alt="slider" /></li>
+                    <li><img src="img/gallerie_client/bouygues.png" alt="slider" /></li>
+                </ul>
+            </div>
+        </div>
+         <div class="span2">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li><img src="img/gallerie_client/engie.png" alt="slider" /></li>
+                    <li><img src="img/gallerie_client/eiffage.png" alt="slider" /></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    </div>
+     <div class="row">
+        <div class="span12">
+            <h2>Nos Engagements</h2>
+            <p class="lead">Nos engagements premiers envers tous nos clients sont la qualité et la disponibilité. Chacun des produits et des services fourni aux clients répond aux exigences de ce dernier et aux normes, codes et règlements applicables.</p>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <ul class="gallery-post-grid holder">
+
+            <li class="span2">
+                <h3 ><br/>Nos <br/> valeurs </h3>
+            </li>
+
+                    <!-- Gallery Item 1 -->
+            <li  class="span2" >
+                <img src="img/gallerie_valeurs/satisfaction.png" alt="Gallery" class="img-circle">
+            </li>
+
+                    <!-- Gallery Item 2 -->
+            <li class="span2" >
+                <img src="img/gallerie_valeurs/disponibilite.png" alt="Gallery" class="img-circle">
+            </li>
+
+                    <!-- Gallery Item 3 -->
+            <li class="span2" >
+                <img src="img/gallerie_valeurs/confiance.png" alt="Gallery" class="img-circle">
+            </li>
+
+                    <!-- Gallery Item 4 -->
+            <li class="span2" >
+                <img src="img/gallerie_valeurs/amelioration.png" alt="Gallery" class="img-circle">
+            </li>
+
+                    <!-- Gallery Item 5 -->
+            <li class="span2" >
+                <img src="img/gallerie_valeurs/qualite.png" alt="Gallery" class="img-circle">
+            </li>
+
+        </ul>
+    </div>
+
+
+
+</div> <!-- End Container -->
+
+  <!-- Footer-->
+
+	<div class="footer-container" th:insert="~{commun :: footer}"><!-- Begin Footer -->
+    </div>
+
+
+    <!-- Scroll to Top -->
+    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
+</body>
+</html>
