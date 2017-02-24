@@ -20,9 +20,8 @@
       <div>
         <a><span class="disparaitre" id="iconeMenu"></span></a>
         <div class="row">
-          <div>
-            <nav id="navigation" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            </nav>
+        
+           <div th:insert="~{communIntranet :: divNavigationIntranet}">
           </div>
 
           <section class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="section">
@@ -49,13 +48,9 @@
         </div>
       </div>
 
-      <footer id="footer">
-      	<img src="img/imgAlerte.png" alt="rond des alertes" id="imgAlerte" class="apparaitre">
-      	<a href="#"> <img src="../img/Mailling.png" alt="icône du mailling" id="mailling"></a>
-      	<a class="btn btn-primary btn-lg " id="bouton1" href="../deconnexion">Déconnexion</a>
-      	<a class="btn btn-primary btn-lg " id="bouton2" href="../index">Retour au Site</a>
-      	<p id="maillingAnnonceNum" class="apparaitre">7</p>
+     <footer th:insert="~{communIntranet :: footerIntranet}" id="footer">
       </footer>
+      
     </div>
   </body>
 </html>

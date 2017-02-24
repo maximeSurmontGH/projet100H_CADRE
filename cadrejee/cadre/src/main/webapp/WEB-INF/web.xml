@@ -13,12 +13,32 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>AuthentificationFilterDirection</filter-name>
-		<url-pattern>/menuIntranetDirection</url-pattern>
+		<url-pattern>/direction/menu</url-pattern>
 	</filter-mapping>
 	
 	<filter-mapping>
 		<filter-name>AuthentificationFilterDirection</filter-name>
-		<url-pattern>/direction</url-pattern>
+		<url-pattern>/direction/calendrier</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterDirection</filter-name>
+		<url-pattern>/direction/modification</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterDirection</filter-name>
+		<url-pattern>/direction/ressources</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterDirection</filter-name>
+		<url-pattern>/direction/annuaire</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterDirection</filter-name>
+		<url-pattern>/direction/demandes</url-pattern>
 	</filter-mapping>
 	
 

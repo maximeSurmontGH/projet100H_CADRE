@@ -25,7 +25,7 @@ public class AuthentificationFilterDirection implements Filter {
 		if (identifiant == null || "".equals(identifiant)) {
 			System.out.println("Il faut être connecté pour accéder à cette page !");
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			httpResponse.sendRedirect("connexionIntranet");
+			httpResponse.sendRedirect("../connexionIntranet");
 			return;
 		}
 		chain.doFilter(request, response);

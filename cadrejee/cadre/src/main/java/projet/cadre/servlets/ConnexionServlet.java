@@ -35,7 +35,7 @@ public class ConnexionServlet extends HttpServlet {
 			view.forward(request, response);
 			
 		} else {
-			response.sendRedirect("menuIntranetDirection");
+			response.sendRedirect("direction/menu");
 		}
 	
 	}

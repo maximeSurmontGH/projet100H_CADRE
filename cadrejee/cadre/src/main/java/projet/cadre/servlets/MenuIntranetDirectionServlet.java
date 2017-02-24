@@ -14,7 +14,7 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-@WebServlet("/menuIntranetDirection")
+@WebServlet("/direction/menu")
 public class MenuIntranetDirectionServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
