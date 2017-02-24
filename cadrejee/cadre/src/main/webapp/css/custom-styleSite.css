@@ -404,3 +404,19 @@ a.accordion-toggle{background: #f5f5f5;}
     opacity: 0;
     z-index: 2;
   }
+
+
+.popular-posts{ margin: 0px;}
+.popular-posts li {
+	list-style: none; 
+	margin-bottom: 20px; 
+	clear: both;
+	display: block;
+	min-height: 70px;
+}
+.popular-posts li a, 
+.popular-posts li a:hover {color:#333333; text-decoration: none;}
+.popular-posts li img {float: left; margin-right: 20px;}
+.popular-posts li em {font-family:Georgia, "Times New Roman", Times, serif;}
+p.side {margin-bottom: 20px;}
+
