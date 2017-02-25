@@ -1,10 +1,12 @@
 package projet.cadre.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +37,7 @@ public class EmployeDaoTestCase {
 	}
 	
 	@Test
-	public void shouldListIdUtilisateur() {
+	public void shouldListIdEmploye() {
 		// WHEN
 		List<Employe> employes = employeDao.listEmployes();
 		// THEN
@@ -44,6 +46,56 @@ public class EmployeDaoTestCase {
 		Assertions.tuple("chloe.pelletier","Pelletier","Chloe")
 		);
 
+	}
+	@Test
+	public void shouldSaveEmploye() throws Exception {
+		// GIVEN
+				Employe employetoSave = new Employe("Surmont","Maxime","080383839","stagiaire","max.s@g.com");
+				// WHEN
+				Employe employeAdded = employeDao.saveEmploye(employetoSave);
+		// THEN
+		Assertions.assertThat(employeAdded).isNotNull();
+		Assertions.assertThat(employeAdded.getIdEmploye()).isEqualTo("Maxime.Surmont");
+		
+		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM employes WHERE idEmploye = ?")) {
+			stmt.setString(1, employeAdded.getIdEmploye());
+			try (ResultSet rs = stmt.executeQuery()) {
+				assertThat(rs.next()).isTrue();
+				assertThat(rs.getString("idEmploye")).isEqualTo("Maxime.Surmont");
+			}
+		}
+		
+	}
+	
+
+	@Test
+	public void shouldGetEmployeById() {
+		// WHEN
+		Employe employe = employeDao.getEmployeById("chloe.pelletier");
+		// THEN
+		Assertions.assertThat(employe).isNotNull();
+		Assertions.assertThat(employe.getIdEmploye()).isEqualTo("chloe.pelletier");
+		Assertions.assertThat(employe.getNomEmploye()).isEqualTo("Pelletier");
+	}
+	
+	@Test
+	public void shouldDeleteEmploye() throws Exception {
+		// GIVEN
+		Employe employe = employeDao.getEmployeById("chloe.pelletier");
+		// WHEN
+		employeDao.deleteEmploye(employe);
+		// THEN
+		try (
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM employes WHERE idEmploye = ?")) {
+			stmt.setString(1, "chloe.pelletier");
+			try (ResultSet rs = stmt.executeQuery()) {
+				assertThat(rs.next()).isFalse();
+				
+			}
+		}
+		
 	}
 
 }
