@@ -29,7 +29,7 @@ public class ContactDaoTestCase {
 	
 
 	@Test
-	public void shouldSaveDevis() throws Exception {
+	public void shouldSaveContact() throws Exception {
 		// GIVEN
 		Contact contactToAdd = new Contact("Peri","nom@gmail.com","Assurance","Message de Test 3");
 		// WHEN

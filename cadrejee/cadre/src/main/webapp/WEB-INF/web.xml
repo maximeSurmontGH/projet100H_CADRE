@@ -41,5 +41,38 @@
 		<url-pattern>/direction/demandes</url-pattern>
 	</filter-mapping>
 	
+	<filter>
+		<filter-name>AuthentificationFilterEmploye</filter-name>
+		<filter-class>projet.cadre.filters.AuthentificationFilterEmploye</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthentificationFilterEmploye</filter-name>
+		<url-pattern>/employes/menu</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterEmploye</filter-name>
+		<url-pattern>/employes/annuaire</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterEmploye</filter-name>
+		<url-pattern>/employes/demandes</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterEmploye</filter-name>
+		<url-pattern>/employes/ressources</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterEmploye</filter-name>
+		<url-pattern>/employes/calendrier</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>AuthentificationFilterEmploye</filter-name>
+		<url-pattern>/employes/rappels</url-pattern>
+	</filter-mapping>
 
 </web-app>

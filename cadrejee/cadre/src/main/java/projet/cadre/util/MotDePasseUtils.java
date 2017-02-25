@@ -86,7 +86,10 @@ public class MotDePasseUtils {
 	public static void main(String[] args) {
 		try {
 			System.out.println(String.format("direction=%s", MotDePasseUtils.genererMotDePasse("direction")));
-			} catch (NoSuchAlgorithmException e) {
+			System.out.println(String.format("employe=%s", MotDePasseUtils.genererMotDePasse("employe")));
+			System.out.println(String.format("chloe.pelletier=%s", MotDePasseUtils.genererMotDePasse("chloe.pelletier")));
+			
+		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InvalidKeySpecException e) {
