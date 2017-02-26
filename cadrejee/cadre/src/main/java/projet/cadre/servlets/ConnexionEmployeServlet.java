@@ -29,6 +29,7 @@ public class ConnexionEmployeServlet extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		init();
 		String employeConnecte = (String) request.getSession().getAttribute("employeConnecte");
 		if (employeConnecte == null || "".equals( employeConnecte)) {
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/templates/connexionIntranetEmploye.html");

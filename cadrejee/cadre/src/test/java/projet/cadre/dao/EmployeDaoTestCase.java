@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import projet.cadre.model.Employe;
+import projet.cadre.util.MotDePasseUtils;
 
 public class EmployeDaoTestCase {
 	
@@ -23,6 +24,8 @@ public class EmployeDaoTestCase {
 			Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM employes");
 			stmt.executeUpdate("INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('chloe.pelletier','Pelletier', 'Chloe', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','stagiaire','0614348499','chlo@g.com')");
+			stmt.executeUpdate("INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('c.p','Pelletier', 'Chloe', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','stagiaire','0614348499','chlo@g.com')");
+			
 		}
 	}
 	
@@ -31,8 +34,9 @@ public class EmployeDaoTestCase {
 		// WHEN
 		HashMap<String,String> employesOk = employeDao.hashIdMdp();
 		// THEN
-		Assertions.assertThat(employesOk).hasSize(1);
+		Assertions.assertThat(employesOk).hasSize(2);
 		Assertions.assertThat(employesOk.get("chloe.pelletier")).isEqualTo("93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a");
+		Assertions.assertThat(employesOk.get("c.p")).isEqualTo("93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a");
 		
 	}
 	
@@ -41,8 +45,9 @@ public class EmployeDaoTestCase {
 		// WHEN
 		List<Employe> employes = employeDao.listEmployes();
 		// THEN
-		Assertions.assertThat(employes).hasSize(1);
+		Assertions.assertThat(employes).hasSize(2);
 		Assertions.assertThat(employes).extracting("idEmploye", "nomEmploye","prenomEmploye").containsOnly(
+				Assertions.tuple("c.p","Pelletier","Chloe"),
 		Assertions.tuple("chloe.pelletier","Pelletier","Chloe")
 		);
 
@@ -80,16 +85,29 @@ public class EmployeDaoTestCase {
 	}
 	
 	@Test
+	public void shouldListEmployePosteNom() {
+		// WHEN
+		List<Employe> employes = employeDao.listEmployesPosteNom("pelletier");
+		// THEN
+		Assertions.assertThat(employes).hasSize(2);
+		Assertions.assertThat(employes).extracting("idEmploye", "nomEmploye","prenomEmploye").containsOnly(
+				Assertions.tuple("c.p","Pelletier","Chloe"),
+		Assertions.tuple("chloe.pelletier","Pelletier","Chloe")
+		);
+
+	}
+	
+	@Test
 	public void shouldDeleteEmploye() throws Exception {
 		// GIVEN
-		Employe employe = employeDao.getEmployeById("chloe.pelletier");
+		Employe employe = employeDao.getEmployeById("c.p");
 		// WHEN
 		employeDao.deleteEmploye(employe);
 		// THEN
 		try (
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM employes WHERE idEmploye = ?")) {
-			stmt.setString(1, "chloe.pelletier");
+			stmt.setString(1, "c.p");
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isFalse();
 				
@@ -97,5 +115,27 @@ public class EmployeDaoTestCase {
 		}
 		
 	}
-
+	/*
+	 * Marche si le mdp n'est pas hashé, ne peut pas etre testé si mdp hashé 
+	@Test
+	public void shouldModifierMdp() throws Exception {
+		// GIVEN
+		
+		Employe employe = new Employe("S","M","080383839","stagiaire","max.s@g.com");
+		employeDao.saveEmploye(employe);
+		// WHEN
+		employeDao.modifierMDP("M.S", "blabla");
+		// THEN
+		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM employes WHERE idEmploye = ?")) {
+			stmt.setString(1, "M.S");
+			try (ResultSet rs = stmt.executeQuery()) {
+				assertThat(rs.next()).isTrue();
+				assertThat(rs.getString("idEmploye")).isEqualTo("M.S");
+				assertThat(rs.getString("motDePasse")).isEqualTo("blabla");
+			}
+		}
+		
+	}*/
+	
 }
