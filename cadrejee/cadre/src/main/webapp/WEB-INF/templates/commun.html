@@ -29,8 +29,14 @@
             <ul class="nav">
            <li th:class="${selected == 'index'} ? 'active' "><a href="index">Accueil</a></li>
            <li th:class="${selected == 'entreprise'} ? 'active' "><a href="entreprise">L'entreprise</a></li>
-           <li th:class="${selected == 'prestations'} ? 'active' "><a href="prestations">Nos prestations</a></li>
-           <li th:class="${selected == 'metier'} ? 'active' "><a href="metiers">Nos métiers</a></li>
+           <li th:class="${selected == 'prestations'} ? 'dropdown active': 'dropdown' ">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Nos prestations <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="prestations">Nos réalisations</a></li>
+                    <li><a href="metiers">Nos métiers</a></li>
+                </ul>
+            
+            </li>
            <li th:class="${selected == 'contact'} ? 'active' "><a href="contact">Contact</a></li>
            <li th:class="${selected == 'devis'} ? 'active' "><a href="devis">Votre Devis</a></li>
 
@@ -46,6 +52,7 @@
                     <option value="index">Accueil</option>
                     <option value="entreprise">L'entreprise</option>
                     <option value="prestations">Nos prestations</option>
+                    <option value="metiers">Nos métiers</option>
                     <option value="contact">Contact</option>
                     <option value="devis">Votre Devis</option>
                 </select>
