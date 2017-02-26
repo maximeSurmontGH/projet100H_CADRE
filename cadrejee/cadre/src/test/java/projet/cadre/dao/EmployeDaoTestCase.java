@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import projet.cadre.model.Employe;
-import projet.cadre.util.MotDePasseUtils;
+//import projet.cadre.util.MotDePasseUtils;
 
 public class EmployeDaoTestCase {
 	
