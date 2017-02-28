@@ -19,7 +19,7 @@ public class CongesDao {
 		Conges conge = new Conges(type);
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesConge WHERE typeConge=?", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesconge WHERE typeConge=?", Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, type);
 			ResultSet resultSet = stmt.executeQuery();
 			conge.setId(resultSet.getString("idConge"));
@@ -35,7 +35,7 @@ public class CongesDao {
 		ArrayList<demandesConge> lstdemandesConges = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesConge");
+			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesconge");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
 				lstdemandesConges.add(new demandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin"), resultSet.getString("etat")));
@@ -52,7 +52,7 @@ public class CongesDao {
 		ArrayList<demandesConge> lstdemandesConges = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesConge WHERE employes_idEmployes=?");
+			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesconge WHERE employes_idEmployes=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
@@ -69,7 +69,7 @@ public class CongesDao {
 	public void demandeDeConge(Conges conge, Employe employe, Date dateDebut, Date dateFin, int duree){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesConge(conges_idConge, employes_idEmploye, dateDebut, dateFin, etat, duree) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesconge(conges_idConge, employes_idEmploye, dateDebut, dateFin, etat, duree) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, conge.getId());
 			stmt.setString(2, employe.getIdEmploye());
 			stmt.setDate(3,dateDebut);
@@ -87,7 +87,7 @@ public class CongesDao {
 	public void changementdEtat(Conges conge, Employe employe, int nb){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesConge SET etat=? WHERE conges_idConge=? AND employes_idEmploye=?");
+			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesconge SET etat=? WHERE conges_idConge=? AND employes_idEmploye=?");
 			if (nb==2){
 				stmt.setString(1,"refus");
 			}
@@ -107,7 +107,7 @@ public class CongesDao {
 		int nb = 0;
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesConge WHERE conges_idConge=? AND employes_idEmploye=? AND etat=?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesconge WHERE conges_idConge=? AND employes_idEmploye=? AND etat=?");
 			stmt.setString(1, conge.getId());
 			stmt.setString(2, employe.getIdEmploye());
 			stmt.setString(3, "succès");

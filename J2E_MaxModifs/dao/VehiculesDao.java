@@ -45,11 +45,11 @@ public class VehiculesDao {
 		}
 	}
 
-	public List<demandesVehicule> demandesDeConge(){
+	public List<demandesVehicule> demandesDeVehicule(){
 		ArrayList<demandesVehicule> lstdemandesVehicule = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesVehicule");
+			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvehicule");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
 				lstdemandesVehicule.add(new demandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
@@ -66,7 +66,7 @@ public class VehiculesDao {
 		ArrayList<demandesVehicule> lstdemandesVehicule = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesVehicule WHERE employes_idEmployes=?");
+			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvehicule WHERE employes_idEmployes=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
@@ -83,7 +83,7 @@ public class VehiculesDao {
 	public void demandeDeVehicule(Vehicules vehicule, Employe employe, Date dateDebut, Date dateFin){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesVehicule(conges_immatriculation, employes_idEmploye, dateDebut, dateFin, etat) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesvehicule(conges_immatriculation, employes_idEmploye, dateDebut, dateFin, etat) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, vehicule.getImmatriculation());
 			stmt.setString(2, employe.getIdEmploye());
 			stmt.setDate(3,dateDebut);
@@ -100,7 +100,7 @@ public class VehiculesDao {
 	public void changementdEtat(Vehicules vehicule, Employe employe, int nb){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesVehicule SET etat=? WHERE vehicules_immatriculation=? AND employes_idEmploye=?");
+			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesvehicule SET etat=? WHERE vehicules_immatriculation=? AND employes_idEmploye=?");
 			if (nb==2){
 				stmt.setString(1,"refus");
 			}
@@ -115,5 +115,4 @@ public class VehiculesDao {
 			e.printStackTrace();
 		}
 	}
-
 }
