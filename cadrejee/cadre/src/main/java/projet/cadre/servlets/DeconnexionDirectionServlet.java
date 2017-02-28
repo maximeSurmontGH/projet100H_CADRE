@@ -17,7 +17,7 @@ public class DeconnexionDirectionServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("directeurConnecte");
-		response.sendRedirect("connexion");
+		response.sendRedirect("connexionIntranetDirection");
 	}
 
 
