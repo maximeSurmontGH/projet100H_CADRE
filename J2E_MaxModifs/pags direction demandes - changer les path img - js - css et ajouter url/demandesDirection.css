@@ -1,0 +1,73 @@
+/* NAVIGATION */
+#modifications{
+  border-radius: 10px 0px 0px 0px;
+}
+#calendrier{
+	border-radius: 0px 10px 0 0px;
+}
+#annuaire{
+	border-radius: 0px 0px 0px 10px;
+}
+#demandes{
+	border-radius: 0px 0px 0px 0px;
+}
+#ressources{
+	border-radius: 0px 0px 10px 0px;
+}
+
+/* SECTION */
+#titre{
+  margin-bottom: 40px;
+}
+table input {
+  width: 13vw;
+}
+.mesBtns{
+  width: 30vw;
+  margin-top: 2vw;
+  font-size: 2.2vw;
+  margin-left: 27%;
+}
+.table {
+  margin-top: 30px;
+  width: 100%;
+  font-size: 16px;
+}
+table span {
+  margin-left: 40%;
+}
+.spanSpe{
+  margin-left: 15%;
+}
+.inputTextarea{
+  width: 100%;
+}
+.colonneLarge{
+  width: 50%;
+}
+.colonneFine{
+  width: 60px;
+}
+#boutonRetour{
+  float: right;
+  margin-bottom: 30px;
+}
+.tdDate{
+  width: 255px;
+}
+
+/* ADAPTATIONS */
+@media screen and (max-width: 650px) {
+	/* SECTION */
+  section p{
+    margin-top: 60px;
+  }
+  #titre{
+    margin-left: 36px;
+  }
+  .mesBtns{
+    width: 250px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+}
