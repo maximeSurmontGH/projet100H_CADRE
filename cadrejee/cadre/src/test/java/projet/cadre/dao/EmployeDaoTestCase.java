@@ -47,7 +47,7 @@ public class EmployeDaoTestCase {
 		// THEN
 		Assertions.assertThat(employes).hasSize(2);
 		Assertions.assertThat(employes).extracting("idEmploye", "nomEmploye","prenomEmploye").containsOnly(
-				Assertions.tuple("c.p","Pelletier","Chloe"),
+		Assertions.tuple("c.p","Pelletier","Chloe"),
 		Assertions.tuple("chloe.pelletier","Pelletier","Chloe")
 		);
 
@@ -91,7 +91,7 @@ public class EmployeDaoTestCase {
 		// THEN
 		Assertions.assertThat(employes).hasSize(2);
 		Assertions.assertThat(employes).extracting("idEmploye", "nomEmploye","prenomEmploye").containsOnly(
-				Assertions.tuple("c.p","Pelletier","Chloe"),
+		Assertions.tuple("c.p","Pelletier","Chloe"),
 		Assertions.tuple("chloe.pelletier","Pelletier","Chloe")
 		);
 
