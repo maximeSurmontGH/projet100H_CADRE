@@ -2,20 +2,19 @@ package projet.cadre.model;
 
 public class Attestations {
 	
-	private String idAttestation;
+	private int idAttestation;
 	private String typeAttestation;
 	
-	public Attestations(String idAttestation, String typeAttestation) {
+	public Attestations(String typeAttestation) {
 		super();
-		this.idAttestation = idAttestation;
 		this.typeAttestation = typeAttestation;
 	}
 	
-	public String getIdAttestation() {
+	public int getIdAttestation() {
 		return idAttestation;
 	}
 	
-	public void setIdAttestation(String idAttestation) {
+	public void setIdAttestation(int idAttestation) {
 		this.idAttestation = idAttestation;
 	}
 	

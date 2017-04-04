@@ -1,6 +1,8 @@
 package projet.cadre.model;
 
 public class Devis {
+	
+	private int idDevis;
 	private String nomSociete ;
 	private String nomDemandeur ;
 	private String mail ;
@@ -100,6 +102,15 @@ public class Devis {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	public int getIdDevis() {
+		return idDevis;
+	}
+
+	public void setIdDevis(int idDevis) {
+		this.idDevis = idDevis;
+	}
+	
 	
 		
 

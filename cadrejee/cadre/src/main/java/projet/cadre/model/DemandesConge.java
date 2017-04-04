@@ -1,16 +1,15 @@
 package projet.cadre.model;
 
-import java.sql.Date;
 
 public class DemandesConge {
 	
-	private String conges_idConge;
-	private String employes_idEmploye;
+	private int conges_idConge;
+	private int employes_idEmploye;
 	private String dateDebut;
 	private String dateFin;
 	private String etat;
 	
-	public DemandesConge( String conges_idConge, String employes_idEmploye, String dateDebut, String dateFin, String etat){
+	public DemandesConge( int conges_idConge, int employes_idEmploye, String dateDebut, String dateFin, String etat){
 		this.conges_idConge=conges_idConge;
 		this.employes_idEmploye=employes_idEmploye;
 		this.dateDebut=dateDebut;
@@ -18,19 +17,19 @@ public class DemandesConge {
 		this.etat=etat;
 	}
 
-	public String getConges_idConge() {
+	public int getConges_idConge() {
 		return conges_idConge;
 	}
 
-	public void setConges_idConge(String conges_idConge) {
+	public void setConges_idConge(int conges_idConge) {
 		this.conges_idConge = conges_idConge;
 	}
 
-	public String getEmployes_idEmploye() {
+	public int getEmployes_idEmploye() {
 		return employes_idEmploye;
 	}
 
-	public void setEmployes_idEmploye(String employes_idEmploye) {
+	public void setEmployes_idEmploye(int employes_idEmploye) {
 		this.employes_idEmploye = employes_idEmploye;
 	}
 

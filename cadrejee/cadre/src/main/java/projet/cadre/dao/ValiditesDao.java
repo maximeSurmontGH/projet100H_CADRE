@@ -8,13 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import projet.cadre.model.Employe;
 import projet.cadre.model.Validites;
-import projet.cadre.model.Vehicules;
-import projet.cadre.model.DemandesAttestation;
 import projet.cadre.model.DemandesValidite;
-import projet.cadre.model.DemandesVehicule;
+
 
 public class ValiditesDao {
 
@@ -22,10 +19,10 @@ public class ValiditesDao {
 		ArrayList<DemandesValidite> lstdemandesValidite = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvalidite");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvalidite");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesValidite.add(new DemandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+				lstdemandesValidite.add(new DemandesValidite(resultSet.getInt("validites_idValidite"), resultSet.getInt("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
 			}
 			stmt.close();
 			connection.close();
@@ -39,11 +36,11 @@ public class ValiditesDao {
 		ArrayList<DemandesValidite> lstdemandesValidite = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvalidite WHERE employes_idEmployes=?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvalidite WHERE employes_idEmployes=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesValidite.add(new DemandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+				lstdemandesValidite.add(new DemandesValidite(resultSet.getInt("validites_idValidite"), resultSet.getInt("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
 			}
 			stmt.close();
 			connection.close();
@@ -57,7 +54,7 @@ public class ValiditesDao {
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesvalidite(validites_idValidite, employes_idEmploye, dateDebut, dateFin, etat) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, validite.getIdValidite());
+			stmt.setInt(1, validite.getIdValidite());
 			stmt.setString(2, employe.getIdEmploye());
 			stmt.setDate(3,dateDebut);
 			stmt.setDate(4,dateFin);
@@ -80,7 +77,7 @@ public class ValiditesDao {
 			else{
 				stmt.setString(1,"succès");
 			}
-			stmt.setString(2, validite.getIdValidite());
+			stmt.setInt(2, validite.getIdValidite());
 			stmt.setString(3, employe.getIdEmploye());
 			stmt.close();
 			connection.close();

@@ -3,11 +3,10 @@ package projet.cadre.model;
 public class Validites {
 	
 	private String typeValidite;
-	private String idValidite;
+	private int idValidite;
 	
-	public Validites(String typeValidite, String idValidite){
+	public Validites(String typeValidite){
 		this.typeValidite = typeValidite;
-		this.idValidite = idValidite;
 	}
 
 	public String getTypeValidite() {
@@ -18,11 +17,11 @@ public class Validites {
 		this.typeValidite = typeValidite;
 	}
 
-	public String getIdValidite() {
+	public int getIdValidite() {
 		return idValidite;
 	}
 
-	public void setIdValidite(String idValidite) {
+	public void setIdValidite(int idValidite) {
 		this.idValidite = idValidite;
 	}
 }

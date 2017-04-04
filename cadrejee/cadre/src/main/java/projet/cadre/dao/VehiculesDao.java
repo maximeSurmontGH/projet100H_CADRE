@@ -49,10 +49,10 @@ public class VehiculesDao {
 		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvehicule");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getInt("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
 			}
 			stmt.close();
 			connection.close();
@@ -66,11 +66,11 @@ public class VehiculesDao {
 		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvehicule WHERE employes_idEmployes=?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule WHERE employes_idEmployes=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getInt("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
 			}
 			stmt.close();
 			connection.close();
