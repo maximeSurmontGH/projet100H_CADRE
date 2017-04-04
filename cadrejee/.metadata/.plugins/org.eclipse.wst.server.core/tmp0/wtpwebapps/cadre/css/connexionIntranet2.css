@@ -1,0 +1,130 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-size: 2vw;
+}
+.container {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+.row{
+	padding:0;
+	margin:0;
+}
+
+/* NAVIGATION */
+#navigation{
+	background: #E1E8E8;
+	margin-top: 160px;
+}
+#titre{
+	color:  #778888;
+	text-align: center;
+	padding-top: 2vw;
+	font-size: 2.5vw;
+	font-weight: bold;
+}
+#formulaire div{
+	margin-top: 1vw;
+}
+#formulaire input{
+	min-width: 100px;
+}
+#divBouton1{
+	margin-bottom: 1vw;
+	float: right;
+}
+#bouton1{
+	font-weight: bold;
+	margin-top: 1.5vw;
+	font-size: 1.4vw;
+}
+#bouton1:hover{
+	background-color: #FFF;
+	color: #286090;
+}
+#logo{
+	width: 14vw;
+	margin-left: -48px;
+	margin-bottom: -10px;
+	position: absolute;
+}
+.notification{
+	font-size: 12px;
+	text-align: center;
+	border-radius: 0px 0px 0px 0px;
+	width: 100%;
+}
+.disparaitreAlerte{
+	display: none;
+}
+.apparaitreAlerte{
+	display: inline-block;
+}
+
+/* FOOTER */
+footer{
+	position: fixed;
+	bottom: 0;
+	padding-bottom: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 100%;
+}
+#bouton2{
+	width: 150px;
+	margin-bottom: 5px;
+}
+#bouton2:hover{
+	background-color: #FFF;
+	color: #286090;
+}
+#bouton3{
+	margin-bottom: 5px;
+}
+
+#bouton3:hover{
+	background-color: #FFF;
+	color: #286090;
+}
+
+/* ADAPTATIONS */
+@media screen and (max-width: 780px) {
+	/* NAVIGATION */
+	#titre{
+		font-size: 20px;
+	}
+	#bouton1{
+		font-size: 12px;
+	}
+	img{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	body{
+		min-height: 570px;
+		font-size: 3vw;
+	}
+	/* NAVIGATION */
+	#titre{
+		font-size: 4vw;
+	}
+	#logo{
+		display: none;
+	}
+	#navigation{
+		margin-top: 60px;
+	}
+	/* FOOTER */
+	footer{
+		position: relative;
+	}
+	#bouton2{
+		margin-top: 20px;
+		font-size: 12px;
+		width: 105px;
+	}
+}

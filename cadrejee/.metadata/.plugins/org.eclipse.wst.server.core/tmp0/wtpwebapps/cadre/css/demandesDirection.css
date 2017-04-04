@@ -52,6 +52,9 @@ table span {
   float: right;
   margin-bottom: 30px;
 }
+.tdDate{
+  width: 255px;
+}
 
 /* ADAPTATIONS */
 @media screen and (max-width: 650px) {

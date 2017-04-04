@@ -5,7 +5,8 @@ function gestionnairePage(){
 	document.getElementById("boutonAttestations").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonVehicules2").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonDevis").className = "btn btn-primary mesBtns apparaitre";
-	document.getElementById("boutonMotDePasse").className = "btn btn-primary mesBtns apparaitre lastElement";
+	document.getElementById("boutonMotDePasse").className = "btn btn-primary mesBtns apparaitre";
+	document.getElementById("boutonEvenements").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonRetour").className = "btn btn-primary mesBtns disparaitre";
 	document.getElementById("boutonVehicules1").onclick=function(){var pageModifiee = "vehicules1"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
 	document.getElementById("boutonConges").onclick=function(){ var pageModifiee = "conges"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
@@ -13,6 +14,7 @@ function gestionnairePage(){
 	document.getElementById("boutonVehicules2").onclick=function(){ var pageModifiee = "vehicules2"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
 	document.getElementById("boutonDevis").onclick=function(){ var pageModifiee = "devis"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
 	document.getElementById("boutonMotDePasse").onclick=function(){ var pageModifiee = "motDePasse"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
+	document.getElementById("boutonEvenements").onclick=function(){ var pageModifiee = "evenements"; gestionnairePage2(pageModifiee); disparaitre(); gestionFooter();}
 	while(document.getElementById("tableauDesDemandes1").firstChild) {
   	document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
 	}
@@ -35,6 +37,7 @@ function gestionnairePage2(pageModifiee){
 	document.getElementById("boutonVehicules2").className = "disparaitre";
 	document.getElementById("boutonDevis").className = "disparaitre";
 	document.getElementById("boutonMotDePasse").className = "disparaitre";
+	document.getElementById("boutonEvenements").className = "disparaitre";
 	document.getElementById("boutonRetour").className = "btn btn-primary btn-lg";
 
 	if(pageModifiee=="vehicules1"){
@@ -307,6 +310,56 @@ function gestionnairePage2(pageModifiee){
 		createurDeLigneMdP("SURMONT", "Maxime", "C30291", "kegkmex9");
 	}
 
+	if(pageModifiee=="evenements"){
+		document.getElementById("sousTitre1").innerHTML = "Créez et gérez vos évenements : ";
+		var table = document.getElementById("tableauDesDemandes1");
+		table.className = "table";
+		var tr = document.createElement('tr');
+		var th1 = document.createElement('th');
+		th1.innerHTML = "Contenu";
+		tr.appendChild(th1);
+		var th2 = document.createElement('th');
+		th2.innerHTML = "Date";
+		tr.appendChild(th2);
+		var th3 = document.createElement('th');
+		th3.innerHTML = "Action";
+		tr.appendChild(th3);
+		table.appendChild(tr);
+		var tr = document.createElement('tr');
+		var td1 = document.createElement('td');
+		var input1 = document.createElement('input');
+		input1.type="text";
+		input1.className = "form-control";
+		td1.appendChild(input1);
+		var td2 = document.createElement('td');
+		var sel1_1 = document.createElement('select');
+		sel1_1.id = "Jours";
+		var sel2_1 = document.createElement('select');
+		sel2_1.id = "Mois";
+		var sel3_1 = document.createElement('select');
+		sel3_1.id = "Annees";
+		td2.appendChild(sel1_1);
+		td2.appendChild(sel2_1);
+		td2.appendChild(sel3_1);
+		td2.className="tdDate";
+		var td3 = document.createElement('td');
+		td3.className="colonneFine";
+		var a = document.createElement('a');
+		a.href="#";
+		var span = document.createElement('span');
+		span.className=" glyphicon glyphicon-plus";
+		a.appendChild(span);
+		td3.appendChild(a);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		table.appendChild(tr);
+		remplissageJMA();
+
+		createurDeLigneE("Réunion retour fournisseur", "05 avril 2016");
+		createurDeLigneE("Audit du fournisseur AXA. Attitude exemplaire exigée.", "13 mai 2016");
+	}
+
 	document.getElementById("boutonRetour").onclick=function(){
 		gestionnairePage();
 		disparaitre();
@@ -566,6 +619,28 @@ function createurDeLigneMdP(nom, prenom, identifiant, mdp){
 	tr.appendChild(td3);
 	tr.appendChild(td4);
 	tr.appendChild(td5);
+	table.appendChild(tr);
+}
+
+// createur de ligne du tableau événement
+function createurDeLigneE(message, date){
+	var table = document.getElementById("tableauDesDemandes1");
+	var tr = document.createElement('tr');
+	var td1 = document.createElement('td');
+	td1.innerHTML = message;
+	var td2 = document.createElement('td');
+	td2.innerHTML = date;
+	var td3 = document.createElement('td');
+	td3.className="colonneFine";
+	var a = document.createElement('a');
+	a.href="#";
+	var span = document.createElement('span');
+	span.className=" glyphicon glyphicon-minus";
+	a.appendChild(span);
+	td3.appendChild(a);
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
 	table.appendChild(tr);
 }
 
