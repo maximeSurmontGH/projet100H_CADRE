@@ -7,10 +7,10 @@ public class DemandesValidite {
 	private String validites_idValidite;
 	private String employes_idEmploye;
 	private String etat;
-	private Date dateDebut;
-	private Date dateFin;
+	private String dateDebut;
+	private String dateFin;
 	
-	public DemandesValidite(String validites_idValidite, String employes_idEmploye, String etat, Date dateDebut, Date dateFin){
+	public DemandesValidite(String validites_idValidite, String employes_idEmploye, String etat, String dateDebut, String dateFin){
 		this.validites_idValidite = validites_idValidite;
 		this.employes_idEmploye = employes_idEmploye;
 		this.etat = etat;
@@ -42,19 +42,19 @@ public class DemandesValidite {
 		this.etat = etat;
 	}
 
-	public Date getDateDebut() {
+	public String getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(String dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public Date getDateFin() {
+	public String getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(Date dateFin) {
+	public void setDateFin(String dateFin) {
 		this.dateFin = dateFin;
 	}
 }

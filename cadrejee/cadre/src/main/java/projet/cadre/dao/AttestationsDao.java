@@ -24,7 +24,7 @@ public class AttestationsDao {
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesattestation");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesAttestation.add(new DemandesAttestation(resultSet.getString("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("date")));
+				lstdemandesAttestation.add(new DemandesAttestation(resultSet.getString("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("date")));
 			}
 			stmt.close();
 			connection.close();
@@ -42,7 +42,7 @@ public class AttestationsDao {
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesAttestation.add(new DemandesAttestation(resultSet.getString("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("date")));
+				lstdemandesAttestation.add(new DemandesAttestation(resultSet.getString("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("date")));
 			}
 			stmt.close();
 			connection.close();

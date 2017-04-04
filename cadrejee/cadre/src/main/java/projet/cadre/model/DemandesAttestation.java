@@ -7,9 +7,9 @@ public class DemandesAttestation {
 	private String attestations_idAttestation;
 	private String employes_idEmploye;
 	private String etat;
-	private Date date;
+	private String date;
 	
-	public DemandesAttestation(String attestations_idAttestation, String employes_idEmploye, String etat, Date date) {
+	public DemandesAttestation(String attestations_idAttestation, String employes_idEmploye, String etat, String date) {
 		super();
 		this.attestations_idAttestation = attestations_idAttestation;
 		this.employes_idEmploye = employes_idEmploye;
@@ -41,11 +41,11 @@ public class DemandesAttestation {
 		this.etat = etat;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 }

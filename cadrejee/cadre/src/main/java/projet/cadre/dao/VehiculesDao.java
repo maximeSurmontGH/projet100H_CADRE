@@ -52,7 +52,7 @@ public class VehiculesDao {
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvehicule");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
+				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
 			}
 			stmt.close();
 			connection.close();
@@ -70,7 +70,7 @@ public class VehiculesDao {
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
+				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
 			}
 			stmt.close();
 			connection.close();

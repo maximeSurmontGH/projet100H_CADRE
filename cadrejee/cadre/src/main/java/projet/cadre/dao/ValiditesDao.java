@@ -25,7 +25,7 @@ public class ValiditesDao {
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvalidite");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesValidite.add(new DemandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
+				lstdemandesValidite.add(new DemandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
 			}
 			stmt.close();
 			connection.close();
@@ -43,7 +43,7 @@ public class ValiditesDao {
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesValidite.add(new DemandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
+				lstdemandesValidite.add(new DemandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
 			}
 			stmt.close();
 			connection.close();

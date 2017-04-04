@@ -38,7 +38,7 @@ public class CongesDao {
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesconge");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesConges.add(new DemandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin"), resultSet.getString("etat")));
+				lstdemandesConges.add(new DemandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getString("dateDebut"), resultSet.getString("dateFin"), resultSet.getString("etat")));
 			}
 			stmt.close();
 			connection.close();
@@ -56,7 +56,7 @@ public class CongesDao {
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesConges.add(new DemandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin"), resultSet.getString("etat")));
+				lstdemandesConges.add(new DemandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getString("dateDebut"), resultSet.getString("dateFin"), resultSet.getString("etat")));
 			}
 			stmt.close();
 			connection.close();

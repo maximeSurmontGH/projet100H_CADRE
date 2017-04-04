@@ -6,11 +6,11 @@ public class DemandesConge {
 	
 	private String conges_idConge;
 	private String employes_idEmploye;
-	private Date dateDebut;
-	private Date dateFin;
+	private String dateDebut;
+	private String dateFin;
 	private String etat;
 	
-	public DemandesConge( String conges_idConge, String employes_idEmploye, Date dateDebut, Date dateFin, String etat){
+	public DemandesConge( String conges_idConge, String employes_idEmploye, String dateDebut, String dateFin, String etat){
 		this.conges_idConge=conges_idConge;
 		this.employes_idEmploye=employes_idEmploye;
 		this.dateDebut=dateDebut;
@@ -34,19 +34,19 @@ public class DemandesConge {
 		this.employes_idEmploye = employes_idEmploye;
 	}
 
-	public Date getDateDebut() {
+	public String getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(String dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public Date getDateFin() {
+	public String getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(Date dateFin) {
+	public void setDateFin(String dateFin) {
 		this.dateFin = dateFin;
 	}
 
