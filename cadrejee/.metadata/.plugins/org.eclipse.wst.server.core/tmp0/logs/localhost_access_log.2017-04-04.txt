@@ -104,3 +104,8 @@
 0:0:0:0:0:0:0:1 - - [04/Apr/2017:15:56:59 +0200] "GET /cadre/css/bootstrap.css HTTP/1.1" 200 152767
 0:0:0:0:0:0:0:1 - - [04/Apr/2017:15:56:59 +0200] "GET /cadre/css/connexionIntranet2.css HTTP/1.1" 200 1804
 0:0:0:0:0:0:0:1 - - [04/Apr/2017:15:57:00 +0200] "GET /cadre/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+0:0:0:0:0:0:0:1 - - [04/Apr/2017:16:18:59 +0200] "GET /cadre/index HTTP/1.1" 200 7529
+0:0:0:0:0:0:0:1 - - [04/Apr/2017:16:18:59 +0200] "GET /cadre/img/gallery/exterieurBT.png HTTP/1.1" 200 611294
+0:0:0:0:0:0:0:1 - - [04/Apr/2017:16:19:23 +0200] "GET /cadre/metiers HTTP/1.1" 200 8020
+0:0:0:0:0:0:0:1 - - [04/Apr/2017:16:27:34 +0200] "GET /cadre/index HTTP/1.1" 200 7529
+0:0:0:0:0:0:0:1 - - [04/Apr/2017:16:27:38 +0200] "GET /cadre/entreprise HTTP/1.1" 200 13043

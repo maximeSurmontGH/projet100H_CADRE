@@ -1,0 +1,57 @@
+package projet.cadre.model;
+
+import java.sql.Date;
+
+public class Rappel {
+	private int idRappel; 
+	private Date dateRappel; 
+	private String messageRappel;
+	private String employes_idEmploye;
+	
+	public Rappel(int idRappel, Date dateRappel, String messageRappel, String employes_idEmploye) {
+		super();
+		this.idRappel = idRappel;
+		this.dateRappel = dateRappel;
+		this.messageRappel = messageRappel;
+		this.employes_idEmploye = employes_idEmploye;
+	}
+
+	public int getIdRappel() {
+		return idRappel;
+	}
+
+	public void setIdRappel(int idRappel) {
+		this.idRappel = idRappel;
+	}
+
+	public Date getDateRappel() {
+		return dateRappel;
+	}
+
+	public void setDateRappel(Date dateRappel) {
+		this.dateRappel = dateRappel;
+	}
+
+	public String getMessageRappel() {
+		return messageRappel;
+	}
+
+	public void setMessageRappel(String messageRappel) {
+		this.messageRappel = messageRappel;
+	}
+
+	public String getEmployes_idEmploye() {
+		return employes_idEmploye;
+	}
+
+	public void setEmployes_idEmploye(String employes_idEmploye) {
+		this.employes_idEmploye = employes_idEmploye;
+	}
+	
+	
+	
+	
+	
+	
+
+}
