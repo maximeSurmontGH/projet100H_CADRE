@@ -4,24 +4,26 @@ import java.sql.Date;
 
 public class DemandesAttestation {
 	
-	private String attestations_idAttestation;
+	private int id;
+	private int attestations_idAttestation;
 	private String employes_idEmploye;
 	private String etat;
 	private String date;
 	
-	public DemandesAttestation(String attestations_idAttestation, String employes_idEmploye, String etat, String date) {
+	public DemandesAttestation(int id, int attestations_idAttestation, String employes_idEmploye, String etat, String date) {
 		super();
+		this.id = id;
 		this.attestations_idAttestation = attestations_idAttestation;
 		this.employes_idEmploye = employes_idEmploye;
 		this.etat = etat;
 		this.date = date;
 	}
 
-	public String getAttestations_idAttestation() {
+	public int getAttestations_idAttestation() {
 		return attestations_idAttestation;
 	}
 
-	public void setAttestations_idAttestation(String attestations_idAttestation) {
+	public void setAttestations_idAttestation(int attestations_idAttestation) {
 		this.attestations_idAttestation = attestations_idAttestation;
 	}
 
@@ -48,4 +50,9 @@ public class DemandesAttestation {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
 }
