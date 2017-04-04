@@ -34,14 +34,14 @@ public class RappelDaoTestCase {
 	@Test
 	public void shouldSaveRappel() throws Exception {
 		// GIVEN
-				Rappel rappeltoSave = new Rappel("10122019","blablatest","chloe.pelletier");
+				Rappel rappeltoSave = new Rappel("10122019","blabla","chloe.pelletier");
 				// WHEN
 				Rappel rappelAdded = rappelDao.saveRappel(rappeltoSave) ;
 		// THEN
 		Assertions.assertThat(rappelAdded).isNotNull();		
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM rappels WHERE messageRappel = ?")) {
-			stmt.setString(1,"blablatest");
+			stmt.setString(1,"blabla");
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isTrue();
 				assertThat(rs.getString("dateRappel")).isEqualTo("10122019");
