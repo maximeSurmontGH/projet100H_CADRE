@@ -51,7 +51,6 @@ public class ElementsSiteDaoTestCase {
 				assertThat(rs.getString("contenuElement")).isEqualTo("Blablachangé");
 			}
 		}
-		
 	}
 
 	@Test
@@ -68,9 +67,6 @@ public class ElementsSiteDaoTestCase {
 				assertThat(rs.getString("contenuElement")).isEqualTo("Blablachangé2");
 				assertThat(rs.getString("cheminElement")).isEqualTo("che2");
 			}
-		}
-		
+		}	
 	}
-	
-	
 }

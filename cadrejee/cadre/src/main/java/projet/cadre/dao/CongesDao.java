@@ -11,7 +11,7 @@ import java.util.List;
 
 import projet.cadre.model.Conges;
 import projet.cadre.model.Employe;
-import projet.cadre.model.demandesConge;
+import projet.cadre.model.DemandesConge;
 
 public class CongesDao {
 	
@@ -31,14 +31,14 @@ public class CongesDao {
 		return conge;
 	}
 	
-	public List<demandesConge> demandesDeConge(){
-		ArrayList<demandesConge> lstdemandesConges = new ArrayList<>();
+	public List<DemandesConge> demandesDeConge(){
+		ArrayList<DemandesConge> lstdemandesConges = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesconge");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesConges.add(new demandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin"), resultSet.getString("etat")));
+				lstdemandesConges.add(new DemandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin"), resultSet.getString("etat")));
 			}
 			stmt.close();
 			connection.close();
@@ -48,15 +48,15 @@ public class CongesDao {
 		return lstdemandesConges;
 	}
 	
-	public List<demandesConge> demandesDeCongeParidEmploye(String id){
-		ArrayList<demandesConge> lstdemandesConges = new ArrayList<>();
+	public List<DemandesConge> demandesDeCongeParidEmploye(String id){
+		ArrayList<DemandesConge> lstdemandesConges = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesconge WHERE employes_idEmployes=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesConges.add(new demandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin"), resultSet.getString("etat")));
+				lstdemandesConges.add(new DemandesConge(resultSet.getString("conges_idConges"), resultSet.getString("employes_idEmploye"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin"), resultSet.getString("etat")));
 			}
 			stmt.close();
 			connection.close();

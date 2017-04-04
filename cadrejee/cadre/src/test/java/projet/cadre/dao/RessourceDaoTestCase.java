@@ -82,8 +82,6 @@ public class RessourceDaoTestCase {
 				assertThat(rs.next()).isFalse();
 				
 			}
-		}
-		
+		}	
 	}
-
 }

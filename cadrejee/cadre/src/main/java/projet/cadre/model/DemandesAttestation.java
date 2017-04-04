@@ -2,14 +2,14 @@ package projet.cadre.model;
 
 import java.sql.Date;
 
-public class demandesAttestation {
+public class DemandesAttestation {
 	
 	private String attestations_idAttestation;
 	private String employes_idEmploye;
 	private String etat;
 	private Date date;
 	
-	public demandesAttestation(String attestations_idAttestation, String employes_idEmploye, String etat, Date date) {
+	public DemandesAttestation(String attestations_idAttestation, String employes_idEmploye, String etat, Date date) {
 		super();
 		this.attestations_idAttestation = attestations_idAttestation;
 		this.employes_idEmploye = employes_idEmploye;

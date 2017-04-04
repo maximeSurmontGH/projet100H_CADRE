@@ -1,17 +1,17 @@
+
 CREATE TABLE `employes` (
 
-  `idEmploye` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `idEmploye` varchar(50) NOT NULL,
   `nomEmploye` varchar(50) NOT NULL,
   `prenomEmploye` varchar(50) NOT NULL,
-  `identifiant` varchar(30) NOT NULL,
-  `motDePasse` varchar(30) NOT NULL,
+  `motDePasse` varchar(200) NOT NULL,
   `poste` varchar(30) NOT NULL,
   `telephone` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `estConnecte` varchar(1) NOT NULL,
   
   PRIMARY KEY (`idEmploye`)
 ) DEFAULT CHARSET=utf8;
+
 
 /* - - - - - - - - - - - - - - - - - */
 
@@ -57,13 +57,16 @@ CREATE TABLE `vehicules` (
 
 CREATE TABLE `demandesVehicule` (
 
-  //`immatriculation` varchar(30) NOT NULL,
-  //`idEmploye` mediumint(9) NOT NULL,
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `vehicules_immatriculation` varchar(30) NOT NULL,
+  `employes_idEmploye` varchar(50) NOT NULL,
   `etat` varchar(30) NOT NULL,
   `dateDebut` varchar(30) NOT NULL,
   `dateFin` varchar(30) NOT NULL,
   
-  PRIMARY KEY (``)
+  CONSTRAINT FOREIGN KEY (`vehicules_immatriculation`) REFERENCES vehicules(`immatriculation`),
+  CONSTRAINT FOREIGN KEY (`employes_idEmploye`) REFERENCES employes(`idEmploye`),
+  PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 
 /* - - - - - - - - - - - - - - - - - */
@@ -78,13 +81,16 @@ CREATE TABLE `validites` (
 
 CREATE TABLE `demandesValidite` (
 
-  //`idAttestation` mediumint(9) NOT NULL,
-  //`idEmploye` mediumint(9) NOT NULL,
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `validites_idValidite` mediumint(9) NOT NULL,
+  `employes_idEmploye` varchar(50) NOT NULL,
   `etat` varchar(30) NOT NULL,
   `dateDebut` varchar(30) NOT NULL,
   `dateFin` varchar(30) NOT NULL,
   
-  PRIMARY KEY (`idAttestation`)
+  FOREIGN KEY (`validites_idValidite`) REFERENCES validites(`idValidite`),
+  FOREIGN KEY (`employes_idEmploye`) REFERENCES employes(`idEmploye`),
+  PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 
 /* - - - - - - - - - - - - - - - - - */
@@ -98,25 +104,50 @@ CREATE TABLE `attestations` (
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE `demandesAttestation` (
-
-  //`idAttestation` mediumint(9) NOT NULL,
-  //`idEmploye` mediumint(9) NOT NULL,
+  
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `attestations_idAttestation` mediumint(9) NOT NULL,
+  `employes_idEmploye` varchar(50) NOT NULL,
   `etat` varchar(30) NOT NULL,
   `date` varchar(30) NOT NULL,
   
-  PRIMARY KEY (`idAttestation`)
+  FOREIGN KEY (`attestations_idAttestation`) REFERENCES attestations(`idAttestation`),
+  FOREIGN KEY (`employes_idEmploye`) REFERENCES employes(`idEmploye`),
+  PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 
 /* - - - - - - - - - - - - - - - - - */
 
 CREATE TABLE `rappels` (
 
+
   `idRappel` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `dateRappel` varchar(30) NOT NULL,
+
+  `dateRappel` date NOT NULL,
+
   `messageRappel` varchar(256) NOT NULL,
-  //`idEmploye` mediumint(9) NOT NULL,
+
+  `employes_idEmploye` varchar(50) NOT NULL,
+
+
   
-  PRIMARY KEY (`idRappels`)
+FOREIGN KEY (`employes_idEmploye`) REFERENCES employes(`idEmploye`),
+
+  PRIMARY KEY (`idRappel`)
+
+) DEFAULT CHARSET=utf8;
+
+/* - - - - - - - - - - - - - - - - - */
+
+CREATE TABLE `evenementsAutres` (
+
+  `idEvenement` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `dateEvenement` varchar(30) NOT NULL,
+  `messageEvenement` varchar(500) NOT NULL,
+  `employes_idEmploye` varchar(50) NOT NULL,
+  
+  FOREIGN KEY (`employes_idEmploye`) REFERENCES employes(`idEmploye`),
+  PRIMARY KEY (`idEvenement`)
 ) DEFAULT CHARSET=utf8;
 
 /* - - - - - - - - - - - - - - - - - */
@@ -132,14 +163,18 @@ CREATE TABLE `ressources` (
 ) DEFAULT CHARSET=utf8;
 
 /* - - - - - - - - - - - - - - - - - */
+CREATE TABLE `elementssite` (
 
-CREATE TABLE `elementSite` (
 
-  `idElement` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `contenuElement` varchar(2 000),
+  `idElement` varchar(10) NOT NULL,
+
+  `contenuElement` varchar(2000),
+
   `cheminElement` varchar(50),
+
   
-  PRIMARY KEY (`idElement`)
+ PRIMARY KEY (`idElement`)
+
 ) DEFAULT CHARSET=utf8;
 
 /* - - - - - - - - - - - - - - - - - */
@@ -155,20 +190,26 @@ CREATE TABLE `conges` (
 
 CREATE TABLE `demandesConge` (
 
-  //`idConge` mediumint(9) NOT NULL,
-  //`idEmploye` mediumint(9) NOT NULL,
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `conges_idConge` mediumint(9) NOT NULL,
+  `employes_idEmploye` varchar(50) NOT NULL,
   `dateDebut` varchar(30) NOT NULL,
   `dateFin` varchar(30) NOT NULL,
   `etat` varchar(30) NOT NULL,
 
-  PRIMARY KEY (``)
+  FOREIGN KEY (`conges_idConge`) REFERENCES conges(`idConge`),
+  FOREIGN KEY (`employes_idEmploye`) REFERENCES employes(`idEmploye`),
+  PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE `compteurConges` (
-
-  //`idConge` mediumint(9) NOT NULL,
-  //`idEmploye` mediumint(9) NOT NULL,
+	
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `conges_idConge` mediumint(9) NOT NULL,
+  `employes_idEmploye` varchar(50) NOT NULL,
   `compteur` mediumint(9) NOT NULL,
   
-  PRIMARY KEY (``)
+  FOREIGN KEY (`conges_idConge`) REFERENCES conges(`idConge`),
+  FOREIGN KEY (`employes_idEmploye`) REFERENCES employes(`idEmploye`),
+  PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;

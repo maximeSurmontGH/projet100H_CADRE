@@ -2,7 +2,7 @@ package projet.cadre.model;
 
 import java.sql.Date;
 
-public class demandesConge {
+public class DemandesConge {
 	
 	private String conges_idConge;
 	private String employes_idEmploye;
@@ -10,7 +10,7 @@ public class demandesConge {
 	private Date dateFin;
 	private String etat;
 	
-	public demandesConge( String conges_idConge, String employes_idEmploye, Date dateDebut, Date dateFin, String etat){
+	public DemandesConge( String conges_idConge, String employes_idEmploye, Date dateDebut, Date dateFin, String etat){
 		this.conges_idConge=conges_idConge;
 		this.employes_idEmploye=employes_idEmploye;
 		this.dateDebut=dateDebut;

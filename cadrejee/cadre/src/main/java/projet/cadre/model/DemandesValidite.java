@@ -2,28 +2,28 @@ package projet.cadre.model;
 
 import java.sql.Date;
 
-public class demandesVehicule {
+public class DemandesValidite {
 	
-	private String vehicules_immatriculation;
+	private String validites_idValidite;
 	private String employes_idEmploye;
 	private String etat;
 	private Date dateDebut;
 	private Date dateFin;
 	
-	public demandesVehicule(String imma, String id, String etat, Date dateDebut, Date dateFin){
-		this.vehicules_immatriculation=imma;
-		this.employes_idEmploye=id;
-		this.etat=etat;
-		this.dateDebut=dateDebut;
-		this.dateFin=dateFin;
+	public DemandesValidite(String validites_idValidite, String employes_idEmploye, String etat, Date dateDebut, Date dateFin){
+		this.validites_idValidite = validites_idValidite;
+		this.employes_idEmploye = employes_idEmploye;
+		this.etat = etat;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
 	}
 
-	public String getVehicules_immatriculation() {
-		return vehicules_immatriculation;
+	public String getValidites_idValidite() {
+		return validites_idValidite;
 	}
 
-	public void setVehicules_immatriculation(String vehicules_immatriculation) {
-		this.vehicules_immatriculation = vehicules_immatriculation;
+	public void setValidites_idValidite(String validites_idValidite) {
+		this.validites_idValidite = validites_idValidite;
 	}
 
 	public String getEmployes_idEmploye() {
@@ -57,5 +57,4 @@ public class demandesVehicule {
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
-	
 }

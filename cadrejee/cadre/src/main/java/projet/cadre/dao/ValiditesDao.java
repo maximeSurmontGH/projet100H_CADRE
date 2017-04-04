@@ -12,20 +12,20 @@ import java.util.List;
 import projet.cadre.model.Employe;
 import projet.cadre.model.Validites;
 import projet.cadre.model.Vehicules;
-import projet.cadre.model.demandesAttestation;
-import projet.cadre.model.demandesValidite;
-import projet.cadre.model.demandesVehicule;
+import projet.cadre.model.DemandesAttestation;
+import projet.cadre.model.DemandesValidite;
+import projet.cadre.model.DemandesVehicule;
 
 public class ValiditesDao {
 
-	public List<demandesValidite> demandesValidite(){
-		ArrayList<demandesValidite> lstdemandesValidite = new ArrayList<>();
+	public List<DemandesValidite> demandesValidite(){
+		ArrayList<DemandesValidite> lstdemandesValidite = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvalidite");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesValidite.add(new demandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
+				lstdemandesValidite.add(new DemandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
 			}
 			stmt.close();
 			connection.close();
@@ -35,15 +35,15 @@ public class ValiditesDao {
 		return lstdemandesValidite;
 	}
 	
-	public List<demandesValidite> demandesDeValiditeParidEmploye(String id){
-		ArrayList<demandesValidite> lstdemandesValidite = new ArrayList<>();
+	public List<DemandesValidite> demandesDeValiditeParidEmploye(String id){
+		ArrayList<DemandesValidite> lstdemandesValidite = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvalidite WHERE employes_idEmployes=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesValidite.add(new demandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
+				lstdemandesValidite.add(new DemandesValidite(resultSet.getString("validites_idValidite"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
 			}
 			stmt.close();
 			connection.close();

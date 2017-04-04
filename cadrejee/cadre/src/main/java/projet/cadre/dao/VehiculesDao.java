@@ -12,8 +12,8 @@ import java.util.List;
 import projet.cadre.model.Conges;
 import projet.cadre.model.Employe;
 import projet.cadre.model.Vehicules;
-import projet.cadre.model.demandesConge;
-import projet.cadre.model.demandesVehicule;
+import projet.cadre.model.DemandesConge;
+import projet.cadre.model.DemandesVehicule;
 
 public class VehiculesDao {
 	
@@ -45,14 +45,14 @@ public class VehiculesDao {
 		}
 	}
 
-	public List<demandesVehicule> demandesDeVehicule(){
-		ArrayList<demandesVehicule> lstdemandesVehicule = new ArrayList<>();
+	public List<DemandesVehicule> demandesDeVehicule(){
+		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvehicule");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesVehicule.add(new demandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
+				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
 			}
 			stmt.close();
 			connection.close();
@@ -62,15 +62,15 @@ public class VehiculesDao {
 		return lstdemandesVehicule;
 	}
 	
-	public List<demandesVehicule> demandesDeVehiculeParidEmploye(String id){
-		ArrayList<demandesVehicule> lstdemandesVehicule = new ArrayList<>();
+	public List<DemandesVehicule> demandesDeVehiculeParidEmploye(String id){
+		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesvehicule WHERE employes_idEmployes=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesVehicule.add(new demandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
+				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("dateDebut"), resultSet.getDate("dateFin")));
 			}
 			stmt.close();
 			connection.close();

@@ -12,19 +12,19 @@ import java.util.List;
 import projet.cadre.model.Attestations;
 import projet.cadre.model.Employe;
 import projet.cadre.model.Validites;
-import projet.cadre.model.demandesAttestation;
-import projet.cadre.model.demandesValidite;
+import projet.cadre.model.DemandesAttestation;
+import projet.cadre.model.DemandesValidite;
 
 public class AttestationsDao {
 
-	public List<demandesAttestation> demandesAttestation(){
-		ArrayList<demandesAttestation> lstdemandesAttestation = new ArrayList<>();
+	public List<DemandesAttestation> demandesAttestation(){
+		ArrayList<DemandesAttestation> lstdemandesAttestation = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesattestation");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesAttestation.add(new demandesAttestation(resultSet.getString("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("date")));
+				lstdemandesAttestation.add(new DemandesAttestation(resultSet.getString("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("date")));
 			}
 			stmt.close();
 			connection.close();
@@ -34,15 +34,15 @@ public class AttestationsDao {
 		return lstdemandesAttestation;
 	}
 	
-	public List<demandesAttestation> demandesAttestationeParidEmploye(String id){
-		ArrayList<demandesAttestation> lstdemandesAttestation = new ArrayList<>();
+	public List<DemandesAttestation> demandesAttestationeParidEmploye(String id){
+		ArrayList<DemandesAttestation> lstdemandesAttestation = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesattestation WHERE employes_idEmployes=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesAttestation.add(new demandesAttestation(resultSet.getString("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("date")));
+				lstdemandesAttestation.add(new DemandesAttestation(resultSet.getString("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getDate("date")));
 			}
 			stmt.close();
 			connection.close();
