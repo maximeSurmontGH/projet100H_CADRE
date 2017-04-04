@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ElementsSiteDaoTestCase" project="cadre" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="projet.cadre.dao.ElementsSiteDaoTestCase" time="0.563">
+    <testcase name="shouldModifiertxt" classname="projet.cadre.dao.ElementsSiteDaoTestCase" time="0.485"/>
+    <testcase name="shouldGetEmployeById" classname="projet.cadre.dao.ElementsSiteDaoTestCase" time="0.031"/>
+    <testcase name="shouldModifierim" classname="projet.cadre.dao.ElementsSiteDaoTestCase" time="0.047"/>
+  </testsuite>
+</testrun>

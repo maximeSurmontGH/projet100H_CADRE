@@ -70,7 +70,7 @@ public class RessourceDaoTestCase {
 	}
 	
 	@Test
-	public void shouldDeleteRessource() throws Exception {
+	public void shouldDeleteEmploye() throws Exception {
 		// WHEN
 		ressourcedao.deleteRessource(2);
 		// THEN

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EmployeDaoTestCase" project="cadre" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="projet.cadre.dao.EmployeDaoTestCase" time="1.266">
+    <testcase name="shouldGetEmployeById" classname="projet.cadre.dao.EmployeDaoTestCase" time="0.422"/>
+    <testcase name="shouldHashIdMdp" classname="projet.cadre.dao.EmployeDaoTestCase" time="0.031"/>
+    <testcase name="shouldListIdEmploye" classname="projet.cadre.dao.EmployeDaoTestCase" time="0.047"/>
+    <testcase name="shouldSaveEmploye" classname="projet.cadre.dao.EmployeDaoTestCase" time="0.688"/>
+    <testcase name="shouldListEmployePosteNom" classname="projet.cadre.dao.EmployeDaoTestCase" time="0.046"/>
+    <testcase name="shouldDeleteEmploye" classname="projet.cadre.dao.EmployeDaoTestCase" time="0.032"/>
+  </testsuite>
+</testrun>

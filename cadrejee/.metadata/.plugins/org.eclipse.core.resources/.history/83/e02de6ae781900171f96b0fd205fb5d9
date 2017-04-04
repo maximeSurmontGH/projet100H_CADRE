@@ -1,0 +1,30 @@
+package projet.cadre.dao;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import org.assertj.core.api.Assertions;
+import org.junit.Before;
+import org.junit.Test;
+
+import projet.cadre.model.Rappel;
+
+public class RappelDaoTestCase {
+	private RappelDao rappelDao = new RappelDao();
+	
+	@Before
+	public void initDb() throws Exception {
+		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+			Statement stmt = connection.createStatement()) {
+			stmt.executeUpdate("DELETE FROM rappels");
+			stmt.executeUpdate("INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`) VALUES (1,'2017-01-23','blabla','chloe.pelletier')");
+			stmt.executeUpdate("INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`) VALUES (2,'2017-01-04','blabla3','chloe.pelletier')");
+			
+		}
+	}
+}

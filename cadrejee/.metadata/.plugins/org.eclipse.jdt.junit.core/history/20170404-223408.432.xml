@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RessourceDaoTestCase" project="cadre" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="projet.cadre.dao.RessourceDaoTestCase" time="0.539">
+    <testcase name="shouldSaveRessource" classname="projet.cadre.dao.RessourceDaoTestCase" time="0.414"/>
+    <testcase name="shouldGetRessourceById" classname="projet.cadre.dao.RessourceDaoTestCase" time="0.031"/>
+    <testcase name="shouldDeleteEmploye" classname="projet.cadre.dao.RessourceDaoTestCase" time="0.047"/>
+    <testcase name="shouldListRessourceByPosteNom" classname="projet.cadre.dao.RessourceDaoTestCase" time="0.047"/>
+  </testsuite>
+</testrun>
