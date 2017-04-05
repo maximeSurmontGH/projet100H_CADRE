@@ -71,7 +71,7 @@ public class CongesDao {
 	public void setDemandeDeConge(int idConge, String idEmploye, String dateDebut, String dateFin){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesconge(conges_idConge, employes_idEmploye, dateDebut, dateFin, etat, duree) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesconge(conges_idConge, employes_idEmploye, dateDebut, dateFin, etat) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, idConge);
 			stmt.setString(2, idEmploye);
 			stmt.setString(3,dateDebut);
@@ -93,7 +93,7 @@ public class CongesDao {
 				stmt.setString(1,"refus");
 			}
 			else{
-				stmt.setString(1,"succès");
+				stmt.setString(1,"succes");
 			}
 			stmt.setInt(2, id);
 			stmt.executeUpdate();
@@ -111,12 +111,11 @@ public class CongesDao {
 			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesconge WHERE conges_idConge=? AND employes_idEmploye=? AND etat=?");
 			stmt.setInt(1, idConge);
 			stmt.setString(2, idEmploye);
-			stmt.setString(3, "succès");
+			stmt.setString(3, "succes");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
 				nb++;			
 			}
-			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {

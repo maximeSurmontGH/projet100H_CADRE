@@ -18,6 +18,131 @@ import projet.cadre.model.DemandesVehicule;
 
 public class VehiculesDao {
 	
+	public List<DemandesVehicule> getDemandesDeVehicule(){
+		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule");
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getInt("id"), resultSet.getString("vehicules_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lstdemandesVehicule;
+	}
+	
+	public List<DemandesVehicule> getDemandesDeVehiculeByIdEmploye(String id){
+		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule WHERE employes_idEmploye=?");
+			stmt.setString(1, id);
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getInt("id"), resultSet.getString("vehicules_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lstdemandesVehicule;
+	}
+	
+	public List<DemandesVehicule> getDemandesVehiculeByEtat(String etat){
+		ArrayList<DemandesVehicule> lstdemandesAttestation = new ArrayList<>();
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule WHERE etat=?");
+			stmt.setString(1, etat);
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				lstdemandesAttestation.add(new DemandesVehicule(resultSet.getInt("id"), resultSet.getString("vehicules_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lstdemandesAttestation;
+	}
+	
+	public List<DemandesVehicule> getDemandesVehiculeFree(){
+		ArrayList<DemandesVehicule> lstdemandesAttestation = new ArrayList<>();
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule INNER JOIN vehicules ON immatriculation=vehicules_immatriculation WHERE vehicules.disponibilite=?");
+			stmt.setString(1, "T");
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				lstdemandesAttestation.add(new DemandesVehicule(resultSet.getInt("id"), resultSet.getString("vehicules_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lstdemandesAttestation;
+	}
+	
+	public void setDemandeDeVehicule (String immatriculation, String idEmploye, String dateDebut, String dateFin){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesvehicule(vehicules_immatriculation, employes_idEmploye, dateDebut, dateFin, etat) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, immatriculation);
+			stmt.setString(2, idEmploye);
+			stmt.setString(3,dateDebut);
+			stmt.setString(4,dateFin);
+			stmt.setString(5,"en cours");
+			stmt.executeUpdate();
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void setState(int id, int nb){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesvehicule SET etat=? WHERE id=?");
+			if (nb==2){
+				stmt.setString(1,"refus");
+			}
+			else{
+				stmt.setString(1,"succes");
+			}
+			stmt.setInt(2,id);
+			stmt.executeUpdate();
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Vehicules getVehiculeByImmatriculation(String imma){
+		Vehicules veh = null;
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM vehicules WHERE immatriculation=?");
+			stmt.setString(1, imma);
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				veh = new Vehicules(resultSet.getString("immatriculation"), resultSet.getString("typeVehicule"));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return veh;
+	}
+	
 	public Vehicules addVehicule(String immatriculation, String typeVehicule){
 		Vehicules vehicule = new Vehicules(immatriculation, typeVehicule);
 		try {
@@ -38,100 +163,13 @@ public class VehiculesDao {
 	public void deleteVehicule(String immatriculation){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection(); 
-			PreparedStatement statement = connection.prepareStatement("DELETE * FROM vehicules WHERE immatriculation=?");
+			PreparedStatement statement1 = connection.prepareStatement("DELETE FROM demandesvehicule WHERE vehicules_immatriculation=?");
+			statement1.setString(1, immatriculation);
+			statement1.executeUpdate();
+			PreparedStatement statement = connection.prepareStatement("DELETE FROM vehicules WHERE immatriculation=?");
 			statement.setString(1, immatriculation);
 			statement.executeUpdate();	
 		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public List<DemandesVehicule> getDemandesDeVehicule(){
-		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule");
-			ResultSet resultSet = stmt.executeQuery();
-			while(resultSet.next()) {
-				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getInt("id"), resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
-			}
-			stmt.close();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return lstdemandesVehicule;
-	}
-	
-	public List<DemandesVehicule> getDemandesDeVehiculeByIdEmploye(String id){
-		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule WHERE employes_idEmployes=?");
-			stmt.setString(1, id);
-			ResultSet resultSet = stmt.executeQuery();
-			while(resultSet.next()) {
-				lstdemandesVehicule.add(new DemandesVehicule(resultSet.getInt("id"), resultSet.getString("conges_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
-			}
-			stmt.close();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return lstdemandesVehicule;
-	}
-	
-	public List<DemandesAttestation> getDemandesVehiculeByEtat(String etat){
-		ArrayList<DemandesAttestation> lstdemandesAttestation = new ArrayList<>();
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule WHERE etat=?");
-			stmt.setString(1, etat);
-			ResultSet resultSet = stmt.executeQuery();
-			while(resultSet.next()) {
-				lstdemandesAttestation.add(new DemandesAttestation(resultSet.getInt("id"), resultSet.getInt("attestations_idAttestation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("date")));
-			}
-			stmt.close();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return lstdemandesAttestation;
-	}
-	
-	public void setDemandeDeVehicule (String immatriculation, String idEmploye, Date dateDebut, Date dateFin){
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesvehicule(conges_immatriculation, employes_idEmploye, dateDebut, dateFin, etat) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, immatriculation);
-			stmt.setString(2, idEmploye);
-			stmt.setDate(3,dateDebut);
-			stmt.setDate(4,dateFin);
-			stmt.setString(5,"en cours");
-			stmt.executeUpdate();
-			stmt.close();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void setState(String immatriculation, String idEmploye, int nb){
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesvehicule SET etat=? WHERE vehicules_immatriculation=? AND employes_idEmploye=?");
-			if (nb==2){
-				stmt.setString(1,"refus");
-			}
-			else{
-				stmt.setString(1,"succès");
-			}
-			stmt.setString(2,immatriculation);
-			stmt.setString(3, idEmploye);
-			stmt.executeUpdate();
-			stmt.close();
-			connection.close();
-		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
