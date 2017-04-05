@@ -3,13 +3,15 @@ package projet.cadre.model;
 
 public class DemandesConge {
 	
+	private int id;
 	private int conges_idConge;
-	private int employes_idEmploye;
+	private String employes_idEmploye;
 	private String dateDebut;
 	private String dateFin;
 	private String etat;
 	
-	public DemandesConge( int conges_idConge, int employes_idEmploye, String dateDebut, String dateFin, String etat){
+	public DemandesConge( int id, int conges_idConge, String employes_idEmploye, String dateDebut, String dateFin, String etat){
+		this.id = id;
 		this.conges_idConge=conges_idConge;
 		this.employes_idEmploye=employes_idEmploye;
 		this.dateDebut=dateDebut;
@@ -25,11 +27,11 @@ public class DemandesConge {
 		this.conges_idConge = conges_idConge;
 	}
 
-	public int getEmployes_idEmploye() {
+	public String getEmployes_idEmploye() {
 		return employes_idEmploye;
 	}
 
-	public void setEmployes_idEmploye(int employes_idEmploye) {
+	public void setEmployes_idEmploye(String employes_idEmploye) {
 		this.employes_idEmploye = employes_idEmploye;
 	}
 
@@ -57,5 +59,8 @@ public class DemandesConge {
 		this.etat = etat;
 	}
 	
+	public int getId() {
+		return id;
+	}
 	
 }

@@ -15,30 +15,14 @@ import projet.cadre.model.DemandesConge;
 
 public class CongesDao {
 	
-	public Conges TypeDeDemandeDeConge(String type){
-		Conges conge = new Conges(type);
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesconge WHERE typeConge=?", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, type);
-			ResultSet resultSet = stmt.executeQuery();
-			conge.setId(resultSet.getInt("idConge"));
-			stmt.close();
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return conge;
-	}
-	
-	public List<DemandesConge> demandesDeConge(){
+	public List<DemandesConge> getDemandesDeConge(){
 		ArrayList<DemandesConge> lstdemandesConges = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesconge");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesConges.add(new DemandesConge(resultSet.getInt("conges_idConges"), resultSet.getInt("employes_idEmploye"), resultSet.getString("dateDebut"), resultSet.getString("dateFin"), resultSet.getString("etat")));
+				lstdemandesConges.add(new DemandesConge(resultSet.getInt("id"), resultSet.getInt("conges_idConge"), resultSet.getString("employes_idEmploye"), resultSet.getString("dateDebut"), resultSet.getString("dateFin"), resultSet.getString("etat")));
 			}
 			stmt.close();
 			connection.close();
@@ -48,15 +32,15 @@ public class CongesDao {
 		return lstdemandesConges;
 	}
 	
-	public List<DemandesConge> demandesDeCongeParidEmploye(String id){
+	public List<DemandesConge> getDemandesDeCongeByIdEmploye(String id){
 		ArrayList<DemandesConge> lstdemandesConges = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELEC * FROM demandesconge WHERE employes_idEmployes=?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesconge WHERE employes_idEmploye=?");
 			stmt.setString(1, id);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesConges.add(new DemandesConge(resultSet.getInt("conges_idConges"), resultSet.getInt("employes_idEmploye"), resultSet.getString("dateDebut"), resultSet.getString("dateFin"), resultSet.getString("etat")));
+				lstdemandesConges.add(new DemandesConge(resultSet.getInt("id"), resultSet.getInt("conges_idConge"), resultSet.getString("employes_idEmploye"), resultSet.getString("dateDebut"), resultSet.getString("dateFin"), resultSet.getString("etat")));
 			}
 			stmt.close();
 			connection.close();
@@ -66,16 +50,33 @@ public class CongesDao {
 		return lstdemandesConges;
 	}
 	
-	public void demandeDeConge(Conges conge, Employe employe, Date dateDebut, Date dateFin, int duree){
+	public List<DemandesConge> getDemandesDeCongeByType(String type){
+		ArrayList<DemandesConge> lstdemandesConges = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesconge(conges_idConge, employes_idEmploye, dateDebut, dateFin, etat, duree) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, conge.getId());
-			stmt.setString(2, employe.getIdEmploye());
-			stmt.setDate(3,dateDebut);
-			stmt.setDate(4,dateFin);
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesconge INNER JOIN conges ON idConge=conges_idConge WHERE conges.typeConge=?");
+			stmt.setString(1, type);
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				lstdemandesConges.add(new DemandesConge(resultSet.getInt("id"), resultSet.getInt("conges_idConge"), resultSet.getString("employes_idEmploye"), resultSet.getString("dateDebut"), resultSet.getString("dateFin"), resultSet.getString("etat")));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lstdemandesConges;
+	}
+	
+	public void setDemandeDeConge(int idConge, String idEmploye, String dateDebut, String dateFin){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesconge(conges_idConge, employes_idEmploye, dateDebut, dateFin, etat, duree) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			stmt.setInt(1, idConge);
+			stmt.setString(2, idEmploye);
+			stmt.setString(3,dateDebut);
+			stmt.setString(4,dateFin);
 			stmt.setString(5,"en cours");
-			stmt.setInt(6, duree);
 			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
@@ -84,18 +85,18 @@ public class CongesDao {
 		}
 	}
 	
-	public void changementdEtat(Conges conge, Employe employe, int nb){
+	public void setState(int id, int nb){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesconge SET etat=? WHERE conges_idConge=? AND employes_idEmploye=?");
+			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesconge SET etat=? WHERE id=?");
 			if (nb==2){
 				stmt.setString(1,"refus");
 			}
 			else{
 				stmt.setString(1,"succès");
 			}
-			stmt.setInt(2, conge.getId());
-			stmt.setString(3, employe.getIdEmploye());
+			stmt.setInt(2, id);
+			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {
@@ -103,18 +104,19 @@ public class CongesDao {
 		}
 	}
 	
-	public int compteurDeConges(Conges conge, Employe employe){
+	public int compteurDeConges(int idConge, String idEmploye){
 		int nb = 0;
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesconge WHERE conges_idConge=? AND employes_idEmploye=? AND etat=?");
-			stmt.setInt(1, conge.getId());
-			stmt.setString(2, employe.getIdEmploye());
+			stmt.setInt(1, idConge);
+			stmt.setString(2, idEmploye);
 			stmt.setString(3, "succès");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				nb+=resultSet.getInt("duree");
+				nb++;			
 			}
+			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {
@@ -122,5 +124,4 @@ public class CongesDao {
 		}
 		return nb;
 	}
-
 }

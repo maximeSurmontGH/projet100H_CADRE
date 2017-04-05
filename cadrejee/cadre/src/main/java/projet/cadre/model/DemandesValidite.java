@@ -5,12 +5,13 @@ public class DemandesValidite {
 	
 	private int id;
 	private int validites_idValidite;
-	private int employes_idEmploye;
+	private String employes_idEmploye;
 	private String etat;
 	private String dateDebut;
 	private String dateFin;
 	
-	public DemandesValidite(int validites_idValidite, int employes_idEmploye, String etat, String dateDebut, String dateFin){
+	public DemandesValidite(int id, int validites_idValidite, String employes_idEmploye, String etat, String dateDebut, String dateFin){
+		this.id = id;
 		this.validites_idValidite = validites_idValidite;
 		this.employes_idEmploye = employes_idEmploye;
 		this.etat = etat;
@@ -26,11 +27,11 @@ public class DemandesValidite {
 		this.validites_idValidite = validites_idValidite;
 	}
 
-	public int getEmployes_idEmploye() {
+	public String getEmployes_idEmploye() {
 		return employes_idEmploye;
 	}
 
-	public void setEmployes_idEmploye(int employes_idEmploye) {
+	public void setEmployes_idEmploye(String employes_idEmploye) {
 		this.employes_idEmploye = employes_idEmploye;
 	}
 
@@ -40,10 +41,6 @@ public class DemandesValidite {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public void setEtat(String etat) {

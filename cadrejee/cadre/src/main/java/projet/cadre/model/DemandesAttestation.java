@@ -6,12 +6,12 @@ public class DemandesAttestation {
 	
 	private int id;
 	private int attestations_idAttestation;
-	private int employes_idEmploye;
+	private String employes_idEmploye;
 	private String etat;
 	private String date;
 	
-	public DemandesAttestation(int attestations_idAttestation, int employes_idEmploye, String etat, String date) {
-		super();
+	public DemandesAttestation(int id, int attestations_idAttestation, String employes_idEmploye, String etat, String date) {
+		this.id = id;
 		this.attestations_idAttestation = attestations_idAttestation;
 		this.employes_idEmploye = employes_idEmploye;
 		this.etat = etat;
@@ -26,11 +26,11 @@ public class DemandesAttestation {
 		this.attestations_idAttestation = attestations_idAttestation;
 	}
 
-	public int getEmployes_idEmploye() {
+	public String getEmployes_idEmploye() {
 		return employes_idEmploye;
 	}
 
-	public void setEmployes_idEmploye(int employes_idEmploye) {
+	public void setEmployes_idEmploye(String employes_idEmploye) {
 		this.employes_idEmploye = employes_idEmploye;
 	}
 

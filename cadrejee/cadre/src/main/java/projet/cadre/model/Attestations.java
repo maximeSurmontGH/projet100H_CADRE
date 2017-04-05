@@ -5,8 +5,8 @@ public class Attestations {
 	private int idAttestation;
 	private String typeAttestation;
 	
-	public Attestations(String typeAttestation) {
-		super();
+	public Attestations(int idAttestation, String typeAttestation) {
+		this.idAttestation = idAttestation;
 		this.typeAttestation = typeAttestation;
 	}
 	

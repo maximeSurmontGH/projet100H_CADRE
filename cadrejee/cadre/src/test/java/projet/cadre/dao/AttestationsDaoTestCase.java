@@ -62,7 +62,7 @@ public class AttestationsDaoTestCase {
 	@Test
 	public void shouldGetAttestationParEtat() {
 		// WHEN
-		List<DemandesAttestation> element = attestationDao.getDemandesAttestationeByEtat("en cours");
+		List<DemandesAttestation> element = attestationDao.getDemandesAttestationByEtat("en cours");
 		// THEN
 		Assertions.assertThat(element).isNotNull();
 		Assertions.assertThat(element.get(0).getDate()).isEqualTo("23022017");
