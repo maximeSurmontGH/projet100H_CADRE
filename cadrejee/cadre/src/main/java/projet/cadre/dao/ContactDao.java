@@ -25,6 +25,4 @@ public Contact saveContact(Contact contact){
 		}
 		return contact;
 	}
-
-
 }

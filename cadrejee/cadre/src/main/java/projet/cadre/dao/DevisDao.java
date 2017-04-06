@@ -31,7 +31,6 @@ public Devis saveDevis(Devis devis){
 		}
 		return devis;
 	}
-
 }
 
 

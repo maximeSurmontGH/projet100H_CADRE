@@ -18,6 +18,7 @@ import projet.cadre.model.DemandesVehicule;
 
 public class VehiculesDao {
 	
+	// retourne la liste des demandes de vehicules
 	public List<DemandesVehicule> getDemandesDeVehicule(){
 		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
 		try {
@@ -35,6 +36,7 @@ public class VehiculesDao {
 		return lstdemandesVehicule;
 	}
 	
+	// retourne la liste des demandes de vehicules pour un employe voulu
 	public List<DemandesVehicule> getDemandesDeVehiculeByIdEmploye(String id){
 		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();
 		try {
@@ -53,6 +55,7 @@ public class VehiculesDao {
 		return lstdemandesVehicule;
 	}
 	
+	// retourne la liste des demandes de vehicules en fonction de l etat voulu
 	public List<DemandesVehicule> getDemandesVehiculeByEtat(String etat){
 		ArrayList<DemandesVehicule> lstdemandesAttestation = new ArrayList<>();
 		try {
@@ -71,6 +74,7 @@ public class VehiculesDao {
 		return lstdemandesAttestation;
 	}
 	
+	// retourne la liste des demandes de vehicules libre
 	public List<DemandesVehicule> getDemandesVehiculeFree(){
 		ArrayList<DemandesVehicule> lstdemandesAttestation = new ArrayList<>();
 		try {
@@ -89,6 +93,7 @@ public class VehiculesDao {
 		return lstdemandesAttestation;
 	}
 	
+	// permet d'ajouter une demande de véhicule pour un employe voulu
 	public void setDemandeDeVehicule (String immatriculation, String idEmploye, String dateDebut, String dateFin){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -106,6 +111,7 @@ public class VehiculesDao {
 		}
 	}
 	
+	// permet de modifier l'état de la demande (la valider ou la refuser)
 	public void setState(int id, int nb){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -125,6 +131,7 @@ public class VehiculesDao {
 		}
 	}
 	
+	// permet de recuperer un vehicule par son immatriculation
 	public Vehicules getVehiculeByImmatriculation(String imma){
 		Vehicules veh = null;
 		try {
@@ -143,6 +150,7 @@ public class VehiculesDao {
 		return veh;
 	}
 	
+	//permet d'ajouter un véhicule
 	public Vehicules addVehicule(String immatriculation, String typeVehicule){
 		Vehicules vehicule = new Vehicules(immatriculation, typeVehicule);
 		try {
@@ -159,7 +167,8 @@ public class VehiculesDao {
 		}
 		return vehicule;
 	}
-	
+
+	// permet de supprimer un véhicule
 	public void deleteVehicule(String immatriculation){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection(); 

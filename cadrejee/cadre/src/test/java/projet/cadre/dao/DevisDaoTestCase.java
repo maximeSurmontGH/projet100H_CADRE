@@ -23,7 +23,6 @@ public class DevisDaoTestCase {
 			stmt.executeUpdate("DELETE FROM devis");
 			stmt.executeUpdate("INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`codePostal`,`ville`,`service`,`message`) VALUES ('Konbi','Pelletier Chloe','chlo.pelletier@gmail.com', '0614348499', '6 Rue de la Tour Roland','60310','Lassigny', 'Marketing', 'Message de Test')");
 			stmt.executeUpdate("INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`codePostal`,`ville`,`service`,`message`) VALUES ('HEI','Surmont Maxime','max.s@gmail.com', '0614348499', '13 Rue de Toul','59000','Lille', 'Compta', 'Message de Test 2')");
-
 		}
 	}
 	
@@ -45,7 +44,5 @@ public class DevisDaoTestCase {
 				assertThat(rs.getString("nomDemandeur")).isEqualTo("Nom");
 			}
 		}
-	
-
 	}
 }

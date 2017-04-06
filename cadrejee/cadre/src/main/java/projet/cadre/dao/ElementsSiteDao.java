@@ -26,7 +26,6 @@ public class ElementsSiteDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
 	}
 	
 	// Modifier un contenu image
@@ -43,7 +42,6 @@ public class ElementsSiteDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
 	}
 	
 	// Récupérer un element grace à son id 
@@ -65,7 +63,4 @@ public class ElementsSiteDao {
 		}
 		return element;
 	}
-	
-	
-
 }

@@ -34,7 +34,6 @@ public class EmployeDao {
 			e.printStackTrace();
 		}
 		return hashIdMdpOk;
-		
 	}
 	
 	// Récupérer un employé grace à son id 
@@ -79,7 +78,6 @@ public class EmployeDao {
 			e.printStackTrace();
 		}
 		return listEmployes;
-	
 	}
 	
 	// Enregistrer un nouvel employe
@@ -103,11 +101,9 @@ public class EmployeDao {
 			e.printStackTrace();
 		}
 		return employe;
-	
 	}
 	
 	// Pour supprimer un employe
-	
 	public void deleteEmploye(Employe employe){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -123,7 +119,6 @@ public class EmployeDao {
 	}
 	
 	// Liste des employés à partir d'un champ (ce champ peut etre un Nom de famille, un prenom ou un poste) 
-	
 	public List<Employe> listEmployesPosteNom(String champs) {
 		List<Employe> listEmployesPN = new ArrayList<>();
 		try {
@@ -147,12 +142,10 @@ public class EmployeDao {
 			e.printStackTrace();
 		}
 		return listEmployesPN;
-	
 	}
 	
 
 	// Modifier un mot de passe à partir de l'identifiant 
-	
 	public void modifierMDP(String idEmploye, String motDePasse) {
 		String motDePasseHash="";
 		try {
@@ -175,8 +168,5 @@ public class EmployeDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
 	}
-	
-	
 }

@@ -15,6 +15,7 @@ import projet.cadre.model.DemandesConge;
 
 public class CongesDao {
 	
+	// retourne la liste des demandes de conges
 	public List<DemandesConge> getDemandesDeConge(){
 		ArrayList<DemandesConge> lstdemandesConges = new ArrayList<>();
 		try {
@@ -32,6 +33,7 @@ public class CongesDao {
 		return lstdemandesConges;
 	}
 	
+	// retourne la liste des demandes de conges pour un employe donne
 	public List<DemandesConge> getDemandesDeCongeByIdEmploye(String id){
 		ArrayList<DemandesConge> lstdemandesConges = new ArrayList<>();
 		try {
@@ -50,6 +52,7 @@ public class CongesDao {
 		return lstdemandesConges;
 	}
 	
+	// retourne la liste des demandes de conges en fonction de leur type
 	public List<DemandesConge> getDemandesDeCongeByType(String type){
 		ArrayList<DemandesConge> lstdemandesConges = new ArrayList<>();
 		try {
@@ -68,6 +71,7 @@ public class CongesDao {
 		return lstdemandesConges;
 	}
 	
+	// permet d'ajouter une demande de conge pour un employe voulu
 	public void setDemandeDeConge(int idConge, String idEmploye, String dateDebut, String dateFin){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -85,6 +89,7 @@ public class CongesDao {
 		}
 	}
 	
+	// permet de modifer l'état d'une demande (la valider ou la refuser)
 	public void setState(int id, int nb){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -104,6 +109,7 @@ public class CongesDao {
 		}
 	}
 	
+	// permet de compter le nombre de conge de la personne
 	public int compteurDeConges(int idConge, String idEmploye){
 		int nb = 0;
 		try {

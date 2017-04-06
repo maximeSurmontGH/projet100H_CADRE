@@ -27,20 +27,19 @@ public class RappelDaoTestCase {
 			stmt.executeUpdate("INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('chloe.pelletier','Pelletier', 'Chloe', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','stagiaire','0614348499','chlo@g.com')");
 			stmt.executeUpdate("INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`) VALUES (1,'2017-01-23','blabla','chloe.pelletier')");
 			stmt.executeUpdate("INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`) VALUES (2,'2017-01-04','blabla3','chloe.pelletier')");
-			
 		}
 	}
 	
 	@Test
 	public void shouldSaveRappel() throws Exception {
 		// GIVEN
-				Rappel rappeltoSave = new Rappel("10122019","blablatest","chloe.pelletier");
-				// WHEN
-				Rappel rappelAdded = rappelDao.saveRappel(rappeltoSave) ;
+		Rappel rappeltoSave = new Rappel("10122019","blablatest","chloe.pelletier");
+		// WHEN
+		Rappel rappelAdded = rappelDao.saveRappel(rappeltoSave) ;
 		// THEN
 		Assertions.assertThat(rappelAdded).isNotNull();		
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
-				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM rappels WHERE messageRappel = ?")) {
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM rappels WHERE messageRappel = ?")) {
 			stmt.setString(1,"blablatest");
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isTrue();
@@ -48,7 +47,4 @@ public class RappelDaoTestCase {
 			}
 		}
 	}
-
-
-
 }

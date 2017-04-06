@@ -15,7 +15,8 @@ import projet.cadre.model.DemandesValidite;
 
 
 public class ValiditesDao {
-
+	
+	// retourne la liste des demandes de validites
 	public List<DemandesValidite> getDemandesValidite(){
 		ArrayList<DemandesValidite> lstdemandesValidite = new ArrayList<>();
 		try {
@@ -33,6 +34,7 @@ public class ValiditesDao {
 		return lstdemandesValidite;
 	}
 	
+	// retourne la liste des demandes de validites pour un employe voulu
 	public List<DemandesValidite> getDemandesDeValiditeByidEmploye(String id){
 		ArrayList<DemandesValidite> lstdemandesValidite = new ArrayList<>();
 		try {
@@ -51,6 +53,7 @@ public class ValiditesDao {
 		return lstdemandesValidite;
 	}
 	
+	// retourne la liste des demandes de validites en fonction du typpe voulu
 	public List<DemandesValidite> getDemandesDeValiditeByType(String type){
 		ArrayList<DemandesValidite> lstdemandesValidites = new ArrayList<>();
 		try {
@@ -69,6 +72,7 @@ public class ValiditesDao {
 		return lstdemandesValidites;
 	}
 	
+	// ajoute une demande de validite pour un employe voulu
 	public void setDemandeDeValidite(int idValidite, String idEmploye, String dateDebut, String dateFin){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -86,6 +90,7 @@ public class ValiditesDao {
 		}
 	}
 	
+	// permet de modifier l'état d'une demande (la valider ou le refuser)
 	public void setState (int id, int nb){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();

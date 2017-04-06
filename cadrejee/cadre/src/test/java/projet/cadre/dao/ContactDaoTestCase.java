@@ -46,11 +46,5 @@ public class ContactDaoTestCase {
 				assertThat(rs.getString("mailContact")).isEqualTo("nom@gmail.com");
 			}
 		}
-	
-
 	}
-	
-	
-	
-
 }

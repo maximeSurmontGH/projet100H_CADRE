@@ -19,8 +19,9 @@ public class ValiditesDaoTestCase {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM demandesattestation");
-			stmt.executeUpdate("DELETE FROM demandesvalidite");
 			stmt.executeUpdate("DELETE FROM demandesconge");
+			stmt.executeUpdate("DELETE FROM demandesvalidite");
+			stmt.executeUpdate("DELETE FROM demandesvehicule");
 			stmt.executeUpdate("DELETE FROM conges");
 			stmt.executeUpdate("DELETE FROM validites");
 			stmt.executeUpdate("DELETE FROM employes");

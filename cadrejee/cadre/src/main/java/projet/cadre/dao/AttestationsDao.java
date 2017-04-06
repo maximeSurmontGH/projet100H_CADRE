@@ -16,7 +16,8 @@ import projet.cadre.model.DemandesAttestation;
 import projet.cadre.model.DemandesValidite;
 
 public class AttestationsDao {
-
+	
+	// retourne la liste des demandes d'attestation
 	public List<DemandesAttestation> getDemandesAttestation(){
 		ArrayList<DemandesAttestation> lstdemandesAttestation = new ArrayList<>();
 		try {
@@ -34,6 +35,7 @@ public class AttestationsDao {
 		return lstdemandesAttestation;
 	}
 	
+	// retourne la liste des demandes d'attestation en fonction d'un employe
 	public List<DemandesAttestation> getDemandesAttestationeByidEmploye(String id){
 		ArrayList<DemandesAttestation> lstdemandesAttestation = new ArrayList<>();
 		try {
@@ -52,6 +54,7 @@ public class AttestationsDao {
 		return lstdemandesAttestation;
 	}
 	
+	// retourne la liste de demandes d'attestation en fonction de l etat de la demande
 	public List<DemandesAttestation> getDemandesAttestationByEtat(String etat){
 		ArrayList<DemandesAttestation> lstdemandesAttestation = new ArrayList<>();
 		try {
@@ -70,6 +73,7 @@ public class AttestationsDao {
 		return lstdemandesAttestation;
 	}
 	
+	// permet d'ajouter une demande d'attestation pour un employe a une certaine date
 	public void setDemandeAttestation(String idAttestation, String idEmploye, String date){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -86,6 +90,7 @@ public class AttestationsDao {
 		}
 	}
 	
+	// permet de modifier l'état d'une attestation (la validite ou la refuser)
 	public void setState (int idDemandeAttestation, int nb){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();

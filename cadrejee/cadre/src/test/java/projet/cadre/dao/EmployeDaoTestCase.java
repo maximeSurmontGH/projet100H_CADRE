@@ -31,8 +31,7 @@ public class EmployeDaoTestCase {
 			stmt.executeUpdate("DELETE FROM employes");
 			stmt.executeUpdate("DELETE FROM vehicules");
 			stmt.executeUpdate("INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('chloe.pelletier','Pelletier', 'Chloe', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','stagiaire','0614348499','chlo@g.com')");
-			stmt.executeUpdate("INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('c.p','Pelletier', 'Chloe', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','stagiaire','0614348499','chlo@g.com')");
-			
+			stmt.executeUpdate("INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('c.p','Pelletier', 'Chloe', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','stagiaire','0614348499','chlo@g.com')");	
 		}
 	}
 	
@@ -44,7 +43,6 @@ public class EmployeDaoTestCase {
 		Assertions.assertThat(employesOk).hasSize(2);
 		Assertions.assertThat(employesOk.get("chloe.pelletier")).isEqualTo("93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a");
 		Assertions.assertThat(employesOk.get("c.p")).isEqualTo("93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a");
-		
 	}
 	
 	@Test
@@ -57,8 +55,8 @@ public class EmployeDaoTestCase {
 		Assertions.tuple("c.p","Pelletier","Chloe"),
 		Assertions.tuple("chloe.pelletier","Pelletier","Chloe")
 		);
-
 	}
+	
 	@Test
 	public void shouldSaveEmploye() throws Exception {
 		// GIVEN
@@ -77,7 +75,6 @@ public class EmployeDaoTestCase {
 				assertThat(rs.getString("idEmploye")).isEqualTo("Maxime.Surmont");
 			}
 		}
-		
 	}
 	
 
@@ -101,7 +98,6 @@ public class EmployeDaoTestCase {
 		Assertions.tuple("c.p","Pelletier","Chloe"),
 		Assertions.tuple("chloe.pelletier","Pelletier","Chloe")
 		);
-
 	}
 	
 	@Test
@@ -122,8 +118,9 @@ public class EmployeDaoTestCase {
 		}
 		
 	}
+	
 	/*
-	 * Marche si le mdp n'est pas hashé, ne peut pas etre testé si mdp hashé 
+	// Marche si le mdp n'est pas hashé, ne peut pas etre testé si mdp hashé 
 	@Test
 	public void shouldModifierMdp() throws Exception {
 		// GIVEN
@@ -144,5 +141,4 @@ public class EmployeDaoTestCase {
 		}
 		
 	}*/
-	
 }

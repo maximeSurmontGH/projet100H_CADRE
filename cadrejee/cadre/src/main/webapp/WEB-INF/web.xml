@@ -4,8 +4,17 @@
 	version="3.1">
 	
 	<welcome-file-list>
-	<welcome-file>index</welcome-file>
+		<welcome-file>index</welcome-file>
 	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+		<url-pattern>/employes/*</url-pattern>
+	</servlet-mapping>
 	
 	<filter>
 		<filter-name>AuthentificationFilterDirection</filter-name>

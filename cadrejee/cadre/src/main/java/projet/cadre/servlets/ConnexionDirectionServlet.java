@@ -58,5 +58,4 @@ public class ConnexionDirectionServlet extends HttpServlet {
 		}
 			response.sendRedirect("connexionIntranetDirection");
 	}
-
 }
