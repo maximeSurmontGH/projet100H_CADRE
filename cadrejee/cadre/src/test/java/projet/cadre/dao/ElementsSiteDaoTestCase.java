@@ -19,7 +19,21 @@ public class ElementsSiteDaoTestCase {
 	public void initDb() throws Exception {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = connection.createStatement()) {
+			stmt.executeUpdate("DELETE FROM demandesattestation");
+			stmt.executeUpdate("DELETE FROM demandesconge");
+			stmt.executeUpdate("DELETE FROM demandesvalidite");
+			stmt.executeUpdate("DELETE FROM demandesvehicule");
+			stmt.executeUpdate("DELETE FROM evenementsautres");
+			stmt.executeUpdate("DELETE FROM attestations");
+			stmt.executeUpdate("DELETE FROM rappels");
+			stmt.executeUpdate("DELETE FROM conges");
+			stmt.executeUpdate("DELETE FROM validites");
+			stmt.executeUpdate("DELETE FROM employes");
+			stmt.executeUpdate("DELETE FROM vehicules");
+			stmt.executeUpdate("DELETE FROM contact");
+			stmt.executeUpdate("DELETE FROM devis");
 			stmt.executeUpdate("DELETE FROM elementssite");
+			stmt.executeUpdate("DELETE FROM ressources");
 			stmt.executeUpdate("INSERT INTO `elementssite`(`idElement`,`contenuElement`,`cheminElement`) VALUES ('id1','BLABLA1', 'CHEMIN1')");
 			stmt.executeUpdate("INSERT INTO `elementssite`(`idElement`,`contenuElement`,`cheminElement`) VALUES ('id2','BLABLA2', 'CHEMIN2')");
 		}

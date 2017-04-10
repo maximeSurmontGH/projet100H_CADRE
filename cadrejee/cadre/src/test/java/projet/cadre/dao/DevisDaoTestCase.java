@@ -20,7 +20,21 @@ public class DevisDaoTestCase {
 	public void initDb() throws Exception {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = connection.createStatement()) {
+			stmt.executeUpdate("DELETE FROM demandesattestation");
+			stmt.executeUpdate("DELETE FROM demandesconge");
+			stmt.executeUpdate("DELETE FROM demandesvalidite");
+			stmt.executeUpdate("DELETE FROM demandesvehicule");
+			stmt.executeUpdate("DELETE FROM evenementsautres");
+			stmt.executeUpdate("DELETE FROM attestations");
+			stmt.executeUpdate("DELETE FROM rappels");
+			stmt.executeUpdate("DELETE FROM conges");
+			stmt.executeUpdate("DELETE FROM validites");
+			stmt.executeUpdate("DELETE FROM employes");
+			stmt.executeUpdate("DELETE FROM vehicules");
+			stmt.executeUpdate("DELETE FROM contact");
 			stmt.executeUpdate("DELETE FROM devis");
+			stmt.executeUpdate("DELETE FROM elementssite");
+			stmt.executeUpdate("DELETE FROM ressources");
 			stmt.executeUpdate("INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`codePostal`,`ville`,`service`,`message`) VALUES ('Konbi','Pelletier Chloe','chlo.pelletier@gmail.com', '0614348499', '6 Rue de la Tour Roland','60310','Lassigny', 'Marketing', 'Message de Test')");
 			stmt.executeUpdate("INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`codePostal`,`ville`,`service`,`message`) VALUES ('HEI','Surmont Maxime','max.s@gmail.com', '0614348499', '13 Rue de Toul','59000','Lille', 'Compta', 'Message de Test 2')");
 		}

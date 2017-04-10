@@ -22,7 +22,21 @@ public class ContactDaoTestCase {
 	public void initDb() throws Exception {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = connection.createStatement()) {
+			stmt.executeUpdate("DELETE FROM demandesattestation");
+			stmt.executeUpdate("DELETE FROM demandesconge");
+			stmt.executeUpdate("DELETE FROM demandesvalidite");
+			stmt.executeUpdate("DELETE FROM demandesvehicule");
+			stmt.executeUpdate("DELETE FROM evenementsautres");
+			stmt.executeUpdate("DELETE FROM attestations");
+			stmt.executeUpdate("DELETE FROM rappels");
+			stmt.executeUpdate("DELETE FROM conges");
+			stmt.executeUpdate("DELETE FROM validites");
+			stmt.executeUpdate("DELETE FROM employes");
+			stmt.executeUpdate("DELETE FROM vehicules");
 			stmt.executeUpdate("DELETE FROM contact");
+			stmt.executeUpdate("DELETE FROM devis");
+			stmt.executeUpdate("DELETE FROM elementssite");
+			stmt.executeUpdate("DELETE FROM ressources");
 			stmt.executeUpdate("INSERT INTO `contact`(`nomContact`,`mailContact`,`societeContact`,`messageContact`) VALUES ('Pelletier Chloe','chlo.pelletier@gmail.com', 'Marketing', 'Message de Test')");
 		}
 	}
