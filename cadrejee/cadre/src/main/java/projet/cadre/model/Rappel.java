@@ -8,8 +8,9 @@ public class Rappel {
 	private String messageRappel;
 	private String employes_idEmploye;
 	
-	public Rappel(String dateRappel, String messageRappel, String employes_idEmploye) {
+	public Rappel( int idRappel,String dateRappel, String messageRappel, String employes_idEmploye) {
 		super();
+		this.idRappel= idRappel;
 		this.dateRappel = dateRappel;
 		this.messageRappel = messageRappel;
 		this.employes_idEmploye = employes_idEmploye;
