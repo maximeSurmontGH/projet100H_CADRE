@@ -62,9 +62,9 @@ public class EvenementAutreDaoTestCase {
 	
 	@Test
 	public void shouldDeleteevenement() throws Exception {
-		EvenementAutre evenement= eventDao.getevenementById(1);
+		EvenementAutre evenement= eventDao.getEvenementById(1);
 		// WHEN
-		eventDao.deleteevenement(evenement);
+		eventDao.deleteEvenement(evenement);
 		// THEN
 		try (
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -79,7 +79,7 @@ public class EvenementAutreDaoTestCase {
 	@Test
 	public void shouldGetevenementById() {
 		// WHEN
-		EvenementAutre evenement = eventDao.getevenementById(2);
+		EvenementAutre evenement = eventDao.getEvenementById(2);
 		// THEN
 		Assertions.assertThat(evenement).isNotNull();
 		Assertions.assertThat(evenement.getIdEvenement()).isEqualTo(2);

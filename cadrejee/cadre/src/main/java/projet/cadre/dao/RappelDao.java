@@ -13,10 +13,8 @@ public class RappelDao {
 	
 	// Enregistrer un nouveau rappel
 	public Rappel saveRappel(Rappel rappel) {
-		
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1,rappel.getIdRappel());
 			stmt.setString(2,rappel.getDateRappel());
@@ -29,15 +27,12 @@ public class RappelDao {
 			e.printStackTrace();
 		}
 		return rappel;
-	
 	}
 	
 	// Pour supprimer un rappel
-	
 	public void deleteRappel(Rappel rappel){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			
 			PreparedStatement stmt = connection.prepareStatement("DELETE FROM rappels WHERE idRappel=?");
 			stmt.setInt(1,rappel.getIdRappel());
 			stmt.executeUpdate();
@@ -67,6 +62,4 @@ public class RappelDao {
 		}
 		return rappel;
 	}
-	
-
 }

@@ -153,12 +153,12 @@ public class CadreServices {
 		return evenementAutreDao.saveEvenementAutre(event);
 	}
 
-	public void deleteevenement(EvenementAutre evenement){
-		evenementAutreDao.deleteevenement(evenement);
+	public void deleteEvenement(EvenementAutre evenement){
+		evenementAutreDao.deleteEvenement(evenement);
 	}
 
 	public EvenementAutre getevenementById(int idevenement ) {
-		return evenementAutreDao.getevenementById(idevenement);
+		return evenementAutreDao.getEvenementById(idevenement);
 	}
 
 	// Rappel Dao
@@ -227,6 +227,14 @@ public class CadreServices {
 	
 	public List<DemandesVehicule> getDemandesVehiculeByEtat(String etat){
 		return vehiculesDao.getDemandesVehiculeByEtat(etat);
+	}
+	
+	public List<DemandesVehicule> getDemandesVehiculeFree(){
+		return vehiculesDao.getDemandesVehiculeFree();
+	}
+	
+	public Vehicules getVehiculeByImmatriculation(String imma){
+		return vehiculesDao.getVehiculeByImmatriculation(imma);
 	}
 	
 	public void setDemandeDeVehicule (String immatriculation, String idEmploye, String dateDebut, String dateFin){

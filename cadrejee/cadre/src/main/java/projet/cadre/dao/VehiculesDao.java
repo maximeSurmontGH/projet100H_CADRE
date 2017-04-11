@@ -150,7 +150,7 @@ public class VehiculesDao {
 		return veh;
 	}
 	
-	//permet d'ajouter un véhicule
+	// permet d'ajouter un véhicule
 	public Vehicules addVehicule(String immatriculation, String typeVehicule){
 		Vehicules vehicule = new Vehicules(immatriculation, typeVehicule);
 		try {
