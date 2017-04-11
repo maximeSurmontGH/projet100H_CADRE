@@ -6,10 +6,15 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import projet.cadre.model.Employe;
+import projet.cadre.model.Ressource;
+import projet.cadre.services.CadreServices;
 
 @Path("")
 public class RessourceWS {
@@ -18,15 +23,28 @@ public class RessourceWS {
 	final Gson gson = builder.create();
 	
 	@GET
-	@Path("")
-	public Response listPokemon(){
-		return Response.status(200).entity(gson.toJson("")).build();
+	@Path("/ressourceById/{id}")
+	public Response employeById(@PathParam("id") int id){
+		CadreServices cadreservices = CadreServices.getInstance();
+		System.out.println(cadreservices.getRessourceById(id));
+		return Response.status(200).entity(gson.toJson(cadreservices.getRessourceById(id))).build();
+	}
+	
+	@GET
+	@Path("/ressourceByPosteNom/{champs}")
+	public Response ressourceByPosteNom(@PathParam("champs") String champs){
+		CadreServices cadreservices = CadreServices.getInstance();
+		System.out.println(cadreservices.listRessourceByPosteNom(champs));
+		return Response.status(200).entity(gson.toJson(cadreservices.listRessourceByPosteNom(champs))).build();
 	}
 	
 	@POST
 	@Path("")
-	public Response addPokemon(){
+	public Response addRessource(@FormParam("contenuRessource") String contenuRessource,@FormParam("corpsDeMetier") String corpsDeMetier,@FormParam("cheminRessource") String cheminRessource){
+		CadreServices cadreServices = CadreServices.getInstance();
+		Ressource ressource = new Ressource(contenuRessource,corpsDeMetier,cheminRessource);
 		try {
+			cadreServices.saveRessource(ressource);
 			return Response.status(200).entity(gson.toJson("")).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -37,25 +55,15 @@ public class RessourceWS {
 	
 	@DELETE
 	@Path("")
-	public Response deletePokemon(){
+	public Response deleteEmploye(@FormParam("id") int id){
+		CadreServices cadreServices = CadreServices.getInstance();
 		try {
+			cadreServices.deleteRessource(id);;
 			return Response.status(200).entity("").build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	@PUT
-	@Path("")
-	public Response updatePokemon(){
-		try {
-			return Response.status(200).entity(gson.toJson("")).build();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
+	}	
 }
