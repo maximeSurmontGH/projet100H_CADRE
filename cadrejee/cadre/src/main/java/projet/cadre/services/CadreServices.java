@@ -71,9 +71,7 @@ public class CadreServices {
 		attestationsDao.setState(idDemandeAttestation, nb);
 	}
 	
-	//Conges Dao
-	
-
+	// Conges Dao
 	public List<DemandesConge> getDemandesDeConge(){
 		return congesDao.getDemandesDeConge();
 	}
@@ -99,18 +97,16 @@ public class CadreServices {
 	}
 	
 	// Contact DAO
-	
 	public Contact saveContact(Contact contact){
 		return contactDao.saveContact(contact);
 	}
 	
 	// Devis DAO 
-	
 	public Devis saveDevis(Devis devis){
 		return devisDao.saveDevis(devis);
 	}
 	
-	//ElementsSite Dao
+	// ElementsSite Dao
 	public void modifierElementTexte(String idElement, String contenuElement) {
 		elementsSiteDao.modifierElementTexte(idElement, contenuElement);
 	}
@@ -123,8 +119,7 @@ public class CadreServices {
 		return elementsSiteDao.getElementById(id) ;
 	}
 
-	//Employe DAO 
-	
+	// Employe DAO 
 	public HashMap<String,String> hashIdMdp(){
 		return employeDao.hashIdMdp();
 	}
@@ -154,7 +149,6 @@ public class CadreServices {
 	}
 
 	// Evenement Autre Dao 
-	
 	public EvenementAutre saveEvenementAutre(EvenementAutre event) {
 		return evenementAutreDao.saveEvenementAutre(event);
 	}
@@ -167,7 +161,7 @@ public class CadreServices {
 		return evenementAutreDao.getevenementById(idevenement);
 	}
 
-	//Rappel Dao
+	// Rappel Dao
 	public Rappel saveRappel(Rappel rappel) {
 		return rappelDao.saveRappel(rappel);
 	}
@@ -180,7 +174,7 @@ public class CadreServices {
 		return rappelDao.getRappelById(idRappel);
 	}
 	
-	//Ressource Dao
+	// Ressource Dao
 	public  Ressource getRessourceById(int id) {
 		return ressourceDao.getRessourceById(id);
 	}
@@ -197,7 +191,7 @@ public class CadreServices {
 		ressourceDao.deleteRessource(id);
 	}
 	
-	//Validites Dao
+	// Validites Dao
 	public List<DemandesValidite> getDemandesValidite(){
 		return validitesDao.getDemandesValidite();
 	}
@@ -206,15 +200,15 @@ public class CadreServices {
 		return validitesDao.getDemandesDeValiditeByidEmploye(id);
 	}
 	
-	public void setDemandeDeValidite(int idValidite, String idEmploye, Date dateDebut, Date dateFin){
+	public void setDemandeDeValidite(int idValidite, String idEmploye, String dateDebut, String dateFin){
 		validitesDao.setDemandeDeValidite(idValidite, idEmploye, dateDebut, dateFin);
 	}
 	
-	public void setStateValidite (int idValidite, String idEmploye, int nb){
-		validitesDao.setState(idValidite, idEmploye, nb);
+	public void setStateValidite (int id, int nb){
+		validitesDao.setState(id, nb);
 	}
 	
-	//Vehicules Dao
+	// Vehicules Dao
 	public Vehicules addVehicule(String immatriculation, String typeVehicule){
 		return vehiculesDao.addVehicule(immatriculation, typeVehicule);
 	}
@@ -231,16 +225,15 @@ public class CadreServices {
 		return vehiculesDao.getDemandesDeVehiculeByIdEmploye(id);
 	}
 	
-	public List<DemandesAttestation> getDemandesVehiculeByEtat(String etat){
+	public List<DemandesVehicule> getDemandesVehiculeByEtat(String etat){
 		return vehiculesDao.getDemandesVehiculeByEtat(etat);
 	}
 	
-	public void setDemandeDeVehicule (String immatriculation, String idEmploye, Date dateDebut, Date dateFin){
+	public void setDemandeDeVehicule (String immatriculation, String idEmploye, String dateDebut, String dateFin){
 		vehiculesDao.setDemandeDeVehicule(immatriculation, idEmploye, dateDebut, dateFin);
 	}
 	
-	public void setStateVehicule(String immatriculation, String idEmploye, int nb){
-		vehiculesDao.setState(immatriculation, idEmploye, nb);
+	public void setStateVehicule(int id, int nb){
+		vehiculesDao.setState(id, nb);
 	}
-
 }
