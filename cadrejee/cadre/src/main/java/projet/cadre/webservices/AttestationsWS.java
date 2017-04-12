@@ -28,14 +28,14 @@ public class AttestationsWS {
 	}
 	
 	@GET
-	@Path("/listDemandesAttestationeByidEmploye/{id}")
+	@Path("/listDemandesAttestationByidEmploye/{id}")
 	public Response listDemandesAttestationeByidEmploye(@PathParam("id") String id){
 		CadreServices cadreServices = CadreServices.getInstance();
 		return Response.status(200).entity(gson.toJson(cadreServices.getDemandesAttestationeByidEmploye(id))).build();
 	}
 	
 	@GET
-	@Path("/listDemandesAttestationeByEtat/{etat}")
+	@Path("/listDemandesAttestationByEtat/{etat}")
 	public Response listDemandesAttestationeByEtat(@PathParam("etat") String etat){
 		CadreServices cadreServices = CadreServices.getInstance();
 		return Response.status(200).entity(gson.toJson(cadreServices.getDemandesAttestationeByidEmploye(etat))).build();
