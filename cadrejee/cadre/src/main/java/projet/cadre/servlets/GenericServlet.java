@@ -6,8 +6,7 @@ import projet.cadre.model.Employe;
 
 public class GenericServlet {
 	
-	protected Employe getUtilisateurCourant(HttpServletRequest request) {
-		return (Employe) request.getSession().getAttribute("employeConnecte");
+	protected String getUtilisateurCourant(HttpServletRequest request) {
+		return (String) request.getSession().getAttribute("employeConnecte");
 	}
-
 }
