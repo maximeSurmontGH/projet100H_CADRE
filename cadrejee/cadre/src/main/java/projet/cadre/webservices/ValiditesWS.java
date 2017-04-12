@@ -14,7 +14,7 @@ import com.google.gson.GsonBuilder;
 
 import projet.cadre.services.CadreServices;
 
-@Path("")
+@Path("/validites")
 public class ValiditesWS {
 	
 	final GsonBuilder builder = new GsonBuilder();
