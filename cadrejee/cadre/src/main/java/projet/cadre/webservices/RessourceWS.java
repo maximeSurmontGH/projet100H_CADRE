@@ -16,7 +16,7 @@ import projet.cadre.model.Employe;
 import projet.cadre.model.Ressource;
 import projet.cadre.services.CadreServices;
 
-@Path("")
+@Path("/ressources")
 public class RessourceWS {
 	
 	final GsonBuilder builder = new GsonBuilder();

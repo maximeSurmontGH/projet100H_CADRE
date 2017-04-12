@@ -26,7 +26,7 @@ public class CongesWS {
 		System.out.println(cadreservices.getDemandesDeConge());
 		return Response.status(200).entity(gson.toJson(cadreservices.getDemandesDeConge())).build();
 	}
-	
+
 	@GET
 	@Path("/compteurConges/{idConge}/{idEmploye}")
 	public Response compteurConges(@PathParam("idConge") int idConge,@PathParam("idEmploye") String idEmploye){
@@ -76,6 +76,4 @@ public class CongesWS {
 		}
 		return null;
 	}
-	
-
 }

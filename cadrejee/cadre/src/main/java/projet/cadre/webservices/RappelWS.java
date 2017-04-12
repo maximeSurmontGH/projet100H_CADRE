@@ -16,7 +16,7 @@ import projet.cadre.model.EvenementAutre;
 import projet.cadre.model.Rappel;
 import projet.cadre.services.CadreServices;
 
-@Path("")
+@Path("/rappels")
 public class RappelWS {
 	
 	final GsonBuilder builder = new GsonBuilder();

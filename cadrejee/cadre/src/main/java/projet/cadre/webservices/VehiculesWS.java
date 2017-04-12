@@ -15,7 +15,7 @@ import com.google.gson.GsonBuilder;
 import projet.cadre.model.EvenementAutre;
 import projet.cadre.services.CadreServices;
 
-@Path("")
+@Path("/vehicules")
 public class VehiculesWS {
 	
 	final GsonBuilder builder = new GsonBuilder();
@@ -57,7 +57,7 @@ public class VehiculesWS {
 	}
 	
 	@POST
-	@Path("")
+	@Path("/addVehicule")
 	public Response addVehicule(@FormParam("immatriculation") String immatriculation, @FormParam("typeVehicule") String typeVehicule){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
@@ -71,7 +71,7 @@ public class VehiculesWS {
 	}
 	
 	@POST
-	@Path("")
+	@Path("/addDemandeV")
 	public Response addDemandeDeVehicule(@FormParam("immatriculation") String immatriculation, @FormParam("idEmploye") String idEmploye, @FormParam("date") String dateDebut, @FormParam("date") String dateFin){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
