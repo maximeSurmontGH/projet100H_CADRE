@@ -14,7 +14,7 @@ import com.google.gson.GsonBuilder;
 
 import projet.cadre.services.CadreServices;
 
-@Path("/ElementsSite")
+@Path("/elementssite")
 public class ElementsSiteWS {
 	
 	final GsonBuilder builder = new GsonBuilder();
@@ -28,7 +28,7 @@ public class ElementsSiteWS {
 	}
 	
 	@PUT
-	@Path("")
+	@Path("/updateET")
 	public Response updateElementText(@FormParam("idElement") String idElement,@FormParam("contenuElement") String contenuElement){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
@@ -42,7 +42,7 @@ public class ElementsSiteWS {
 	}
 	
 	@PUT
-	@Path("")
+	@Path("/updateEI")
 	public Response updateElementImage(@FormParam("idElement") String idElement, @FormParam("contenuElement") String contenuElement, @FormParam("cheminElement") String cheminElement){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
