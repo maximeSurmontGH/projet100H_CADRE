@@ -15,7 +15,7 @@ import com.google.gson.GsonBuilder;
 import projet.cadre.model.EvenementAutre;
 import projet.cadre.services.CadreServices;
 
-@Path("/evenementAutre")
+@Path("/evenementautre")
 public class EvenementAutreWS {
 	
 	final GsonBuilder builder = new GsonBuilder();
