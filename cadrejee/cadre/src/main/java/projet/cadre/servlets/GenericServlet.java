@@ -10,5 +10,4 @@ public class GenericServlet extends HttpServlet{
 	protected String getUtilisateurCourant(HttpServletRequest request) {
 		return (String) request.getSession().getAttribute("employeConnecte");
 	}
-
 }
