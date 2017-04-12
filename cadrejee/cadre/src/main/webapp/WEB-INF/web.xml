@@ -2,10 +2,23 @@
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-	
+
 	<welcome-file-list>
-		<welcome-file>index</welcome-file>
+		<welcome-file>connexion</welcome-file>
 	</welcome-file-list>
+	
+	<filter>
+		<filter-name>AuthentificationFilter</filter-name>
+		<filter-class>hei.devweb.filters.AuthentificationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthentificationFilter</filter-name>
+		<url-pattern>/accueil</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>AuthentificationFilter</filter-name>
+		<url-pattern>/bureau</url-pattern>
+	</filter-mapping>
 	
 	<servlet>
 		<servlet-name>javax.ws.rs.core.Application</servlet-name>
@@ -13,75 +26,6 @@
 	
 	<servlet-mapping>
 		<servlet-name>javax.ws.rs.core.Application</servlet-name>
-		<url-pattern>*/cadrews/*</url-pattern>
+		<url-pattern>/deskusws/*</url-pattern>
 	</servlet-mapping>
-	
-	<filter>
-		<filter-name>AuthentificationFilterDirection</filter-name>
-		<filter-class>projet.cadre.filters.AuthentificationFilterDirection</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>AuthentificationFilterDirection</filter-name>
-		<url-pattern>/direction/menu</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterDirection</filter-name>
-		<url-pattern>/direction/calendrier</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterDirection</filter-name>
-		<url-pattern>/direction/modification</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterDirection</filter-name>
-		<url-pattern>/direction/ressources</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterDirection</filter-name>
-		<url-pattern>/direction/annuaire</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterDirection</filter-name>
-		<url-pattern>/direction/demandes</url-pattern>
-	</filter-mapping>
-	
-	<filter>
-		<filter-name>AuthentificationFilterEmploye</filter-name>
-		<filter-class>projet.cadre.filters.AuthentificationFilterEmploye</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>AuthentificationFilterEmploye</filter-name>
-		<url-pattern>/employes/menu</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterEmploye</filter-name>
-		<url-pattern>/employes/annuaire</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterEmploye</filter-name>
-		<url-pattern>/employes/demandes</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterEmploye</filter-name>
-		<url-pattern>/employes/ressources</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterEmploye</filter-name>
-		<url-pattern>/employes/calendrier</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>AuthentificationFilterEmploye</filter-name>
-		<url-pattern>/employes/rappels</url-pattern>
-	</filter-mapping>
-
 </web-app>
