@@ -16,7 +16,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @WebServlet("/employes/menu")
 
-public class EmployesMenuServlet extends GenericServlet {
+public class EmployesMenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,9 +29,6 @@ public class EmployesMenuServlet extends GenericServlet {
 		templateEngine.setTemplateResolver(templateResolver);
 		templateEngine.addDialect(new Java8TimeDialect());	
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
-		String employeId = this.getUtilisateurCourant(req);
-		context.setVariable("employeId", employeId);
 
 		templateEngine.process("menuIntranetEmployes", context, resp.getWriter());
 	}
