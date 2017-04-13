@@ -16,7 +16,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @WebServlet("/employes/calendrier")
 
-public class EmployesCalendrierServlet extends HttpServlet {
+public class EmployesCalendrierServlet extends GenericServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +29,10 @@ public class EmployesCalendrierServlet extends HttpServlet {
 		templateEngine.setTemplateResolver(templateResolver);
 		templateEngine.addDialect(new Java8TimeDialect());	
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-
+		
+		String employeId = this.getUtilisateurCourant(req);
+		context.setVariable("employeId", employeId);
+		
 		templateEngine.process("calendrierEmployes", context, resp.getWriter());
 	}
 }

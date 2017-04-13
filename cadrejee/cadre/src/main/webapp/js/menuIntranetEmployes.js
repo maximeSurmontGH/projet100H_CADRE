@@ -30,6 +30,23 @@ function Notifications(){
 
 }
 
+function getEmploye(){
+	var getEmploye = new XMLHttpRequest();
+	var employeId = document.getElementById("");
+	getList.open("GET","cadrews/employes/employeById/",true, null, null);
+	getList.responseType="json";
+	var selectTeam = document.getElementById("choixPk");
+
+	getList.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			var newOption = document.createElement("option");
+			newOption.textContent =this.response[i].nomPk;
+			selectTeam.appendChild(newOption);
+		}
+	}
+	getList.send();
+}
+
 window.onload = function(){
 	maillingAnnonce();
 	//Notifications();
