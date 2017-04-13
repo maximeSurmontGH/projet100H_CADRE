@@ -29,8 +29,11 @@ table {
     margin-bottom: 90px;
 }
 #boutonDL{
+	width:100%;
+}
+#a_boutonDL{
   width: 150px;
-	margin-top: -30px;
+  margin-top: -90px;
   float: right;
 }
 .selectRessource{

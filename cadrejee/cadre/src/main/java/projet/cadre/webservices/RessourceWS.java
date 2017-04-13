@@ -23,6 +23,14 @@ public class RessourceWS {
 	final Gson gson = builder.create();
 	
 	@GET
+	@Path("/listRessource")
+	public Response lstRessource(@PathParam("id") int id){
+		CadreServices cadreservices = CadreServices.getInstance();
+		System.out.println(cadreservices.getRessourceById(id));
+		return Response.status(200).entity(gson.toJson(cadreservices.getRessource())).build();
+	}
+	
+	@GET
 	@Path("/ressourceById/{id}")
 	public Response employeById(@PathParam("id") int id){
 		CadreServices cadreservices = CadreServices.getInstance();

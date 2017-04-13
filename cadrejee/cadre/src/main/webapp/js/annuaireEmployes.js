@@ -1,15 +1,10 @@
 //fonction pour remplir le tableau de l annuaire employe
 function remplissageTableau(){
-	var nb = 0;
 	document.getElementById("boutonSearch").onclick=function(){
-		if (nb>0){
-			var element = document.getElementById("tableauDuPersonnel2");
-			while (element.firstChild) {
+		var element = document.getElementById("tableauDuPersonnel");
+		while (element.firstChild) {
 		  	element.removeChild(element.firstChild);
-			}
-			createurDeNotifications(4, "Employé non trouvé."); //a supprimer
 		}
-		nb++;
 
 		var table = document.getElementById("tableauDuPersonnel");
 
@@ -28,12 +23,14 @@ function remplissageTableau(){
 		tr1.appendChild(td1_4);
 		table.appendChild(tr1);
 
-		remplisseur("Kahina HASSAM", "Boss", "non disponible", "kahina.hassam@hei.yncrea.fr");
-		remplisseur("Chloé PELLETIER", "Fille du patron", "06 14 34 84 99", "chloé.pelletier@hei.fr");
-		remplisseur("Maxime SURMONT", "Stagiaire non payé", "06 40 40 04 78", "maxime.surmont@hei.fr");
-
 		disparaitre();
-		gestionFooter();
+		gestionFooter();	
+		if(document.getElementById("inputSearch").value==""){
+			getAnnuaireEmploye();
+		}
+		else if(document.getElementById("inputSearch").value!=""){
+			getAnnuaireEmployePoste(document.getElementById("inputSearch").value.toLowerCase());
+		}
 	}
 }
 
@@ -55,6 +52,44 @@ function remplisseur(nom, poste, numero, email){
 	tr2.appendChild(td1_3);
 	tr2.appendChild(td1_4);
 	table.appendChild(tr2);
+}
+
+// recuperation de la liste de tous les employes
+function getAnnuaireEmploye(){
+	var getEmploye = new XMLHttpRequest();
+	getEmploye.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
+	getEmploye.responseType="json";
+	
+	getEmploye.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			remplisseur(this.response[i].nomEmploye+" "+this.response[i].prenomEmploye, this.response[i].poste, this.response[i].telephone, this.response[i].email);
+		}
+	}
+	createurDeNotifications(2, "Affichage de tout l'anuaire par défaut");
+	getEmploye.send();
+	remplissageTableau();
+}
+
+// recuperation de l employe ou poste voulu
+function getAnnuaireEmployePoste(poste){
+	var getEmploye = new XMLHttpRequest();
+	getEmploye.open("GET","../cadrews/employes/employeByPosteNom/"+poste,true, null, null);
+	getEmploye.responseType="json";
+	
+	getEmploye.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			remplisseur(this.response[i].nomEmploye+" "+this.response[i].prenomEmploye, this.response[i].poste, this.response[i].telephone, this.response[i].email);
+		}
+		if(this.response.length==0){
+			var element = document.getElementById("tableauDuPersonnel");
+			while (element.firstChild) {
+			  	element.removeChild(element.firstChild);
+			}
+			createurDeNotifications(4, "Poste ou nom non trouvé.");
+		}
+	}
+	getEmploye.send();
+	remplissageTableau();
 }
 
 

@@ -54,6 +54,26 @@ public class RessourceDao {
 		}
 		return ressources;
 	}	
+	
+	// Récupérer toutes les ressources
+		public List<Ressource> listRessource() {
+			List<Ressource> ressources =  new ArrayList<>();
+			try (
+				Connection connection = DataSourceProvider.getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ressources")){
+					ResultSet rs = stmt.executeQuery();
+					while (rs.next()) {
+						 ressources.add(new Ressource(rs.getInt("idRessource"),rs.getString("contenuRessource"), rs.getString("corpsDeMetier"), rs.getString("cheminRessource")));
+							
+					}
+				rs.close();
+				stmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return ressources;
+		}
 		
 	// Enregistrer une nouvelle ressource
 	public Ressource saveRessource(Ressource ressource) {

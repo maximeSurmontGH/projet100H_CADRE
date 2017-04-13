@@ -179,6 +179,10 @@ public class CadreServices {
 		return ressourceDao.getRessourceById(id);
 	}
 	
+	public  List<Ressource> getRessource() {
+		return ressourceDao.listRessource();
+	}
+	
 	public List<Ressource> listRessourceByPosteNom(String champs) {
 		return ressourceDao.listRessourceByPosteNom(champs);
 	}
