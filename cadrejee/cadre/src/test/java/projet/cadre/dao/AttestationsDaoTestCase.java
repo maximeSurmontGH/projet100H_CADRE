@@ -59,6 +59,17 @@ public class AttestationsDaoTestCase {
 	}
 	
 	@Test
+	public void shouldListIdAttestation() {
+		// WHEN
+		List<Attestations> element = attestationDao.getIdAttestation();
+		// THEN
+		Assertions.assertThat(element).hasSize(2);
+		Assertions.assertThat(element).extracting("idAttestation","typeAttestation").containsOnly(
+		Assertions.tuple(1,"Att1"),
+		Assertions.tuple(2,"Att2"));
+	}
+	
+	@Test
 	public void shouldGetAttestationByIdEmploye() {
 		// WHEN
 		List<DemandesAttestation> element = attestationDao.getDemandesAttestationeByidEmploye("chloe.pelletier");
@@ -92,7 +103,7 @@ public class AttestationsDaoTestCase {
 		Assertions.assertThat(element).isNotNull();
 		Assertions.assertThat(element.get(2).getDate()).isEqualTo("01012000");
 		Assertions.assertThat(element.get(2).getEmployes_idEmploye()).isEqualTo("chloe.pelletier");
-		Assertions.assertThat(element.get(2).getEtat()).isEqualTo("en cours");
+		Assertions.assertThat(element.get(2).getEtat()).isEqualTo("attente");
 	}
 	
 	@Test
