@@ -21,6 +21,13 @@ public class AttestationsWS {
 	final Gson gson = builder.create();
 	
 	@GET
+	@Path("/listIdAttestation")
+	public Response listIdAttestation(){
+		CadreServices cadreServices = CadreServices.getInstance();
+		return Response.status(200).entity(gson.toJson(cadreServices.getIdAttestation())).build();
+	}
+	
+	@GET
 	@Path("/listDemandesAttestation")
 	public Response listDemandesAttestation(){
 		CadreServices cadreServices = CadreServices.getInstance();
