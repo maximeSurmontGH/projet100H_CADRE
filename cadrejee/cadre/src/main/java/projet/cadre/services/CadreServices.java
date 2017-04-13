@@ -69,7 +69,7 @@ public class CadreServices {
 		return attestationsDao.getDemandesAttestationByEtat(etat);
 	}
 	
-	public void setDemandeAttestation(String idAttestation, String idEmploye, String date){
+	public void setDemandeAttestation(int idAttestation, String idEmploye, String date){
 		attestationsDao.setDemandeAttestation(idAttestation, idEmploye, date);
 	}
 	public void setStateAttestation (int idDemandeAttestation, int nb){

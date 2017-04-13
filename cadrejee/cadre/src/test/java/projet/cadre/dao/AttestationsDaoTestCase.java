@@ -97,7 +97,7 @@ public class AttestationsDaoTestCase {
 	@Test
 	public void shouldSetAttestation() {
 		// WHEN
-		attestationDao.setDemandeAttestation("1", "chloe.pelletier", "01012000");
+		attestationDao.setDemandeAttestation(1, "chloe.pelletier", "01012000");
 		List<DemandesAttestation> element = attestationDao.getDemandesAttestationeByidEmploye("chloe.pelletier");
 		// THEN
 		Assertions.assertThat(element).isNotNull();

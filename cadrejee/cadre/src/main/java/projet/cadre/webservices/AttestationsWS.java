@@ -50,7 +50,7 @@ public class AttestationsWS {
 	
 	@POST
 	@Path("")
-	public Response addDemandeAttestation(@FormParam("idAttestation") String idAttestation, @FormParam("idEmploye") String idEmploye, @FormParam("date") String date){
+	public Response addDemandeAttestation(@FormParam("idAttestation") int idAttestation, @FormParam("idEmploye") String idEmploye, @FormParam("date") String date){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
 			cadreServices.setDemandeAttestation(idAttestation, idEmploye, date);

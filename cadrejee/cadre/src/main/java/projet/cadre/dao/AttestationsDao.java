@@ -93,11 +93,11 @@ public class AttestationsDao {
 	}
 	
 	// permet d'ajouter une demande d'attestation pour un employe a une certaine date
-	public void setDemandeAttestation(String idAttestation, String idEmploye, String date){
+	public void setDemandeAttestation(int idAttestation, String idEmploye, String date){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO demandesattestation(attestations_idAttestation, employes_idEmploye, date, etat) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, idAttestation);
+			stmt.setInt(1, idAttestation);
 			stmt.setString(2, idEmploye);
 			stmt.setString(3,date);
 			stmt.setString(4,"attente");
