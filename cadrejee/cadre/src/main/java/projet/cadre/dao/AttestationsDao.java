@@ -81,7 +81,7 @@ public class AttestationsDao {
 			stmt.setString(1, idAttestation);
 			stmt.setString(2, idEmploye);
 			stmt.setString(3,date);
-			stmt.setString(4,"en cours");
+			stmt.setString(4,"attente");
 			stmt.executeUpdate();
 			stmt.close();
 			connection.close();

@@ -75,15 +75,15 @@ public class VehiculesDao {
 	}
 	
 	// retourne la liste des demandes de vehicules libre
-	public List<DemandesVehicule> getDemandesVehiculeFree(){
-		ArrayList<DemandesVehicule> lstdemandesAttestation = new ArrayList<>();
+	public List<Vehicules> getVehiculesFree(){
+		ArrayList<Vehicules> lstdemandesAttestation = new ArrayList<>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesvehicule INNER JOIN vehicules ON immatriculation=vehicules_immatriculation WHERE vehicules.disponibilite=?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM  vehicules WHERE disponibilite=?");
 			stmt.setString(1, "T");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				lstdemandesAttestation.add(new DemandesVehicule(resultSet.getInt("id"), resultSet.getString("vehicules_immatriculation"), resultSet.getString("employes_idEmploye"),resultSet.getString("etat"), resultSet.getString("dateDebut"), resultSet.getString("dateFin")));
+				lstdemandesAttestation.add(new Vehicules(resultSet.getString("immatriculation"),resultSet.getString("typeVehicule")));
 			}
 			stmt.close();
 			connection.close();

@@ -22,7 +22,7 @@ public class RessourceDao {
 				stmt.setInt(1, id);
 				ResultSet rs = stmt.executeQuery();
 				if (rs.next()) {
-					 ressource = new Ressource(rs.getString("contenuRessource"), rs.getString("corpsDeMetier"), rs.getString("cheminRessource"));
+					 ressource = new Ressource(rs.getInt("idRessource"),rs.getString("contenuRessource"), rs.getString("corpsDeMetier"), rs.getString("cheminRessource"));
 				}
 				rs.close();
 				stmt.close();
@@ -43,7 +43,7 @@ public class RessourceDao {
 				stmt.setString(2,champs);
 				ResultSet rs = stmt.executeQuery();
 				while (rs.next()) {
-					 ressources.add(new Ressource(rs.getString("contenuRessource"), rs.getString("corpsDeMetier"), rs.getString("cheminRessource")));
+					 ressources.add(new Ressource(rs.getInt("idRessource"),rs.getString("contenuRessource"), rs.getString("corpsDeMetier"), rs.getString("cheminRessource")));
 						
 				}
 			rs.close();

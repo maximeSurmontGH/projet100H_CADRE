@@ -38,7 +38,7 @@ public class AttestationsWS {
 	@Path("/listDemandesAttestationByEtat/{etat}")
 	public Response listDemandesAttestationeByEtat(@PathParam("etat") String etat){
 		CadreServices cadreServices = CadreServices.getInstance();
-		return Response.status(200).entity(gson.toJson(cadreServices.getDemandesAttestationeByidEmploye(etat))).build();
+		return Response.status(200).entity(gson.toJson(cadreServices.getDemandesAttestationByEtat(etat))).build();
 	}
 	
 	@POST

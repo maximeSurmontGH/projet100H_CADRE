@@ -23,9 +23,9 @@ public class EvenementAutreWS {
 	
 	@GET
 	@Path("/getEvenementById/{id}")
-	public Response getEvenementById(@PathParam("id") String id){
+	public Response getEvenementById(@PathParam("id") int id){
 		CadreServices cadreServices = CadreServices.getInstance();
-		return Response.status(200).entity(gson.toJson(cadreServices.getElementById(id))).build();
+		return Response.status(200).entity(gson.toJson(cadreServices.getevenementById(id))).build();
 	}
 	
 	@POST

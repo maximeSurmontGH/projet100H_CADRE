@@ -84,13 +84,11 @@ public class VehiculesDaoTestCase {
 	@Test
 	public void shouldGetVehiculeFree() {
 		// WHEN
-		List<DemandesVehicule> element = vehiculeDao.getDemandesVehiculeFree();
+		List<Vehicules> element = vehiculeDao.getVehiculesFree();
 		// THEN
 		Assertions.assertThat(element).isNotNull();
-		Assertions.assertThat(element.get(0).getDateFin()).isEqualTo("23022017");
-		Assertions.assertThat(element.get(0).getVehicules_immatriculation()).isEqualTo("ddd22k");
-		Assertions.assertThat(element.get(0).getEmployes_idEmploye()).isEqualTo("chloe.pelletier");
-		Assertions.assertThat(element.get(0).getEtat()).isEqualTo("en cours");
+		Assertions.assertThat(element.get(0).getImmatriculation()).isEqualTo("ddd22k");
+		Assertions.assertThat(element.get(0).getTypeDeVehicule()).isEqualTo("Vehicule1");
 	}
 	
 	@Test

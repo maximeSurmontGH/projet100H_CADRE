@@ -66,7 +66,7 @@ public class RessourceDaoTestCase {
 	@Test
 	public void shouldSaveRessource() throws Exception {
 		// GIVEN
-				Ressource ressourcetoSave = new Ressource("testbb","testcm","testc");
+				Ressource ressourcetoSave = new Ressource(3,"testbb","testcm","testc");
 				// WHEN
 				Ressource ressourceAdded = ressourcedao.saveRessource(ressourcetoSave);
 		// THEN

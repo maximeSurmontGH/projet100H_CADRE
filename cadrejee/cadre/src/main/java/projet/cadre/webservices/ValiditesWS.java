@@ -35,10 +35,10 @@ public class ValiditesWS {
 	}
 	
 	@GET
-	@Path("/listDemandesDeValiditeByType/{etat}")
+	@Path("/listDemandesDeValiditeByType/{type}")
 	public Response listDemandesDeValiditeByType(@PathParam("type") String type){
 		CadreServices cadreServices = CadreServices.getInstance();
-		return Response.status(200).entity(gson.toJson(cadreServices.getDemandesAttestationByEtat(type))).build();
+		return Response.status(200).entity(gson.toJson(cadreServices.getDemandesDeValiditeByType(type))).build();
 	}
 	
 	@POST

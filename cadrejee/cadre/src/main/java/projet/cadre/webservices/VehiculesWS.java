@@ -43,10 +43,10 @@ public class VehiculesWS {
 	}
 	
 	@GET
-	@Path("/listDemandesDeVehiculeFree")
-	public Response listDemandesDeVehiculeFree(){
+	@Path("/listVehiculesFree")
+	public Response listVehiculesFree(){
 		CadreServices cadreServices = CadreServices.getInstance();
-		return Response.status(200).entity(gson.toJson(cadreServices.getDemandesVehiculeFree())).build();
+		return Response.status(200).entity(gson.toJson(cadreServices.getVehiculesFree())).build();
 	}
 	
 	@GET

@@ -200,6 +200,10 @@ public class CadreServices {
 		return validitesDao.getDemandesDeValiditeByidEmploye(id);
 	}
 	
+	public List<DemandesValidite> getDemandesDeValiditeByType(String type){
+		return validitesDao.getDemandesDeValiditeByType(type);
+	}
+	
 	public void setDemandeDeValidite(int idValidite, String idEmploye, String dateDebut, String dateFin){
 		validitesDao.setDemandeDeValidite(idValidite, idEmploye, dateDebut, dateFin);
 	}
@@ -229,8 +233,8 @@ public class CadreServices {
 		return vehiculesDao.getDemandesVehiculeByEtat(etat);
 	}
 	
-	public List<DemandesVehicule> getDemandesVehiculeFree(){
-		return vehiculesDao.getDemandesVehiculeFree();
+	public List<Vehicules> getVehiculesFree(){
+		return vehiculesDao.getVehiculesFree();
 	}
 	
 	public Vehicules getVehiculeByImmatriculation(String imma){

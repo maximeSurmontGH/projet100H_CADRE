@@ -40,9 +40,9 @@ public class RessourceWS {
 	
 	@POST
 	@Path("")
-	public Response addRessource(@FormParam("contenuRessource") String contenuRessource,@FormParam("corpsDeMetier") String corpsDeMetier,@FormParam("cheminRessource") String cheminRessource){
+	public Response addRessource(@FormParam("idRessource") int idRessource,@FormParam("contenuRessource") String contenuRessource,@FormParam("corpsDeMetier") String corpsDeMetier,@FormParam("cheminRessource") String cheminRessource){
 		CadreServices cadreServices = CadreServices.getInstance();
-		Ressource ressource = new Ressource(contenuRessource,corpsDeMetier,cheminRessource);
+		Ressource ressource = new Ressource(idRessource,contenuRessource,corpsDeMetier,cheminRessource);
 		try {
 			cadreServices.saveRessource(ressource);
 			return Response.status(200).entity(gson.toJson("")).build();

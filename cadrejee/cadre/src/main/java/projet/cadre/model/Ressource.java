@@ -8,8 +8,9 @@ public class Ressource {
   private String corpsDeMetier;
   private String cheminRessource;
   
-  public Ressource(String contenuRessource, String corpsDeMetier, String cheminRessource) {
+  public Ressource(int idRessource,String contenuRessource, String corpsDeMetier, String cheminRessource) {
 	super();
+	this.idRessource = idRessource;
 	this.contenuRessource = contenuRessource;
 	this.corpsDeMetier = corpsDeMetier;
 	this.cheminRessource = cheminRessource;
