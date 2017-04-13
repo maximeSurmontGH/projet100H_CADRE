@@ -17,6 +17,25 @@ import projet.cadre.model.DemandesValidite;
 
 public class AttestationsDao {
 	
+	//retourne la liste des attestations avec leur id 
+	
+	public List<Attestations> getIdAttestation(){
+		ArrayList<Attestations> lstIdAttestation = new ArrayList<>();
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM attestations");
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				lstIdAttestation.add(new Attestations(resultSet.getInt("idAttestation"), resultSet.getString("typeAttestation")));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lstIdAttestation;
+	}
+	
 	// retourne la liste des demandes d'attestation
 	public List<DemandesAttestation> getDemandesAttestation(){
 		ArrayList<DemandesAttestation> lstdemandesAttestation = new ArrayList<>();
