@@ -1,5 +1,3 @@
-
-
 function maillingAnnonce(){
 	document.getElementById("mailling").onclick=function(){
 		var p = document.getElementById("maillingAnnonceNum");
@@ -13,7 +11,7 @@ function maillingAnnonce(){
 function Notifications(){
 	var footer = document.getElementByTagName(footer);
 		var div = document.createElement(div);
-		/*var strong = document.createElement(strong);
+		var strong = document.createElement(strong);
 	  var a = document.createElement(a);
 		strong.innerHTML = "alert :";
 
@@ -24,30 +22,26 @@ function Notifications(){
 		a.innerHTML = "&times;";
 
 		div.appendChild(a);
-		div.appendChild(strong);*/
+		div.appendChild(strong);
 		div.innerHTML = "nouvelle ressource disponible";
 		footer.appendChild(div);
-
 }
 
 function getEmploye(){
 	var getEmploye = new XMLHttpRequest();
-	var employeId = document.getElementById("");
-	getList.open("GET","cadrews/employes/employeById/",true, null, null);
-	getList.responseType="json";
-	var selectTeam = document.getElementById("choixPk");
-
-	getList.onload=function(){
-		for (var i=0; i<this.response.length; i++){
-			var newOption = document.createElement("option");
-			newOption.textContent =this.response[i].nomPk;
-			selectTeam.appendChild(newOption);
-		}
+	var employeId = document.getElementById("employeId").innerText;
+	getEmploye.open("GET","../cadrews/employes/employeById/"+employeId,true, null, null);
+	getEmploye.responseType="json";
+	var spanNom = document.getElementById("nomEmploye");
+	
+	getEmploye.onload=function(){
+		spanNom.textContent=this.response.prenomEmploye+" "+this.response.nomEmploye;
 	}
-	getList.send();
+	getEmploye.send();
 }
 
 window.onload = function(){
 	maillingAnnonce();
 	//Notifications();
+	getEmploye();
 };
