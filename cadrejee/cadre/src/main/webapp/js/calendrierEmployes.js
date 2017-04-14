@@ -323,8 +323,90 @@ function compteurInfos(){
 	}
 }
 
+//affichage type de congé dans le selecteur
+
+function getIdNom(){
+			var getList2 = new XMLHttpRequest();
+			getList2.open("GET","../cadrews/conges/listIdConge",true, null, null);
+			getList2.responseType="json";
+			var select = document.getElementById("typeConge");
+			getList2.onload=function(){
+				for (var i=0; i<this.response.length; i++){
+					var newoption=document.createElement("option");
+					newoption.textContent=this.response[i].typeConge;
+					select.appendChild(newoption);
+				}
+			}
+			getList2.send();
+}
+
+//ajouter une demande de congé 
+
+function addDemandeConge(){
+	document.getElementById("boutonSearch1").onclick=function(){
+		var employeId = document.getElementById("employeId").innerText;
+		
+		var requetePostReponse = new XMLHttpRequest();
+		requetePostReponse.open("POST","../cadrews/conges");
+		requetePostReponse.responseType = "json";
+		
+		var nom = document.getElementById("inputNom1").value;
+		document.getElementById("inputNom1").value="";
+		var prenom = document.getElementById("inputPrenom1").value;
+		document.getElementById("inputPrenom1").value="";
+				
+		var select = document.getElementById("typeConge");
+		var choice = select.selectedIndex;
+		var type = select.options[choice].value.toString();
+		
+		var select = document.getElementById("form_dayD");
+		var choice = select.selectedIndex;
+		var dateDebutJour = select.options[choice].value.toString();
+		
+		var select = document.getElementById("form_monthD");
+		var choice = select.selectedIndex;
+		var dateDebutMois = select.options[choice].value.toString();
+		
+		var select = document.getElementById("form_yearD");
+		var choice = select.selectedIndex;
+		var dateDebutAnnee = select.options[choice].value.toString();
+		
+		var select = document.getElementById("form_dayF");
+		var choice = select.selectedIndex;
+		var dateFinJour = select.options[choice].value.toString();
+		
+		var select = document.getElementById("form_monthF");
+		var choice = select.selectedIndex;
+		var dateFinMois = select.options[choice].value.toString();
+		
+		var select = document.getElementById("form_yearF");
+		var choice = select.selectedIndex;
+		var dateFinAnnee = select.options[choice].value.toString();
+		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/conges/listIdConge",true, null, null);
+		getList2.responseType="json";
+		var a;
+		getList2.onload=function(){
+			for (var i=0; i<this.response.length; i++){
+				if(this.response[i].typeConge == type){
+					a=this.response[i].idConge;
+					requetePostReponse.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					requetePostReponse.send("idConge="+a+"&idEmploye="+employeId+"&dateDebut="+dateDebutJour+dateDebutMois+dateDebutAnnee+"&dateFin="+dateFinJour+dateFinMois+dateFinAnnee);
+					
+				
+				}
+			}
+		}
+		getList2.send();
+		createurDeNotifications(1, "Demande de conge du type : "+type+" bien envoyée!");
+	}
+}
+
 
 window.onload = function(){
+	getIdNom();
+	addDemandeConge();
   gestionnaireDeMenu(3);
 	maillingAnnonce();
 	creationTableau();

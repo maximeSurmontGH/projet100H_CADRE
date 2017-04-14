@@ -16,6 +16,7 @@ import projet.cadre.dao.RessourceDao;
 import projet.cadre.dao.ValiditesDao;
 import projet.cadre.dao.VehiculesDao;
 import projet.cadre.model.Attestations;
+import projet.cadre.model.Conges;
 import projet.cadre.model.Contact;
 import projet.cadre.model.DemandesAttestation;
 import projet.cadre.model.DemandesConge;
@@ -77,6 +78,10 @@ public class CadreServices {
 	}
 	
 	// Conges Dao
+	
+	public List<Conges> getIdConge(){
+		return congesDao.getIdConge();
+	}
 	public List<DemandesConge> getDemandesDeConge(){
 		return congesDao.getDemandesDeConge();
 	}

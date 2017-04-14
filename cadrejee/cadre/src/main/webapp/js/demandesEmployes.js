@@ -33,6 +33,8 @@ function getIdNom(){
 			getList2.send();
 }
 
+
+
 function getIdByName(name){
 	var getList2 = new XMLHttpRequest();
 	getList2.open("GET","../cadrews/attestation/listIdAttestation",true, null, null);
@@ -55,48 +57,35 @@ function getIdByName(name){
 			getList1.open("GET","../cadrews/attestation/listDemandesAttestation",true, null, null);
 			getList1.responseType="json";
 			var divhisto = document.getElementById("historique");
-			
 			getList1.onload=function(){
 				for (var i=0; i<this.response.length; i++){
+					
 					if (this.response[i].employes_idEmploye==employeId){
+						var newdiv = document.createElement("div");
+						var newstrong = document.createElement("strong");
+						var type= this.response[i].attestations_idAttestation;
+						newstrong.textContent = "Demande de type : "+type+" , ";
+						var str=document.createElement("em");
+						str.textContent=this.response[i].date[0]+this.response[i].date[1]+"/"+this.response[i].date[2]+this.response[i].date[3]+"/"+this.response[i].date[4]+this.response[i].date[5]+this.response[i].date[6]+this.response[i].date[7]+ " , "+this.response[i].etat ;
+						newdiv.appendChild(newstrong)
+						newdiv.appendChild(str);
+						divhisto.appendChild(newdiv);
 						if(this.response[i].etat=='accepte'){
-							var newdiv = document.createElement("div");
 							newdiv.className="alert alert-success alert-dismissable demandeHist";
-							var newstrong = document.createElement("strong");
-							newstrong.textContent = "Demande de type : "+this.response[i].attestations_idAttestation+" , ";
-							var str=document.createElement("em");
-							str.textContent=this.response[i].date[0]+this.response[i].date[1]+"/"+this.response[i].date[2]+this.response[i].date[3]+"/"+this.response[i].date[4]+this.response[i].date[5]+this.response[i].date[6]+this.response[i].date[7]+ " , "+this.response[i].etat ;
-							newdiv.appendChild(newstrong)
-							newdiv.appendChild(str);
-							divhisto.appendChild(newdiv);
 						}
 						if(this.response[i].etat=='attente'){
-							var newdiv = document.createElement("div");
 							newdiv.className="alert alert-warning alert-dismissable demandeHist";
-							var newstrong = document.createElement("strong");
-							newstrong.textContent = "Demande de type : "+this.response[i].attestations_idAttestation+" , ";
-							var str=document.createElement("em");
-							str.textContent=this.response[i].date[0]+this.response[i].date[1]+"/"+this.response[i].date[2]+this.response[i].date[3]+"/"+this.response[i].date[4]+this.response[i].date[5]+this.response[i].date[6]+this.response[i].date[7]+ " , "+this.response[i].etat ;
-							newdiv.appendChild(newstrong)
-							newdiv.appendChild(str);
-							divhisto.appendChild(newdiv);
 						}
-						if(this.response[i].etat=='refuse'){
-							var newdiv = document.createElement("div");
+						else/**(this.response[i].etat=='refuse')**/{
 							newdiv.className="alert alert-danger alert-dismissable demandeHist";
-							var newstrong = document.createElement("strong");
-							newstrong.textContent = "Demande de type : "+this.response[i].attestations_idAttestation+" , ";
-							var str=document.createElement("em");
-							str.textContent=this.response[i].date[0]+this.response[i].date[1]+"/"+this.response[i].date[2]+this.response[i].date[3]+"/"+this.response[i].date[4]+this.response[i].date[5]+this.response[i].date[6]+this.response[i].date[7]+ " , "+this.response[i].etat ;
-							newdiv.appendChild(newstrong)
-							newdiv.appendChild(str);
-							divhisto.appendChild(newdiv);
 						}
 						
 					}
 				}
 			}
+			
 			getList1.send();
+			
 		};
 		
 		

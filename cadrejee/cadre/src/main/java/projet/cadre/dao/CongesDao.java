@@ -9,11 +9,31 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import projet.cadre.model.Attestations;
 import projet.cadre.model.Conges;
 import projet.cadre.model.Employe;
 import projet.cadre.model.DemandesConge;
 
 public class CongesDao {
+	
+	//retourne la liste des attestations avec leur id 
+	
+	public List<Conges> getIdConge(){
+		ArrayList<Conges> lstIdConge = new ArrayList<>();
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM conges");
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				lstIdConge.add(new Conges(resultSet.getInt("idConge"), resultSet.getString("typeConge")));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lstIdConge;
+	}
 	
 	// retourne la liste des demandes de conges
 	public List<DemandesConge> getDemandesDeConge(){

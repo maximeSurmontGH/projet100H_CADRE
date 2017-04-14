@@ -20,6 +20,13 @@ public class CongesWS {
 	final Gson gson = builder.create();
 	
 	@GET
+	@Path("/listIdConge")
+	public Response listIdAttestation(){
+		CadreServices cadreServices = CadreServices.getInstance();
+		return Response.status(200).entity(gson.toJson(cadreServices.getIdConge())).build();
+	}
+	
+	@GET
 	@Path("/listConges")
 	public Response listConges(){
 		CadreServices cadreservices = CadreServices.getInstance();

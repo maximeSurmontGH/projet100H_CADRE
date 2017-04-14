@@ -2,27 +2,28 @@ package projet.cadre.model;
 
 public class Conges {
 	
-	private int id;
-	private String typeDeConges;
+	private int idConge;
+	private String typeConge;
 	
-	public Conges(String type){
-		this.typeDeConges = type;
+	public Conges(int id,String type){
+		this.idConge=id;
+		this.typeConge = type;
 	}
 
 	public int getId() {
-		return id;
+		return idConge;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idConge = id;
 	}
 
 	public String getTypeDeConges() {
-		return typeDeConges;
+		return typeConge;
 	}
 
 	public void setTypeDeConges(String typeDeConges) {
-		this.typeDeConges = typeDeConges;
+		this.typeConge = typeDeConges;
 	}
 	
 }

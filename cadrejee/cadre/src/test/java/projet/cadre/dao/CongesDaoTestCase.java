@@ -8,6 +8,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import projet.cadre.model.Attestations;
+import projet.cadre.model.Conges;
 import projet.cadre.model.DemandesAttestation;
 import projet.cadre.model.DemandesConge;
 
@@ -40,6 +42,17 @@ public class CongesDaoTestCase {
 			stmt.executeUpdate("INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (1,1,'chloe.pelletier','21022016','23022017','en cours')");
 			stmt.executeUpdate("INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (2,1,'chloe.pelletier','21022016','23022017','refus')");
 		}
+	}
+	
+	@Test
+	public void shouldListIdConge() {
+		// WHEN
+		List<Conges> element = congeDao.getIdConge();
+		// THEN
+		Assertions.assertThat(element).hasSize(2);
+		Assertions.assertThat(element).extracting("idConge","typeConge").containsOnly(
+			Assertions.tuple(1,"Conge1"),
+		Assertions.tuple(2,"Conge2"));
 	}
 	
 	@Test
