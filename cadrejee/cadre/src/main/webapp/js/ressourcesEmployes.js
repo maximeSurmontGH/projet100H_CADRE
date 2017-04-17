@@ -33,6 +33,7 @@ function remplissageTableau(){
 		}
 		else if(document.getElementById("inputSearch").value!=""){
 			getRessourceByNom(document.getElementById("inputSearch").value.toLowerCase());
+			document.getElementById("inputSearch").value="";
 		}
 	}
 }
@@ -111,6 +112,24 @@ function getRessourceByNom(poste){
 	remplissageTableau();
 }
 
+//remplis la dataliste avec les choix existant dans la BDD
+function remplissageDataListe(){
+	var getEmploye = new XMLHttpRequest();
+	getEmploye.open("GET","../cadrews/ressources/listRessource",true, null, null);
+	getEmploye.responseType="json";
+	
+	getEmploye.onload=function(){
+		var dataliste = document.getElementById("lstRessources");
+		for (var i=0; i<this.response.length; i++){
+			var option = document.createElement('option');
+			option.value=this.response[i].contenuRessource;
+			dataliste.appendChild(option);
+		}
+	}
+	getEmploye.send();
+	
+	remplissageTableau();
+}
 
 window.onload = function(){
 	gestionnaireDeMenu(9);
@@ -119,4 +138,5 @@ window.onload = function(){
 	supprimeurDeNotifications();
 	disparaitre();
 	gestionFooter();
+	remplissageDataListe();
 };

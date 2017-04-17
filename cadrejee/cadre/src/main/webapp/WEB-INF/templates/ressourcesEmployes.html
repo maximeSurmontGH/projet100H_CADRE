@@ -29,7 +29,8 @@
             <form id="formulaire">
                 <div class="input-group">
                   <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
-                  <input type="text" class="form-control" id="inputSearch" placeholder="ressource(s) recherché(s)">
+                  <input list="lstRessources" type="text" class="form-control" id="inputSearch" placeholder="ressource(s) recherché(s)">
+				  <datalist id="lstRessources"></datalist>
                 </div>
                 <div id="boutonSearch">
                   <a class="btn btn-primary" id="boutonSearch" href="#">Rechercher</a>
