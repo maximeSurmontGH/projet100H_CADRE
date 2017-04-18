@@ -29,12 +29,19 @@ public class RappelWS {
 		return Response.status(200).entity(gson.toJson(cadreServices.getRappelById(id))).build();
 	}
 	
+	@GET
+	@Path("/getRappelByIdEmploye/{id}")
+	public Response getRappelByIdEmploye(@PathParam("id") String idEmploye){
+		CadreServices cadreServices = CadreServices.getInstance();
+		return Response.status(200).entity(gson.toJson(cadreServices.getRappelsByIdEmploye(idEmploye))).build();
+	}
+	
 	@POST
 	@Path("")
-	public Response addRappel(@FormParam("idRappel") Integer idRappel, @FormParam("dateRappel") String dateRappel, @FormParam("messageRappel") String messageRappel, @FormParam("employes_idEmploye") String employes_idEmploye){
+	public Response addRappel(@FormParam("dateRappel") String dateRappel, @FormParam("messageRappel") String messageRappel, @FormParam("employes_idEmploye") String employes_idEmploye, @FormParam("imprt") int imprt){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
-			cadreServices.saveRappel(new Rappel(idRappel, dateRappel,  messageRappel, employes_idEmploye));
+			cadreServices.saveRappel(dateRappel, messageRappel, employes_idEmploye, imprt);
 			return Response.status(200).entity(gson.toJson("")).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -45,10 +52,10 @@ public class RappelWS {
 	
 	@DELETE
 	@Path("")
-	public Response deleteRappel(@FormParam("idRappel") Integer idRappel, @FormParam("dateRappel") String dateRappel, @FormParam("messageRappel") String messageRappel, @FormParam("employes_idEmploye") String employes_idEmploye){
+	public Response deleteRappel(@FormParam("idRappel") int idRappel){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
-			cadreServices.deleteRappel(new Rappel(idRappel, dateRappel,  messageRappel, employes_idEmploye));
+			cadreServices.deleteRappel(idRappel);
 			return Response.status(200).entity("").build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

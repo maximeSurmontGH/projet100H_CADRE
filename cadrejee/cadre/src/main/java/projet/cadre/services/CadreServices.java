@@ -172,16 +172,20 @@ public class CadreServices {
 	}
 
 	// Rappel Dao
-	public Rappel saveRappel(Rappel rappel) {
-		return rappelDao.saveRappel(rappel);
+	public void saveRappel(String DateRappel, String MessageRappel, String idEmploye, int imprt) {
+		rappelDao.saveRappel(DateRappel, MessageRappel, idEmploye, imprt);
 	}
 	
-	public void deleteRappel(Rappel rappel){
-		rappelDao.deleteRappel(rappel);
+	public void deleteRappel(int idRappel){
+		rappelDao.deleteRappel(idRappel);
 	}
 	
 	public Rappel getRappelById(int idRappel ) {
 		return rappelDao.getRappelById(idRappel);
+	}
+	
+	public List<Rappel> getRappelsByIdEmploye(String id){
+		return rappelDao.getRappelsByIdEmploye(id);
 	}
 	
 	// Ressource Dao

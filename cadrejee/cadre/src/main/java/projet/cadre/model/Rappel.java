@@ -7,13 +7,15 @@ public class Rappel {
 	private String dateRappel; 
 	private String messageRappel;
 	private String employes_idEmploye;
+	private int imprt;
 	
-	public Rappel( int idRappel,String dateRappel, String messageRappel, String employes_idEmploye) {
+	public Rappel( int idRappel,String dateRappel, String messageRappel, String employes_idEmploye, int imprt) {
 		super();
 		this.idRappel= idRappel;
 		this.dateRappel = dateRappel;
 		this.messageRappel = messageRappel;
 		this.employes_idEmploye = employes_idEmploye;
+		this.imprt = imprt;
 	}
 
 	public int getIdRappel() {

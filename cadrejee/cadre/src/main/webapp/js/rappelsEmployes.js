@@ -2,67 +2,67 @@ function creationTableau(){
   //creation des mois de l'annee
   var janvier = {
     mois:'Janvier',
-    nb:1,
+    nb:01,
     nbJour:31,
     moisAvant : decembre
   }
   var fevrier = {
     mois:'Février',
-    nb:2,
+    nb:02,
     nbJour:28,
     moisAvant : janvier
   }
   var fevrier2 = {
     mois:'Février',
-    nb:2,
+    nb:02,
     nbJour:29,
     moisAvant : janvier
   }
   var mars = {
     mois:'Mars',
-    nb:3,
+    nb:03,
     nbJour:31,
     moisAvant : fevrier
   }
   var mars2 = {
     mois:'Mars',
-    nb:3,
+    nb:03,
     nbJour:31,
     moisAvant : fevrier2
   }
   var avril = {
     mois:'Avril',
-    nb:4,
+    nb:04,
     nbJour:30,
     moisAvant : mars
   }
   var mai = {
     mois:'Mai',
-    nb:5,
+    nb:05,
     nbJour:31,
     moisAvant : avril
   }
   var juin = {
     mois:'Juin',
-    nb:6,
+    nb:06,
     nbJour:30,
     moisAvant : mai
   }
   var juillet = {
     mois:'Juillet',
-    nb:7,
+    nb:07,
     nbJour:31,
     moisAvant : juin
   }
   var aout = {
     mois:'Aout',
-    nb:8,
+    nb:08,
     nbJour:31,
     moisAvant : juillet
   }
   var septembre = {
     mois:'Septembre',
-    nb:9,
+    nb:09,
     nbJour:30,
     moisAvant : aout
   }
@@ -168,9 +168,9 @@ function creationTableau(){
 		}
 		else if(mois.nb==2) mois = janvier;
 		else if (mois.nb==3 && bisextile) mois = fevrier2;
-	  else if (mois.nb==3 && !bisextile) mois = fevrier;
-	  else if (mois.nb==4 && bisextile) mois = mars2;
-	  else if (mois.nb==4 && !bisextile) mois = mars;
+	    else if (mois.nb==3 && !bisextile) mois = fevrier;
+	    else if (mois.nb==4 && bisextile) mois = mars2;
+	    else if (mois.nb==4 && !bisextile) mois = mars;
 		else if(mois.nb==5) mois = avril;
 		else if(mois.nb==6) mois = mai;
 		else if(mois.nb==7) mois = juin;
@@ -209,9 +209,9 @@ function creationTableau(){
 			var bisextile=false;
 		}
 		if (mois.nb==1 && bisextile) mois = fevrier2;
-	  else if (mois.nb==1 && !bisextile) mois = fevrier;
-	  else if (mois.nb==2 && bisextile) mois = mars2 ;
-	  else if (mois.nb==2 && !bisextile) mois = mars;
+	    else if (mois.nb==1 && !bisextile) mois = fevrier;
+	    else if (mois.nb==2 && bisextile) mois = mars2 ;
+	    else if (mois.nb==2 && !bisextile) mois = mars;
 		else if(mois.nb==3) mois = avril;
 		else if(mois.nb==4) mois = mai;
 		else if(mois.nb==5) mois = juin;
@@ -297,6 +297,10 @@ function createurTableau(jourDeLaSemaine, mois, jour){
       }
     }
     divCalendar.appendChild(ul);
+    //on supprime le decalage
+    var jour=jourActuel;
+    if (jour==0){jour=7-jour;}
+    getRappels(mois.nb, 7-jour);
 }
 
 // fonction pour ajouter différentes notifs de différents styles.
@@ -315,16 +319,39 @@ function ajoutInfo(nb, notif, message, heure){
   li.appendChild(div);
 }
 
+//recuperation de la liste de tous les conges de l employe et ajout au calendrier
+function getRappels(mois, jour){
+	var getEmploye = new XMLHttpRequest();
+	getEmploye.open("GET","../cadrews/rappels/getRappelByIdEmploye/"+document.getElementById('employeId').innerText,true, null, null);
+	getEmploye.responseType="json";
+	
+	getEmploye.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			//on affiche que les notif du mois affiché
+			if(parseInt(this.response[i].dateRappel[2]+this.response[i].dateRappel[3])==mois){
+				if(this.response[i].imprt==3){
+					  ajoutInfo(parseInt(this.response[i].dateRappel[0]+this.response[i].dateRappel[1])-2+jour, "fine", this.response[i].messageRappel, "");
+
+				}
+				else if(this.response[i].imprt==2){
+					  ajoutInfo(parseInt(this.response[i].dateRappel[0]+this.response[i].dateRappel[1])-2+jour, "info", this.response[i].messageRappel, "");
+
+				}
+				else{
+					  ajoutInfo(parseInt(this.response[i].dateRappel[0]+this.response[i].dateRappel[1])-2+jour, "bad", this.response[i].messageRappel, "");
+				}
+			}
+		}
+	}
+	getEmploye.send();
+}
+
 
 window.onload = function(){
-  gestionnaireDeMenu(7);
+    gestionnaireDeMenu(7);
 	maillingAnnonce();
 	creationTableau();
-  ajoutInfo(25, "info", "Réunion en salle Q13", "15h00 à 16h00");
-  ajoutInfo(7, "fine", "Bon retour de vacances", "");
-  ajoutInfo(12, "bad", "Délais de livraison chez le fournisseur 'HEI' J-3", "");
-  ajoutInfo(15, "bad", "Réunion retour livraison", "18h30 à 19h00");
 	disparaitre();
 	gestionFooter();
-  supprimeurDeNotifications();
+    supprimeurDeNotifications();
 };
