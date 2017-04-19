@@ -21,6 +21,7 @@
 
 <!-- JS
 ================================================== -->
+<script src="js/index.js"></script>
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/bootstrapSite.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
@@ -66,8 +67,13 @@ $(document).ready(function () {
 
     <div class="container">
 	<!-- Header -->
-     <div class="row header" th:insert="~{commun :: header('index')}"><!-- Begin Header -->
-      </div><!-- End Header -->
+     <div class="row header">
+      <div class="span5 logo" id="slogan" th:insert="~{commun :: logo}"></div>
+      <div th:insert="~{commun :: header(index)}">
+      </div>
+      
+     
+      </div>
     
     <div class="row headline"><!-- Begin Headline -->
 
@@ -89,15 +95,9 @@ $(document).ready(function () {
         <div class="span4">
         	<h3>Bienvenue sur le site de l'entreprise CADRE</h3>
             <p class="lead">Cadre est une SAS basée à Petit Caux en Seine-Maritime (76). </p>
-            <p>
-            Notre entreprise compte 42 employés et est active depuis 20 ans.<br/>
-            Nous sommes spécialisé dans les travaux de menuiserie métallique et de serrurerie. <br/>
-            Notre activité se déploit sur trois grands pôles : <br/>
-                - La fabrication <br/>
-                - L'installation et la modification <br/>
-                - L'entretien, la maintenance et l'expertise <br/>
-            Nous nous occupons également de la maintenance des centrales nucléaires de Paluel et de Penly grâce à notre personnel habilité.</p>
-            <a href="entreprise"><i class="icon-plus-sign"></i>En savoir plus...</a>
+            <p id="description">
+            </p>
+             <a href="entreprise"><i class="icon-plus-sign"></i>En savoir plus...</a>
         </div>
     </div><!-- End Headline -->
     
