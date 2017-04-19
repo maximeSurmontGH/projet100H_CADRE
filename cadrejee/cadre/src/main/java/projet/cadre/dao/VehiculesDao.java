@@ -18,6 +18,24 @@ import projet.cadre.model.DemandesVehicule;
 
 public class VehiculesDao {
 	
+	//retourne la liste des conges avec leur id 
+		public List< Vehicules> getIdVehicule(){
+			ArrayList<Vehicules> lstIdVehicule = new ArrayList<>();
+			try {
+				Connection connection = DataSourceProvider.getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM vehicules");
+				ResultSet resultSet = stmt.executeQuery();
+				while(resultSet.next()) {
+					lstIdVehicule.add(new Vehicules(resultSet.getString("immatriculation"), resultSet.getString("typeVehicule")));
+				}
+				stmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return lstIdVehicule;
+		}
+	
 	// retourne la liste des demandes de vehicules
 	public List<DemandesVehicule> getDemandesDeVehicule(){
 		ArrayList<DemandesVehicule> lstdemandesVehicule = new ArrayList<>();

@@ -21,7 +21,7 @@ public class CongesWS {
 	
 	@GET
 	@Path("/listIdConge")
-	public Response listIdAttestation(){
+	public Response listIdVehicule(){
 		CadreServices cadreServices = CadreServices.getInstance();
 		return Response.status(200).entity(gson.toJson(cadreServices.getIdConge())).build();
 	}

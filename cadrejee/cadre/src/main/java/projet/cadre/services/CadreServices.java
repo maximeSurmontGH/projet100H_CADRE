@@ -231,6 +231,11 @@ public class CadreServices {
 	}
 	
 	// Vehicules Dao
+	
+	public List<Vehicules> getIdVehicule(){
+		return vehiculesDao.getIdVehicule();
+	}
+	
 	public Vehicules addVehicule(String immatriculation, String typeVehicule){
 		return vehiculesDao.addVehicule(immatriculation, typeVehicule);
 	}

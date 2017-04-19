@@ -343,9 +343,91 @@ function getIdNom(){
 			}
 			getList2.send();
 }
+// affichage du type de Vehicule dans le selecteur
+
+function getIdVehicule(){
+			var getList2 = new XMLHttpRequest();
+			getList2.open("GET","../cadrews/vehicules/listIdVehicule",true, null, null);
+			getList2.responseType="json";
+			var select = document.getElementById("whichcar");
+			getList2.onload=function(){
+				for (var i=0; i<this.response.length; i++){
+					var newoption=document.createElement("option");
+					newoption.textContent=this.response[i].typeVehicule;
+					select.appendChild(newoption);
+				}
+			}
+			getList2.send();
+}
+
+//ajouter une demande de vehicule
+function addDemandeVehicule(){
+	
+	
+	document.getElementById("boutonSearch2").onclick=function(){
+		var employeId = document.getElementById("employeId").innerText;
+		
+		var requetePostReponse = new XMLHttpRequest();
+		requetePostReponse.open("POST","../cadrews/vehicules/addDemandeV");
+		requetePostReponse.responseType = "json";
+		
+		var nom = document.getElementById("inputNom2").value;
+		document.getElementById("inputNom2").value="";
+		var prenom = document.getElementById("inputPrenom2").value;
+		document.getElementById("inputPrenom2").value="";
+				
+		var select = document.getElementById("whichcar");
+		var choice = select.selectedIndex;
+		var type = select.options[choice].value.toString();
+		
+		var select = document.getElementById("formV_dayD");
+		var choice = select.selectedIndex;
+		var dateDebutJour = select.options[choice].value.toString();
+		
+		var select = document.getElementById("formV_monthD");
+		var choice = select.selectedIndex;
+		var dateDebutMois = select.options[choice].value.toString();
+		
+		var select = document.getElementById("formV_yearD");
+		var choice = select.selectedIndex;
+		var dateDebutAnnee = select.options[choice].value.toString();
+		
+		var select = document.getElementById("formV_dayF");
+		var choice = select.selectedIndex;
+		var dateFinJour = select.options[choice].value.toString();
+		
+		var select = document.getElementById("formV_monthF");
+		var choice = select.selectedIndex;
+		var dateFinMois = select.options[choice].value.toString();
+		
+		var select = document.getElementById("formV_yearF");
+		var choice = select.selectedIndex;
+		var dateFinAnnee = select.options[choice].value.toString();
+
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/vehicules/listIdVehicule",true, null, null);
+		getList2.responseType="json";
+		var a;
+		getList2.onload=function(){
+			for (var i=0; i<this.response.length; i++){
+				if(this.response[i].typeVehicule == type){
+					a=this.response[i].immatriculation;
+					requetePostReponse.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					requetePostReponse.send("immatriculation="+a+"&idEmploye="+employeId+"&dateD="+dateDebutJour+dateDebutMois+dateDebutAnnee+"&dateF="+dateFinJour+dateFinMois+dateFinAnnee);
+					
+				
+				}
+			}
+		}
+		getList2.send();
+		createurDeNotifications(1, "Demande de vehicule du type : "+type+" bien envoyée!");
+	}
+}
+
 
 //ajouter une demande de congé 
 function addDemandeConge(){
+	
 	document.getElementById("boutonSearch1").onclick=function(){
 		var employeId = document.getElementById("employeId").innerText;
 		
@@ -657,8 +739,10 @@ function getDemandes(mois, jour){
 
 
 window.onload = function(){
+	getIdVehicule();
 	getIdNom();
 	addDemandeConge();
+	addDemandeVehicule();
     gestionnaireDeMenu(3);
 	maillingAnnonce();
 	creationTableau();

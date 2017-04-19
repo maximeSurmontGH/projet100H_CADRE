@@ -8,6 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import projet.cadre.model.Conges;
 import projet.cadre.model.DemandesConge;
 import projet.cadre.model.DemandesVehicule;
 import projet.cadre.model.Vehicules;
@@ -43,6 +44,17 @@ public class VehiculesDaoTestCase {
 		}
 	}
 
+	@Test
+	public void shouldListIdVehicule() {
+		// WHEN
+		List<Vehicules> element = vehiculeDao.getIdVehicule();
+		// THEN
+		Assertions.assertThat(element).hasSize(2);
+		Assertions.assertThat(element).extracting("immatriculation","typeVehicule").containsOnly(
+			Assertions.tuple("ddd22k","Vehicule1"),
+		Assertions.tuple("ddxez2k","Vehicule1"));
+	}
+	
 	@Test
 	public void shouldGetVehicules() {
 		// WHEN

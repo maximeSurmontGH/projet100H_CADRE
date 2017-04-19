@@ -16,7 +16,7 @@ import projet.cadre.model.DemandesConge;
 
 public class CongesDao {
 	
-	//retourne la liste des attestations avec leur id 
+	//retourne la liste des conges avec leur id 
 	public List<Conges> getIdConge(){
 		ArrayList<Conges> lstIdConge = new ArrayList<>();
 		try {

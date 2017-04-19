@@ -22,6 +22,13 @@ public class VehiculesWS {
 	final Gson gson = builder.create();
 	
 	@GET
+	@Path("/listIdVehicule")
+	public Response listIdVehicule(){
+		CadreServices cadreServices = CadreServices.getInstance();
+		return Response.status(200).entity(gson.toJson(cadreServices.getIdVehicule())).build();
+	}
+	
+	@GET
 	@Path("/listDemandesDeVehicule")
 	public Response listDemandesDeVehicule(){
 		CadreServices cadreServices = CadreServices.getInstance();
@@ -72,7 +79,7 @@ public class VehiculesWS {
 	
 	@POST
 	@Path("/addDemandeV")
-	public Response addDemandeDeVehicule(@FormParam("immatriculation") String immatriculation, @FormParam("idEmploye") String idEmploye, @FormParam("date") String dateDebut, @FormParam("date") String dateFin){
+	public Response addDemandeDeVehicule(@FormParam("immatriculation") String immatriculation, @FormParam("idEmploye") String idEmploye, @FormParam("dateD") String dateDebut, @FormParam("dateF") String dateFin){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
 			cadreServices.setDemandeDeVehicule(immatriculation, idEmploye, dateDebut, dateFin);

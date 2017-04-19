@@ -3,12 +3,12 @@ package projet.cadre.model;
 public class Vehicules {
 	
 	private String immatriculation;
-	private String typeDeVehicule;
+	private String typeVehicule;
 	private String disponibilite;
 	
 	public Vehicules (String imma, String type){
 		this.immatriculation=imma;
-		this.typeDeVehicule=type;
+		this.typeVehicule=type;
 		this.disponibilite="T";
 	}
 
@@ -21,11 +21,11 @@ public class Vehicules {
 	}
 
 	public String getTypeDeVehicule() {
-		return typeDeVehicule;
+		return typeVehicule;
 	}
 
 	public void setTypeDeVehicule(String typeDeVehicule) {
-		this.typeDeVehicule = typeDeVehicule;
+		this.typeVehicule = typeDeVehicule;
 	}
 	
 	public void setDispoTrue(){
