@@ -20,6 +20,7 @@
 
 <!-- JS
 ================================================== -->
+<script src="js/prestations.js"></script>
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/bootstrapSite.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
@@ -33,7 +34,10 @@
 
     <div class="container">
     <!-- Header -->
-     <div class="row header" th:insert="~{commun :: header(prestations)}"><!-- Begin Header -->
+     <div class="row header">
+      <div class="span5 logo" id="slogan" th:insert="~{commun :: logo}"></div>
+      <div th:insert="~{commun :: header(prestations)}">
+      </div>
       </div>
 
     <!-- Page Content-->
@@ -57,7 +61,7 @@
                             </span>
                         </span>
                         <img src="img/gallerie_prestations/roueP.png" alt="Gallery">
-                        <span class="project-details"><a href="img/gallerie_prestations/roue.jpg">Touret en inox</a>Permet d'enrouler différents types de câbles
+                        <span class="project-details"><a href="img/gallerie_prestations/roue.jpg" id="id1-nom"></a> <em id=id1-des></em> 
                           <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
                       	 <a href="devis"><input class="btn" value="Demande de devis" /></a>
                       </span>
@@ -71,9 +75,9 @@
                             </span>
                         </span>
                         <img src="img/gallerie_prestations/cercleP.png" alt="Gallery">
-                        <span class="project-details"><a href="img/gallerie_prestations/cercle.jpg">Plancher de protection</a>
-                        Sert à protéger des chutes
-                        <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
+                        <span class="project-details"><a href="img/gallerie_prestations/cercle.jpg" id="id2-nom" ></a><em id=id2-des></em> 
+                        
+                        <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télécharger la fiche produit(.pdf)</a>
                       	<a href="devis"><input class="btn" value="Demande de devis" /></a>
                       </span>
                     </li>
@@ -86,8 +90,8 @@
                             </span>
                         </span>
                         <img src="img/gallerie_prestations/cacheP.png" alt="Gallery">
-                        <span class="project-details"><a href="img/gallerie_prestations/chariot.jpg">Carter</a>Carter de protection de ventilateur
-                          <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
+                        <span class="project-details"><a href="img/gallerie_prestations/chariot.jpg" id="id3-nom"></a><em id=id3-des></em> 
+                          <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télécharger la fiche produit(.pdf)</a>
                        	  <a href="devis"><input class="btn" value="Demande de devis" /></a>
                         </span>
                     </li>
@@ -99,8 +103,8 @@
                             </span>
                         </span>
                         <img src="img/gallerie_prestations/chariotP.png" alt="Gallery">
-                        <span class="project-details"><a href="img/gallerie_prestations/chariot.jpg">Chariot</a>Sert au transport de matériel
-                          <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
+                        <span class="project-details"><a href="img/gallerie_prestations/chariot.jpg" id="id4-nom"></a><em id=id4-des> </em><
+                          <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télécharger la fiche produit(.pdf)</a>
                           <a href="devis"><input class="btn" value="Demande de devis" /></a>
                         </span>
                     </li>
@@ -112,7 +116,7 @@
                             </span>
                         </span>
                         <img src="img/gallerie_prestations/etabliP.png" alt="Gallery">
-                        <span class="project-details"><a href="img/gallerie_prestations/etabli.jpg">Etabli</a>Bureau de travail amovible
+                        <span class="project-details"><a href="img/gallerie_prestations/etabli.jpg" id="id5-nom"></a><em id="id5-des"></em>
                         <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
                       	<a href="devis"><input class="btn" value="Demande de devis" /></a>
                        </span>
@@ -126,7 +130,7 @@
                             </span>
                         </span>
                         <img src="img/gallerie_prestations/panierP.png" alt="Gallery">
-                        <span class="project-details"><a href="img/gallerie_prestations/panier.jpg">Panier</a>Sert au traitement des déchets nucléaires
+                        <span class="project-details"><a href="img/gallerie_prestations/panier.jpg" id="id6-nom"></a><em id=id6-des></em>
                           <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
                        	  <a href="devis"><input class="btn" value="Demande de devis" /></a>
                         </span>
@@ -140,7 +144,7 @@
                             </span>
                         </span>
                         <img src="img/gallerie_prestations/paniergrillP.png" alt="Gallery">
-                        <span class="project-details"><a href="img/gallerie_prestations/paniergrill.jpg">Panier grillagé</a>Sert au traitement des déchets nucléaires
+                        <span class="project-details"><a href="img/gallerie_prestations/paniergrill.jpg" id="id7-nom"></a><em id="id7-des"></em>
                           <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
                        	  <a href="devis"><input class="btn" value="Demande de devis" /></a>
                         </span>
@@ -153,7 +157,7 @@
                           </span>
                       </span>
                       <img src="img/gallerie_prestations/goupilleP.png" alt="Gallery">
-                      <span class="project-details"><a href="img/gallerie_prestations/goupille.jpg">Goupille</a>Sert ...
+                      <span class="project-details"><a href="img/gallerie_prestations/goupille.jpg" id="id8-nom"></a><em id="id8-des"></em>
                         <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
                    		<a href="devis"><input class="btn" value="Demande de devis" /></a>
                     </span>
@@ -167,7 +171,8 @@
                           </span>
                       </span>
                       <img src="img/gallerie_prestations/serrageP.png" alt="Gallery">
-                      <span class="project-details"><a href="img/gallerie_prestations/serrage.jpg">Serrage</a>Sert ...
+                      <span class="project-details"><a href="img/gallerie_prestations/serrage.jpg" id="id9-nom"></a><em id="id9-des"></em>
+                      
                         <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
  						<a href="devis"><input class="btn" value="Demande de devis" /></a>                    
                       </span>
@@ -181,7 +186,7 @@
                           </span>
                       </span>
                       <img src="img/gallerie_prestations/dixP.png" alt="Gallery">
-                      <span class="project-details"><a href="img/gallerie_prestations/dix.jpg">Dix</a>Sert ...
+                      <span class="project-details"><a href="img/gallerie_prestations/dix.jpg" id="id10-nom"></a><em id="id10-des"></em>
                         <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
 						<a href="devis"><input class="btn" value="Demande de devis" /></a>                     
                       </span>
@@ -195,7 +200,7 @@
                           </span>
                       </span>
                       <img src="img/gallerie_prestations/onzeP.png" alt="Gallery">
-                      <span class="project-details"><a href="img/gallerie_prestations/onze.jpg">Onze</a>Sert ...
+                      <span class="project-details"><a href="img/gallerie_prestations/onze.jpg" id="id11-nom"></a><em id="id11-des"></em>
                         <a href="img/gallerie_prestations/fiche.pdf"download="id9" title="Pdf" class="download">Télecharger la fiche produit(.pdf)</a>
                       	<a href="devis"><input class="btn" value="Demande de devis" /></a>
                       </span>

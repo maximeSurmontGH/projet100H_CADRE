@@ -63,6 +63,18 @@ function getHisto4(){
 	getList2.send();
 }
 
+function getEdf(){
+	var getList2 = new XMLHttpRequest();
+	getList2.open("GET","cadrews/elementssite/getElementById/edf",true, null, null);
+	getList2.responseType="json";
+	getList2.onload=function(){
+		var pedf = document.getElementById("edf");
+		var newp=document.createElement("p");
+		newp.textContent=this.response.contenuElement;
+		pedf.appendChild(newp);
+	}
+	getList2.send();
+}
 
 
 
@@ -73,4 +85,6 @@ window.onload = function(){
 	getHisto2();
 	getHisto4();
 	getHisto3();
+	getEdf();
+	
 };
