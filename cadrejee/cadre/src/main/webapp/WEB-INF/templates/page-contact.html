@@ -22,6 +22,7 @@
 <!-- JS
 ================================================== -->
 <script src="js/jquery-1.8.3.js"></script>
+<script src="js/contact.js"></script>
 <script src="js/bootstrapSite.js"></script>
 <script src="js/jquery.custom.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
@@ -32,8 +33,12 @@
 	<div th:insert="~{commun :: bandeaux}"></div>
 	<!-- Header -->
     <div class="container">
-  	<div class="row header" th:insert="~{commun :: header(contact)}"><!-- Begin Header -->
-    </div>
+  	 <div class="row header">
+      <div class="span5 logo" id="slogan" th:insert="~{commun :: logo}"></div>
+      <div th:insert="~{commun :: header(contact)}">
+      </div>
+      </div>
+      
 
 
     <!-- Page Content
@@ -64,8 +69,8 @@
                 </div>
             </form>
 
-								<h5 class="title-bg" >Nous trouver</h5>
-								<img src="img/map.JPG" alt="map">
+		<h5 class="title-bg" >Nous trouver</h5>
+		<img src="img/map.JPG" alt="map">
         </div> <!--End page content column-->
 
 

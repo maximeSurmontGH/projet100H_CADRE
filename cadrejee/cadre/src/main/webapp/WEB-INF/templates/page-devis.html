@@ -20,6 +20,7 @@
 <!-- JS
 ================================================== -->
 <script src="js/jquery-1.8.3.js"></script>
+<script src="js/devis.js"></script>
 <script src="js/bootstrapSite.js"></script>
 <script src="js/jquery.custom.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
@@ -32,8 +33,11 @@
 	<div th:insert="~{commun :: bandeaux}"></div>
     <div class="container">
        <!-- Header -->
-       <div class="row header" th:insert="~{commun :: header(devis)}"><!-- Begin Header -->
-       </div>
+       <div class="row header">
+      <div class="span5 logo" id="slogan" th:insert="~{commun :: logo}"></div>
+      <div th:insert="~{commun :: header(devis)}">
+      </div>
+      </div>
 
     <!-- Page Content -->
     <h2>Demande de devis</h2>

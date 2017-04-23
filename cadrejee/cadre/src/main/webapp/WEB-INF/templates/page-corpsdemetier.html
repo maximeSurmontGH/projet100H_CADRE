@@ -21,6 +21,7 @@
 
 <!-- JS
 ================================================== -->
+<script src="js/metiers.js"></script>
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/bootstrapSite.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
@@ -34,8 +35,15 @@
 
     <div class="container">
     <!-- Header -->
-     <div class="row header" th:insert="~{commun :: header(prestations)}"><!-- Begin Header -->
+      
+       <div class="row header">
+      <div class="span5 logo" id="slogan" th:insert="~{commun :: logo}"></div>
+      <div th:insert="~{commun :: header(prestations)}">
       </div>
+      
+     
+      </div>
+   
       
      <h2>Nos métiers</h2>
 
@@ -46,17 +54,14 @@
         <img src="img/gallery/gallery-img-1-3col.jpg" alt="image">
          <h3>Fabrication</h3>
           <ul class="popular-posts">
-                <li>
+                <li id="fab1">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" >
-                    <h6>Charpentes métalliques / Porte tôle / Platelages / Monorails / Points d'ancrage / Ensemble mécano-soudés</h6>
                 </li>
-                <li>
+                <li id="fab2">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post">
-                    <h6> Escaliers / Portails / Passerelles / Panneaux grillagés / Coffres </h6>
-                </li>
-                <li>
+                   </li>
+                <li id="fab3">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post">
-                    <h6>Echelles / Gardes-corps / Barreaudages / Pièces pliés </h6>
                 </li>
         </ul>
 
@@ -67,18 +72,15 @@
         <img src="img/gallery/gallery-img-1-3col.jpg" alt="image">
          <h3>Installation / Modification</h3>
          <ul class="popular-posts">
-                <li>
+                <li id="mod1">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" >
 
-                    <h6> Charpentes métalliques / Monorails / Chemins de roulement / Point d'ancrage / Platelages / Panneaux grillagés  </h6>
                 </li>
-                <li>
+                <li id="mod2">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post">
-                    <h6>Escaliers / Passerelles / Clôtures / Grillages / Portes métallique, Coupe-feu, Isoplanes, Coulissantes / Portails </h6>
                 </li>
-                <li>
+                <li id="mod3">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post">
-                    <h6>Echelles / Garde-corps / Barreaudages / Serrurerie / Quincaillerie / Couverture / Bardage / Bac acier / Etanchéité</h6>
                 </li>
         </ul>
         
@@ -88,17 +90,14 @@
         <img src="img/gallery/gallery-img-1-3col.jpg" alt="image">
          <h3>Maintenance / Contrôle</h3>
           <ul class="popular-posts">
-                <li>
+                <li id="cont1">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" >
-                    <h6> Ossatures métalliques </h6>
                 </li>
-                <li>
+                <li id="cont2">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post">
-                    <h6>Portes coupe-feu / Portes ordinaires / Bardages / Etanchéité</h6>
                 </li>
-                <li>
+                <li id="cont3">
                     <img src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post">
-                    <h6>Détection métaux</h6>
                 </li>
         </ul>
         
