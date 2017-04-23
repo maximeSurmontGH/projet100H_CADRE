@@ -148,7 +148,72 @@ function remplissageJMA(){
 }
 
 
+function addvalidite(){
+	document.getElementById("boutonAdd").onclick=function(){
+		
+		var requetePostReponse = new XMLHttpRequest();
+		requetePostReponse.open("POST","../cadrews/validites");
+		requetePostReponse.responseType = "json";
+		
+		var nom = document.getElementById("inputNom").value;
+		document.getElementById("inputNom").value="";
+		var prenom = document.getElementById("inputPrenom").value;
+		document.getElementById("inputPrenom").value="";
+		
+		var select = document.getElementById("type");
+		var choice = select.selectedIndex;
+		var type = select.options[choice].value;
+		
+		var select = document.getElementById("JoursD");
+		var choice = select.selectedIndex;
+		var dateDebutJour = select.options[choice].value.toString();
+		
+		var select = document.getElementById("MoisD");
+		var choice = select.selectedIndex;
+		var dateDebutMois = select.options[choice].value.toString();
+		
+		var select = document.getElementById("AnneesD");
+		var choice = select.selectedIndex;
+		var dateDebutAnnee = select.options[choice].value.toString();
+		
+		var select = document.getElementById("JoursF");
+		var choice = select.selectedIndex;
+		var dateFinJour = select.options[choice].value.toString();
+		
+		var select = document.getElementById("MoisF");
+		var choice = select.selectedIndex;
+		var dateFinMois = select.options[choice].value.toString();
+		
+		var select = document.getElementById("AnneesF");
+		var choice = select.selectedIndex;
+		var dateFinAnnee = select.options[choice].value.toString();
+		
+		alert(type);
+		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/validites/listIdAttestation",true, null, null);
+		getList2.responseType="json";
+		var a;
+		getList2.onload=function(){
+			for (var i=0; i<this.response.length; i++){
+				if(this.response[i].typeAttestation == type){
+					a=this.response[i].idAttestation;
+					requetePostReponse.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					requetePostReponse.send("idAttestation="+a+"&idEmploye="+employeId+"&date="+getDate());
+					
+				
+				}
+			}
+		}
+		getList2.send();
+		createurDeNotifications(1, "Demande d'attestation du type : "+type+" bien envoyée!");
+	}
+}
+
+
+
 window.onload = function(){
+	addvalidite();
 	gestionnaireDeMenu(10);
 	maillingAnnonce();
 	remplissageRecherche();

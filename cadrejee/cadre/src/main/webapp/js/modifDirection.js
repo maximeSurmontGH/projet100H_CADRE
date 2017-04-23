@@ -111,48 +111,213 @@ function gestionnairePage2(pageModifiee){
 	if(pageModifiee=="prestations"){
 		createurDeLigne ("Photo de la réalisation 1", "photo", "1.1");
 		createurDeLigne ("Texte de la réalisation 1 (nom)", "message", "1.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea1",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea1=this.response.contenuElement;	
+			document.getElementsByName("input1.2")[0].placeholder=nomRea1;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 1 (description)", "message", "1.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea1",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea1=this.response.contenuElement;	
+			document.getElementsByName("input1.3")[0].placeholder=desRea1;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 2", "photo", "2.1");
-		createurDeLigne ("Texte de la réalisation 2 (nom)", "message", "2.1");
+		createurDeLigne ("Texte de la réalisation 2 (nom)", "message", "2.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea2",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea2=this.response.contenuElement;	
+			document.getElementsByName("input2.2")[0].placeholder=nomRea2;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 2 (description)", "message", "2.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea2",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea2=this.response.contenuElement;	
+			document.getElementsByName("input2.3")[0].placeholder=desRea2;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 3", "photo", "3.1");
 		createurDeLigne ("Texte de la réalisation 3 (nom)", "message", "3.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea3",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea3=this.response.contenuElement;	
+			document.getElementsByName("input3.2")[0].placeholder=nomRea3;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 3 (description)", "message", "3.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea3",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea3=this.response.contenuElement;	
+			document.getElementsByName("input3.3")[0].placeholder=desRea3;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 4", "photo", "4.1");
 		createurDeLigne ("Texte de la réalisation 4 (nom)", "message", "4.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea4",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea4=this.response.contenuElement;	
+			document.getElementsByName("input4.2")[0].placeholder=nomRea4;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 4 (description)", "message", "4.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea4",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea4=this.response.contenuElement;	
+			document.getElementsByName("input4.3")[0].placeholder=desRea4;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 5", "photo", "5.1");
 		createurDeLigne ("Texte de la réalisation 5 (nom)", "message", "5.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea5",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea5=this.response.contenuElement;	
+			document.getElementsByName("input5.2")[0].placeholder=nomRea5;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 5 (description)", "message", "5.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea5",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea5=this.response.contenuElement;	
+			document.getElementsByName("input5.3")[0].placeholder=desRea5;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 6", "photo", "6.1");
 		createurDeLigne ("Texte de la réalisation 6 (nom)", "message", "6.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea6",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea6=this.response.contenuElement;	
+			document.getElementsByName("input6.2")[0].placeholder=nomRea6;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 6 (description)", "message", "6.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea6",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea6=this.response.contenuElement;	
+			document.getElementsByName("input6.3")[0].placeholder=desRea6;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 7", "photo", "7.1");
 		createurDeLigne ("Texte de la réalisation 7 (nom)", "message", "7.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea7",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea7=this.response.contenuElement;	
+			document.getElementsByName("input7.2")[0].placeholder=nomRea7;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 7 (description)", "message", "7.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea7",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea7=this.response.contenuElement;	
+			document.getElementsByName("input7.3")[0].placeholder=desRea7;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 8", "photo", "8.1");
 		createurDeLigne ("Texte de la réalisation 8 (nom)", "message", "8.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea8",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea8=this.response.contenuElement;	
+			document.getElementsByName("input8.2")[0].placeholder=nomRea8;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 8 (description)", "message", "8.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea8",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea8=this.response.contenuElement;	
+			document.getElementsByName("input8.3")[0].placeholder=desRea8;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 9", "photo", "9.1");
 		createurDeLigne ("Texte de la réalisation 9 (nom)", "message", "9.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea9",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea9=this.response.contenuElement;	
+			document.getElementsByName("input9.2")[0].placeholder=nomRea9;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 9 (description)", "message", "9.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea9",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea9=this.response.contenuElement;	
+			document.getElementsByName("input9.3")[0].placeholder=desRea9;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 10", "photo", "10.1");
 		createurDeLigne ("Texte de la réalisation 10 (nom)", "message", "10.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea10",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea10=this.response.contenuElement;	
+			document.getElementsByName("input10.2")[0].placeholder=nomRea10;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 10 (description)", "message", "10.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea10",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea10=this.response.contenuElement;	
+			document.getElementsByName("input10.3")[0].placeholder=desRea10;
+		}
+		getList2.send();
 		createurDeLigne ("Photo de la réalisation 11", "photo", "11.1");
 		createurDeLigne ("Texte de la réalisation 11 (nom)", "message", "11.2");
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/nomRea11",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var nomRea11=this.response.contenuElement;	
+			document.getElementsByName("input11.2")[0].placeholder=nomRea11;
+		}
+		getList2.send();
 		createurDeLigne ("Texte de la réalisation 11 (description)", "message", "11.3");
-		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/elementssite/getElementById/desRea11",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			var desRea11=this.response.contenuElement;	
+			document.getElementsByName("input11.3")[0].placeholder=desRea11;
+		}
+		getList2.send();
 		createurDeLigne ("Texte du paragraphe 'FABRICATION' (séparer chaque section par //)", "message", "7");
 		createurDeLigne ("Texte du paragraphe 'INSTALLATION ET MODIFICATION' (séparer chaque section par //)", "message", "8");
 		createurDeLigne ("Texte du paragraphe 'ENTRETIEN, MAINTENANCE ET CONTROLE' (séparer chaque section par //)", "message", "9");
