@@ -311,7 +311,7 @@ function gestionnairePage2(pageModifiee){
 	}
 
 	if(pageModifiee=="evenements"){
-		document.getElementById("sousTitre1").innerHTML = "Créez et gérez vos évenements : ";
+		document.getElementById("sousTitre1").innerHTML = "Créez et gérez vos rappels pour tous vos employés: ";
 		var table = document.getElementById("tableauDesDemandes1");
 		table.className = "table";
 		var tr = document.createElement('tr');

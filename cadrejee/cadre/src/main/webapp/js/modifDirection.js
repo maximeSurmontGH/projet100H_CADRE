@@ -3,12 +3,10 @@ function gestionnairePage(){
 	document.getElementById("boutonAccueil").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonEntreprise").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonPrestations").className = "btn btn-primary mesBtns apparaitre";
-	document.getElementById("boutonContact").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonRetour").className = "btn btn-primary mesBtns disparaitre";
 	document.getElementById("boutonAccueil").onclick=function(){var pageModifiee = "acceuil"; gestionnairePage2(pageModifiee);}
 	document.getElementById("boutonEntreprise").onclick=function(){ var pageModifiee = "entreprise"; gestionnairePage2(pageModifiee);}
 	document.getElementById("boutonPrestations").onclick=function(){ var pageModifiee = "prestations"; gestionnairePage2(pageModifiee);}
-	document.getElementById("boutonContact").onclick=function(){ var pageModifiee = "contact"; gestionnairePage2(pageModifiee);}
 	while(document.getElementById("tableauDesModifications").firstChild) {
   	document.getElementById("tableauDesModifications").removeChild(document.getElementById("tableauDesModifications").firstChild);
 	}
@@ -19,7 +17,6 @@ function gestionnairePage2(pageModifiee){
 	document.getElementById("boutonAccueil").className = "disparaitre";
 	document.getElementById("boutonEntreprise").className = "disparaitre";
 	document.getElementById("boutonPrestations").className = "disparaitre";
-	document.getElementById("boutonContact").className = "disparaitre";
 	document.getElementById("boutonRetour").className = "btn btn-primary btn-lg";
 
 	var table = document.getElementById("tableauDesModifications");

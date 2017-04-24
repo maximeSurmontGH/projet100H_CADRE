@@ -11,6 +11,6 @@ function suppressionNotification(){
 }
 
 window.onload = function(){
-	erreurConnexion();
+	//erreurConnexion();
 	suppressionNotification();
 };

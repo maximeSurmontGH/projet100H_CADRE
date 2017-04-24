@@ -230,7 +230,7 @@ function creationTableau(){
   		element.removeChild(element.firstChild);
 		}
 		//change la date pour la date actuel
-	  document.getElementById("choixMoisAnnee").innerHTML=mois.mois+" "+annee;
+	    document.getElementById("choixMoisAnnee").innerHTML=mois.mois+" "+annee;
 		// détermine le jour de la semaine du dernier jour du mois précédant
 		while(jour<=mois.moisAvant.nbJour){
 			if (jourDeLaSemaine.nb == 1) jourDeLaSemaine = mardi;
@@ -322,29 +322,113 @@ function ajoutInfo(nb, notif, message, heure){
 // fonction qui permettra de compter les jours en fonction du compteur demandé et l'affichera.
 function compteurInfos(){
 	document.getElementById("boutonSearch3").onclick=function(){
-		document.getElementById("messageCompteur").innerHTML = "Vous en etes à 6 jours de congés payés";
-		document.getElementById("messageCompteur").className = "alert alert-info alert-dismissable"
+		var nb=0;
+		var typenb=0;
+		var ladate=new Date();
+		var year = ladate.getFullYear();
+		
+		var select = document.getElementById("select3");
+		var choice = select.selectedIndex;
+		var type = select.options[choice].value.toString();
+		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/conges/listIdConge",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			for (var i=0; i<this.response.length; i++){
+				if(this.response[i].typeConge==type){
+					typenb = this.response[i].idConge;
+				}
+			}
+		}
+		getList2.send();
+		
+		var getEmploye = new XMLHttpRequest();
+		getEmploye.open("GET","../cadrews/conges/listCongesById/"+document.getElementById('employeId').innerText,true, null, null);
+		getEmploye.responseType="json";
+		
+		getEmploye.onload=function(){
+			for (var i=0; i<this.response.length; i++){
+				var anneeDebut = parseInt(this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7]);
+				var anneeFin = parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7]);
+				var moisDebut = parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3]);
+				var moisFin = parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3]);
+				var jourDebut = parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1]);
+				var jourFin = parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1]);
+				
+				if(anneeDebut<year && anneeFin>=year){
+					anneeDebut = year;
+					jourDebut = 1;
+					moisDebut = 1;
+				}
+				
+				if(anneeFin>year && anneeDebut<=year){
+					anneeFin = year;
+					jourFin = 31;
+					moisFin = 12;
+				}
+
+				if(this.response[i].conges_idConge==typenb && year==anneeDebut && year==anneeFin){
+					while(moisDebut <= moisFin){
+						if(moisDebut == moisFin){
+							while(jourDebut != jourFin){
+								nb++;
+								jourDebut++;
+							}
+						}
+						else{
+							if(moisDebut == 2){
+								if(year%4==0 || year%400==0){
+									jourFin2 = 30;
+								}
+								else{
+									jourFin2 = 29;
+								}
+							}
+							else if(moisDebut == 1 || moisDebut == 3 || moisDebut == 5 || moisDebut == 7 || moisDebut == 9 || moisDebut == 11){
+								jourFin2 = 32;
+							}
+							else{
+								jourFin2 = 31;
+							}
+							while(jourDebut != jourFin2){
+								nb++;
+								jourDebut++;
+							}
+						}
+						
+						jourDebut = 1;
+						moisDebut++;
+					}
+					
+				}
+			}
+			document.getElementById("messageCompteur").innerHTML = "Vous en etes à "+nb+" jours de congés "+type;
+			document.getElementById("messageCompteur").className = "alert alert-info alert-dismissable";
+		}
+		getEmploye.send();
 	}
 }
 
 //affichage type de congé dans le selecteur
-
 function getIdNom(){
 			var getList2 = new XMLHttpRequest();
 			getList2.open("GET","../cadrews/conges/listIdConge",true, null, null);
 			getList2.responseType="json";
 			var select = document.getElementById("typeConge");
+			var select2 = document.getElementById("select3");
 			getList2.onload=function(){
 				for (var i=0; i<this.response.length; i++){
 					var newoption=document.createElement("option");
 					newoption.textContent=this.response[i].typeConge;
 					select.appendChild(newoption);
+					select2.appendChild(newoption);
 				}
 			}
 			getList2.send();
 }
-// affichage du type de Vehicule dans le selecteur
 
+// affichage du type de Vehicule dans le selecteur
 function getIdVehicule(){
 			var getList2 = new XMLHttpRequest();
 			getList2.open("GET","../cadrews/vehicules/listIdVehicule",true, null, null);
@@ -492,87 +576,6 @@ function addDemandeConge(){
 //recuperation des différentes demandes et implementation dans le calendrier
 function getDemandes(mois, jour, moisNbJours){
 	
-	//demandes de validites
-	var getEmploye = new XMLHttpRequest();
-	getEmploye.open("GET","../cadrews/validites/listDemandesValiditeByidEmploye/"+document.getElementById('employeId').innerText,true, null, null);
-	getEmploye.responseType="json";
-	
-	getEmploye.onload=function(){
-		for (var i=0; i<this.response.length; i++){
-			if(this.response[i].validites_idValidite==1){var demande = "demande de validité métallerie"}
-			else{var demande = "demande de validité médical"};
-			//on affiche que les notif du mois affiché
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])!=mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
-				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
-				if(this.response[i].etat=="refus"){
-					while(jourFin!=-2+jour){
-						ajoutInfo(jourFin, "bad", "Refus de la "+demande, "");
-						jourFin--;
-					}
-				} 
-				else if(this.response[i].etat=="en cours"){
-					while(jourFin!=-2+jour){
-						ajoutInfo(jourFin, "info", "Demande en cours de la "+demande, "");
-						jourFin--;
-					}
-				}
-				else{
-					while(jourFin!=-2+jour){
-						ajoutInfo(jourFin, "fine", "Acceptation de la "+demande, "");
-						jourFin--;
-					}
-				}
-			}
-			
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
-				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
-				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
-				if(this.response[i].etat=="refus"){
-					while(jourFin!=jourDebut-1){
-						ajoutInfo(jourFin, "bad", "Refus de la "+demande, "");
-						jourFin--;
-					}
-				} 
-				else if(this.response[i].etat=="en cours"){
-					while(jourFin!=jourDebut-1){
-						ajoutInfo(jourFin, "info", "Demande en cours de la "+demande, "");
-						jourFin--;
-					}
-				}
-				else{
-					while(jourFin!=jourDebut-1){
-						ajoutInfo(jourFin, "fine", "Acceptation de la "+demande, "");
-						jourFin--;
-					}
-				}
-			}
-			
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])!=mois){
-				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
-				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
-				if(this.response[i].etat=="refus"){
-					while(jourDebut!=moisNbJours+1){
-						ajoutInfo(jourDebut, "bad", "Refus de la "+demande, "");
-						jourDebut++;
-					}
-				} 
-				else if(this.response[i].etat=="en cours"){
-					while(jourDebut!=moisNbJours+1){
-						ajoutInfo(jourDebut, "info", "Demande en cours de la "+demande, "");
-						jourDebut++;
-					}
-				}
-				else{
-					while(jourDebut!=moisNbJours+1){
-						ajoutInfo(jourDebut, "fine", "Acceptation de la "+demande, "");
-						jourDebut++;
-					}
-				}
-			}
-		}
-	}
-	getEmploye.send();
-	
 	//demandes de conges
 	var getEmploye = new XMLHttpRequest();
 	getEmploye.open("GET","../cadrews/conges/listCongesById/"+document.getElementById('employeId').innerText,true, null, null);
@@ -691,19 +694,19 @@ function getDemandes(mois, jour, moisNbJours){
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])!=mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				if(this.response[i].etat=="refus"){
-					while(jourFin!=-1){
+					while(jourFin!=-2+jour){
 						ajoutInfo(jourFin, "bad", "Refus de la "+demande, "");
 						jourFin--;
 					}
 				} 
 				else if(this.response[i].etat=="en cours"){
-					while(jourFin!=-1){
+					while(jourFin!=-2+jour){
 						ajoutInfo(jourFin, "info", "Demande en cours de la "+demande, "");
 						jourFin--;
 					}
 				}
 				else{
-					while(jourFin!=-1){
+					while(jourFin!=-2+jour){
 						ajoutInfo(jourFin, "fine", "Acceptation de la "+demande, "");
 						jourFin--;
 					}

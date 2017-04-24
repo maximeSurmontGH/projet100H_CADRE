@@ -233,10 +233,6 @@ function alerteMailling(){
 }
 
 function maillingAnnonce(){
-	alerteMailling();
-	document.getElementById("mailling").onclick=function(){
-		alerteMailling();
-	}
 }
 
 // gestion des notifications. (creations et suppression);

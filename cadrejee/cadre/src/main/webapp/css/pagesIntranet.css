@@ -195,19 +195,25 @@ table .form-control{
   color: #EEE;
 }
 .fine{
-  background-color: rgba(10, 140, 20, 0.6);
+  background-color: #dff0d8;
   border-radius: 5px;
   box-sizing: border-box;
+  color : #3c763d;
+  border: solid 1px #d6e9c6;
 }
 .info{
-  background-color: rgba(30, 30, 120, 0.7);
+  background-color: #fcf8e3;
   border-radius: 5px;
   box-sizing: border-box;
+  color : #8a6d3b;
+  border: solid 1px #faebcc;
 }
 .bad{
-  background-color: rgba(140, 20, 10, 0.6);
+  background-color: #f2dede;
   border-radius: 5px;
   box-sizing: border-box;
+  color : #a94442;
+  border: solid 1px #ebccd1;
 }
 .other-mounth{
   background-color: lightgrey;
