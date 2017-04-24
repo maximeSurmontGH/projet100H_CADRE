@@ -10,11 +10,31 @@ import java.util.ArrayList;
 import java.util.List;
 import projet.cadre.model.Employe;
 import projet.cadre.model.Validites;
+import projet.cadre.model.Attestations;
 import projet.cadre.model.DemandesConge;
 import projet.cadre.model.DemandesValidite;
 
 
 public class ValiditesDao {
+	
+	//retourne la liste des attestations avec leur id 
+	
+		public List<Validites> getIdvalidite(){
+			ArrayList<Validites> lstIdValidite = new ArrayList<>();
+			try {
+				Connection connection = DataSourceProvider.getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM validites");
+				ResultSet resultSet = stmt.executeQuery();
+				while(resultSet.next()) {
+					lstIdValidite.add(new Validites(resultSet.getInt("idValidite"), resultSet.getString("typeValidite")));
+				}
+				stmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return lstIdValidite;
+		}
 	
 	// retourne la liste des demandes de validites
 	public List<DemandesValidite> getDemandesValidite(){

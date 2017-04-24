@@ -21,6 +21,13 @@ public class ValiditesWS {
 	final Gson gson = builder.create();
 	
 	@GET
+	@Path("/listIdValidite")
+	public Response listIdValidite(){
+		CadreServices cadreServices = CadreServices.getInstance();
+		return Response.status(200).entity(gson.toJson(cadreServices.getIdValidite())).build();
+	}
+	
+	@GET
 	@Path("/listDemandesValidite")
 	public Response listDemandesValidite(){
 		CadreServices cadreServices = CadreServices.getInstance();
@@ -43,7 +50,7 @@ public class ValiditesWS {
 	
 	@POST
 	@Path("")
-	public Response addDemandeValidite(@FormParam("idValidite") Integer idValidite, @FormParam("idEmploye") String idEmploye, @FormParam("date") String dateDebut, @FormParam("date") String dateFin){
+	public Response addDemandeValidite(@FormParam("idValidite") Integer idValidite, @FormParam("idEmploye") String idEmploye, @FormParam("dateD") String dateDebut, @FormParam("dateF") String dateFin){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
 			cadreServices.setDemandeDeValidite(idValidite, idEmploye, dateDebut, dateFin);

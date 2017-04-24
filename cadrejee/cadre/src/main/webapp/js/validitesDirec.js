@@ -99,40 +99,44 @@ function remplissageJMA(){
 	for(var i = 1; i<32; i++){
 		var J = document.createElement('option');
 		J.innerHTML=i;
+		if(i<10){
+		J.value="0"+i;}
 		sel1_2.appendChild(J);
 	}
 	var sel1_1 = document.getElementById('JoursD');
 	for(var i = 1; i<32; i++){
 		var J = document.createElement('option');
 		J.innerHTML=i;
+		if(i<10){
+		J.value="0"+i;}
 		sel1_1.appendChild(J);
 	}
 	var sel2_1 = document.getElementById('MoisD');
-	var M = document.createElement('option'); M.innerHTML="janvier"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="février"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="mars"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="avril"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="mai"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="juin"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="juillet"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="aout"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="septembre"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="octobre"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="novembre"; sel2_1.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="decembre"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="01"; M.innerHTML="janvier"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="02"; M.innerHTML="février"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="03"; M.innerHTML="mars"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="04"; M.innerHTML="avril"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="05"; M.innerHTML="mai"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="06"; M.innerHTML="juin"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="07"; M.innerHTML="juillet"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="08"; M.innerHTML="aout"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="09"; M.innerHTML="septembre"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="10"; M.innerHTML="octobre"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="11"; M.innerHTML="novembre"; sel2_1.appendChild(M);
+	var M = document.createElement('option');M.value="12"; M.innerHTML="decembre"; sel2_1.appendChild(M);
 	var sel2_2 = document.getElementById('MoisF');
-	var M = document.createElement('option'); M.innerHTML="janvier"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="février"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="mars"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="avril"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="mai"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="juin"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="juillet"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="aout"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="septembre"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="octobre"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="novembre"; sel2_2.appendChild(M);
-	var M = document.createElement('option'); M.innerHTML="decembre"; sel2_2.appendChild(M);
+	var M = document.createElement('option'); M.value="01";M.innerHTML="janvier"; sel2_2.appendChild(M);
+	var M = document.createElement('option'); M.value="02";M.innerHTML="février"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="03"; M.innerHTML="mars"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="04"; M.innerHTML="avril"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="05"; M.innerHTML="mai"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="06"; M.innerHTML="juin"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="07"; M.innerHTML="juillet"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="08"; M.innerHTML="aout"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="09"; M.innerHTML="septembre"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="10"; M.innerHTML="octobre"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="11"; M.innerHTML="novembre"; sel2_2.appendChild(M);
+	var M = document.createElement('option');M.value="12"; M.innerHTML="decembre"; sel2_2.appendChild(M);
 	var sel3_1 = document.getElementById('AnneesD');
 	for(var i = 2030; i>2000; i--){
 		var A = document.createElement('option');
@@ -147,6 +151,23 @@ function remplissageJMA(){
 	}
 }
 
+//affichage type de validites dans le selecteur
+
+function getIdNom(){
+			var getList2 = new XMLHttpRequest();
+			getList2.open("GET","../cadrews/validites/listIdValidite",true, null, null);
+			getList2.responseType="json";
+			var select = document.getElementById("type");
+			getList2.onload=function(){
+				for (var i=0; i<this.response.length; i++){
+					var newoption=document.createElement("option");
+					newoption.textContent=this.response[i].typeValidite;
+					select.appendChild(newoption);
+				}
+			}
+			getList2.send();
+}
+
 
 function addvalidite(){
 	document.getElementById("boutonAdd").onclick=function(){
@@ -156,8 +177,11 @@ function addvalidite(){
 		requetePostReponse.responseType = "json";
 		
 		var nom = document.getElementById("inputNom").value;
+		nom=nom.toLowerCase();
 		document.getElementById("inputNom").value="";
+		
 		var prenom = document.getElementById("inputPrenom").value;
+		prenom=prenom.toLowerCase();
 		document.getElementById("inputPrenom").value="";
 		
 		var select = document.getElementById("type");
@@ -188,18 +212,17 @@ function addvalidite(){
 		var choice = select.selectedIndex;
 		var dateFinAnnee = select.options[choice].value.toString();
 		
-		alert(type);
 		
 		var getList2 = new XMLHttpRequest();
-		getList2.open("GET","../cadrews/validites/listIdAttestation",true, null, null);
+		getList2.open("GET","../cadrews/validites/listIdValidite",true, null, null);
 		getList2.responseType="json";
 		var a;
 		getList2.onload=function(){
 			for (var i=0; i<this.response.length; i++){
-				if(this.response[i].typeAttestation == type){
-					a=this.response[i].idAttestation;
+				if(this.response[i].typeValidite == type){
+					a=this.response[i].idValidite;
 					requetePostReponse.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-					requetePostReponse.send("idAttestation="+a+"&idEmploye="+employeId+"&date="+getDate());
+					requetePostReponse.send("idValidite="+a+"&idEmploye="+prenom+"."+nom+"&dateD="+dateDebutJour+dateDebutMois+dateDebutAnnee+"&dateF="+dateFinJour+dateFinMois+dateFinAnnee);
 					
 				
 				}
@@ -213,6 +236,7 @@ function addvalidite(){
 
 
 window.onload = function(){
+	getIdNom();
 	addvalidite();
 	gestionnaireDeMenu(10);
 	maillingAnnonce();

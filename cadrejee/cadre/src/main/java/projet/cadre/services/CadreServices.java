@@ -28,6 +28,7 @@ import projet.cadre.model.Employe;
 import projet.cadre.model.EvenementAutre;
 import projet.cadre.model.Rappel;
 import projet.cadre.model.Ressource;
+import projet.cadre.model.Validites;
 import projet.cadre.model.Vehicules;
 
 public class CadreServices {
@@ -210,6 +211,10 @@ public class CadreServices {
 	}
 	
 	// Validites Dao
+	
+	public List<Validites> getIdValidite(){
+		return validitesDao.getIdvalidite();
+	}
 	public List<DemandesValidite> getDemandesValidite(){
 		return validitesDao.getDemandesValidite();
 	}
