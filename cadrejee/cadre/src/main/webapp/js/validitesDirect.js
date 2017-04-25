@@ -1,3 +1,22 @@
+// avoir la date du jour 
+function getDate(){
+	var date = new Date();
+	var jour=date.getDate();
+	if (jour<10){
+		jour="0"+jour.toString();
+	}
+	jour=jour.toString();
+	var mois= date.getMonth()+1;
+	if (mois<10){
+		mois="0"+mois.toString();
+	}
+	mois=mois.toString();
+	var annee=date.getFullYear().toString();
+	
+	return jour+mois+annee;	
+}
+
+
 // remplisseur du tableau des validités.
 function remplissageRecherche(){
 	var nb=0;
@@ -22,7 +41,8 @@ function remplissageRecherche(){
 			tr2.appendChild(td1_3);
 			tr2.appendChild(td1_4);
 			tr2.appendChild(td1_7);
-			tab.appendChild(tr2);
+			tab.appendChild(tr2);	
+			
 
 			var tr2 = document.createElement('tr');
 			var td1_1 = document.createElement('td');
@@ -89,6 +109,90 @@ function remplissageRecherche(){
 			tab.appendChild(tr2);
 			tab.appendChild(tr2);
 			div.appendChild(tab);
+		}
+	}
+}
+function remplissageRechercheType(){
+	var nb=0;
+		
+	document.getElementById("boutonSearch2").onclick=function(){
+		var type=document.getElementById("typeR").value;
+		type=type.toLowerCase();
+		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/validites/listDemandesDeValiditeByType/"+type,true, null, null);
+		getList2.responseType="json";
+		if(nb==0){
+			nb++;
+			var div = document.getElementById("tableauDesValidites2");
+			var tab = document.createElement('table')
+			var tr2 = document.createElement('tr');
+			var td1_1 = document.createElement('th');
+			td1_1.innerHTML = "Type de la validité";
+			var td1_2 = document.createElement('th');
+			td1_2.innerHTML = "Nom et prénom de l'employé";
+			var td1_3 = document.createElement('th');
+			td1_3.innerHTML = "Date de début";
+			var td1_4 = document.createElement('th');
+			td1_4.innerHTML = "Date de fin";
+			var td1_7 = document.createElement('th');
+			td1_7.innerHTML = "Valide ?";
+			tr2.appendChild(td1_1);
+			tr2.appendChild(td1_2);
+			tr2.appendChild(td1_3);
+			tr2.appendChild(td1_4);
+			tr2.appendChild(td1_7);
+			tab.appendChild(tr2);	
+			
+			getList2.onload=function(){
+				for (var i=0; i<this.response.length; i++){
+					var tr2 = document.createElement('tr');
+					var td1_1 = document.createElement('td');
+					td1_1.innerHTML = type ;
+					var td1_2 = document.createElement('td');
+					var getList3 = new XMLHttpRequest();
+					getList3.open("GET","../cadrews/employes/employeById/"+this.response[i].employes_idEmploye,true, null, null);
+					getList3.responseType="json";
+					getList3.onload=function(){
+						var nom=this.response.nomEmploye+" "+this.response.prenomEmploye;
+						td1_2.innerHTML =nom ;
+					}
+					getList3.send();
+					
+					var td1_3 = document.createElement('td');
+					var dateD=this.response[i].dateDebut[0]+this.response[i].dateDebut[1]+"/"+this.response[i].dateDebut[2]+this.response[i].dateDebut[3]+"/"+this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7];
+					td1_3.innerHTML = dateD ;
+					var td1_4 = document.createElement('td');
+					var dateF=this.response[i].dateFin[0]+this.response[i].dateFin[1]+"/"+this.response[i].dateFin[2]+this.response[i].dateFin[3]+"/"+this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7];
+					td1_4.innerHTML = dateF;
+					var td1_7 = document.createElement('td');
+					var span1_7 = document.createElement('span');
+					dateJour=getDate()[6]+getDate()[7]+getDate()[2]+getDate()[3]+getDate()[0]+getDate()[1];
+					dateFinal= this.response[i].dateFin[6]+this.response[i].dateFin[7]+this.response[i].dateFin[2]+this.response[i].dateFin[3]+this.response[i].dateFin[0]+this.response[i].dateFin[1];
+					dateJour= parseInt(dateJour);
+					dateFinal= parseInt(dateFinal);
+					
+					if(dateFinal>dateJour){
+						span1_7.className="glyphicon glyphicon-ok";
+					}else{
+						span1_7.className="glyphicon glyphicon-remove"
+					}
+					tr2.appendChild(td1_1);
+					tr2.appendChild(td1_2);
+					tr2.appendChild(td1_3);
+					tr2.appendChild(td1_4);
+					td1_7.appendChild(span1_7);
+					tr2.appendChild(td1_7);
+					tab.appendChild(tr2);
+					tab.appendChild(tr2);
+					div.appendChild(tab);
+					
+				}
+			}
+			getList2.send();
+			
+
+			
 		}
 	}
 }
@@ -236,6 +340,7 @@ function addvalidite(){
 
 
 window.onload = function(){
+	remplissageRechercheType();
 	getIdNom();
 	addvalidite();
 	gestionnaireDeMenu(10);

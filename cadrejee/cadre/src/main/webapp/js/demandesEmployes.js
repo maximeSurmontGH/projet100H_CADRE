@@ -12,9 +12,7 @@ function getDate(){
 	mois=mois.toString();
 	var annee=date.getFullYear().toString();
 	
-	return jour+mois+annee;
-	
-	
+	return jour+mois+annee;	
 }
 
 
