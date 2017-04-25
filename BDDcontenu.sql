@@ -63,8 +63,10 @@ INSERT INTO `demandesvehicule`(`id`,`vehicules_immatriculation`,`employes_idEmpl
 INSERT INTO `demandesvehicule`(`id`,`vehicules_immatriculation`,`employes_idEmploye`,`etat`,`dateDebut`,`dateFin`) VALUES (3,'SLC 013 CX','chloe.pelletier','attente','29052016','30052017');
 
 INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`,`importance`) VALUES (1,'18052017','Audit Client 1 de 9h00 à 12h00, il est important pour l\'entreprise','chloe.pelletier',1);
-INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`,`importance`) VALUES (2,'22042016','Bon retour de vacances! Au travail maintenant!','chloe.pelletier',1);
-INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`,`importance`) VALUES (3,'13052016','Bon retour de vacances! Au travail maintenant!','chloe.pelletier',1);
+INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`,`importance`) VALUES (2,'18052017','Audit Client 2 de 9h00 à 12h00, il est important pour l\'entreprise','chloe.pelletier',1);
+INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`,`importance`) VALUES (3,'02052017','Visite de l\'entreprise pour la classe ITI HEI 4, toute la matiné','chloe.pelletier',2);
+INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`,`importance`) VALUES (4,'22042016','Bon retour de vacances! Au travail maintenant!','chloe.pelletier',3);
+INSERT INTO `rappels`(`idRappel`,`dateRappel`,`messageRappel`,`employes_idEmploye`,`importance`) VALUES (5,'13052016','Bon retour de vacances! Au travail maintenant!','chloe.pelletier',3);
 
 INSERT INTO `contact`(`nomContact`,`mailContact`,`societeContact`,`messageContact`) VALUES ('DEASEGHER hugo','hugo.desaegher@gmail.com', 'Marketing', 'Message de Test 1');
 INSERT INTO `contact`(`nomContact`,`mailContact`,`societeContact`,`messageContact`) VALUES ('DONQUE Julien','julien.donque@gmail.com', 'Erreur de livraison', 'Message de Test 2');
