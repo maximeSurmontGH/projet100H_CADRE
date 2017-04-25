@@ -4,9 +4,9 @@ function gestionnairePage(){
 	document.getElementById("boutonEntreprise").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonPrestations").className = "btn btn-primary mesBtns apparaitre";
 	document.getElementById("boutonRetour").className = "btn btn-primary mesBtns disparaitre";
-	document.getElementById("boutonAccueil").onclick=function(){var pageModifiee = "acceuil"; gestionnairePage2(pageModifiee);}
-	document.getElementById("boutonEntreprise").onclick=function(){ var pageModifiee = "entreprise"; gestionnairePage2(pageModifiee);}
-	document.getElementById("boutonPrestations").onclick=function(){ var pageModifiee = "prestations"; gestionnairePage2(pageModifiee);}
+	document.getElementById("boutonAccueil").onclick=function(){var pageModifiee = "acceuil"; gestionnairePage2(pageModifiee);modifElement(pageModifiee);}
+	document.getElementById("boutonEntreprise").onclick=function(){ var pageModifiee = "entreprise"; gestionnairePage2(pageModifiee);modifElement(pageModifiee);}
+	document.getElementById("boutonPrestations").onclick=function(){ var pageModifiee = "prestations"; gestionnairePage2(pageModifiee);modifElement(pageModifiee);}
 	while(document.getElementById("tableauDesModifications").firstChild) {
   	document.getElementById("tableauDesModifications").removeChild(document.getElementById("tableauDesModifications").firstChild);
 	}
@@ -369,28 +369,211 @@ function createurDeLigne (element, action, num){
 }
 // Modifier les elements 
 
-var modifierElement = function(pageModifiee){
-
+function modifElement(pageModifiee){
+	var requete = new XMLHttpRequest();
+	requete.open("PUT","../cadrews/elementssite/updateET");
+	requete.responseType = "json";
 	if(pageModifiee=="acceuil"){
-		var requete = new XMLHttpRequest();
-		requete.open("PUT","/elementssite/updateET");
-		requete.responseType = "json";
 		document.getElementById("a2").onclick=function(){
-			var newHighScore = this.response;
-			document.getElementById("actuelHighScore").textContent=newHighScore.valeur+"/10 par "+newHighScore.pseudo;
-			document.getElementById("highScore").style.display = "none";
+			var newSlogan = document.getElementById("input2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=aslogan"+"&contenuElement="+newSlogan);
+			window.location.href="../direction/modification";
 
 		};
-		requeteSendHighScore.error=function(error){
-				console.error("Erreur lors de la mise à jour du High Score : "+error);
+		document.getElementById("a4").onclick=function(){
+			var newDescription = document.getElementById("input4").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=ades"+"&contenuElement="+newDescription);
+			window.location.href="../direction/modification";
 		};
 		
-		requeteSendHighScore.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		requeteSendHighScore.send("pseudo="+pseudoJoueur+"&score="+scoreJoueur);
 	}
 	if(pageModifiee=="entreprise"){
+		document.getElementById("a2.1").onclick=function(){
+			var newHisto1 = document.getElementById("input2.1").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=histo1"+"&contenuElement="+newHisto1);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a2.2").onclick=function(){
+			var newHisto2 = document.getElementById("input2.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=histo2"+"&contenuElement="+newHisto2);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a2.3").onclick=function(){
+			var newHisto3 = document.getElementById("input2.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=histo3"+"&contenuElement="+newHisto3);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a2.3").onclick=function(){
+			var newHisto3 = document.getElementById("input2.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=histo3"+"&contenuElement="+newHisto3);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a2.4").onclick=function(){
+			var newHisto4 = document.getElementById("input2.4").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=histo4"+"&contenuElement="+newHisto4);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a3").onclick=function(){
+			var newEDF = document.getElementById("input3").value;
+			alert(newEDF);
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=edf"+"&contenuElement="+newEDF);
+			window.location.href="../direction/modification";
+		};
+		
 	}
 	if(pageModifiee=="prestations"){
+		document.getElementById("a1.2").onclick=function(){
+			var newE12 = document.getElementById("input1.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea1"+"&contenuElement="+newE12);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a1.3").onclick=function(){
+			var newE13 = document.getElementById("input1.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea1"+"&contenuElement="+newE13);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a2.2").onclick=function(){
+			var newE22 = document.getElementById("input2.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea2"+"&contenuElement="+newE22);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a2.3").onclick=function(){
+			var newE23 = document.getElementById("input1.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea2"+"&contenuElement="+newE23);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a3.2").onclick=function(){
+			var newE32 = document.getElementById("input3.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea3"+"&contenuElement="+newE32);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a3.3").onclick=function(){
+			var newE33 = document.getElementById("input3.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea3"+"&contenuElement="+newE33);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a4.2").onclick=function(){
+			var newE42 = document.getElementById("input4.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea4"+"&contenuElement="+newE42);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a4.3").onclick=function(){
+			var newE43 = document.getElementById("input4.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea4"+"&contenuElement="+newE43);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a1.2").onclick=function(){
+			var newE12 = document.getElementById("input1.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea1"+"&contenuElement="+newE12);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a1.3").onclick=function(){
+			var newE13 = document.getElementById("input1.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea1"+"&contenuElement="+newE13);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a5.2").onclick=function(){
+			var newE52 = document.getElementById("input5.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea5"+"&contenuElement="+newE52);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a5.3").onclick=function(){
+			var newE53 = document.getElementById("input5.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea5"+"&contenuElement="+newE53);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a6.2").onclick=function(){
+			var newE62 = document.getElementById("input6.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea6"+"&contenuElement="+newE62);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a6.3").onclick=function(){
+			var newE63 = document.getElementById("input6.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea6"+"&contenuElement="+newE63);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a7.2").onclick=function(){
+			var newE72 = document.getElementById("input7.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea7"+"&contenuElement="+newE72);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a7.3").onclick=function(){
+			var newE73 = document.getElementById("input7.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea7"+"&contenuElement="+newE73);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a8.2").onclick=function(){
+			var newE82 = document.getElementById("input8.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea8"+"&contenuElement="+newE82);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a8.3").onclick=function(){
+			var newE83 = document.getElementById("input8.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea8"+"&contenuElement="+newE83);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a9.2").onclick=function(){
+			var newE92 = document.getElementById("input9.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea9"+"&contenuElement="+newE92);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a9.3").onclick=function(){
+			var newE93 = document.getElementById("input9.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea9"+"&contenuElement="+newE93);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a10.2").onclick=function(){
+			var newE102 = document.getElementById("input10.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea10"+"&contenuElement="+newE102);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a10.3").onclick=function(){
+			var newE103 = document.getElementById("input10.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea10"+"&contenuElement="+newE103);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a11.2").onclick=function(){
+			var newE112 = document.getElementById("input11.2").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=nomRea11"+"&contenuElement="+newE112);
+			window.location.href="../direction/modification";
+		};
+		document.getElementById("a11.3").onclick=function(){
+			var newE113 = document.getElementById("input11.3").value;
+			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			requete.send("idElement=desRea11"+"&contenuElement="+newE113);
+			window.location.href="../direction/modification";
+		};
 	}
 
 }
