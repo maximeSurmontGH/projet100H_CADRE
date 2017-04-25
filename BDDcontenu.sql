@@ -1,3 +1,4 @@
+SET SQL_SAFE_UPDATES = 0;
 DELETE FROM demandesattestation;
 DELETE FROM attestations;
 DELETE FROM demandesconge;
@@ -24,24 +25,31 @@ INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`po
 INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('kevin.tran','TRAN', 'kevin', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','métallurgiste','0627319383','kevin.tran@hei.com');
 INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('thierry.pelletier','PELLETIER', 'thierry', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','CEO','0648489200','thierry.pelletier@hei.com');
 
-INSERT INTO `attestations`(`idAttestation`,`typeAttestation`) VALUES (1,'');
-INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (1,,'chloe.pelletier','valide','05042017');
-INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (2,,'chloe.pelletier','refuse','12042017');
-INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (3,,'chloe.pelletier','attente','23042017');
-INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (4,,'chloe.pelletier','attente','22052017');
-INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (5,,'chloe.pelletier','accepte','12052017');
-INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (6,,'chloe.pelletier','refuse','29052017');
+INSERT INTO `attestations`(`idAttestation`,`typeAttestation`) VALUES (1,'Attestation 1');
+INSERT INTO `attestations`(`idAttestation`,`typeAttestation`) VALUES (2,'Attestation 2');
+INSERT INTO `attestations`(`idAttestation`,`typeAttestation`) VALUES (3,'Attestation 3');
+INSERT INTO `attestations`(`idAttestation`,`typeAttestation`) VALUES (4,'Attestation 4');
+INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (1,1,'chloe.pelletier','valide','05042017');
+INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (2,2,'chloe.pelletier','refuse','12042017');
+INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (3,4,'chloe.pelletier','attente','23042017');
+INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (4,3,'chloe.pelletier','attente','22052017');
+INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (5,3,'chloe.pelletier','accepte','12052017');
+INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (6,4,'chloe.pelletier','refuse','29052017');
 
-INSERT INTO `conges`(`idConge`,`typeConge`) VALUES (1,'');
-INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (1,,'chloe.pelletier','21042016','23042017','attente');
-INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (2,,'chloe.pelletier','21042016','28042017','valide');
-INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (3,,'chloe.pelletier','05052016','12052017','valide');
-INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (4,,'chloe.pelletier','21052016','28052017','refuse');
+INSERT INTO `conges`(`idConge`,`typeConge`) VALUES (1,'MATERNITE');
+INSERT INTO `conges`(`idConge`,`typeConge`) VALUES (2,'RTT');
+INSERT INTO `conges`(`idConge`,`typeConge`) VALUES (3,'PAYE');
+INSERT INTO `conges`(`idConge`,`typeConge`) VALUES (4,'NON PAYE');
+INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (1,2,'chloe.pelletier','21042016','23042017','attente');
+INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (2,3,'chloe.pelletier','21042016','28042017','valide');
+INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (3,3,'chloe.pelletier','05052016','12052017','valide');
+INSERT INTO `demandesconge`(`id`,`conges_idConge`,`employes_idEmploye`,`dateDebut`,`dateFin`,`etat`) VALUES (4,1,'chloe.pelletier','21052016','28052017','refuse');
 
-INSERT INTO `validites`(`idValidite`,`typeValidite`) VALUES (1,'');
-INSERT INTO `demandesvalidite`(`id`,`validites_idValidite`,`employes_idEmploye`,`etat`,`dateDebut`,`dateFin`) VALUES (1,,'chloe.pelletier','valide','21042016','21042017');
-INSERT INTO `demandesvalidite`(`id`,`validites_idValidite`,`employes_idEmploye`,`etat`,`dateDebut`,`dateFin`) VALUES (2,,'chloe.pelletier','attente','21042017','21042018');
-INSERT INTO `demandesvalidite`(`id`,`validites_idValidite`,`employes_idEmploye`,`etat`,`dateDebut`,`dateFin`) VALUES (3,,'chloe.pelletier','valide','21042017','21042018');
+INSERT INTO `validites`(`idValidite`,`typeValidite`) VALUES (1,'METALLERIE');
+INSERT INTO `validites`(`idValidite`,`typeValidite`) VALUES (2,'MEDICAL');
+INSERT INTO `demandesvalidite`(`id`,`validites_idValidite`,`employes_idEmploye`,`etat`,`dateDebut`,`dateFin`) VALUES (1,1,'chloe.pelletier','valide','21042016','21042017');
+INSERT INTO `demandesvalidite`(`id`,`validites_idValidite`,`employes_idEmploye`,`etat`,`dateDebut`,`dateFin`) VALUES (2,1,'chloe.pelletier','attente','21042017','21042018');
+INSERT INTO `demandesvalidite`(`id`,`validites_idValidite`,`employes_idEmploye`,`etat`,`dateDebut`,`dateFin`) VALUES (3,2,'chloe.pelletier','valide','21042017','21042018');
 
 INSERT INTO `vehicules`(`immatriculation`,`typeVehicule`,`disponibilite`) VALUES ('AA 542 AA','Camionette 1','T');
 INSERT INTO `vehicules`(`immatriculation`,`typeVehicule`,`disponibilite`) VALUES ('SLC 013 CX','Camionette 2','T');
