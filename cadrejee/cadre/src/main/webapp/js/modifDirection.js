@@ -367,6 +367,33 @@ function createurDeLigne (element, action, num){
 	tr.appendChild(td3);
 	table.appendChild(tr);
 }
+// Modifier les elements 
+
+var modifierElement = function(pageModifiee){
+
+	if(pageModifiee=="acceuil"){
+		var requete = new XMLHttpRequest();
+		requete.open("PUT","/elementssite/updateET");
+		requete.responseType = "json";
+		document.getElementById("a2").onclick=function(){
+			var newHighScore = this.response;
+			document.getElementById("actuelHighScore").textContent=newHighScore.valeur+"/10 par "+newHighScore.pseudo;
+			document.getElementById("highScore").style.display = "none";
+
+		};
+		requeteSendHighScore.error=function(error){
+				console.error("Erreur lors de la mise à jour du High Score : "+error);
+		};
+		
+		requeteSendHighScore.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		requeteSendHighScore.send("pseudo="+pseudoJoueur+"&score="+scoreJoueur);
+	}
+	if(pageModifiee=="entreprise"){
+	}
+	if(pageModifiee=="prestations"){
+	}
+
+}
 
 
 
