@@ -412,20 +412,22 @@ function compteurInfos(){
 
 //affichage type de congé dans le selecteur
 function getIdNom(){
-			var getList2 = new XMLHttpRequest();
-			getList2.open("GET","../cadrews/conges/listIdConge",true, null, null);
-			getList2.responseType="json";
-			var select = document.getElementById("typeConge");
-			var select2 = document.getElementById("select3");
-			getList2.onload=function(){
-				for (var i=0; i<this.response.length; i++){
-					var newoption=document.createElement("option");
-					newoption.textContent=this.response[i].typeConge;
-					select.appendChild(newoption);
-					select2.appendChild(newoption);
-				}
-			}
-			getList2.send();
+	var getList2 = new XMLHttpRequest();
+	getList2.open("GET","../cadrews/conges/listIdConge",true, null, null);
+	getList2.responseType="json";
+	var select = document.getElementById("typeConge");
+	var select2 = document.getElementById("select3");
+	getList2.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			var newoption=document.createElement("option");
+			var newoption2=document.createElement("option");
+			newoption.textContent=this.response[i].typeConge;
+			newoption2.textContent=this.response[i].typeConge;
+			select.appendChild(newoption);
+			select2.appendChild(newoption2);
+		}
+	}
+	getList2.send();
 }
 
 // affichage du type de Vehicule dans le selecteur
@@ -590,13 +592,13 @@ function getDemandes(mois, jour, moisNbJours){
 			else{var demande = "demande de congés non payé"};
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])!=mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
-				if(this.response[i].etat=="refus"){
+				if(this.response[i].etat=="refuse"){
 					while(jourFin!=-2+jour){
 						ajoutInfo(jourFin, "bad", "Refus de la "+demande, "");
 						jourFin--;
 					}
 				} 
-				else if(this.response[i].etat=="en cours"){
+				else if(this.response[i].etat=="attente"){
 					while(jourFin!=-2+jour){
 						ajoutInfo(jourFin, "info", "Demande en cours de la "+demande, "");
 						jourFin--;
@@ -613,13 +615,13 @@ function getDemandes(mois, jour, moisNbJours){
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
-				if(this.response[i].etat=="refus"){
+				if(this.response[i].etat=="refuse"){
 					while(jourFin!=jourDebut-1){
 						ajoutInfo(jourFin, "bad", "Refus de la "+demande, "");
 						jourFin--;
 					}
 				} 
-				else if(this.response[i].etat=="en cours"){
+				else if(this.response[i].etat=="attente"){
 					while(jourFin!=jourDebut-1){
 						ajoutInfo(jourFin, "info", "Demande en cours de la "+demande, "");
 						jourFin--;
@@ -636,13 +638,13 @@ function getDemandes(mois, jour, moisNbJours){
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])!=mois){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
-				if(this.response[i].etat=="refus"){
+				if(this.response[i].etat=="refuse"){
 					while(jourDebut!=moisNbJours+1){
 						ajoutInfo(jourDebut, "bad", "Refus de la "+demande, "");
 						jourDebut++;
 					}
 				} 
-				else if(this.response[i].etat=="en cours"){
+				else if(this.response[i].etat=="attente"){
 					while(jourDebut!=moisNbJours+1){
 						ajoutInfo(jourDebut, "info", "Demande en cours de la "+demande, "");
 						jourDebut++;
@@ -659,13 +661,13 @@ function getDemandes(mois, jour, moisNbJours){
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])<mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])>mois){
 				var jourFin=moisNbJours+1-2+jour;
 				var jourDebut=1-2+jour;
-				if(this.response[i].etat=="refus"){
+				if(this.response[i].etat=="refuse"){
 					while(jourDebut!=jourFin){
 						ajoutInfo(jourDebut, "bad", "Refus de la "+demande, "");
 						jourDebut++;
 					}
 				} 
-				else if(this.response[i].etat=="en cours"){
+				else if(this.response[i].etat=="attente"){
 					while(jourDebut!=jourFin){
 						ajoutInfo(jourDebut, "info", "Demande en cours de la "+demande, "");
 						jourDebut++;
@@ -693,13 +695,13 @@ function getDemandes(mois, jour, moisNbJours){
 			var demande = "demande de prêt du véhicule "+this.response[i].vehicules_immatriculation;
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])!=mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
-				if(this.response[i].etat=="refus"){
+				if(this.response[i].etat=="refuse"){
 					while(jourFin!=-2+jour){
 						ajoutInfo(jourFin, "bad", "Refus de la "+demande, "");
 						jourFin--;
 					}
 				} 
-				else if(this.response[i].etat=="en cours"){
+				else if(this.response[i].etat=="attente"){
 					while(jourFin!=-2+jour){
 						ajoutInfo(jourFin, "info", "Demande en cours de la "+demande, "");
 						jourFin--;
@@ -716,13 +718,13 @@ function getDemandes(mois, jour, moisNbJours){
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
-				if(this.response[i].etat=="refus"){
+				if(this.response[i].etat=="refuse"){
 					while(jourFin!=jourDebut-1){
 						ajoutInfo(jourFin, "bad", "Refus de la "+demande, "");
 						jourFin--;
 					}
 				} 
-				else if(this.response[i].etat=="en cours"){
+				else if(this.response[i].etat=="attente"){
 					while(jourFin!=jourDebut-1){
 						ajoutInfo(jourFin, "info", "Demande en cours de la "+demande, "");
 						jourFin--;
@@ -739,13 +741,13 @@ function getDemandes(mois, jour, moisNbJours){
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])!=mois){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
-				if(this.response[i].etat=="refus"){
+				if(this.response[i].etat=="refuse"){
 					while(jourDebut!=moisNbJours+1){
 						ajoutInfo(jourDebut, "bad", "Refus de la "+demande, "");
 						jourDebut++;
 					}
 				} 
-				else if(this.response[i].etat=="en cours"){
+				else if(this.response[i].etat=="attente"){
 					while(jourDebut!=moisNbJours+1){
 						ajoutInfo(jourDebut, "info", "Demande en cours de la "+demande, "");
 						jourDebut++;

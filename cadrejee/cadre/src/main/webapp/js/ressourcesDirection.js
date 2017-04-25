@@ -1,23 +1,25 @@
-// fonction de remplissage, sera supprimée ou modifiée plus tard.
-function remplissageTableau(){
-	var nb = 0;
-	remplisseur("Fiche de poste VERNISSAGE","10 MO","JPEG","Ouvrier");
-	remplisseur("Fiche de poste VERNISSAGE","10 MO","JPEG","Ouvrier");
-	remplisseur("Fiche de poste VERNISSAGE","10 MO","JPEG","Ouvrier");
-	remplisseur("Fiche de poste VERNISSAGE","10 MO","JPEG","Ouvrier");
-	remplisseur("Fiche de poste VERNISSAGE","10 MO","JPEG","Ouvrier");
-	remplisseur("Fiche de poste VERNISSAGE","10 MO","JPEG","Ouvrier");
+//recuperation de la liste de toutes les ressources et remplissage du tableau 1
+function getRessourceDirection(){
+	var getEmploye = new XMLHttpRequest();
+	getEmploye.open("GET","../cadrews/ressources/listRessource",true, null, null);
+	getEmploye.responseType="json";
+	
+	getEmploye.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			var taille=this.response[i].cheminRessource.length-3;
+			remplisseur(this.response[i].contenuRessource , this.response[i].cheminRessource[taille]+this.response[i].cheminRessource[taille+1]+this.response[i].cheminRessource[taille+2], this.response[i].corpsDeMetier, "", this.response[i].idRessource);
+		}
+	}
+	getEmploye.send();
 }
 
 // fonction pour ajouter des lignes au tableau.
-function remplisseur(nomFichier, Taille, Type, Corps){
-	var table = document.getElementById("tableauDuPersonnel");
+function remplisseur(nomFichier, Type, Corps, num, idRessource){
+	var table = document.getElementById("tableauDuPersonnel"+num);
 
 	var tr2 = document.createElement('tr');
 	var td1_1 = document.createElement('td');
 	td1_1.innerHTML = nomFichier;
-	var td1_2 = document.createElement('td');
-	td1_2.innerHTML = Taille;
 	var td1_3 = document.createElement('td');
 	td1_3.innerHTML = Type;
 	var td1_4 = document.createElement('td');
@@ -26,13 +28,16 @@ function remplisseur(nomFichier, Taille, Type, Corps){
 	var a1_7_1 = document.createElement('a');
 	var a1_7_2 = document.createElement('a');
 	a1_7_1.href="#";
+	a1_7_1.className="boutonSuppr";
+	a1_7_1.id="supr"+idRessource;
 	a1_7_2.href="#";
+	a1_7_2.className="boutonDwl";
+	a1_7_2.id="dwl"+idRessource;
 	var span1_7_1 = document.createElement('span');
 	var span1_7_2 = document.createElement('span');
-	span1_7_1.className="glyphicon glyphicon-minus boutons";
+	span1_7_1.className="glyphicon glyphicon-remove boutons";
 	span1_7_2.className="glyphicon glyphicon-download-alt boutons";
 	tr2.appendChild(td1_1);
-	tr2.appendChild(td1_2);
 	tr2.appendChild(td1_3);
 	tr2.appendChild(td1_4);
 	a1_7_1.appendChild(span1_7_1);
@@ -41,82 +46,116 @@ function remplisseur(nomFichier, Taille, Type, Corps){
 	td1_7.appendChild(a1_7_2);
 	tr2.appendChild(td1_7);
 	table.appendChild(tr2);
+	
+	deleteRessource();
 }
 
-// fonction pour remplir le tableau de recherche
-function remplissageRecherche(){
-	nb=0;
+//fonction pour remplir le tableau 2 de l annuaire employe
+function remplissageTableau2(){
 	document.getElementById("boutonSearch").onclick=function(){
-		if (nb>0){
-			var element = document.getElementById("tableauDuPersonnel2");
-			while (element.firstChild) {
-		  	element.removeChild(element.firstChild);
-			}
-
-			createurDeNotifications(4, "Employé non trouvé."); //a supprimer
+		var table = document.getElementById("tableauDuPersonnel2");		
+		while (table.firstChild) {
+			table.removeChild(table.firstChild);
 		}
-		nb++;
-		var table = document.getElementById("tableauDuPersonnel2");
-
-		var tr2 = document.createElement('tr');
+		
+		var tr1 = document.createElement('tr');
 		var td1_1 = document.createElement('th');
-		td1_1.innerHTML = "Nom du Fichier";
-		var td1_2 = document.createElement('th');
-		td1_2.innerHTML = "Taille";
+		td1_1.innerHTML = "Nom du fichier";
 		var td1_3 = document.createElement('th');
 		td1_3.innerHTML = "Type";
 		var td1_4 = document.createElement('th');
 		td1_4.innerHTML = "Corps de métier";
-		var td1_7 = document.createElement('th');
-		td1_7.innerHTML = "Action";
-		tr2.appendChild(td1_1);
-		tr2.appendChild(td1_2);
-		tr2.appendChild(td1_3);
-		tr2.appendChild(td1_4);
-		tr2.appendChild(td1_7);
-		table.appendChild(tr2);
-
-		var tr2 = document.createElement('tr');
-		var td1_1 = document.createElement('td');
-		td1_1.innerHTML = "Fiche de poste VERNISSAGE";
-		var td1_2 = document.createElement('td');
-		td1_2.innerHTML = "10 MO";
-		var td1_3 = document.createElement('td');
-		td1_3.innerHTML = "JPEG";
-		var td1_4 = document.createElement('td');
-		td1_4.innerHTML = "Ouvrier";
-		var td1_7 = document.createElement('td');
-		var a1_7_1 = document.createElement('a');
-		var a1_7_2 = document.createElement('a');
-		a1_7_1.href="#";
-		a1_7_2.href="#";
-		var span1_7_1 = document.createElement('span');
-		var span1_7_2 = document.createElement('span');
-		span1_7_1.className="glyphicon glyphicon-minus boutons";
-		span1_7_2.className="glyphicon glyphicon-download-alt boutons";
-		tr2.appendChild(td1_1);
-		tr2.appendChild(td1_2);
-		tr2.appendChild(td1_3);
-		tr2.appendChild(td1_4);
-		a1_7_1.appendChild(span1_7_1);
-		a1_7_2.appendChild(span1_7_2);
-		td1_7.appendChild(a1_7_1);
-		td1_7.appendChild(a1_7_2);
-		tr2.appendChild(td1_7);
-		table.appendChild(tr2);
-		table.appendChild(tr2);
-		disparaitre();
-		gestionFooter();
+		var td1_5 = document.createElement('th');
+		td1_5.innerHTML = "Action";
+		tr1.appendChild(td1_1);
+		tr1.appendChild(td1_3);
+		tr1.appendChild(td1_4);
+		tr1.appendChild(td1_5);
+		table.appendChild(tr1);
+	
+		if(document.getElementById("inputRessources").value!=""){
+			getRessourceByNom(document.getElementById("inputRessources").value.toLowerCase());
+			document.getElementById("inputRessources").value="";
+		}
 	}
 }
 
+//recuperation de la ressource voulue
+function getRessourceByNom(poste){
+	var getEmploye = new XMLHttpRequest();
+	getEmploye.open("GET","../cadrews/ressources/ressourceByPosteNom/"+poste,true, null, null);
+	getEmploye.responseType="json";
+	
+	getEmploye.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			var taille=this.response[i].cheminRessource.length-3;
+			remplisseur(this.response[i].contenuRessource , this.response[i].cheminRessource[taille]+this.response[i].cheminRessource[taille+1]+this.response[i].cheminRessource[taille+2], this.response[i].corpsDeMetier, 2, this.response[i].idRessource);
+		}
+		
+		document.getElementById("boutonDL").className="apparaitre";
+	
+		if(this.response.length==0){
+			var element = document.getElementById("tableauDuPersonnel");
+			while (element.firstChild) {
+			  	element.removeChild(element.firstChild);
+			}
+			
+			createurDeNotifications(4, "Ressource non trouvé.");
+		}
+	}
+	getEmploye.send();
+	
+	remplissageTableau();
+}
+
+//remplis la dataliste avec les choix existant dans la BDD
+function remplissageDataListe(){
+	var getEmploye = new XMLHttpRequest();
+	getEmploye.open("GET","../cadrews/ressources/listRessource",true, null, null);
+	getEmploye.responseType="json";
+	
+	getEmploye.onload=function(){
+		var dataliste = document.getElementById("lstRessources");
+		for (var i=0; i<this.response.length; i++){
+			var option = document.createElement('option');
+			option.value=this.response[i].contenuRessource;
+			dataliste.appendChild(option);
+		}
+	}
+	getEmploye.send();
+}
+
+//supprime une ressource
+function deleteRessource(){
+	var nbRessourceSupprimable = document.getElementsByClassName("boutonSuppr");
+	var i = 0;
+	while(nbRessourceSupprimable[i]!=null){
+		
+		
+		nbRessourceSupprimable[i].onclick=function(){
+			var idNum="";
+			var taille = this.id.lenght;
+			if (taille == 4){
+				idNum = this[3];
+			}
+			if (taille == 5){
+				idNum = parseInt(this[3]+this[4]);
+			}
+			else{
+				idNum = parseInt(this[3]+this[4]+this[5]);
+			}
+
+			alert(idNum);
+		}
+		i++;
+	}
+}
 
 window.onload = function(){
 	gestionnaireDeMenu(8);
-	maillingAnnonce();
-	remplissageTableau();
-	remplissageRecherche();
-	supprimeurDeNotifications();
 	disparaitre();
 	gestionFooter();
+	getRessourceDirection();
+	remplissageDataListe();
+	remplissageTableau2();
 };

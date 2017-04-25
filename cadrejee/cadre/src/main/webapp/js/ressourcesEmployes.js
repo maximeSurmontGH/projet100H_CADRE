@@ -64,7 +64,7 @@ function remplisseur(nom, format, poste){
 	table.appendChild(tr2);
 }
 
-// recuperation de la liste de tous les employes
+// recuperation de la liste de toutes les ressources
 function getRessource(){
 	var getEmploye = new XMLHttpRequest();
 	getEmploye.open("GET","../cadrews/ressources/listRessource",true, null, null);
@@ -83,7 +83,7 @@ function getRessource(){
 	remplissageTableau();
 }
 
-// recuperation de l employe ou poste voulu
+// recuperation de la ressource voulue
 function getRessourceByNom(poste){
 	var getEmploye = new XMLHttpRequest();
 	getEmploye.open("GET","../cadrews/ressources/ressourceByPosteNom/"+poste,true, null, null);

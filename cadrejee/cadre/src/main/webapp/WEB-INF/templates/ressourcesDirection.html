@@ -31,7 +31,6 @@
             <table id="tableauDuPersonnel">
               <tr>
                 <th >Nom du fichier</th>
-                <th >Taille</th>
                 <th >Type</th>
                 <th >Corps de métier</th>
                 <th id="action">Action</th>
@@ -42,9 +41,10 @@
             <form id="formulaire">
                 <div class="input-group">
                   <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
-                  <input type="text" class="form-control" id="inputSearch" placeholder="nom du fichier ou poste concerné par la ressource recerchée">
+                  <input type="text" list="lstRessources" class="form-control" id="inputRessources" placeholder="nom du fichier ou poste concerné par la ressource recerchée">
+                  <datalist id="lstRessources"></datalist>
                 </div>
-                <div id="boutonSearch">
+                <div>
                   <a class="btn btn-primary" id="boutonSearch" href="#">Rechercher</a>
                 </div>
             </form>

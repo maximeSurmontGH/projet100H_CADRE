@@ -210,26 +210,6 @@ window.onresize=function(){
 
 // gestion des annonces de mailling.
 function alerteMailling(){
-	var i = 0;
-	if (document.getElementsByClassName("close") != null){
-		var tableauDesNotifs = document.getElementsByClassName("close");
-		while (tableauDesNotifs[i] != undefined){
-			i++;
-		}
-	}
-	if (i>0){
-		var p = document.getElementById("maillingAnnonceNum");
-		p.innerHTML = i;
-		p.className="apparaitre";
-		var img =  document.getElementById("imgAlerte");
-		img.className="apparaitre";
-	}
-	if(i==0){
-		var p = document.getElementById("maillingAnnonceNum");
-		p.className="disparaitre";
-		var img =  document.getElementById("imgAlerte");
-		img.className="disparaitre";
-	}
 }
 
 function maillingAnnonce(){
