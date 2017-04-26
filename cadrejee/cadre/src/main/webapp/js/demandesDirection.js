@@ -46,10 +46,10 @@ function gestionnairePage2(pageModifiee){
 		table.className = "table";
 		var tr = document.createElement('tr');
 		var th1 = document.createElement('th');
-		th1.innerHTML = "Nom et Prénom";
+		th1.innerHTML = "Prénom.Nom";
 		tr.appendChild(th1);
 		var th2 = document.createElement('th');
-		th2.innerHTML = "Type";
+		th2.innerHTML = "Immatriculation";
 		tr.appendChild(th2);
 		var th3 = document.createElement('th');
 		th3.innerHTML = "Date de Début";
@@ -67,10 +67,10 @@ function gestionnairePage2(pageModifiee){
 		table.className = "table";
 		var tr = document.createElement('tr');
 		var th1 = document.createElement('th');
-		th1.innerHTML = "Nom et Prénom";
+		th1.innerHTML = "Prénom.Nom";
 		tr.appendChild(th1);
 		var th2 = document.createElement('th');
-		th2.innerHTML = "Type";
+		th2.innerHTML = "Immatriculation";
 		tr.appendChild(th2);
 		var th3 = document.createElement('th');
 		th3.innerHTML = "Date de Début";
@@ -82,10 +82,8 @@ function gestionnairePage2(pageModifiee){
 		th5.innerHTML = "Décision";
 		tr.appendChild(th5);
 		table.appendChild(tr);
-
-		createurDeLigneVC("SURMONT Maxime", "Camionnette 2", "13/05/17", "15/05/17", "actuel", "1");
-		createurDeLigneVC("SURMONT Maxime", "Camionnette 2", "13/05/17", "15/05/17", "refus", "2");
-		createurDeLigneVC("SURMONT Maxime", "Camionnette 2", "13/05/17", "15/05/17", "succes", "3");
+		
+		getHistoriqueVehicule();
 	}
 
 	if(pageModifiee=="conges"){
@@ -369,13 +367,14 @@ function gestionnairePage2(pageModifiee){
 
 // createur de ligne des tableaux véhicules (demandes de pret) et congés
 function createurDeLigneVC(nom, type, dateD, dateF, genre, num){
-	if (genre=="actuel"){
+	if (genre=="attente"){
 		var table = document.getElementById("tableauDesDemandes1");
 
 		var td5 = document.createElement('td');
 		td5.className="colonneFine";
 		var a1 = document.createElement('a');
 		a1.href="#";
+		a1.className="boutonValide";
 		a1.id="a1"+num;
 		var span1 = document.createElement('span');
 		span1.className=" glyphicon glyphicon-ok spanSpe";
@@ -383,6 +382,7 @@ function createurDeLigneVC(nom, type, dateD, dateF, genre, num){
 		td5.appendChild(a1);
 		var a2 = document.createElement('a');
 		a2.href="#";
+		a2.className="boutonRefuse";
 		a2.id="a2"+num;
 		var span2 = document.createElement('span');
 		span2.className=" glyphicon glyphicon-remove spanSpe";
@@ -390,7 +390,7 @@ function createurDeLigneVC(nom, type, dateD, dateF, genre, num){
 		td5.appendChild(a2);
 	}
 
-	if (genre=="refus"){
+	if (genre=="refuse"){
 		var table = document.getElementById("tableauDesDemandes2");
 
 		var td5 = document.createElement('td');
@@ -401,7 +401,7 @@ function createurDeLigneVC(nom, type, dateD, dateF, genre, num){
 		td5.appendChild(span);
 	}
 
-	if (genre=="succes"){
+	if (genre=="valide"){
 		var table = document.getElementById("tableauDesDemandes2");
 
 		var td5 = document.createElement('td');
@@ -449,14 +449,16 @@ function createurDeLigneA(nom, type, date, genre, num){
 		td5.className="colonneFine";
 		var a1 = document.createElement('a');
 		a1.href="#";
-		a1.id="a1"+num;
+		a1.className="boutonValide";
+		a1.id="valide"+num;
 		var span1 = document.createElement('span');
 		span1.className=" glyphicon glyphicon-ok spanSpe";
 		a1.appendChild(span1);
 		td5.appendChild(a1);
 		var a2 = document.createElement('a');
 		a2.href="#";
-		a2.id="a2"+num;
+		a2.className="boutonRefuse";
+		a2.id="refuse"+num;
 		var span2 = document.createElement('span');
 		span2.className=" glyphicon glyphicon-remove spanSpe";
 		a2.appendChild(span2);
@@ -643,6 +645,47 @@ function createurDeLigneE(message, date){
 	tr.appendChild(td3);
 	table.appendChild(tr);
 }
+
+// recuperation des demandes véhicule
+function getHistoriqueVehicule(){
+	var getList = new XMLHttpRequest();
+	getList.open("GET","../cadrews/vehicules/listDemandesDeVehicule",true, null, null);
+	getList.responseType="json";
+	getList.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			var dateD=this.response[i].dateDebut[0]+this.response[i].dateDebut[1]+"/"+this.response[i].dateDebut[2]+this.response[i].dateDebut[3]+"/"+this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7];
+			var dateF=this.response[i].dateFin[0]+this.response[i].dateFin[1]+"/"+this.response[i].dateFin[2]+this.response[i].dateFin[3]+"/"+this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7];
+			createurDeLigneVC(this.response[i].employes_idEmploye, this.response[i].vehicules_immatriculation, dateD, dateF, this.response[i].etat, this.response[i].id);
+		}
+	}
+	getList.send();
+}
+
+// validation ou refus d'une demande de vehicule
+function updateDemandeVehicule(){
+	var lstBoutonValide = document.getElementsByClassName("boutonValide");
+	var i = 0;
+	while(nbRessourceSupprimable[i]!=null){
+		lstBoutonValide[i].onclick=function(){
+			var idNum = this.id;
+			idNum = idNum.substr(6);
+			
+			var requeteUpdate = new XMLHttpRequest();
+			requeteUpdate.open("PUT","../cadrews/vehicules/update");
+			requeteUpdate.responseType = "json";
+			requeteUpdate.onload = function(){
+				createurDeNotifications(1, "La ressource a bien été supprimée.");
+				while (document.getElementById("tr"+idNum).firstChild) {
+					document.getElementById("tr"+idNum).removeChild(document.getElementById("tr"+idNum).firstChild);
+				}				
+			};
+			
+			requeteUpdate.send();
+		}
+		i++;
+	}
+}
+
 
 window.onload = function(){
 	gestionnaireDeMenu(4);

@@ -92,8 +92,8 @@ public class VehiculesWS {
 	}
 	
 	@DELETE
-	@Path("")
-	public Response deleteVehicule(@FormParam("immatriculation") String immatriculation){
+	@Path("/delete/{immatriculation}")
+	public Response deleteVehicule(@PathParam("immatriculation") String immatriculation){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
 			cadreServices.deleteVehicule(immatriculation);
@@ -106,7 +106,7 @@ public class VehiculesWS {
 	}
 	
 	@PUT
-	@Path("")
+	@Path("/update")
 	public Response updateStateVehicule(@FormParam("id") Integer id, @FormParam("nb") Integer nb){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
