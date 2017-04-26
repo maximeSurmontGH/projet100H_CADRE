@@ -45,7 +45,7 @@ function remplisseur(prenom, nom, poste, numero, email){
 	a1_7_2.href="#";
 	var span1_7_1 = document.createElement('span');
 	var span1_7_2 = document.createElement('span');
-	span1_7_1.className="glyphicon glyphicon-minus boutons";
+	span1_7_1.className="glyphicon glyphicon-remove boutons";
 	span1_7_2.className="glyphicon glyphicon-pencil boutons";
 	tr2.appendChild(td1_1);
 	tr2.appendChild(td1_2);

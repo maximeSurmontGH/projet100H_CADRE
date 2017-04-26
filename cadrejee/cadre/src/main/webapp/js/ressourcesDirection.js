@@ -18,6 +18,7 @@ function remplisseur(nomFichier, Type, Corps, num, idRessource){
 	var table = document.getElementById("tableauDuPersonnel"+num);
 
 	var tr2 = document.createElement('tr');
+	tr2.id="tr"+idRessource;
 	var td1_1 = document.createElement('td');
 	td1_1.innerHTML = nomFichier;
 	var td1_3 = document.createElement('td');
@@ -91,11 +92,9 @@ function getRessourceByNom(poste){
 			var taille=this.response[i].cheminRessource.length-3;
 			remplisseur(this.response[i].contenuRessource , this.response[i].cheminRessource[taille]+this.response[i].cheminRessource[taille+1]+this.response[i].cheminRessource[taille+2], this.response[i].corpsDeMetier, 2, this.response[i].idRessource);
 		}
-		
-		document.getElementById("boutonDL").className="apparaitre";
-	
+			
 		if(this.response.length==0){
-			var element = document.getElementById("tableauDuPersonnel");
+			var element = document.getElementById("tableauDuPersonnel2");
 			while (element.firstChild) {
 			  	element.removeChild(element.firstChild);
 			}
@@ -130,22 +129,25 @@ function deleteRessource(){
 	var nbRessourceSupprimable = document.getElementsByClassName("boutonSuppr");
 	var i = 0;
 	while(nbRessourceSupprimable[i]!=null){
-		
-		
 		nbRessourceSupprimable[i].onclick=function(){
-			var idNum="";
-			var taille = this.id.lenght;
-			if (taille == 4){
-				idNum = this[3];
-			}
-			if (taille == 5){
-				idNum = parseInt(this[3]+this[4]);
-			}
-			else{
-				idNum = parseInt(this[3]+this[4]+this[5]);
-			}
-
-			alert(idNum);
+			var idNum = this.id;
+			idNum = idNum.substr(4);
+			
+			var requeteDelete = new XMLHttpRequest();
+			requeteDelete.open("DELETE","../cadrews/ressources/"+idNum);
+			requeteDelete.responseType = "json";
+			requeteDelete.onload = function(){
+				createurDeNotifications(1, "La ressource a bien été supprimée.");
+				while (document.getElementById("tr"+idNum).firstChild) {
+					document.getElementById("tr"+idNum).removeChild(document.getElementById("tr"+idNum).firstChild);
+				}				
+			};
+			requeteDelete.error=function(error){
+				createurDeNotifications(4, "Ressource non supprimée.");
+				console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+			};
+			
+			requeteDelete.send();
 		}
 		i++;
 	}

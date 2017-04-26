@@ -62,8 +62,8 @@ public class RessourceWS {
 	}
 	
 	@DELETE
-	@Path("")
-	public Response deleteEmploye(@FormParam("id") int id){
+	@Path("{id}")
+	public Response deleteEmploye(@PathParam("id") int id){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
 			cadreServices.deleteRessource(id);;

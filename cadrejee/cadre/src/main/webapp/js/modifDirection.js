@@ -422,7 +422,6 @@ function modifElement(pageModifiee){
 		};
 		document.getElementById("a3").onclick=function(){
 			var newEDF = document.getElementById("input3").value;
-			alert(newEDF);
 			requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			requete.send("idElement=edf"+"&contenuElement="+newEDF);
 			window.location.href="../direction/modification";

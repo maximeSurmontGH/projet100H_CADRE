@@ -1,4 +1,4 @@
-SET SQL_SAFE_UPDATES = 0;
+﻿SET SQL_SAFE_UPDATES = 0;
 DELETE FROM demandesattestation;
 DELETE FROM attestations;
 DELETE FROM demandesconge;
@@ -116,7 +116,7 @@ INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea8','?','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea9','?','/');
 
-INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (1,'Plan centrale','doc. entreprise','/chemin.pdf');
+INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (1,'Plan centrale','document entreprise','/chemin.pdf');
 INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (2,'Document ressource pour la mettalerie','ouvrier', '/chemin.jpg');
 INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (3,'Fiche qualité 1','ouvrier', '/chemin.doc');
 INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (4,'Fiche qualité 2','ouvrier', '/chemin.doc');
