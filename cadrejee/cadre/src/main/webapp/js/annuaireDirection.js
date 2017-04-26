@@ -62,19 +62,15 @@ function remplisseur(prenom, nom, poste, numero, email){
 
 // fonction pour remplir le tableau 2 en fonction de la personne cherchée.
 function remplissageRecherche(){
-	var nb = 0;
+	var nb=0;
 	document.getElementById("boutonSearch").onclick=function(){
-
-		if (nb>0){
-			var element = document.getElementById("tableauDuPersonnel2");
-			while (element.firstChild) {
-		  	element.removeChild(element.firstChild);
-			}
-
-			createurDeNotifications(4, "Employé non trouvé."); //a supprimer
-		}
-
-		nb++;
+		
+		var nom=document.getElementById("inputSearch").value;
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/employes/employeById/"+nom,true, null, null);
+		getList2.responseType="json";
+		if(nb==0){
+			nb++;
 		var table = document.getElementById("tableauDuPersonnel2");
 		var tr2 = document.createElement('tr');
 		var td1_1 = document.createElement('th');
@@ -98,39 +94,47 @@ function remplissageRecherche(){
 		tr2.appendChild(td1_7);
 		table.appendChild(tr2);
 
-		var tr2 = document.createElement('tr');
-		var td1_1 = document.createElement('td');
-		td1_1.innerHTML = "Maxime";
-		var td1_2 = document.createElement('td');
-		td1_2.innerHTML = "SURMONT";
-		var td1_3 = document.createElement('td');
-		td1_3.innerHTML = "Assistant";
-		var td1_4 = document.createElement('td');
-		td1_4.innerHTML = "06 40 40 04 78";
-
-		var td1_6 = document.createElement('td');
-		td1_6.innerHTML = "maxime.surmont@hei.fr";
-		var td1_7 = document.createElement('td');
-		var a1_7_1 = document.createElement('a');
-		var a1_7_2 = document.createElement('a');
-		a1_7_1.href="#";
-		a1_7_2.href="#";
-		var span1_7_1 = document.createElement('span');
-		var span1_7_2 = document.createElement('span');
-		span1_7_1.className="glyphicon glyphicon-minus boutons";
-		span1_7_2.className="glyphicon glyphicon-pencil boutons";
-		tr2.appendChild(td1_1);
-		tr2.appendChild(td1_2);
-		tr2.appendChild(td1_3);
-		tr2.appendChild(td1_4);
-		tr2.appendChild(td1_6);
-		a1_7_1.appendChild(span1_7_1);
-		a1_7_2.appendChild(span1_7_2);
-		td1_7.appendChild(a1_7_1);
-		td1_7.appendChild(a1_7_2);
-		tr2.appendChild(td1_7);
-		table.appendChild(tr2);
-		table.appendChild(tr2);
+		getList2.onload=function(){
+			alert(this.response);
+			for (var i=0; i<this.response.length; i++){
+			var tr2 = document.createElement('tr');
+			var td1_1 = document.createElement('td');
+			td1_1.innerHTML = "Maxime";
+			var td1_2 = document.createElement('td');
+			td1_2.innerHTML = "SURMONT";
+			var td1_3 = document.createElement('td');
+			td1_3.innerHTML = "Assistant";
+			var td1_4 = document.createElement('td');
+			td1_4.innerHTML = "06 40 40 04 78";
+	
+			var td1_6 = document.createElement('td');
+			td1_6.innerHTML = "maxime.surmont@hei.fr";
+			var td1_7 = document.createElement('td');
+			var a1_7_1 = document.createElement('a');
+			var a1_7_2 = document.createElement('a');
+			a1_7_1.href="#";
+			a1_7_2.href="#";
+			var span1_7_1 = document.createElement('span');
+			var span1_7_2 = document.createElement('span');
+			span1_7_1.className="glyphicon glyphicon-minus boutons";
+			span1_7_2.className="glyphicon glyphicon-pencil boutons";
+			tr2.appendChild(td1_1);
+			tr2.appendChild(td1_2);
+			tr2.appendChild(td1_3);
+			tr2.appendChild(td1_4);
+			tr2.appendChild(td1_6);
+			a1_7_1.appendChild(span1_7_1);
+			a1_7_2.appendChild(span1_7_2);
+			td1_7.appendChild(a1_7_1);
+			td1_7.appendChild(a1_7_2);
+			tr2.appendChild(td1_7);
+			table.appendChild(tr2);
+			table.appendChild(tr2);
+			}
+			
+		}
+		getList2.send();
+		}
 	}
 }
 
@@ -144,3 +148,4 @@ window.onload = function(){
 	supprimeurDeNotifications();
 	maillingAnnonce();
 };
+

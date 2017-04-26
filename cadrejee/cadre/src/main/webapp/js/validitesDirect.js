@@ -351,9 +351,41 @@ function addvalidite(){
 	}
 }
 
+function remplissageDataListeEmploye(){
+	var getEmploye = new XMLHttpRequest();
+	getEmploye.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
+	getEmploye.responseType="json";
+	
+	getEmploye.onload=function(){
+		var dataliste = document.getElementById("lstEmployes");
+		for (var i=0; i<this.response.length; i++){
+			var option = document.createElement('option');
+			option.value=this.response[i].idEmploye;
+			dataliste.appendChild(option);
+		}
+	}
+	getEmploye.send();
+}
 
+function remplissageDataListeTypes(){
+	var getT = new XMLHttpRequest();
+	getT.open("GET","../cadrews/validites/listIdValidite",true, null, null);
+	getT.responseType="json";
+	
+	getT.onload=function(){
+		var dataliste = document.getElementById("lstTypes");
+		for (var i=0; i<this.response.length; i++){
+			var option = document.createElement('option');
+			option.value=this.response[i].typeValidite;
+			dataliste.appendChild(option);
+		}
+	}
+	getT.send();
+}
 
 window.onload = function(){
+	remplissageDataListeEmploye();
+	remplissageDataListeTypes();
 	remplissageRechercheType();
 	getIdNom();
 	addvalidite();

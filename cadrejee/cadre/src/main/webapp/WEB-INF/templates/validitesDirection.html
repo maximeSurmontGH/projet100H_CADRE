@@ -31,7 +31,8 @@
             <form id="formulaire1">
                 <div class="input-group">
                   <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
-                  <input type="text" class="form-control inputSearch" id="nomR" placeholder="identifant de la personne recherchée">
+                  <input type="text" list="lstEmployes" class="form-control inputSearch" id="nomR" placeholder="identifant de la personne recherchée">
+                	<datalist id="lstEmployes"></datalist>
                 </div>
                 <div>
                   <a class="btn btn-primary boutonSearch" id="boutonSearch1" href="#">Rechercher</a>
@@ -44,7 +45,8 @@
             <form id="formulaire2">
                 <div class="input-group">
                   <div class="input-group-addon" > <span class="glyphicon glyphicon-search" > </span> </div>
-                  <input type="text" class="form-control inputSearch" id="typeR" placeholder="nom de la validité recherchée">
+                  <input type="text" list="lstTypes" class="form-control inputSearch" id="typeR" placeholder="nom de la validité recherchée">
+               		<datalist id="lstTypes"></datalist>
                 </div>
                 <div>
                   <a class="btn btn-primary boutonSearch" id="boutonSearch2" href="#">Rechercher</a>
