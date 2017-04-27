@@ -81,26 +81,37 @@ public class EmployeDao {
 	}
 	
 	// Enregistrer un nouvel employe
-	public Employe saveEmploye(Employe employe) {
+	public void saveEmploye(String nomEmploye, String prenomEmploye, String telephone, 
+			String poste, String email) {
 		
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES(?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1,employe.getIdEmploye());
-			stmt.setString(2,employe.getNomEmploye());
-			stmt.setString(3,employe.getPrenomEmploye());
-			stmt.setString(4,employe.getMotDePasse());
-			stmt.setString(5,employe.getPoste());
-			stmt.setString(6,employe.getTelephone());
-			stmt.setString(7,employe.getEmail());
+			stmt.setString(1,prenomEmploye+'.'+nomEmploye);
+			stmt.setString(2,nomEmploye);
+			stmt.setString(3,prenomEmploye);
+			String mdp="";
+			try {
+				mdp = MotDePasseUtils.genererMotDePasse(prenomEmploye+"."+nomEmploye);
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidKeySpecException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			stmt.setString(4,mdp);
+			stmt.setString(5,poste);
+			stmt.setString(6,telephone);
+			stmt.setString(7,email);
 			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return employe;
+		
 	}
 	
 	// Pour supprimer un employe

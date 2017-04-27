@@ -143,8 +143,8 @@ public class CadreServices {
 		return employeDao.listEmployes();
 	}
 	
-	public Employe saveEmploye(Employe employe) {
-		return employeDao.saveEmploye(employe);
+	public void saveEmploye(String nomEmploye, String prenomEmploye, String telephone, String poste, String email) {
+		employeDao.saveEmploye(nomEmploye,prenomEmploye,telephone,poste,email);
 	}
 	
 	public void deleteEmploye(Employe employe){

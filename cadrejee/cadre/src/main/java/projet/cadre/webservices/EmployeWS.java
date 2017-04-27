@@ -55,17 +55,10 @@ public class EmployeWS {
 	
 	@POST
 	@Path("")
-	public Response addEmploye(@FormParam("idEmploye") String idEmploye, @FormParam("nomEmploye") String nomEmploye,@FormParam("prenomEmploye") String prenomEmploye, @FormParam("motDePasse") String motDePasse, @FormParam("poste") String poste,@FormParam("telephone") String telephone, @FormParam("email") String email){
+	public Response addEmploye(@FormParam("nomEmploye") String nomEmploye,@FormParam("prenomEmploye") String prenomEmploye,@FormParam("poste") String poste,@FormParam("telephone") String telephone, @FormParam("email") String email){
 		CadreServices cadreServices = CadreServices.getInstance();
-		Employe employe = new Employe(idEmploye,nomEmploye,prenomEmploye,motDePasse,poste,telephone,email);
-		try {
-			cadreServices.saveEmploye(employe);
-			return Response.status(200).entity(gson.toJson("")).build();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		cadreServices.saveEmploye(nomEmploye,prenomEmploye,telephone,poste,email);
+		return Response.status(200).entity("").build();
 	}
 	
 	@DELETE

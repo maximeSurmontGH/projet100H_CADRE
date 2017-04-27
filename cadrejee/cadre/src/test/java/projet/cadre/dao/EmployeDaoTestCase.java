@@ -68,18 +68,19 @@ public class EmployeDaoTestCase {
 	public void shouldSaveEmploye() throws Exception {
 		// GIVEN
 				Employe employetoSave = new Employe("Surmont","Maxime","080383839","stagiaire","max.s@g.com");
-				// WHEN
-				Employe employeAdded = employeDao.saveEmploye(employetoSave);
+		// WHEN
+				employeDao.saveEmploye("Surmont","Maxime","080383839","stagiaire","max.s@g.com");
 		// THEN
-		Assertions.assertThat(employeAdded).isNotNull();
-		Assertions.assertThat(employeAdded.getIdEmploye()).isEqualTo("Maxime.Surmont");
+		//Assertions.assertThat(employeAdded).isNotNull();
+		//Assertions.assertThat(employeAdded.getIdEmploye()).isEqualTo("Maxime.Surmont");
 		
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM employes WHERE idEmploye = ?")) {
-			stmt.setString(1, employeAdded.getIdEmploye());
+			stmt.setString(1,"Maxime.Surmont");
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isTrue();
 				assertThat(rs.getString("idEmploye")).isEqualTo("Maxime.Surmont");
+				assertThat(rs.getString("prenomEmploye")).isEqualTo("Maxime");
 			}
 		}
 	}
