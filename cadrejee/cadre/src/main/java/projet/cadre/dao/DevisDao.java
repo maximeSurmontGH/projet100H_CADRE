@@ -2,14 +2,18 @@ package projet.cadre.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import projet.cadre.model.Attestations;
 import projet.cadre.model.Devis;
 
 public class DevisDao {
 	
-public Devis saveDevis(Devis devis){
+	public Devis saveDevis(Devis devis){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
@@ -31,6 +35,38 @@ public Devis saveDevis(Devis devis){
 		}
 		return devis;
 	}
+
+	//retourne la liste des attestations avec leur id 
+	public List<Devis> ListDevis(){
+		ArrayList<Devis> lstIdDevis = new ArrayList<>();
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM devis");
+			ResultSet resultSet = stmt.executeQuery();
+			while(resultSet.next()) {
+				lstIdDevis.add(new Devis(resultSet.getInt("idDevis"), resultSet.getString("nomSociete"), resultSet.getString("nomDemandeur"), resultSet.getString("mail"), resultSet.getString("telephone"), resultSet.getString("adresse"), resultSet.getString("codePostal"), resultSet.getString("ville"), resultSet.getString("service"), resultSet.getString("message")));
+			}
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lstIdDevis;
+	}
+	
+	// permet de supprimer un devis
+	public void deleteDevis(int id){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection(); 
+			PreparedStatement statement1 = connection.prepareStatement("DELETE FROM devis WHERE idDevis=?");
+			statement1.setInt(1, id);
+			statement1.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
+
+
 
 

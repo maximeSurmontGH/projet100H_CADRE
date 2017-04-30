@@ -30,6 +30,13 @@ public class RappelWS {
 	}
 	
 	@GET
+	@Path("/listRappels")
+	public Response getRappelById(){
+		CadreServices cadreServices = CadreServices.getInstance();
+		return Response.status(200).entity(gson.toJson(cadreServices.getRappels())).build();
+	}
+	
+	@GET
 	@Path("/getRappelByIdEmploye/{id}")
 	public Response getRappelByIdEmploye(@PathParam("id") String idEmploye){
 		CadreServices cadreServices = CadreServices.getInstance();
@@ -37,7 +44,7 @@ public class RappelWS {
 	}
 	
 	@POST
-	@Path("")
+	@Path("/addRappel")
 	public Response addRappel(@FormParam("dateRappel") String dateRappel, @FormParam("messageRappel") String messageRappel, @FormParam("employes_idEmploye") String employes_idEmploye, @FormParam("imprt") int imprt){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
@@ -51,7 +58,7 @@ public class RappelWS {
 	}
 	
 	@DELETE
-	@Path("")
+	@Path("/delete")
 	public Response deleteRappel(@FormParam("idRappel") int idRappel){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {

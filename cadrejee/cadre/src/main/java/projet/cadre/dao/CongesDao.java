@@ -99,7 +99,7 @@ public class CongesDao {
 			stmt.setString(2, idEmploye);
 			stmt.setString(3,dateDebut);
 			stmt.setString(4,dateFin);
-			stmt.setString(5,"en cours");
+			stmt.setString(5,"attente");
 			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
@@ -114,10 +114,10 @@ public class CongesDao {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesconge SET etat=? WHERE id=?");
 			if (nb==2){
-				stmt.setString(1,"refus");
+				stmt.setString(1,"refuse");
 			}
 			else{
-				stmt.setString(1,"succes");
+				stmt.setString(1,"valide");
 			}
 			stmt.setInt(2, id);
 			stmt.executeUpdate();
@@ -136,7 +136,7 @@ public class CongesDao {
 			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM demandesconge WHERE conges_idConge=? AND employes_idEmploye=? AND etat=?");
 			stmt.setInt(1, idConge);
 			stmt.setString(2, idEmploye);
-			stmt.setString(3, "succes");
+			stmt.setString(3, "valide");
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
 				nb++;			

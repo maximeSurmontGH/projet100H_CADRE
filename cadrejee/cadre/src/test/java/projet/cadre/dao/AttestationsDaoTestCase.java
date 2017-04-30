@@ -114,6 +114,6 @@ public class AttestationsDaoTestCase {
 		// THEN
 		Assertions.assertThat(element).isNotNull();
 		Assertions.assertThat(element.get(0).getEmployes_idEmploye()).isEqualTo("chloe.pelletier");
-		Assertions.assertThat(element.get(0).getEtat()).isEqualTo("succes");
+		Assertions.assertThat(element.get(0).getEtat()).isEqualTo("valide");
 	}
 }

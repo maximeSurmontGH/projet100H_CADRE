@@ -63,8 +63,8 @@ public class AttestationsWS {
 	}
 	
 	@PUT
-	@Path("")
-	public Response updateStateAttestation(@FormParam("idDemandeAttestation") Integer idDemandeAttestation, @FormParam("nb") Integer nb){
+	@Path("/update")
+	public Response updateStateAttestation(@FormParam("id") Integer idDemandeAttestation, @FormParam("nb") Integer nb){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
 			cadreServices.setStateAttestation(idDemandeAttestation, nb);

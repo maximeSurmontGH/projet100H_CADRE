@@ -89,7 +89,7 @@ public class ValiditesDaoTestCase {
 		Assertions.assertThat(element).isNotNull();
 		Assertions.assertThat(element.get(2).getDateFin()).isEqualTo("01012000");
 		Assertions.assertThat(element.get(2).getEmployes_idEmploye()).isEqualTo("chloe.pelletier");
-		Assertions.assertThat(element.get(2).getEtat()).isEqualTo("en cours");
+		Assertions.assertThat(element.get(2).getEtat()).isEqualTo("attente");
 	}
 	
 	@Test
@@ -100,7 +100,7 @@ public class ValiditesDaoTestCase {
 		// THEN
 		Assertions.assertThat(element).isNotNull();
 		Assertions.assertThat(element.get(0).getEmployes_idEmploye()).isEqualTo("chloe.pelletier");
-		Assertions.assertThat(element.get(0).getEtat()).isEqualTo("succes");
+		Assertions.assertThat(element.get(0).getEtat()).isEqualTo("valide");
 		Assertions.assertThat(element.get(0).getDateFin()).isEqualTo("23022017");
 	}
 }

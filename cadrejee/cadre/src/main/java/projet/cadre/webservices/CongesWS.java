@@ -71,7 +71,7 @@ public class CongesWS {
 	}
 	
 	@PUT
-	@Path("")
+	@Path("/update")
 	public Response updateStateConge(@FormParam("id") Integer id, @FormParam("nb") Integer nb){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {

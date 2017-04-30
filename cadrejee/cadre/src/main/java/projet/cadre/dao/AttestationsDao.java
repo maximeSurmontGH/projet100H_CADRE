@@ -115,10 +115,10 @@ public class AttestationsDao {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("UPDATE demandesattestation SET etat=? WHERE id=?");
 			if (nb==2){
-				stmt.setString(1,"refus");
+				stmt.setString(1,"refuse");
 			}
 			else{
-				stmt.setString(1,"succes");
+				stmt.setString(1,"valide");
 			} 
 			stmt.setInt(2, idDemandeAttestation);
 			stmt.executeUpdate();

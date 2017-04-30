@@ -30,6 +30,20 @@ public class Devis {
 		this.service=service;
 		this.message=message;
 	}
+	
+	public Devis (int devis, String nomSociete, String nomDemandeur, String mail, String telephone, String adresse, String codePostal, String ville, String service, String message){
+		super();
+		this.idDevis = devis;
+		this.nomSociete=nomSociete;
+		this.nomDemandeur=nomDemandeur;
+		this.mail=mail;
+		this.telephone=telephone;
+		this.adresse=adresse;
+		this.codePostal=codePostal;
+		this.ville=ville;
+		this.service=service;
+		this.message=message;
+	}
 
 	public String getNomSociete() {
 		return nomSociete;

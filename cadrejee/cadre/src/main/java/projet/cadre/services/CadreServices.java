@@ -117,6 +117,14 @@ public class CadreServices {
 		return devisDao.saveDevis(devis);
 	}
 	
+	public List<Devis> listDevis(){
+		return devisDao.ListDevis();
+	}
+	
+	public void deleteDevis(int id){
+		devisDao.deleteDevis(id);
+	}
+	
 	// ElementsSite Dao
 	public void modifierElementTexte(String idElement, String contenuElement) {
 		elementsSiteDao.modifierElementTexte(idElement, contenuElement);
@@ -187,6 +195,10 @@ public class CadreServices {
 	
 	public List<Rappel> getRappelsByIdEmploye(String id){
 		return rappelDao.getRappelsByIdEmploye(id);
+	}
+	
+	public List<Rappel> getRappels(){
+		return rappelDao.getRappels();
 	}
 	
 	// Ressource Dao

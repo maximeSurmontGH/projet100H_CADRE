@@ -68,10 +68,10 @@ function getDemandes(){
 				newdiv.appendChild(newstrong)
 				newdiv.appendChild(str);
 				divhisto.appendChild(newdiv);
-				if(this.response[i].etat=='accepte'){
+				if(this.response[i].etat=='valide'){
 					newdiv.className="alert alert-success alert-dismissable demandeHist";
 				}
-				if(this.response[i].etat=='attente'){
+				else if(this.response[i].etat=='attente'){
 					newdiv.className="alert alert-warning alert-dismissable demandeHist";
 				}
 				else/**(this.response[i].etat=='refuse')**/{

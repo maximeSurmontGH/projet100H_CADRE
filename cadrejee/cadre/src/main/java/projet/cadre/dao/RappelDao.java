@@ -83,4 +83,22 @@ public class RappelDao {
 			}
 			return lstRappel;
 		}
+		
+		// retourne la liste des rappels
+				public List<Rappel> getRappels(){
+					ArrayList<Rappel> lstRappel = new ArrayList<>();
+					try {
+						Connection connection = DataSourceProvider.getDataSource().getConnection();
+						PreparedStatement stmt = connection.prepareStatement("SELECT * FROM rappels");
+						ResultSet rs = stmt.executeQuery();
+						while (rs.next()) {
+							 lstRappel.add(new Rappel(rs.getInt("idRappel"), rs.getString("dateRappel"), rs.getString("messageRappel"), rs.getString("employes_idEmploye"), rs.getInt("importance")));
+						}
+						stmt.close();
+						connection.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					return lstRappel;
+				}
 }

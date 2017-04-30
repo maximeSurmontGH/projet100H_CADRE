@@ -8,12 +8,12 @@ DELETE FROM validites;
 DELETE FROM demandesvehicule;
 DELETE FROM vehicules;
 DELETE FROM rappels;
-DELETE FROM employes;
 DELETE FROM contact;
 DELETE FROM devis;
 DELETE FROM elementssite;
 DELETE FROM ressources;
 DELETE FROM evenementsautres;
+DELETE FROM employes;
 
 
 INSERT INTO `employes`(`idEmploye`,`nomEmploye`,`prenomEmploye`,`motDePasse`,`poste`,`telephone`,`email`) VALUES ('chloe.pelletier','PELLETIER', 'chloe', '93292b27203e307bb1a6076042356e366517612a0f699b68:dc1ff13dc770dc5e2b176dff75a76dfce3c9744b3941138a','stagiaire','0614348499','chloe.pelletier@hei.com');
@@ -33,7 +33,7 @@ INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_id
 INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (2,2,'chloe.pelletier','refuse','12042017');
 INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (3,4,'chloe.pelletier','attente','23042017');
 INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (4,3,'chloe.pelletier','attente','22052017');
-INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (5,3,'chloe.pelletier','accepte','12052017');
+INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (5,3,'chloe.pelletier','valide','12052017');
 INSERT INTO `demandesattestation`(`id`,`attestations_idAttestation`,`employes_idEmploye`,`etat`,`date`) VALUES (6,4,'chloe.pelletier','refuse','29052017');
 
 INSERT INTO `conges`(`idConge`,`typeConge`) VALUES (1,'MATERNITE');
