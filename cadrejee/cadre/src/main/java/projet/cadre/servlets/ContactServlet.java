@@ -35,16 +35,5 @@ public class ContactServlet extends HttpServlet {
 
 		templateEngine.process("page-contact", context, resp.getWriter());
 
-}
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nomContact = req.getParameter("nomContact");
-		String mailContact = req.getParameter("mailContact"); 
-		String societeContact = req.getParameter("societeContact"); 
-		String messageContact = req.getParameter("messageContact"); 
-		Contact contact= new Contact(nomContact, mailContact, societeContact, messageContact);
-		CadreLibrary.getInstance().saveContact(contact);
-		resp.sendRedirect("contact");
-
-}
-	
+	}
 }
