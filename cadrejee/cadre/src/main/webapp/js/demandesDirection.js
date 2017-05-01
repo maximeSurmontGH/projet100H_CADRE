@@ -623,13 +623,14 @@ function createurDeLigneD(entreprise, nom, num){
 	a.href="#";
 	var span = document.createElement('span');
 	span.className=" glyphicon glyphicon-remove boutonDelete";
-	span.id="a1"+num;
+	span.id="a2"+num;
 	a.appendChild(span);
 	td5.appendChild(a);
 	tr.appendChild(td5);
 	table.appendChild(tr);
 	
 	deleteDevis();
+	detailDevis();
 }
 
 // createur de ligne du tableau événement
@@ -995,6 +996,32 @@ function deleteDevis(){
 				gestionnairePage2("devis");
 			};
 			requeteUpdate.send();
+		}
+		i++;
+	}
+}
+
+//afficher les détails d'un devis
+function detailDevis(){
+	var lstBoutonValide = document.getElementsByClassName("boutonDetails");
+	var i = 0;
+	while(lstBoutonValide[i]!=null){
+		lstBoutonValide[i].onclick=function(){
+			var idNum = this.id;
+			idNum = idNum.substr(2);
+			
+			
+			var getList = new XMLHttpRequest();
+			getList.open("GET","../cadrews/devis/listDevis",true, null, null);
+			getList.responseType="json";
+			getList.onload=function(){
+				for (var j=0; j<this.response.length; j++){
+					if (this.response[j].idDevis == idNum){
+						alert("Nom de la Société : "+this.response[j].nomSociete+"\n Nom du demandeur : "+this.response[j].nomDemandeur+"\n \n Mail : "+this.response[j].mail+"\n Tel : "+this.response[j].telephone+"\n Adresse : "+this.response[j].adresse+"\n Ville : "+this.response[j].ville+"\n Code postal : "+this.response[j].codePostal+"\n Service : "+this.response[j].service+"\n \n Message : \n"+this.response[j].message+"\n \n");
+					}				
+				}
+			}
+			getList.send();
 		}
 		i++;
 	}

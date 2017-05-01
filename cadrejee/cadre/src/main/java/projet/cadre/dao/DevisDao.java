@@ -36,7 +36,7 @@ public class DevisDao {
 		return devis;
 	}
 
-	//retourne la liste des attestations avec leur id 
+	//retourne la liste des Devis
 	public List<Devis> ListDevis(){
 		ArrayList<Devis> lstIdDevis = new ArrayList<>();
 		try {
