@@ -76,6 +76,7 @@ function remplissageRecherchebis(){
 	document.getElementById("boutonSearch").onclick=function(){
 		if(nb==0){
 			var champs=document.getElementById("inputSearch").value;
+			document.getElementById("inputSearch").value="";
 			champs=champs.toLowerCase();
 			var getList2 = new XMLHttpRequest();
 			getList2.open("GET","../cadrews/employes/employeByPosteNom/"+champs,true, null, null);
@@ -148,6 +149,7 @@ function remplissageRecherchebis(){
 			
 
 		}
+		remplissageRecherchebis();
 	}
 }
 //remplis la dataliste avec les choix existant dans la BDD
@@ -155,18 +157,27 @@ function remplissageDataListe(){
 	var getEmploye = new XMLHttpRequest();
 	getEmploye.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
 	getEmploye.responseType="json";
-	
+	var dataliste = document.getElementById("lstAnnuaires");
 	getEmploye.onload=function(){
-		var dataliste = document.getElementById("lstAnnuaires");
+		
 		for (var i=0; i<this.response.length; i++){
 			var option = document.createElement('option');
-			option.value=this.response[i].nomEmploye+" "+this.response[i].prenomEmploye;
+			option.value=this.response[i].nomEmploye;
 			dataliste.appendChild(option);
 		}
 	}
 	getEmploye.send();
-	
-	remplissageTableau();
+	var getPoste = new XMLHttpRequest();
+	getPoste.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
+	getPoste.responseType="json";
+	getPoste.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			var option = document.createElement('option');
+			option.value=this.response[i].poste;
+			dataliste.appendChild(option);
+		}
+	}
+	getPoste.send();
 }
 
 
@@ -180,4 +191,3 @@ window.onload = function(){
 	maillingAnnonce();
 	remplissageDataListe();
 };
-

@@ -21,14 +21,15 @@ function getDate(){
 function remplissageRecherche(){
 	var nb=0;
 	document.getElementById("boutonSearch1").onclick=function(){
+		var id=document.getElementById("nomR").value;
+		document.getElementById("nomR").value="";
+		id=id.toLowerCase();
+		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/validites/listDemandesValiditeByidEmploye/"+id,true, null, null);
+		getList2.responseType="json";
+		
 		if(nb==0){
-			var id=document.getElementById("nomR").value;
-			id=id.toLowerCase();
-			var getList2 = new XMLHttpRequest();
-			getList2.open("GET","../cadrews/validites/listDemandesValiditeByidEmploye/"+id,true, null, null);
-			getList2.responseType="json";
-			
-			nb++;
 			var div = document.getElementById("tableauDesValidites1");
 			var tab = document.createElement('table')
 			var tr2 = document.createElement('tr');
@@ -42,6 +43,7 @@ function remplissageRecherche(){
 			td1_4.innerHTML = "Date de fin";
 			var td1_7 = document.createElement('th');
 			td1_7.innerHTML = "Valide ?";
+			
 			tr2.appendChild(td1_1);
 			tr2.appendChild(td1_2);
 			tr2.appendChild(td1_3);
@@ -53,10 +55,9 @@ function remplissageRecherche(){
 				for (var i=0; i<this.response.length; i++){
 					var tr2 = document.createElement('tr');
 					var td1_1 = document.createElement('td');
-					var id= this.response[i].validites_idValidite;
-					
-						td1_1.innerHTML =id;
-					
+					var id= "li"+this.response[i].validites_idValidite;
+					var type=document.getElementById(id).innerHTML;
+					td1_1.innerHTML =type;
 					var td1_2 = document.createElement('td');
 					var getList3 = new XMLHttpRequest();
 					var id=this.response[i].employes_idEmploye;
@@ -106,13 +107,17 @@ function remplissageRecherche(){
 			
 
 		}
+		
+		remplissageRecherche();
 	}
+	
 }
 function remplissageRechercheType(){
 	var nb=0;
 		
 	document.getElementById("boutonSearch2").onclick=function(){
 		var type=document.getElementById("typeR").value;
+		document.getElementById("typeR").value="";
 		type=type.toLowerCase();
 		
 		var getList2 = new XMLHttpRequest();
@@ -144,7 +149,9 @@ function remplissageRechercheType(){
 				for (var i=0; i<this.response.length; i++){
 					var tr2 = document.createElement('tr');
 					var td1_1 = document.createElement('td');
-					td1_1.innerHTML = type ;
+					var id= "li"+this.response[i].validites_idValidite;
+					var type=document.getElementById(id).innerHTML;
+					td1_1.innerHTML =type;
 					var td1_2 = document.createElement('td');
 					var getList3 = new XMLHttpRequest();
 					var id=this.response[i].employes_idEmploye;
@@ -195,6 +202,7 @@ function remplissageRechercheType(){
 
 			
 		}
+		remplissageRechercheType();
 	}
 }
 
@@ -259,15 +267,21 @@ function remplissageJMA(){
 //affichage type de validites dans le selecteur
 
 function getIdNom(){
+			
 			var getList2 = new XMLHttpRequest();
 			getList2.open("GET","../cadrews/validites/listIdValidite",true, null, null);
 			getList2.responseType="json";
 			var select = document.getElementById("type");
+			var ul=document.getElementById("idtypeV");
 			getList2.onload=function(){
 				for (var i=0; i<this.response.length; i++){
 					var newoption=document.createElement("option");
+					var newli=document.createElement("div");
 					newoption.textContent=this.response[i].typeValidite;
+					newli.textContent=this.response[i].typeValidite;
+					newli.id="li"+this.response[i].idValidite;
 					select.appendChild(newoption);
+					ul.appendChild(newli);
 				}
 			}
 			getList2.send();
@@ -384,10 +398,10 @@ function remplissageDataListeTypes(){
 }
 
 window.onload = function(){
+	getIdNom();
 	remplissageDataListeEmploye();
 	remplissageDataListeTypes();
 	remplissageRechercheType();
-	getIdNom();
 	addvalidite();
 	gestionnaireDeMenu(10);
 	maillingAnnonce();
