@@ -107,7 +107,9 @@ function remplissageRecherche(){
 			
 
 		}
-		
+		while(document.getElementById("tableauDesValidites1").firstChild){
+			document.getElementById("tableauDesValidites1").removeChild(document.getElementById("tableauDesValidites1").firstChild);
+		}
 		remplissageRecherche();
 	}
 	
@@ -201,6 +203,9 @@ function remplissageRechercheType(){
 			
 
 			
+		}
+		while(document.getElementById("tableauDesValidites2").firstChild){
+			document.getElementById("tableauDesValidites2").removeChild(document.getElementById("tableauDesValidites2").firstChild);
 		}
 		remplissageRechercheType();
 	}

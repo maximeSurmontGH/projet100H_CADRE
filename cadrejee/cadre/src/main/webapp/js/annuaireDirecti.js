@@ -74,6 +74,9 @@ function remplisseur(prenom, nom, poste, numero, email){
 function remplissageRecherchebis(){
 	var nb=0;
 	document.getElementById("boutonSearch").onclick=function(){
+		while(document.getElementById("tableauDuPersonnel2").firstChild){
+			document.getElementById("tableauDuPersonnel2").removeChild(document.getElementById("tableauDuPersonnel2").firstChild);
+		}
 		if(nb==0){
 			var champs=document.getElementById("inputSearch").value;
 			document.getElementById("inputSearch").value="";
@@ -81,7 +84,6 @@ function remplissageRecherchebis(){
 			var getList2 = new XMLHttpRequest();
 			getList2.open("GET","../cadrews/employes/employeByPosteNom/"+champs,true, null, null);
 			getList2.responseType="json";
-			
 			nb++;
 			var table = document.getElementById("tableauDuPersonnel2");
 			var tr2 = document.createElement('tr');
@@ -149,6 +151,7 @@ function remplissageRecherchebis(){
 			
 
 		}
+		
 		remplissageRecherchebis();
 	}
 }
