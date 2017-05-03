@@ -214,9 +214,9 @@ function gestionnairePage2(pageModifiee){
 		table.appendChild(tr);
 		
 		document.getElementById("ajoutVehicule").onclick=function(){
+			
 			var nom = document.getElementById("nom").value;
 			var imma = document.getElementById("imma").value;
-						
 			var requetePostReponse = new XMLHttpRequest();
 			requetePostReponse.open("POST","../cadrews/vehicules/addVehicule");
 			requetePostReponse.responseType = "text";
@@ -235,8 +235,10 @@ function gestionnairePage2(pageModifiee){
 			}
 			gestionnairePage2("vehicules2");
 		}
-		
+			
 		getVehicules();
+		
+		
 	}
 
 	if(pageModifiee=="devis"){
@@ -696,7 +698,7 @@ function getHistoriqueVehicule(){
 // pour supprimer les trop vieille demandes
 function deleteHistoriqueVehicule(imma){
 	var deleteElmt = new XMLHttpRequest();
-	deleteElmt.open("DELETE","../projetws/vehicules/delete/"+imma);
+	deleteElmt.open("DELETE","../cadrews/vehicules/delete/"+imma);
 	deleteElmt.responseType = "json";
 	deleteElmt.onload = function(){
 	};

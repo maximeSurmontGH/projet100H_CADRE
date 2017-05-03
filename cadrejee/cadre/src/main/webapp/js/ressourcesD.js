@@ -76,8 +76,9 @@ function remplissageTableau2(){
 	
 		if(document.getElementById("inputRessources").value!=""){
 			getRessourceByNom(document.getElementById("inputRessources").value.toLowerCase());
-			document.getElementById("inputRessources").value="";
+			
 		}
+		document.getElementById("inputRessources").value="";
 	}
 }
 
@@ -103,8 +104,6 @@ function getRessourceByNom(poste){
 		}
 	}
 	getEmploye.send();
-	
-	remplissageTableau();
 }
 
 //remplis la dataliste avec les choix existant dans la BDD

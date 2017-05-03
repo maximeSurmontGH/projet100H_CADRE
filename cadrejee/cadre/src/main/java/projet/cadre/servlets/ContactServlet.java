@@ -32,7 +32,6 @@ public class ContactServlet extends HttpServlet {
 		templateEngine.setTemplateResolver(templateResolver);
 		templateEngine.addDialect(new Java8TimeDialect());	
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-
 		templateEngine.process("page-contact", context, resp.getWriter());
 
 	}

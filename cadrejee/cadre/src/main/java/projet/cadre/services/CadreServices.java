@@ -155,7 +155,7 @@ public class CadreServices {
 		employeDao.saveEmploye(nomEmploye,prenomEmploye,telephone,poste,email);
 	}
 	
-	public void deleteEmploye(Employe employe){
+	public void deleteEmploye(String employe){
 		employeDao.deleteEmploye(employe);
 	}
 	

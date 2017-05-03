@@ -62,12 +62,11 @@ public class EmployeWS {
 	}
 	
 	@DELETE
-	@Path("")
-	public Response deleteEmploye(@FormParam("idEmploye") String idEmploye, @FormParam("nomEmploye") String nomEmploye,@FormParam("prenomEmploye") String prenomEmploye, @FormParam("motDePasse") String motDePasse, @FormParam("poste") String poste,@FormParam("telephone") String telephone, @FormParam("email") String email){
+	@Path("/delete/{idEmploye}")
+	public Response deleteEmploye(@FormParam("idEmploye") String idEmploye){
 		CadreServices cadreServices = CadreServices.getInstance();
-		Employe employe = new Employe(idEmploye,nomEmploye,prenomEmploye,motDePasse,poste,telephone,email);
 		try {
-			cadreServices.deleteEmploye(employe);
+			cadreServices.deleteEmploye(idEmploye);
 			return Response.status(200).entity("").build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

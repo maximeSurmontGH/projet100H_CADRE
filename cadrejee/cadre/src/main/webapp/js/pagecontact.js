@@ -8,7 +8,14 @@ function getSlogan(){
 	getList2.send();
 }
 
+function notif(){
+	document.getElementById("ok").onclick=function(){
+		alert("Demande envoyée");
+	}
+}
+
 
 window.onload = function(){
+	notif();
 	getSlogan();
 };

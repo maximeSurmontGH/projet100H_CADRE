@@ -9,17 +9,20 @@ function remplissageTableau(){
 		}
 	}
 	getList2.send();
+}
+
+function add(){
+	var requetePostReponse = new XMLHttpRequest();
+	requetePostReponse.open("POST","../cadrews/employes");
+	requetePostReponse.responseType = "json";
 	
 	document.getElementById("boutonAdd").onclick=function(){
-		var requetePostReponse = new XMLHttpRequest();
-		requetePostReponse.open("POST","../cadrews/validites");
-		requetePostReponse.responseType = "json";
-		
 		var prenom = document.getElementById("prenom").value;
 		var nom = document.getElementById("nom").value;
 		var poste = document.getElementById("poste").value;
 		var numero = document.getElementById("telephone").value;
 		var email = document.getElementById("email").value;
+		if (prenom!="" && nom!="" && poste!="" && numero!="" && email!=""){
 		remplisseur(prenom, nom, poste, numero, email);
 		document.getElementById("nom").value="";
 		document.getElementById("prenom").value="";
@@ -27,8 +30,12 @@ function remplissageTableau(){
 		document.getElementById("telephone").value="";
 		document.getElementById("email").value="";
 		requetePostReponse.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		requetePostReponse.send("nomEmploye="+nom+"&prenomEmploye="+prenom+"&telephone="+telephone+"&poste="+poste+"&email="+email);
+		requetePostReponse.send("nomEmploye="+nom+"&prenomEmploye="+prenom+"&telephone="+numero+"&poste="+poste+"&email="+email);
 		createurDeNotifications(1, "Employé bien ajouté à la BDD.");
+		}
+		else{
+			createurDeNotifications(4, "Vérifiez vos champs, certains sont incomplets");
+		}
 	}
 }
 
@@ -56,7 +63,12 @@ function remplisseur(prenom, nom, poste, numero, email){
 	var span1_7_1 = document.createElement('span');
 	var span1_7_2 = document.createElement('span');
 	span1_7_1.className="glyphicon glyphicon-remove boutons";
+	span1_7_1.id="r"+prenom+"."+nom;
+	
+	//bb=bb.substring(1,bb.length);
+	
 	span1_7_2.className="glyphicon glyphicon-pencil boutons";
+	span1_7_1.id="m"+prenom+"."+nom;
 	tr2.appendChild(td1_1);
 	tr2.appendChild(td1_2);
 	tr2.appendChild(td1_3);
@@ -68,6 +80,18 @@ function remplisseur(prenom, nom, poste, numero, email){
 	td1_7.appendChild(a1_7_2);
 	tr2.appendChild(td1_7);
 	table.appendChild(tr2);
+}
+
+function deleteEmploye(id){
+	var deleteElmt = new XMLHttpRequest();
+	deleteElmt.open("DELETE","../cadrews/employe/delete/"+id);
+	deleteElmt.responseType = "json";
+	deleteElmt.onload = function(){
+	};
+	deleteElmt.error=function(error){
+		console.error("Erreur de requete ajax"+error);
+	};
+	deleteElmt.send();
 }
 
 // fonction pour la recherche 
@@ -183,8 +207,11 @@ function remplissageDataListe(){
 	getPoste.send();
 }
 
-
+function deleteEmploye(){
+	
+}
 window.onload = function(){
+	add();
 	remplissageRecherchebis();
 	gestionnaireDeMenu(1);
 	remplissageTableau();

@@ -109,10 +109,9 @@ public class EmployeDaoTestCase {
 	
 	@Test
 	public void shouldDeleteEmploye() throws Exception {
-		// GIVEN
-		Employe employe = employeDao.getEmployeById("c.p");
+		
 		// WHEN
-		employeDao.deleteEmploye(employe);
+		employeDao.deleteEmploye("c.p");
 		// THEN
 		try (
 			Connection connection = DataSourceProvider.getDataSource().getConnection();

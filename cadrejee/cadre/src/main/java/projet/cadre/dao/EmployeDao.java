@@ -115,12 +115,12 @@ public class EmployeDao {
 	}
 	
 	// Pour supprimer un employe
-	public void deleteEmploye(Employe employe){
+	public void deleteEmploye(String idEmploye){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
 			PreparedStatement stmt = connection.prepareStatement("DELETE FROM employes WHERE idEmploye=?");
-			stmt.setString(1,employe.getIdEmploye());
+			stmt.setString(1,idEmploye);
 			stmt.executeUpdate();
 			stmt.close();
 			connection.close();

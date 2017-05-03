@@ -22,7 +22,7 @@
 <!-- JS
 ================================================== -->
 <script src="js/jquery-1.8.3.js"></script>
-<script src="js/contact.js"></script>
+<script src="js/pagecontact.js"></script>
 <script src="js/bootstrapSite.js"></script>
 <script src="js/jquery.custom.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span4" size="16" type="text" id="mailContact" name="mailContact" placeholder="Adresse Email">
+                    <input class="span4" size="16" type="email" id="mailContact" name="mailContact" placeholder="Adresse Email">
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-globe"></i></span>
@@ -64,7 +64,7 @@
                 <textarea class="span8" id="messageContact" name="messageContact"></textarea>
                 <div class="row">
                     <div class="span2">
-                        <input type="submit" class="btn btn-inverse" value="Envoyer le message">
+                        <input type="submit" id="ok" class="btn btn-inverse" value="Envoyer le message">
                     </div>
                 </div>
             </form>
