@@ -83,5 +83,10 @@
 		<filter-name>AuthentificationFilterEmploye</filter-name>
 		<url-pattern>/employes/rappels</url-pattern>
 	</filter-mapping>
+	
+	<context-param>
+    	<param-name>tempfile.dir</param-name>
+    	<param-value>tmpfiles</param-value>
+  	</context-param>
 
 </web-app>
