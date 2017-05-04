@@ -2,7 +2,7 @@
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-	
+
 	<welcome-file-list>
 		<welcome-file>index</welcome-file>
 	</welcome-file-list>
@@ -83,5 +83,10 @@
 		<filter-name>AuthentificationFilterEmploye</filter-name>
 		<url-pattern>/employes/rappels</url-pattern>
 	</filter-mapping>
+	
+	<context-param>
+    	<param-name>tempfile.dir</param-name>
+    	<param-value>tmpfiles</param-value>
+  	</context-param>
 
 </web-app>
