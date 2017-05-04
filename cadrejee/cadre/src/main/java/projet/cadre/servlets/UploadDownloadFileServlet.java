@@ -1,5 +1,6 @@
 package projet.cadre.servlets;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,7 +22,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-//@WebServlet("/test")
+@WebServlet("/UploadDownloadFileServlet")
 public class UploadDownloadFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ServletFileUpload uploader = null;
@@ -79,12 +80,21 @@ public class UploadDownloadFileServlet extends HttpServlet {
 				System.out.println("ContentType="+fileItem.getContentType());
 				System.out.println("Size in bytes="+fileItem.getSize());
 				
-				File file = new File(request.getServletContext().getAttribute("FILES_DIR")+File.separator+fileItem.getName());
+				String name = fileItem.getName();
+				String name2 = "";
+				for(char c : name.toCharArray()){
+					name2+=c;
+					if (c == '\\'){
+						name2 = "";
+					}
+				}
+				System.out.println(name2);
+				File file = new File(request.getServletContext().getAttribute("FILES_DIR")+File.separator+name2);
 				System.out.println("Absolute Path at server="+file.getAbsolutePath());
 				fileItem.write(file);
 				out.write("File "+fileItem.getName()+ " uploaded successfully.");
 				out.write("<br>");
-				out.write("<a href=\"UploadDownloadFileServlet?fileName="+fileItem.getName()+"\">Download "+fileItem.getName()+"</a>");
+				out.write("<a href=\"UploadDownloadFileServlet?fileName="+name2+"\">Download "+name2+"</a>");
 			}
 		} catch (FileUploadException e) {
 			out.write("Exception in uploading file.");
