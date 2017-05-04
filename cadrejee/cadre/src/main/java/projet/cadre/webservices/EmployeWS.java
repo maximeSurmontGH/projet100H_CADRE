@@ -76,7 +76,7 @@ public class EmployeWS {
 	}	
 	
 	@PUT
-	@Path("")
+	@Path("/modif")
 	public Response updateMdp(@FormParam("idEmploye") String idEmploye,@FormParam("motDePasse") String motDePasse){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {

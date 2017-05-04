@@ -88,6 +88,14 @@ footer{
 	background-color: #FFF;
 	color: #286090;
 }
+#boutonD{
+	margin-bottom: 5px;
+}
+
+#boutonD:hover{
+	background-color: #FFF;
+	color: #286090;
+}
 
 /* ADAPTATIONS */
 @media screen and (max-width: 780px) {
@@ -97,6 +105,9 @@ footer{
 	}
 	#bouton1{
 		font-size: 12px;
+	}
+	#boutonD{ 
+		font-size:12px;
 	}
 	img{
 		display: none;
@@ -126,5 +137,10 @@ footer{
 		margin-top: 20px;
 		font-size: 12px;
 		width: 105px;
+	}
+	#boutonD{
+		margin-top: 20px;
+		font-size: 12px;
+		width: 125px;
 	}
 }

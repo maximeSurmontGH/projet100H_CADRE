@@ -9,6 +9,7 @@ function remplissageTableau(){
 		}
 	}
 	getList2.send();
+	
 }
 
 function add(){
@@ -17,8 +18,8 @@ function add(){
 	requetePostReponse.responseType = "json";
 	
 	document.getElementById("boutonAdd").onclick=function(){
-		var prenom = document.getElementById("prenom").value;
-		var nom = document.getElementById("nom").value;
+		var prenom = document.getElementById("prenom").value.toLowerCase();
+		var nom = document.getElementById("nom").value.toLowerCase();
 		var poste = document.getElementById("poste").value;
 		var numero = document.getElementById("telephone").value;
 		var email = document.getElementById("email").value;
@@ -60,15 +61,17 @@ function remplisseur(prenom, nom, poste, numero, email){
 	var a1_7_2 = document.createElement('a');
 	a1_7_1.href="#";
 	a1_7_2.href="#";
+	a1_7_1.id="r"+prenom+"."+nom;
+	a1_7_2.id="bb";
 	var span1_7_1 = document.createElement('span');
 	var span1_7_2 = document.createElement('span');
 	span1_7_1.className="glyphicon glyphicon-remove boutons";
-	span1_7_1.id="r"+prenom+"."+nom;
+	
 	
 	//bb=bb.substring(1,bb.length);
 	
 	span1_7_2.className="glyphicon glyphicon-pencil boutons";
-	span1_7_1.id="m"+prenom+"."+nom;
+	
 	tr2.appendChild(td1_1);
 	tr2.appendChild(td1_2);
 	tr2.appendChild(td1_3);
@@ -208,8 +211,30 @@ function remplissageDataListe(){
 }
 
 function deleteEmploye(){
-	
+	var requeteUpdate = new XMLHttpRequest();
+	requeteUpdate.open("DELETE","../cadrews/employes/delete/jacques.lafaye");
+	requeteUpdate.responseType = "json";
+	requeteUpdate.onload = function(){
+	};
+	requeteUpdate.send();
 }
+
+function modifEmploye(){
+	var requete = new XMLHttpRequest();
+	requete.open("PUT","../cadrews/employes/modif");
+	requete.responseType = "json";
+	
+	document.getElementById("bb").onclick=function(){
+		var a = prompt("nouveau mdp");
+		alert(a);
+		requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		requete.send("idEmploye=chloe.pelletier"+"&motDePasse="+a);
+
+	};
+}
+		
+
+
 window.onload = function(){
 	add();
 	remplissageRecherchebis();
@@ -220,4 +245,6 @@ window.onload = function(){
 	supprimeurDeNotifications();
 	maillingAnnonce();
 	remplissageDataListe();
+	modifEmploye();
+	
 };
