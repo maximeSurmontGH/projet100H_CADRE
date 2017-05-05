@@ -7,6 +7,12 @@ function remplissageTableau(){
 		for (var i=0; i<this.response.length; i++){
 			remplisseur(this.response[i].prenomEmploye,this.response[i].nomEmploye,this.response[i].poste, this.response[i].telephone,this.response[i].email);
 		}
+		for (var i=0; i<this.response.length; i++){
+		modifEmploye("m"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
+		}
+		for (var i=0; i<this.response.length; i++){
+		deleteEmploye("r"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
+		}
 	}
 	getList2.send();
 	
@@ -62,16 +68,11 @@ function remplisseur(prenom, nom, poste, numero, email){
 	a1_7_1.href="#";
 	a1_7_2.href="#";
 	a1_7_1.id="r"+prenom+"."+nom;
-	a1_7_2.id="bb";
+	a1_7_2.id="m"+prenom+"."+nom;
 	var span1_7_1 = document.createElement('span');
 	var span1_7_2 = document.createElement('span');
-	span1_7_1.className="glyphicon glyphicon-remove boutons";
-	
-	
-	//bb=bb.substring(1,bb.length);
-	
-	span1_7_2.className="glyphicon glyphicon-pencil boutons";
-	
+	span1_7_1.className="glyphicon glyphicon-remove boutons";	
+	span1_7_2.className="glyphicon glyphicon-pencil boutons";	
 	tr2.appendChild(td1_1);
 	tr2.appendChild(td1_2);
 	tr2.appendChild(td1_3);
@@ -154,9 +155,11 @@ function remplissageRecherchebis(){
 					var a1_7_2 = document.createElement('a');
 					a1_7_1.href="#";
 					a1_7_2.href="#";
+					a1_7_2.id="w"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye;
+					a1_7_1.id="x"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye;
 					var span1_7_1 = document.createElement('span');
 					var span1_7_2 = document.createElement('span');
-					span1_7_1.className="glyphicon glyphicon-minus boutons";
+					span1_7_1.className="glyphicon glyphicon-remove boutons";
 					span1_7_2.className="glyphicon glyphicon-pencil boutons";
 					tr2.appendChild(td1_1);
 					tr2.appendChild(td1_2);
@@ -173,9 +176,14 @@ function remplissageRecherchebis(){
 					
 					
 				}
+				for (var i=0; i<this.response.length; i++){
+					modifEmploye("w"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
+					}
+				for (var i=0; i<this.response.length; i++){
+					deleteEmploye("x"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
+					}
 			}
 			getList2.send();
-			
 
 		}
 		
@@ -210,25 +218,61 @@ function remplissageDataListe(){
 	getPoste.send();
 }
 
-function deleteEmploye(){
-	var requeteUpdate = new XMLHttpRequest();
-	requeteUpdate.open("DELETE","../cadrews/employes/delete/jacques.lafaye");
-	requeteUpdate.responseType = "json";
-	requeteUpdate.onload = function(){
-	};
-	requeteUpdate.send();
+function deleteEmploye(qui){
+	document.getElementById(qui).onclick=function(){
+		var c=qui.substring(1,qui.length);
+		if(confirm("Etes-vous sur de vouloir supprimer le compte : "+c)){
+			// Pour les attestations
+			var requeteUpdateA = new XMLHttpRequest();
+			requeteUpdateA.open("DELETE","../cadrews/attestation/delete/"+c);
+			requeteUpdateA.responseType = "json";
+			requeteUpdateA.send();
+			
+			// Pour les conges
+			var requeteUpdateC = new XMLHttpRequest();
+			requeteUpdateC.open("DELETE","../cadrews/conges/delete/"+c);
+			requeteUpdateC.responseType = "json";
+			requeteUpdateC.send();
+			
+			// Pour les validites
+			var requeteUpdateV = new XMLHttpRequest();
+			requeteUpdateV.open("DELETE","../cadrews/validites/delete/"+c);
+			requeteUpdateV.responseType = "json";
+			requeteUpdateV.send();
+			
+			// Pour les vehicules
+			var requeteUpdateVe = new XMLHttpRequest();
+			requeteUpdateVe.open("DELETE","../cadrews/vehicules/deleteD/"+c);
+			requeteUpdateVe.responseType = "json";
+			requeteUpdateVe.send();
+			
+			// Pour les rappels
+			var requeteUpdateR = new XMLHttpRequest();
+			requeteUpdateR.open("DELETE","../cadrews/rappels/delete/"+c);
+			requeteUpdateR.responseType = "json";
+			requeteUpdateR.send();					
+		
+			// Pour l'employe
+			var requeteUpdate = new XMLHttpRequest();
+			requeteUpdate.open("DELETE","../cadrews/employes/delete/"+c);
+			requeteUpdate.responseType = "json";
+			requeteUpdate.send();
+		
+		}
+		window.location.href="../direction/annuaire";
+	}
 }
 
-function modifEmploye(){
+function modifEmploye(qui){
 	var requete = new XMLHttpRequest();
 	requete.open("PUT","../cadrews/employes/modif");
 	requete.responseType = "json";
-	
-	document.getElementById("bb").onclick=function(){
-		var a = prompt("nouveau mdp");
-		alert(a);
+	document.getElementById(qui).onclick=function(){
+		var b=qui.substring(1,qui.length);
+		var a = prompt("Entrez le nouveau mot de passe pour le compte "+b+" :");		
 		requete.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		requete.send("idEmploye=chloe.pelletier"+"&motDePasse="+a);
+		requete.send("idEmploye="+b+"&motDePasse="+a);
+		window.location.href="../direction/annuaire";
 
 	};
 }
@@ -245,6 +289,5 @@ window.onload = function(){
 	supprimeurDeNotifications();
 	maillingAnnonce();
 	remplissageDataListe();
-	modifEmploye();
 	
 };

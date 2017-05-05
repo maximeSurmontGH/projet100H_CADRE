@@ -171,7 +171,7 @@ public class EmployeDao {
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("UPDATE employes set motDePasse=? WHERE idEmploye=?");
-			stmt.setString(1, motDePasse);
+			stmt.setString(1, motDePasseHash);
 			stmt.setString(2, idEmploye);
 			stmt.executeUpdate();
 			stmt.close();

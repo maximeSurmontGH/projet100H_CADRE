@@ -1,5 +1,6 @@
 package projet.cadre.webservices;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -77,6 +78,20 @@ public class CongesWS {
 		try {
 			cadreServices.setStateConge(id, nb);
 			return Response.status(200).entity(gson.toJson("")).build();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@DELETE
+	@Path("/delete/{idEmploye}")
+	public Response deleteAttestation(@PathParam("idEmploye") String idEmploye){
+		CadreServices cadreServices = CadreServices.getInstance();
+		try {
+			cadreServices.deleteDemandeConge(idEmploye);
+			return Response.status(200).entity("").build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -118,4 +118,17 @@ public class VehiculesWS {
 		}
 		return null;
 	}
+	@DELETE
+	@Path("/deleteD/{idEmploye}")
+	public Response deleteAttestation(@PathParam("idEmploye") String idEmploye){
+		CadreServices cadreServices = CadreServices.getInstance();
+		try {
+			cadreServices.deleteDemandeVehicule(idEmploye);
+			return Response.status(200).entity("").build();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

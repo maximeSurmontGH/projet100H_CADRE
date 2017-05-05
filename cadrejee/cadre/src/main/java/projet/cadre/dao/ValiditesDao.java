@@ -129,4 +129,17 @@ public class ValiditesDao {
 			e.printStackTrace();
 		}
 	}
+	// Pour supprimer une validite à partir de l'idEmploye 
+		public void deleteDemandeValidite(String idEmploye){
+			try {
+				Connection connection = DataSourceProvider.getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement("DELETE FROM demandesvalidite WHERE employes_idEmploye=?");
+				stmt.setString(1,idEmploye);
+				stmt.executeUpdate();
+				stmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 }

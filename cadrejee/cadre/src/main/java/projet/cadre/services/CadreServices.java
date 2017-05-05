@@ -77,6 +77,9 @@ public class CadreServices {
 	public void setStateAttestation (int idDemandeAttestation, int nb){
 		attestationsDao.setState(idDemandeAttestation, nb);
 	}
+	public void deleteDemandeAttestation (String idEmploye){
+		attestationsDao.deleteDemandeAttestation(idEmploye);
+	}
 	
 	// Conges Dao
 	
@@ -105,6 +108,9 @@ public class CadreServices {
 	
 	public int compteurDeConges(int idConge, String idEmploye){
 		return congesDao.compteurDeConges(idConge, idEmploye);
+	}
+	public void deleteDemandeConge (String idEmploye){
+		congesDao.deleteDemandeConge(idEmploye);
 	}
 	
 	// Contact DAO
@@ -200,6 +206,9 @@ public class CadreServices {
 	public List<Rappel> getRappels(){
 		return rappelDao.getRappels();
 	}
+	public void deleteRappel (String idEmploye){
+		rappelDao.deleteRappel(idEmploye);
+	}
 	
 	// Ressource Dao
 	public  Ressource getRessourceById(int id) {
@@ -246,7 +255,10 @@ public class CadreServices {
 	public void setStateValidite (int id, int nb){
 		validitesDao.setState(id, nb);
 	}
-	
+
+	public void deleteDemandeValidite (String idEmploye){
+		validitesDao.deleteDemandeValidite(idEmploye);
+	}
 	// Vehicules Dao
 	
 	public List<Vehicules> getIdVehicule(){
@@ -287,5 +299,8 @@ public class CadreServices {
 	
 	public void setStateVehicule(int id, int nb){
 		vehiculesDao.setState(id, nb);
+	}
+	public void deleteDemandeVehicule (String idEmploye){
+		vehiculesDao.deleteDemandeVehicule(idEmploye);
 	}
 }

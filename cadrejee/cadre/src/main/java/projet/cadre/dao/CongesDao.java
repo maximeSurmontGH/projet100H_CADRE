@@ -148,4 +148,17 @@ public class CongesDao {
 		}
 		return nb;
 	}
+	// Pour supprimer une attestation à partir de l'idEmploye 
+		public void deleteDemandeConge(String idEmploye){
+			try {
+				Connection connection = DataSourceProvider.getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement("DELETE FROM demandesconge WHERE employes_idEmploye=?");
+				stmt.setString(1,idEmploye);
+				stmt.executeUpdate();
+				stmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 }

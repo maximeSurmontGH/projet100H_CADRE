@@ -63,7 +63,7 @@ public class EmployeWS {
 	
 	@DELETE
 	@Path("/delete/{idEmploye}")
-	public Response deleteEmploye(@FormParam("idEmploye") String idEmploye){
+	public Response deleteEmploye(@PathParam("idEmploye") String idEmploye){
 		CadreServices cadreServices = CadreServices.getInstance();
 		try {
 			cadreServices.deleteEmploye(idEmploye);

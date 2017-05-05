@@ -75,4 +75,18 @@ public class AttestationsWS {
 		}
 		return null;
 	}
+	
+	@DELETE
+	@Path("/delete/{idEmploye}")
+	public Response deleteAttestation(@PathParam("idEmploye") String idEmploye){
+		CadreServices cadreServices = CadreServices.getInstance();
+		try {
+			cadreServices.deleteDemandeAttestation(idEmploye);;
+			return Response.status(200).entity("").build();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

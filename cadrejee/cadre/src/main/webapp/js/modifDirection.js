@@ -12,7 +12,7 @@ function gestionnairePage(){
 	}
 }
 
-// fonction pour gérer la ffichage des éléments de la page. (les différentes pages)
+// fonction pour gérer l affichage des éléments de la page. (les différentes pages)
 function gestionnairePage2(pageModifiee){
 	document.getElementById("boutonAccueil").className = "disparaitre";
 	document.getElementById("boutonEntreprise").className = "disparaitre";
