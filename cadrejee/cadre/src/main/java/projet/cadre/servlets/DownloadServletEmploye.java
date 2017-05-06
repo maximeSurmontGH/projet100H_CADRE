@@ -22,8 +22,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-@WebServlet("/UploadDownloadFileServlet")
-public class UploadDownloadFileServlet extends HttpServlet {
+@WebServlet("/employes/DownloadServlet")
+public class DownloadServletEmploye extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ServletFileUpload uploader = null;
 	@Override
@@ -61,47 +61,4 @@ public class UploadDownloadFileServlet extends HttpServlet {
 		fis.close();
 		System.out.println("File downloaded at client successfully");
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(!ServletFileUpload.isMultipartContent(request)){
-			throw new ServletException("Content type is not multipart/form-data");
-		}
-		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.write("<html><head></head><body>");
-		try {
-			List<FileItem> fileItemsList = uploader.parseRequest(request);
-			Iterator<FileItem> fileItemsIterator = fileItemsList.iterator();
-			while(fileItemsIterator.hasNext()){
-				FileItem fileItem = fileItemsIterator.next();
-				System.out.println("FieldName="+fileItem.getFieldName());
-				System.out.println("FileName="+fileItem.getName());
-				System.out.println("ContentType="+fileItem.getContentType());
-				System.out.println("Size in bytes="+fileItem.getSize());
-				
-				String name = fileItem.getName();
-				String name2 = "";
-				for(char c : name.toCharArray()){
-					name2+=c;
-					if (c == '\\'){
-						name2 = "";
-					}
-				}
-				System.out.println(name2);
-				File file = new File(request.getServletContext().getAttribute("FILES_DIR")+File.separator+name2);
-				System.out.println("Absolute Path at server="+file.getAbsolutePath());
-				fileItem.write(file);
-				out.write("File "+fileItem.getName()+ " uploaded successfully.");
-				out.write("<br>");
-				out.write("<a href=\"UploadDownloadFileServlet?fileName="+name2+"\">Download "+name2+"</a>");
-			}
-		} catch (FileUploadException e) {
-			out.write("Exception in uploading file.");
-		} catch (Exception e) {
-			out.write("Exception in uploading file.");
-		}
-		out.write("</body></html>");
-	}
-
 }

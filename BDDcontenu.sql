@@ -106,7 +106,6 @@ INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea1','Touret en inox','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea10','?','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea11','?','/');
-INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea1O','?','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea2','Plancher de protection','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea3','Carter','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea4','Chariot','/');
@@ -115,6 +114,17 @@ INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea7','Panier grillagé','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea8','?','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('nomRea9','?','/');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img1','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img10','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img11','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img2','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img3','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img4','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img5','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img6','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img7','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img8','','');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('img9','','');
 
 INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (1,'Plan centrale','document entreprise','/chemin.pdf');
 INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (2,'Document ressource pour la mettalerie','ouvrier', '/chemin.jpg');

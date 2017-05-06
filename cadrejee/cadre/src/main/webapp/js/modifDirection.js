@@ -33,7 +33,7 @@ function gestionnairePage2(pageModifiee){
 	table.appendChild(tr);
 
 	if(pageModifiee=="acceuil"){
-		createurDeLigne ("Logo de l'entreprise", "photo", "1");
+		//createurDeLigne ("Logo de l'entreprise", "photo", "1");
 		createurDeLigne ("Slogan de l'entreprise", "message", "2");
 		var getList2 = new XMLHttpRequest();
 		getList2.open("GET","../cadrews/elementssite/getElementById/aslogan",true, null, null);
@@ -43,7 +43,7 @@ function gestionnairePage2(pageModifiee){
 			document.getElementsByName("input2")[0].placeholder=slogan;
 		}
 		getList2.send();
-		createurDeLigne ("Photo de l'entreprise", "photo", "3");
+		//createurDeLigne ("Photo de l'entreprise", "photo", "3");
 		createurDeLigne ("Texte de présentation", "message", "4");
 		var getList2 = new XMLHttpRequest();
 		getList2.open("GET","../cadrews/elementssite/getElementById/ades",true, null, null);
@@ -56,7 +56,7 @@ function gestionnairePage2(pageModifiee){
 		
 	}
 	if(pageModifiee=="entreprise"){
-		createurDeLigne ("Photo de l'entreprise", "photo", "1");
+		//createurDeLigne ("Photo de l'entreprise", "photo", "1");
 		createurDeLigne ("Bref historique de l'entreprise / Partie 1", "message", "2.1");
 		var getList2 = new XMLHttpRequest();
 		getList2.open("GET","../cadrews/elementssite/getElementById/histo1",true, null, null);
@@ -102,8 +102,8 @@ function gestionnairePage2(pageModifiee){
 			document.getElementsByName("input3")[0].placeholder=edf;
 		}
 		getList2.send();
-		createurDeLigne ("Photo de l'équipe de PENLY", "photo", "4");
-		createurDeLigne ("Photo de l'équipe de PALUEL", "photo", "5");
+		//createurDeLigne ("Photo de l'équipe de PENLY", "photo", "4");
+		//createurDeLigne ("Photo de l'équipe de PALUEL", "photo", "5");
 	}
 	if(pageModifiee=="prestations"){
 		createurDeLigne ("Photo de la réalisation 1", "photo", "1.1");
@@ -352,18 +352,28 @@ function createurDeLigne (element, action, num){
 		var input = document.createElement('input');
 		input.type="file";
 		input.id="input"+num;
+		input.name="fileName";
+		input.accept="image/*"
 		td2.appendChild(input);
 	}
 	tr.appendChild(td2);
 	var td3 = document.createElement('td');
 	td3.className="colonneFine";
-	var a = document.createElement('a');
-	a.href="#";
-	a.id="a"+num;
-	var span = document.createElement('span');
-	span.className=" glyphicon glyphicon-new-window";
-	a.appendChild(span);
-	td3.appendChild(a);
+	if (action=="message"){
+		var a = document.createElement('a');
+		a.href="#";
+		a.id="a"+num;
+		var span = document.createElement('span');
+		span.className=" glyphicon glyphicon-new-window";
+		a.appendChild(span);
+		td3.appendChild(a);
+	}
+	else if (action=="photo"){
+		var input2 = document.createElement('input');
+		input2.type="submit";
+		input2.value="GO";
+		td3.appendChild(input2);
+	}
 	tr.appendChild(td3);
 	table.appendChild(tr);
 }
@@ -574,9 +584,7 @@ function modifElement(pageModifiee){
 			window.location.href="../direction/modification";
 		};
 	}
-
 }
-
 
 
 

@@ -2,67 +2,67 @@ function creationTableau(){
   //creation des mois de l'annee
   var janvier = {
     mois:'Janvier',
-    nb:01,
+    nb:1,
     nbJour:31,
     moisAvant : decembre
   }
   var fevrier = {
     mois:'Février',
-    nb:02,
+    nb:2,
     nbJour:28,
     moisAvant : janvier
   }
   var fevrier2 = {
     mois:'Février',
-    nb:02,
+    nb:2,
     nbJour:29,
     moisAvant : janvier
   }
   var mars = {
     mois:'Mars',
-    nb:03,
+    nb:3,
     nbJour:31,
     moisAvant : fevrier
   }
   var mars2 = {
     mois:'Mars',
-    nb:03,
+    nb:3,
     nbJour:31,
     moisAvant : fevrier2
   }
   var avril = {
     mois:'Avril',
-    nb:04,
+    nb:4,
     nbJour:30,
     moisAvant : mars
   }
   var mai = {
     mois:'Mai',
-    nb:05,
+    nb:5,
     nbJour:31,
     moisAvant : avril
   }
   var juin = {
     mois:'Juin',
-    nb:06,
+    nb:6,
     nbJour:30,
     moisAvant : mai
   }
   var juillet = {
     mois:'Juillet',
-    nb:07,
+    nb:7,
     nbJour:31,
     moisAvant : juin
   }
   var aout = {
     mois:'Aout',
-    nb:08,
+    nb:8,
     nbJour:31,
     moisAvant : juillet
   }
   var septembre = {
     mois:'Septembre',
-    nb:09,
+    nb:9,
     nbJour:30,
     moisAvant : aout
   }

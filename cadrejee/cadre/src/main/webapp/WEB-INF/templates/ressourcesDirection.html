@@ -52,20 +52,20 @@
             </table>
 
             <p>Ajout d'un fichier :</p>
-            <form id="formulaire">
+            <form id="formulaire" action="UploadRessourceServlet" method="post" enctype="multipart/form-data">
               <div class="input-group">
                 <div class="input-group-addon descriptionAjout" > <span> Nom du fichier : </span> </div>
                 <input type="text" class="form-control">
               </div>
               <div class="input-group">
                 <div class="input-group-addon descriptionAjout" > <span> Corps de métier : </span> </div>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="corps">
               </div>
 
               <div id="boutonAdd2">
-                <a class="btn btn-primary" id="boutonAdd2" href="#">Ajouter</a>
+                <input class="btn btn-primary" type="submit" id="boutonAdd2" value="Ajouter">
               </div>
-              <input type="file" name="fichier" id="choixDuFichier"/>
+              <input type="file" name="fileName" id="choixDuFichier"/>
             </form>
           </section>
 

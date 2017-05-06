@@ -255,9 +255,6 @@ function gestionnairePage2(pageModifiee){
 		var th3 = document.createElement('th');
 		th3.innerHTML = "Détail";
 		tr.appendChild(th3);
-		var th4 = document.createElement('th');
-		th4.innerHTML = "Pièce jointe";
-		tr.appendChild(th4);
 		var th5 = document.createElement('th');
 		th5.innerHTML = "Action";
 		tr.appendChild(th5);
@@ -335,6 +332,18 @@ function gestionnairePage2(pageModifiee){
 			var select2 = document.getElementById("Mois");
 			var choice2 = select2.selectedIndex;
 			var mois = select2.options[choice2].value;
+			if(mois=="Janvier"){mois=1}
+			else if(mois=="Fevrier"){mois=2}
+			else if(mois=="Mars"){mois=3}
+			else if(mois=="Avril"){mois=4}
+			else if(mois=="Mai"){mois=5}
+			else if(mois=="Juin"){mois=6}
+			else if(mois=="Juillet"){mois=7}
+			else if(mois=="Aout"){mois=8}
+			else if(mois=="Septembre"){mois=9}
+			else if(mois=="Octobtre"){mois=10}
+			else if(mois=="Novembre"){mois=11}
+			else if(mois=="Decembre"){mois=12}
 			
 			var select3 = document.getElementById("Annees");
 			var choice3 = select3.selectedIndex;
@@ -348,6 +357,7 @@ function gestionnairePage2(pageModifiee){
 			getList2.onload=function(){
 				for (var i=0; i<this.response.length; i++){
 					addRappel(date, msg, this.response[i].idEmploye, parseInt(imprt));
+					document.getElementById("msgRappel").value="";
 				}
 			}
 			getList2.send();
@@ -369,7 +379,12 @@ function gestionnairePage2(pageModifiee){
 // pour remplir les selects jour mois année
 function remplissageJMA(){
 	var selectJ = document.getElementById("Jours");
-	for (var i=1; i<32; i++){
+	for (var i=1; i<10; i++){
+		var optn = document.createElement('option');
+		optn.innerText = [0]+i;
+		selectJ.appendChild(optn);
+	}
+	for (var i=10; i<32; i++){
 		var optn = document.createElement('option');
 		optn.innerText = i;
 		selectJ.appendChild(optn);
@@ -610,15 +625,6 @@ function createurDeLigneD(entreprise, nom, num){
 	a.appendChild(span);
 	td3.appendChild(a);
 	tr.appendChild(td3);
-	var td4 = document.createElement('td');
-	td4.className="colonneFine";
-	var a = document.createElement('a');
-	a.href="#";
-	var span = document.createElement('span');
-	span.className=" glyphicon glyphicon-new-window";
-	a.appendChild(span);
-	td4.appendChild(a);
-	tr.appendChild(td4);
 	var td5 = document.createElement('td');
 	td5.className="colonneFine";
 	var a = document.createElement('a');
@@ -733,7 +739,8 @@ function updateDemandeVehicule(){
 			requeteUpdate.send("id="+idNum+"&nb="+1);
 			
 			var date =document.getElementById("DATE"+idNum).innerHTML;
-			addRappel(date.replace('/',''), "N'oubliez pas de faire le plein !", document.getElementById("ID"+idNum).innerHTML, 2);
+			date=date[0]+date[1]+date[3]+date[4]+date[6]+date[7]+date[8]+date[9];
+			addRappel(date, "N'oubliez pas de faire le plein !", document.getElementById("ID"+idNum).innerHTML, 2);
 		}
 		i++;
 	}
@@ -816,7 +823,8 @@ function updateDemandeConge(){
 			requeteUpdate.send("id="+idNum+"&nb="+1);
 			
 			var date =document.getElementById("DATE"+idNum).innerHTML;
-			addRappel(date.replace('/',''), "Bon retour de vancances !", document.getElementById("ID"+idNum).innerHTML, 3);
+			date=date[0]+date[1]+date[3]+date[4]+date[6]+date[7]+date[8]+date[9];
+			addRappel(date, "Bon retour de vancances !", document.getElementById("ID"+idNum).innerHTML, 3);
 		}
 		i++;
 	}
@@ -898,7 +906,8 @@ function updateDemandeAttestation(){
 			requeteUpdate.send("id="+idNum+"&nb="+1);
 			
 			var date =document.getElementById("DATE"+idNum).innerHTML;
-			addRappel(date.replace('/',''), "Votre attestations est disponible. N'oubliez pas de venir la récupérer !", document.getElementById("ID"+idNum).innerHTML, 3);
+			date=date[0]+date[1]+date[3]+date[4]+date[6]+date[7]+date[8]+date[9];
+			addRappel(date, "Votre attestations est disponible. N'oubliez pas de venir la récupérer !", document.getElementById("ID"+idNum).innerHTML, 3);
 		}
 		i++;
 	}

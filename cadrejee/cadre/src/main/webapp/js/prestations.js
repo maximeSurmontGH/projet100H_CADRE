@@ -8,6 +8,21 @@ function getSlogan(){
 	getList2.send();
 }
 
+function getImgs(){
+	var i=1;
+	while(i<12){
+		var getList2 = new XMLHttpRequest();
+		var str = "img"+i;
+		getList2.open("GET","cadrews/elementssite/getElementById/"+str,true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			document.getElementById(str).src="C:/Users/Maxime/Desktop/ITI4/apache-tomcat-8.5.8-windows-x64/apache-tomcat-8.5.8/tmpfiles/"+this.response.contenuElement;
+		}
+		getList2.send();
+		i++;
+	}
+}
+
 
 function getNomRealisation1(){
 	var getList2 = new XMLHttpRequest();
@@ -299,6 +314,7 @@ function getDesRealisation11(){
 
 window.onload=function(){
 	getSlogan();
+	//getImgs();
 	getNomRealisation1();
 	getDesRealisation1();
 	getNomRealisation2();

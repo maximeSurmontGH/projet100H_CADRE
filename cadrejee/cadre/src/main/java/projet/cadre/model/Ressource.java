@@ -15,6 +15,12 @@ public class Ressource {
 	this.corpsDeMetier = corpsDeMetier;
 	this.cheminRessource = cheminRessource;
   }
+  
+  public Ressource(String contenuRessource, String corpsDeMetier, String cheminRessource) {
+	this.contenuRessource = contenuRessource;
+	this.corpsDeMetier = corpsDeMetier;
+	this.cheminRessource = cheminRessource;
+  }
 
   public int getIdRessource() {
 	return idRessource;

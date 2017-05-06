@@ -5,8 +5,6 @@ function remplissageTableau(){
 		while (element.firstChild) {
 		  	element.removeChild(element.firstChild);
 		}
-		
-		document.getElementById("boutonDL").className="disparaitre";
 
 		var table = document.getElementById("tableauDuPersonnel");
 		var tr1 = document.createElement('tr');
@@ -51,9 +49,12 @@ function remplisseur(nom, format, poste){
 	td1_4.innerHTML = poste;
 
 	var td1_4_5 = document.createElement('td');
-	var td1_5 = document.createElement('input');
-	td1_5.type='checkbox';
-	td1_5.name=td1_1.innerHTML;
+	var span = document.createElement('span');
+	span.className="glyphicon glyphicon-download"
+	var td1_5 = document.createElement('a');
+	td1_5.href="DownloadServlet?fileName="+nom+"."+format;
+	td1_5.target="_blank";
+	td1_5.appendChild(span);
 	td1_4_5.className='selectRessource';
 	td1_4_5.appendChild(td1_5);
 
@@ -72,10 +73,8 @@ function getRessource(){
 	
 	getEmploye.onload=function(){
 		for (var i=0; i<this.response.length; i++){
-			var taille=this.response[i].cheminRessource.length-3;
-			remplisseur(this.response[i].contenuRessource , this.response[i].cheminRessource[taille]+this.response[i].cheminRessource[taille+1]+this.response[i].cheminRessource[taille+2], this.response[i].corpsDeMetier);
+			remplisseur(this.response[i].contenuRessource.split(".")[0] , this.response[i].cheminRessource.split(".")[1], this.response[i].corpsDeMetier);
 		}
-		document.getElementById("boutonDL").className="apparaitre";
 	}
 	createurDeNotifications(2, "Affichage de tout l'anuaire par défaut");
 	getEmploye.send();
@@ -91,18 +90,14 @@ function getRessourceByNom(poste){
 	
 	getEmploye.onload=function(){
 		for (var i=0; i<this.response.length; i++){
-			var taille=this.response[i].cheminRessource.length-3;
-			remplisseur(this.response[i].contenuRessource , this.response[i].cheminRessource[taille]+this.response[i].cheminRessource[taille+1]+this.response[i].cheminRessource[taille+2], this.response[i].corpsDeMetier);
+			remplisseur(this.response[i].contenuRessource.split(".")[0] ,this.response[i].cheminRessource.split(".")[1], this.response[i].corpsDeMetier);
 		}
-		
-		document.getElementById("boutonDL").className="apparaitre";
-	
+			
 		if(this.response.length==0){
 			var element = document.getElementById("tableauDuPersonnel");
 			while (element.firstChild) {
 			  	element.removeChild(element.firstChild);
 			}
-			document.getElementById("boutonDL").className="disparaitre";
 			
 			createurDeNotifications(4, "Ressource non trouvé.");
 		}
