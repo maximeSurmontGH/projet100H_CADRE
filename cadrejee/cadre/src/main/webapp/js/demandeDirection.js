@@ -271,6 +271,9 @@ function gestionnairePage2(pageModifiee){
 		var th1 = document.createElement('th');
 		th1.innerHTML = "Contenu";
 		tr.appendChild(th1);
+		var th1_bis = document.createElement('th');
+		th1_bis.innerHTML = "Employé";
+		tr.appendChild(th1_bis);
 		var th2 = document.createElement('th');
 		th2.innerHTML = "Date";
 		tr.appendChild(th2);
@@ -285,6 +288,28 @@ function gestionnairePage2(pageModifiee){
 		input1.className = "form-control";
 		input1.id="msgRappel";
 		td1.appendChild(input1);
+		
+		var td1_bis = document.createElement('td');
+		var sel1_bis = document.createElement('select');
+		sel1_bis.id="pourFairePlaisirAChloe";
+		
+		var opt = document.createElement('option');
+		opt.innerText="tous les employés";
+		sel1_bis.appendChild(opt);
+		
+		var getList2 = new XMLHttpRequest();
+		getList2.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
+		getList2.responseType="json";
+		getList2.onload=function(){
+			for (var i=0; i<this.response.length; i++){
+				var opt = document.createElement('option');
+				opt.innerText=this.response[i].idEmploye;
+				sel1_bis.appendChild(opt);			}
+		}
+		getList2.send();
+		
+		td1_bis.appendChild(sel1_bis);
+		
 		var td2 = document.createElement('td');
 		var sel1_1 = document.createElement('select');
 		sel1_1.id = "Jours";
@@ -306,6 +331,7 @@ function gestionnairePage2(pageModifiee){
 		a.appendChild(span);
 		td3.appendChild(a);
 		tr.appendChild(td1);
+		tr.appendChild(td1_bis);
 		tr.appendChild(td2);
 		tr.appendChild(td3);
 		table.appendChild(tr);
@@ -351,17 +377,27 @@ function gestionnairePage2(pageModifiee){
 			
 			date = jour+mois+annee;
 			
-			var getList2 = new XMLHttpRequest();
-			getList2.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
-			getList2.responseType="json";
-			getList2.onload=function(){
-				for (var i=0; i<this.response.length; i++){
-					addRappel(date, msg, this.response[i].idEmploye, parseInt(imprt));
-					document.getElementById("msgRappel").value="";
-				}
-			}
-			getList2.send();
+			var select4 = document.getElementById("pourFairePlaisirAChloe");
+			var choice4 = select4.selectedIndex;
+			var employe = select4.options[choice4].value;
 			
+			if(employe=="tous les employés"){
+				var getList2 = new XMLHttpRequest();
+				getList2.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
+				getList2.responseType="json";
+				getList2.onload=function(){
+					for (var i=0; i<this.response.length; i++){
+						addRappel(date, msg, this.response[i].idEmploye, parseInt(imprt));
+						
+					}
+				}
+				getList2.send();
+			}
+			else{
+				addRappel(date, msg, employe, parseInt(imprt));
+			}
+			
+			document.getElementById("msgRappel").value="";
 			while(document.getElementById("tableauDesDemandes1").firstChild){
 				document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
 			}
@@ -642,11 +678,13 @@ function createurDeLigneD(entreprise, nom, num){
 }
 
 // createur de ligne du tableau événement
-function createurDeLigneE(message, date, num){
+function createurDeLigneE(message, employe, date, num){
 	var table = document.getElementById("tableauDesDemandes1");
 	var tr = document.createElement('tr');
 	var td1 = document.createElement('td');
 	td1.innerHTML = message;
+	var td1_bis = document.createElement('td');
+	td1_bis.innerHTML = employe;
 	var td2 = document.createElement('td');
 	td2.innerHTML = date;
 	var td3 = document.createElement('td');
@@ -660,6 +698,7 @@ function createurDeLigneE(message, date, num){
 	a.appendChild(span);
 	td3.appendChild(a);
 	tr.appendChild(td1);
+	tr.appendChild(td1_bis);
 	tr.appendChild(td2);
 	tr.appendChild(td3);
 	table.appendChild(tr);
@@ -1045,7 +1084,7 @@ function getHistoriqueRappels(){
 	getList.responseType="json";
 	getList.onload=function(){
 		for (var i=0; i<this.response.length; i++){
-			createurDeLigneE(this.response[i].messageRappel, this.response[i].dateRappel[0]+this.response[i].dateRappel[1]+"/"+this.response[i].dateRappel[2]+this.response[i].dateRappel[3]+"/"+this.response[i].dateRappel[4]+this.response[i].dateRappel[5]+this.response[i].dateRappel[6]+this.response[i].dateRappel[7], this.response[i].idRappel);
+			createurDeLigneE(this.response[i].messageRappel, this.response[i].employes_idEmploye,this.response[i].dateRappel[0]+this.response[i].dateRappel[1]+"/"+this.response[i].dateRappel[2]+this.response[i].dateRappel[3]+"/"+this.response[i].dateRappel[4]+this.response[i].dateRappel[5]+this.response[i].dateRappel[6]+this.response[i].dateRappel[7], this.response[i].idRappel);
 		}
 	}
 	getList.send();

@@ -338,75 +338,76 @@ function compteurInfos(){
 			for (var i=0; i<this.response.length; i++){
 				if(this.response[i].typeConge==type){
 					typenb = this.response[i].idConge;
+					
+					var getEmploye = new XMLHttpRequest();
+					getEmploye.open("GET","../cadrews/conges/listCongesById/"+document.getElementById('employeId').innerText,true, null, null);
+					getEmploye.responseType="json";
+					
+					var k=0
+					getEmploye.onload=function(){
+						for (var i=0; i<this.response.length; i++){
+							var anneeDebut = parseInt(this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7]);
+							var anneeFin = parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7]);
+							var moisDebut = parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3]);
+							var moisFin = parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3]);
+							var jourDebut = parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1]);
+							var jourFin = parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1]);
+							var typenb2 = this.response[i].conges_idConge;
+							
+							if(anneeDebut<year && anneeFin>=year){
+								anneeDebut = year;
+								jourDebut = 1;
+								moisDebut = 1;
+							}
+							
+							if(anneeFin>year && anneeDebut<=year){
+								anneeFin = year;
+								jourFin = 31;
+								moisFin = 12;
+							}
+							
+							if(typenb2==typenb){
+								while(moisDebut <= moisFin){
+									if(moisDebut == moisFin){
+										while(jourDebut != jourFin){
+											nb++;
+											jourDebut++;
+										}
+									}
+									else{
+										if(moisDebut == 2){
+											if(year%4==0 || year%400==0){
+												jourFin2 = 30;
+											}
+											else{
+												jourFin2 = 29;
+											}
+										}
+										else if(moisDebut == 1 || moisDebut == 3 || moisDebut == 5 || moisDebut == 7 || moisDebut == 9 || moisDebut == 11){
+											jourFin2 = 32;
+										}
+										else{
+											jourFin2 = 31;
+										}
+										while(jourDebut != jourFin2){
+											nb++;
+											jourDebut++;
+										}
+									}
+									jourDebut = 1;
+									moisDebut++;
+								}	
+							}
+						}
+						if(nb!=0){nb++;}
+						document.getElementById("messageCompteur").innerHTML = "Vous en etes à "+nb+" jours de congés "+type;
+						document.getElementById("messageCompteur").className = "alert alert-info alert-dismissable";
+					}
+					getEmploye.send();
 				}
 			}
 		}
 		getList2.send();
-		
-		var getEmploye = new XMLHttpRequest();
-		getEmploye.open("GET","../cadrews/conges/listCongesById/"+document.getElementById('employeId').innerText,true, null, null);
-		getEmploye.responseType="json";
-		
-		getEmploye.onload=function(){
-			for (var i=0; i<this.response.length; i++){
-				var anneeDebut = parseInt(this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7]);
-				var anneeFin = parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7]);
-				var moisDebut = parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3]);
-				var moisFin = parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3]);
-				var jourDebut = parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1]);
-				var jourFin = parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1]);
-				
-				if(anneeDebut<year && anneeFin>=year){
-					anneeDebut = year;
-					jourDebut = 1;
-					moisDebut = 1;
-				}
-				
-				if(anneeFin>year && anneeDebut<=year){
-					anneeFin = year;
-					jourFin = 31;
-					moisFin = 12;
-				}
-
-				if(this.response[i].conges_idConge==typenb && year==anneeDebut && year==anneeFin){
-					while(moisDebut <= moisFin){
-						if(moisDebut == moisFin){
-							while(jourDebut != jourFin){
-								nb++;
-								jourDebut++;
-							}
-						}
-						else{
-							if(moisDebut == 2){
-								if(year%4==0 || year%400==0){
-									jourFin2 = 30;
-								}
-								else{
-									jourFin2 = 29;
-								}
-							}
-							else if(moisDebut == 1 || moisDebut == 3 || moisDebut == 5 || moisDebut == 7 || moisDebut == 9 || moisDebut == 11){
-								jourFin2 = 32;
-							}
-							else{
-								jourFin2 = 31;
-							}
-							while(jourDebut != jourFin2){
-								nb++;
-								jourDebut++;
-							}
-						}
-						
-						jourDebut = 1;
-						moisDebut++;
-					}
-					
-				}
-			}
-			document.getElementById("messageCompteur").innerHTML = "Vous en etes à "+nb+" jours de congés "+type;
-			document.getElementById("messageCompteur").className = "alert alert-info alert-dismissable";
-		}
-		getEmploye.send();
 	}
 }
 

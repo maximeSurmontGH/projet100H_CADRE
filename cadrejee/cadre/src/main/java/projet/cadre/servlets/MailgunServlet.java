@@ -40,7 +40,7 @@ public class MailgunServlet extends HttpServlet {
 	        "https://api.mailgun.net/v3/sandbox982f2cedfbb147fd8563532d6b1ac54c.mailgun.org/messages");
 	    MultivaluedMapImpl formData = new MultivaluedMapImpl();
 	    formData.add("from", "Contact via le Site Web <excited@sandbox982f2cedfbb147fd8563532d6b1ac54c.mailgun.org>");
-	    formData.add("to", "maxime.surmont@hei.fr");
+	    formData.add("to", "sarl.cadre@wanadoo.fr");
 	    formData.add("subject", "Mail de "+nomContact+" de "+societeContact);
 	    formData.add("text", "Nom du contact : "+nomContact+"\nSociete du contact : "+societeContact+"\nMail du contact : "+mailContact+"\n\nMessage :\n"+messageContact);
 	    return webResource.type(MediaType.APPLICATION_FORM_URLENCODED).
