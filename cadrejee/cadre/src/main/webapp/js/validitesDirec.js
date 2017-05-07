@@ -214,6 +214,9 @@ function remplissageRechercheType(){
 // pour générer les jours mois années des balises selection.
 function remplissageJMA(){
 	var sel1_2 = document.getElementById('JoursF');
+	var J = document.createElement('option');
+	J.innerHTML='-';
+	sel1_2.appendChild(J);
 	for(var i = 1; i<32; i++){
 		var J = document.createElement('option');
 		J.innerHTML=i;
@@ -222,6 +225,9 @@ function remplissageJMA(){
 		sel1_2.appendChild(J);
 	}
 	var sel1_1 = document.getElementById('JoursD');
+	var J = document.createElement('option');
+	J.innerHTML='-';
+	sel1_1.appendChild(J);
 	for(var i = 1; i<32; i++){
 		var J = document.createElement('option');
 		J.innerHTML=i;
@@ -230,6 +236,8 @@ function remplissageJMA(){
 		sel1_1.appendChild(J);
 	}
 	var sel2_1 = document.getElementById('MoisD');
+
+	var M = document.createElement('option');M.value="-"; M.innerHTML="-"; sel2_1.appendChild(M);
 	var M = document.createElement('option');M.value="01"; M.innerHTML="janvier"; sel2_1.appendChild(M);
 	var M = document.createElement('option');M.value="02"; M.innerHTML="février"; sel2_1.appendChild(M);
 	var M = document.createElement('option');M.value="03"; M.innerHTML="mars"; sel2_1.appendChild(M);
@@ -243,6 +251,7 @@ function remplissageJMA(){
 	var M = document.createElement('option');M.value="11"; M.innerHTML="novembre"; sel2_1.appendChild(M);
 	var M = document.createElement('option');M.value="12"; M.innerHTML="decembre"; sel2_1.appendChild(M);
 	var sel2_2 = document.getElementById('MoisF');
+	var M = document.createElement('option'); M.value="-";M.innerHTML="-"; sel2_2.appendChild(M);
 	var M = document.createElement('option'); M.value="01";M.innerHTML="janvier"; sel2_2.appendChild(M);
 	var M = document.createElement('option'); M.value="02";M.innerHTML="février"; sel2_2.appendChild(M);
 	var M = document.createElement('option');M.value="03"; M.innerHTML="mars"; sel2_2.appendChild(M);
@@ -256,12 +265,18 @@ function remplissageJMA(){
 	var M = document.createElement('option');M.value="11"; M.innerHTML="novembre"; sel2_2.appendChild(M);
 	var M = document.createElement('option');M.value="12"; M.innerHTML="decembre"; sel2_2.appendChild(M);
 	var sel3_1 = document.getElementById('AnneesD');
+	var A = document.createElement('option');
+	A.innerHTML='-';
+	sel3_1.appendChild(A);
 	for(var i = 2030; i>2000; i--){
 		var A = document.createElement('option');
 		A.innerHTML=i;
 		sel3_1.appendChild(A);
 	}
 	var sel3_2 = document.getElementById('AnneesF');
+	var A = document.createElement('option');
+	A.innerHTML='-';
+	sel3_2.appendChild(A);
 	for(var i = 2030; i>2000; i--){
 		var A = document.createElement('option');
 		A.innerHTML=i;
@@ -307,6 +322,7 @@ function getNomDuType(id){
 
 
 function addvalidite(){
+	
 	document.getElementById("boutonAdd").onclick=function(){
 		
 		var requetePostReponse = new XMLHttpRequest();
@@ -349,25 +365,41 @@ function addvalidite(){
 		var choice = select.selectedIndex;
 		var dateFinAnnee = select.options[choice].value.toString();
 		
+		//verif date 
+		var dateDverif=dateDebutAnnee+dateDebutMois+dateDebutJour;
+		var dateFverif=dateFinAnnee+dateFinMois+dateFinJour;
+		dateDverif=parseInt(dateDverif);
+		dateFverif=parseInt(dateFverif);
 		
 		var getList2 = new XMLHttpRequest();
 		getList2.open("GET","../cadrews/validites/listIdValidite",true, null, null);
 		getList2.responseType="json";
 		var a;
+	
 		getList2.onload=function(){
+			if (nom!=''&& prenom!=''&& type!=''&& dateDebutAnnee!='-' && dateDebutMois!='-' && dateDebutJour!='-'&& dateFinAnnee!='-' && dateFinMois!='-' && dateFinJour!='-' ){
+			if (dateDverif <= dateFverif){
 			for (var i=0; i<this.response.length; i++){
 				if(this.response[i].typeValidite == type){
 					a=this.response[i].idValidite;
 					requetePostReponse.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					requetePostReponse.send("idValidite="+a+"&idEmploye="+prenom+"."+nom+"&dateD="+dateDebutJour+dateDebutMois+dateDebutAnnee+"&dateF="+dateFinJour+dateFinMois+dateFinAnnee);
+					createurDeNotifications(1, "Demande d'attestation du type : "+type+" bien envoyée!");
 					
 				
 				}
 			}
+		}else{
+			createurDeNotifications(4, "Problème au niveau de la date. Vérifiez que la date de fin est bien ultérieure à la date de début");
+			
+		}
+	}else{
+		createurDeNotifications(4, "Vérifiez que tout les champs sont remplis");
+		
+	}
 		}
 		getList2.send();
-		createurDeNotifications(1, "Demande d'attestation du type : "+type+" bien envoyée!");
-	}
+		}
 }
 
 function remplissageDataListeEmploye(){

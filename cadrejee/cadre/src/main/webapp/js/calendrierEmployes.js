@@ -1,3 +1,21 @@
+// avoir la date du jour 
+function getDateverif(){
+	var date = new Date();
+	var jour=date.getDate();
+	if (jour<10){
+		jour="0"+jour.toString();
+	}
+	jour=jour.toString();
+	var mois= date.getMonth()+1;
+	if (mois<10){
+		mois="0"+mois.toString();
+	}
+	mois=mois.toString();
+	var annee=date.getFullYear().toString();
+	
+	return annee+mois+jour;	
+}
+
 function creationTableau(){
   //creation des mois de l'annee
   var janvier = {
@@ -450,6 +468,8 @@ function getIdVehicule(){
 //ajouter une demande de vehicule
 function addDemandeVehicule(){
 	
+	//verif date 
+	var ajd=parseInt(getDateverif());
 	
 	document.getElementById("boutonSearch2").onclick=function(){
 		var employeId = document.getElementById("employeId").innerText;
@@ -490,32 +510,53 @@ function addDemandeVehicule(){
 		var select = document.getElementById("formV_yearF");
 		var choice = select.selectedIndex;
 		var dateFinAnnee = select.options[choice].value.toString();
+		
+		//verif date 
+		var dateDverif=dateDebutAnnee+dateDebutMois+dateDebutJour;
+		var dateFverif=dateFinAnnee+dateFinMois+dateFinJour;
+		dateDverif=parseInt(dateDverif);
+		dateFverif=parseInt(dateFverif);
 
 		var getList2 = new XMLHttpRequest();
 		getList2.open("GET","../cadrews/vehicules/listIdVehicule",true, null, null);
 		getList2.responseType="json";
 		var a;
+		
 		getList2.onload=function(){
+			if (type!=''&& dateDebutAnnee!='-' && dateDebutMois!='-' && dateDebutJour!='-'&& dateFinAnnee!='-' && dateFinMois!='-' && dateFinJour!='-' ){
+			if (dateDverif >= ajd && dateDverif <= dateFverif){
 			for (var i=0; i<this.response.length; i++){
 				if(this.response[i].typeVehicule == type){
 					a=this.response[i].immatriculation;
 					requetePostReponse.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					requetePostReponse.send("immatriculation="+a+"&idEmploye="+employeId+"&dateD="+dateDebutJour+dateDebutMois+dateDebutAnnee+"&dateF="+dateFinJour+dateFinMois+dateFinAnnee);
+					createurDeNotifications(1, "Demande de vehicule du type : "+type+" bien envoyée!");
 					
 				
 				}
 			}
+		} else{
+			createurDeNotifications(4, "Problème au niveau de la date. Vérifiez que la date de fin est bien ultérieure à la date de début et que ces dates sont bien ultérieures à la date du jour ");
+			
+			}
+		}else{
+			createurDeNotifications(4, "Vérifiez que tout les champs sont remplis");
+			
+		}
+		
 		}
 		getList2.send();
-		createurDeNotifications(1, "Demande de vehicule du type : "+type+" bien envoyée!");
 	}
 }
 
 
 //ajouter une demande de congé 
 function addDemandeConge(){
+	//verif date 
+	var ajd=parseInt(getDateverif());
 	
 	document.getElementById("boutonSearch1").onclick=function(){
+		
 		var employeId = document.getElementById("employeId").innerText;
 		
 		var requetePostReponse = new XMLHttpRequest();
@@ -559,20 +600,36 @@ function addDemandeConge(){
 		getList2.open("GET","../cadrews/conges/listIdConge",true, null, null);
 		getList2.responseType="json";
 		var a;
+		
+		//verif date 
+		var dateDverif=dateDebutAnnee+dateDebutMois+dateDebutJour;
+		var dateFverif=dateFinAnnee+dateFinMois+dateFinJour;
+		dateDverif=parseInt(dateDverif);
+		dateFverif=parseInt(dateFverif);
+		
 		getList2.onload=function(){
+			if (type!=''&& dateDebutAnnee!='-' && dateDebutMois!='-' && dateDebutJour!='-'&& dateFinAnnee!='-' && dateFinMois!='-' && dateFinJour!='-' ){
+			if (dateDverif >= ajd && dateDverif <= dateFverif){
 			for (var i=0; i<this.response.length; i++){
 				if(this.response[i].typeConge == type){
 					a=this.response[i].idConge;
 					requetePostReponse.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					requetePostReponse.send("idConge="+a+"&idEmploye="+employeId+"&dateDebut="+dateDebutJour+dateDebutMois+dateDebutAnnee+"&dateFin="+dateFinJour+dateFinMois+dateFinAnnee);
-					
+					createurDeNotifications(1, "Demande de conge du type : "+type+" bien envoyée!");
 				
 				}
 			}
+			}else{
+				createurDeNotifications(4, "Problème au niveau de la date. Vérifiez que la date de fin est bien ultérieure à la date de début et que ces dates sont bien ultérieures à la date du jour ");
+				
+			}
+			}else {
+				createurDeNotifications(4, "Vérifiez que tout les champs sont remplis ");
+				
+			}
 		}
 		getList2.send();
-		createurDeNotifications(1, "Demande de conge du type : "+type+" bien envoyée!");
-	}
+		}
 }
 
 
