@@ -1,4 +1,4 @@
-﻿SET SQL_SAFE_UPDATES = 0;
+SET SQL_SAFE_UPDATES = 0;
 DELETE FROM demandesattestation;
 DELETE FROM attestations;
 DELETE FROM demandesconge;
@@ -76,7 +76,7 @@ INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`co
 INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`codePostal`,`ville`,`service`,`message`) VALUES ('Air France','MACRON contance','constance.macron@gmail.com', '0702718393', '19 Rue de la Soaul','60310','Jepez', 'Marketing', 'Message de Test 2');
 INSERT INTO `devis`(`nomSociete`,`nomDemandeur`,`mail`,`telephone`,`adresse`,`codePostal`,`ville`,`service`,`message`) VALUES ('Jocobi','SOAP leo','leo.SOAP@gmail.com', '0672037127', '10 allée des Lilas','59302','Tour', 'Comptabilité', 'Message de Test 3');
 
-INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('ades',' Notre entreprise compte 42 employés et est active depuis 20 ans.</br>            Nous sommes spécialisé dans les travaux de menuiserie métallique et de serrurerie. </br>            Notre activité se déploit sur trois grands pôles : </br>                - La fabrication </br>                - L\'installation et la modification </br>                - L\'entretien, la maintenance et l\'expertise </br>            Nous nous occupons également de la maintenance des centrales nucléaires de Paluel et de Penly grâce à notre personnel habilité.','/');
+INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('ades',' Notre entreprise compte 42 employés et est active depuis 20 ans.</br>            Nous sommes spécialisés dans les travaux de menuiserie métallique et de serrurerie. </br>            Notre activité se déploie sur trois grands pôles : </br>                - La fabrication </br>                - L\'installation et la modification </br>                - L\'entretien et la maintenance principalement sur les centrales nucléaires de Paluel et de Penly grâce à notre personnel habilité.','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('aslogan','TRAVAUX METALLIQUES DEPUIS 1996','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('cont1','OSSATURES MÉTALLIQUES','/');
 INSERT INTO `elementssite` (`idElement`,`contenuElement`,`cheminElement`) VALUES ('cont2','PORTES COUPE-FEU / PORTES ORDINAIRES / BARDAGES / ETANCHÉITÉ','/');
@@ -132,5 +132,3 @@ INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`chemi
 INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (4,'Fiche qualité 2','ouvrier', '/chemin.doc');
 INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (5,'Fiche qualité 3','ouvrier', '/chemin.doc');
 INSERT INTO `ressources`(`idRessource`,`contenuRessource`,`corpsDeMetier`,`cheminRessource`) VALUES (6,'Procédure comptabilité','comptabilité', '/chemin.pdf');
-
-INSERT INTO `evenementsautres`(`idEvenement`,`dateEvenement`,`messageEvenement`,`employes_idEmploye`) VALUES (1,'19052017','pas supprimé finalemen?','chloe.pelletier');
