@@ -358,15 +358,15 @@ function gestionnairePage2(pageModifiee){
 			var select2 = document.getElementById("Mois");
 			var choice2 = select2.selectedIndex;
 			var mois = select2.options[choice2].value;
-			if(mois=="Janvier"){mois=1}
-			else if(mois=="Fevrier"){mois=2}
-			else if(mois=="Mars"){mois=3}
-			else if(mois=="Avril"){mois=4}
-			else if(mois=="Mai"){mois=5}
-			else if(mois=="Juin"){mois=6}
-			else if(mois=="Juillet"){mois=7}
-			else if(mois=="Aout"){mois=8}
-			else if(mois=="Septembre"){mois=9}
+			if(mois=="Janvier"){mois=01}
+			else if(mois=="Fevrier"){mois=02}
+			else if(mois=="Mars"){mois=03}
+			else if(mois=="Avril"){mois=04}
+			else if(mois=="Mai"){mois=05}
+			else if(mois=="Juin"){mois=06}
+			else if(mois=="Juillet"){mois=07}
+			else if(mois=="Aout"){mois=08}
+			else if(mois=="Septembre"){mois=09}
 			else if(mois=="Octobtre"){mois=10}
 			else if(mois=="Novembre"){mois=11}
 			else if(mois=="Decembre"){mois=12}
