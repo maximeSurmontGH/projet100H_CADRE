@@ -358,18 +358,6 @@ function gestionnairePage2(pageModifiee){
 			var select2 = document.getElementById("Mois");
 			var choice2 = select2.selectedIndex;
 			var mois = select2.options[choice2].value;
-			if(mois=="Janvier"){mois=01}
-			else if(mois=="Fevrier"){mois=02}
-			else if(mois=="Mars"){mois=03}
-			else if(mois=="Avril"){mois=04}
-			else if(mois=="Mai"){mois=05}
-			else if(mois=="Juin"){mois=06}
-			else if(mois=="Juillet"){mois=07}
-			else if(mois=="Aout"){mois=08}
-			else if(mois=="Septembre"){mois=09}
-			else if(mois=="Octobtre"){mois=10}
-			else if(mois=="Novembre"){mois=11}
-			else if(mois=="Decembre"){mois=12}
 			
 			var select3 = document.getElementById("Annees");
 			var choice3 = select3.selectedIndex;
@@ -428,39 +416,51 @@ function remplissageJMA(){
 	var selectM = document.getElementById("Mois");
 	var optn = document.createElement('option');
 	optn.innerText = "Janvier";
+	optn.value="01";
 	selectM.appendChild(optn);
 	var optn2 = document.createElement('option');
 	optn2.innerText = "Fevrier";
+	optn2.value="02";
 	selectM.appendChild(optn2);
 	var optn3 = document.createElement('option');
 	optn3.innerText = "Mars";
+	optn3.value="03";
 	selectM.appendChild(optn3);
 	var optn4 = document.createElement('option');
 	optn4.innerText = "Avril";
+	optn4.value="04";
 	selectM.appendChild(optn4);
 	var optn5 = document.createElement('option');
 	optn5.innerText = "Mai";
+	optn5.value="05";
 	selectM.appendChild(optn5);
 	var optn6 = document.createElement('option');
 	optn6.innerText = "Juin";
+	optn6.value="06";
 	selectM.appendChild(optn6);
 	var optn7 = document.createElement('option');
 	optn7.innerText = "Juillet";
+	optn7.value="07";
 	selectM.appendChild(optn7);
 	var optn8 = document.createElement('option');
 	optn8.innerText = "Août";
+	optn8.value="08";
 	selectM.appendChild(optn8);
 	var optn9 = document.createElement('option');
 	optn9.innerText = "Septembre";
+	optn9.value="09";
 	selectM.appendChild(optn9);
 	var optn10 = document.createElement('option');
 	optn10.innerText = "Octobre";
+	optn10.value="10";
 	selectM.appendChild(optn10);
 	var optn11 = document.createElement('option');
 	optn11.innerText = "Novembre";
+	optn11.value="11";
 	selectM.appendChild(optn11);
 	var optn12 = document.createElement('option');
 	optn12.innerText = "Decembre";
+	optn12.value="12";
 	selectM.appendChild(optn12);
 	var selectA = document.getElementById("Annees");
 	for (var i=2017; i<2025; i++){

@@ -88,5 +88,17 @@
     	<param-name>tempfile.dir</param-name>
     	<param-value>tmpfiles</param-value>
   	</context-param>
+  	<context-param>
+        <param-name>resteasy.scan</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>resteasy.scan.providers</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>resteasy.scan.resources</param-name>
+        <param-value>false</param-value>
+    </context-param>
 
 </web-app>
