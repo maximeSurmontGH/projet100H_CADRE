@@ -421,10 +421,18 @@ function compteurInfos(){
 						document.getElementById("messageCompteur").innerHTML = "Vous en etes à "+nb+" jours de congés "+type;
 						document.getElementById("messageCompteur").className = "alert alert-info alert-dismissable";
 					}
+					getEmploye.error=function(error){
+						createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+						console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+					};
 					getEmploye.send();
 				}
 			}
 		}
+		getList2.error=function(error){
+			createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+			console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+		};
 		getList2.send();
 	}
 }
@@ -446,6 +454,10 @@ function getIdNom(){
 			select2.appendChild(newoption2);
 		}
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -462,6 +474,10 @@ function getIdVehicule(){
 					select.appendChild(newoption);
 				}
 			}
+			getList2.error=function(error){
+				createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+				console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+			};
 			getList2.send();
 }
 
@@ -545,6 +561,10 @@ function addDemandeVehicule(){
 		}
 		
 		}
+		getList2.error=function(error){
+			createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+			console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+		};
 		getList2.send();
 	}
 }
@@ -628,6 +648,10 @@ function addDemandeConge(){
 				
 			}
 		}
+		getList2.error=function(error){
+			createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+			console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+		};
 		getList2.send();
 		}
 }
@@ -740,6 +764,10 @@ function getDemandes(mois, jour, moisNbJours){
 			}
 		}
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 	
 	//demandes de prêt de véhicules
@@ -820,6 +848,10 @@ function getDemandes(mois, jour, moisNbJours){
 			}
 		}
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 }
 

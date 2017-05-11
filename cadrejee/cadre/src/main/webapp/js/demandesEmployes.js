@@ -28,6 +28,10 @@ function getIdNom(){
 			select.appendChild(newoption);
 		}
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -45,6 +49,10 @@ function getIdByName(name){
 			}
 		}
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -80,6 +88,10 @@ function getDemandes(){
 			}
 		}
 	}
+	getList1.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList1.send();
 };
 		
@@ -113,6 +125,10 @@ function addDemandeAttestation(){
 				}
 			}
 		}
+		getList2.error=function(error){
+			createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+			console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+		};
 		getList2.send();
 		createurDeNotifications(1, "Demande d'attestation du type : "+type+" bien envoyée!");
 	}

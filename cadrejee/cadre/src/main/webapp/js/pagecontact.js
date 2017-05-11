@@ -5,6 +5,10 @@ function getSlogan(){
 	getList2.onload=function(){
 		document.getElementById("sloganH5").textContent=this.response.contenuElement;
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 

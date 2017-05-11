@@ -9,6 +9,10 @@ function getFab1(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -22,6 +26,10 @@ function getFab2(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -35,6 +43,10 @@ function getFab3(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -48,6 +60,10 @@ function getMod1(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -61,6 +77,10 @@ function getMod2(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -74,6 +94,10 @@ function getMod3(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -87,6 +111,10 @@ function getCont1(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -100,6 +128,10 @@ function getCont2(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -113,6 +145,10 @@ function getCont3(){
 		newp.textContent=this.response.contenuElement;
 		pdes.appendChild(newp);
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -122,8 +158,11 @@ function getSlogan(){
 	getList2.responseType="json";
 	getList2.onload=function(){
 		document.getElementById("sloganH5").textContent=this.response.contenuElement;
-		
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 

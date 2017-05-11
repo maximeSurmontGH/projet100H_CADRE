@@ -306,6 +306,10 @@ function gestionnairePage2(pageModifiee){
 				opt.innerText=this.response[i].idEmploye;
 				sel1_bis.appendChild(opt);			}
 		}
+		getList2.error=function(error){
+			createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+			console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+		};
 		getList2.send();
 		
 		td1_bis.appendChild(sel1_bis);
@@ -379,6 +383,10 @@ function gestionnairePage2(pageModifiee){
 						
 					}
 				}
+				getList2.error=function(error){
+					createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+					console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+				};
 				getList2.send();
 			}
 			else{
@@ -731,26 +739,40 @@ function getHistoriqueVehicule(){
 		for (var i=0; i<this.response.length; i++){
 			var dateD=this.response[i].dateDebut[0]+this.response[i].dateDebut[1]+"/"+this.response[i].dateDebut[2]+this.response[i].dateDebut[3]+"/"+this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7];
 			var dateF=this.response[i].dateFin[0]+this.response[i].dateFin[1]+"/"+this.response[i].dateFin[2]+this.response[i].dateFin[3]+"/"+this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7];
-			createurDeLigneVC(this.response[i].employes_idEmploye, this.response[i].vehicules_immatriculation, dateD, dateF, this.response[i].etat, this.response[i].id);
-			if(parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])-2017>1){
-				deleteHistoriqueVehicule(this.response[i].vehicules_immatriculation);
+			var date = new Date();
+			var dateM=date.getMonth()+1;
+			if(parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])<dateM && parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])<=date.getFullYear() && this.response[i].etat=="attente"){
+				var idNum = this.response[i].id;
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("PUT","../cadrews/vehicules/update");
+				requeteUpdate.responseType = "json";
+				requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				requeteUpdate.send("id="+idNum+"&nb="+2);
+			}	
+			else if(parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])<date.getFullYear() && this.response[i].etat=="attente"){
+				var idNum = this.response[i].id;
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("PUT","../cadrews/vehicules/update");
+				requeteUpdate.responseType = "json";
+				requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				requeteUpdate.send("id="+idNum+"&nb="+2);
 			}
+			else{
+				createurDeLigneVC(this.response[i].employes_idEmploye, this.response[i].vehicules_immatriculation, dateD, dateF, this.response[i].etat, this.response[i].id);
+			}			
+		}
+		if(!document.getElementById("tableauDesDemandes1").childNodes[1]){
+			while(document.getElementById("tableauDesDemandes1").firstChild){
+				document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+			}
+			createurDeNotifications(2, "Aucune demande en cours");
 		}
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList.send();
-}
-
-// pour supprimer les trop vieille demandes
-function deleteHistoriqueVehicule(imma){
-	var deleteElmt = new XMLHttpRequest();
-	deleteElmt.open("DELETE","../cadrews/vehicules/delete/"+imma);
-	deleteElmt.responseType = "json";
-	deleteElmt.onload = function(){
-	};
-	deleteElmt.error=function(error){
-		console.error("Erreur de requete ajax dde suppression de vieille demande de vehicule : "+error);
-	};
-	deleteElmt.send();
 }
 
 // validation ou refus d'une demande de vehicules
@@ -776,6 +798,7 @@ function updateDemandeVehicule(){
 			};
 			requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			requeteUpdate.send("id="+idNum+"&nb="+1);
+			createurDeNotifications(1, "Maj de la demande de véhicule réussie");
 			
 			var date =document.getElementById("DATE"+idNum).innerHTML;
 			date=date[0]+date[1]+date[3]+date[4]+date[6]+date[7]+date[8]+date[9];
@@ -831,9 +854,39 @@ function getHistoriqueConge(){
 			else{
 				var type = "Non Payé";
 			}
-			createurDeLigneVC(this.response[i].employes_idEmploye, type, dateD, dateF, this.response[i].etat, this.response[i].id);
+			var date = new Date();
+			var dateM=date.getMonth()+1;
+			if(parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])<dateM && parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])>=date.getFullYear()  && this.response[i].etat=="attente"){
+				var idNum = this.response[i].id;
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("PUT","../cadrews/conges/update");
+				requeteUpdate.responseType = "json";
+				requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				requeteUpdate.send("id="+idNum+"&nb="+2);
+			}	
+			else if(parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])<date.getFullYear() && this.response[i].etat=="attente"){
+				var idNum = this.response[i].id;
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("PUT","../cadrews/conges/update");
+				requeteUpdate.responseType = "json";
+				requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				requeteUpdate.send("id="+idNum+"&nb="+2);
+			}	
+			else{
+				createurDeLigneVC(this.response[i].employes_idEmploye, type, dateD, dateF, this.response[i].etat, this.response[i].id);
+			}	
+		}
+		if(!document.getElementById("tableauDesDemandes1").childNodes[1]){
+			while(document.getElementById("tableauDesDemandes1").firstChild){
+				document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+			}
+			createurDeNotifications(2, "Aucune demande en cours");
 		}
 	}
+	getList.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList.send();
 }
 
@@ -860,6 +913,7 @@ function updateDemandeConge(){
 			};
 			requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			requeteUpdate.send("id="+idNum+"&nb="+1);
+			createurDeNotifications(1, "Maj de la demande de conge réussie");
 			
 			var date =document.getElementById("DATE"+idNum).innerHTML;
 			date=date[0]+date[1]+date[3]+date[4]+date[6]+date[7]+date[8]+date[9];
@@ -901,7 +955,7 @@ function getHistoriqueAttestion(){
 	getList.responseType="json";
 	getList.onload=function(){
 		for (var i=0; i<this.response.length; i++){
-			var date=this.response[i].date[0]+this.response[i].date[1]+"/"+this.response[i].date[2]+this.response[i].date[3]+"/"+this.response[i].date[4]+this.response[i].date[5]+this.response[i].date[6]+this.response[i].date[7];
+			var date2=this.response[i].date[0]+this.response[i].date[1]+"/"+this.response[i].date[2]+this.response[i].date[3]+"/"+this.response[i].date[4]+this.response[i].date[5]+this.response[i].date[6]+this.response[i].date[7];
 			if(this.response[i].attestations_idAttestation==1){
 				var type = "Attestation 1";
 			}
@@ -914,9 +968,39 @@ function getHistoriqueAttestion(){
 			else{
 				var type = "Attestation 4";
 			}
-			createurDeLigneA(this.response[i].employes_idEmploye, type, date, this.response[i].etat, this.response[i].id);
+			var date = new Date();
+			var dateM=date.getMonth()+1;
+			if(parseInt(this.response[i].date[2]+this.response[i].date[3])<dateM && parseInt(this.response[i].date[4]+this.response[i].date[5]+this.response[i].date[6]+this.response[i].date[7])>=date.getFullYear() && this.response[i].etat=="attente"){
+				var idNum = this.response[i].id;
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("PUT","../cadrews/attestation/update");
+				requeteUpdate.responseType = "json";
+				requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				requeteUpdate.send("id="+idNum+"&nb="+2);
+			}
+			else if(parseInt(this.response[i].date[4]+this.response[i].date[5]+this.response[i].date[6]+this.response[i].date[7])<date.getFullYear() && this.response[i].etat=="attente"){
+				var idNum = this.response[i].id;
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("PUT","../cadrews/attestation/update");
+				requeteUpdate.responseType = "json";
+				requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				requeteUpdate.send("id="+idNum+"&nb="+2);
+			}
+			else{
+				createurDeLigneA(this.response[i].employes_idEmploye, type, date2, this.response[i].etat, this.response[i].id);
+			}
+		}
+		if(!document.getElementById("tableauDesDemandes1").childNodes[1]){
+			while(document.getElementById("tableauDesDemandes1").firstChild){
+				document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+			}
+			createurDeNotifications(2, "Aucune demande en cours");
 		}
 	}
+	getList.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList.send();
 }
 
@@ -943,6 +1027,7 @@ function updateDemandeAttestation(){
 			};
 			requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			requeteUpdate.send("id="+idNum+"&nb="+1);
+			createurDeNotifications(1, "Maj de la demande d'attestation réussie");
 			
 			var date =document.getElementById("DATE"+idNum).innerHTML;
 			date=date[0]+date[1]+date[3]+date[4]+date[6]+date[7]+date[8]+date[9];
@@ -986,7 +1071,17 @@ function getVehicules(){
 		for (var i=0; i<this.response.length; i++){
 			createurDeLigneV(this.response[i].typeVehicule, this.response[i].immatriculation);
 		}
+		if(!document.getElementById("tableauDesDemandes1").childNodes[1]){
+			while(document.getElementById("tableauDesDemandes1").firstChild){
+				document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+			}
+			createurDeNotifications(2, "Aucun véhicule");
+		}
 	}
+	getList.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList.send();
 }
 
@@ -996,19 +1091,26 @@ function deleteVehicule(){
 	var i = 0;
 	while(lstBoutonValide[i]!=null){
 		lstBoutonValide[i].onclick=function(){
-			var idNum = this.id;
-			idNum = idNum.substr(2);
-			
-			var requeteUpdate = new XMLHttpRequest();
-			requeteUpdate.open("DELETE","../cadrews/vehicules/delete/"+idNum);
-			requeteUpdate.responseType = "json";
-			requeteUpdate.onload = function(){
-				while(document.getElementById("tableauDesDemandes1").firstChild){
-					document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
-				}
-				gestionnairePage2("vehicules2");
-			};
-			requeteUpdate.send();
+			if (confirm("Êtes vous sur de vouloir supprimer le véhicule?") == true) {
+				var idNum = this.id;
+				idNum = idNum.substr(2);
+				
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("DELETE","../cadrews/vehicules/delete/"+idNum);
+				requeteUpdate.responseType = "json";
+				requeteUpdate.onload = function(){
+					while(document.getElementById("tableauDesDemandes1").firstChild){
+						document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+					}
+					gestionnairePage2("vehicules2");
+				};
+				requeteUpdate.error=function(error){
+					createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+					console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+				};
+				requeteUpdate.send();
+				createurDeNotifications(3, "Véhicule supprime");
+		    } 	
 		}
 		i++;
 	}
@@ -1023,7 +1125,17 @@ function getDevis(){
 		for (var i=0; i<this.response.length; i++){
 			createurDeLigneD(this.response[i].nomSociete, this.response[i].nomDemandeur, this.response[i].idDevis);
 		}
+		if(!document.getElementById("tableauDesDemandes1").childNodes[1]){
+			while(document.getElementById("tableauDesDemandes1").firstChild){
+				document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+			}
+			createurDeNotifications(2, "Aucun devis");
+		}
 	}
+	getList.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList.send();
 }
 
@@ -1033,19 +1145,26 @@ function deleteDevis(){
 	var i = 0;
 	while(lstBoutonValide[i]!=null){
 		lstBoutonValide[i].onclick=function(){
-			var idNum = this.id;
-			idNum = idNum.substr(2);
-			
-			var requeteUpdate = new XMLHttpRequest();
-			requeteUpdate.open("DELETE","../cadrews/devis/delete/"+idNum);
-			requeteUpdate.responseType = "json";
-			requeteUpdate.onload = function(){
-				while(document.getElementById("tableauDesDemandes1").firstChild){
-					document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
-				}
-				gestionnairePage2("devis");
-			};
-			requeteUpdate.send();
+			if (confirm("Êtes vous sur de vouloir supprimer le devis?") == true) {
+				var idNum = this.id;
+				idNum = idNum.substr(2);
+				
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("DELETE","../cadrews/devis/delete/"+idNum);
+				requeteUpdate.responseType = "json";
+				requeteUpdate.onload = function(){
+					while(document.getElementById("tableauDesDemandes1").firstChild){
+						document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+					}
+					gestionnairePage2("devis");
+				};
+				requeteUpdate.error=function(error){
+					createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+					console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+				};
+				requeteUpdate.send();
+				createurDeNotifications(3, "Devis supprime");
+			}	
 		}
 		i++;
 	}
@@ -1071,6 +1190,10 @@ function detailDevis(){
 					}				
 				}
 			}
+			getList.error=function(error){
+				createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+				console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+			};
 			getList.send();
 		}
 		i++;
@@ -1084,9 +1207,33 @@ function getHistoriqueRappels(){
 	getList.responseType="json";
 	getList.onload=function(){
 		for (var i=0; i<this.response.length; i++){
-			createurDeLigneE(this.response[i].messageRappel, this.response[i].employes_idEmploye,this.response[i].dateRappel[0]+this.response[i].dateRappel[1]+"/"+this.response[i].dateRappel[2]+this.response[i].dateRappel[3]+"/"+this.response[i].dateRappel[4]+this.response[i].dateRappel[5]+this.response[i].dateRappel[6]+this.response[i].dateRappel[7], this.response[i].idRappel);
+			var date = new Date();
+			if(parseInt(this.response[i].dateRappel[4]+this.response[i].dateRappel[5]+this.response[i].dateRappel[6]+this.response[i].dateRappel[7])<date.getFullYear()){
+				var idNum = this.response[i].idRappel;
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("DELETE","../cadrews/rappels/delete");
+				requeteUpdate.responseType = "json";
+				requeteUpdate.onload = function(){
+				};
+				requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				requeteUpdate.send("idRappel="+idNum);
+			}
+			else{
+				createurDeLigneE(this.response[i].messageRappel, this.response[i].employes_idEmploye,this.response[i].dateRappel[0]+this.response[i].dateRappel[1]+"/"+this.response[i].dateRappel[2]+this.response[i].dateRappel[3]+"/"+this.response[i].dateRappel[4]+this.response[i].dateRappel[5]+this.response[i].dateRappel[6]+this.response[i].dateRappel[7], this.response[i].idRappel);
+			}
+			
+		}
+		if(!document.getElementById("tableauDesDemandes1").childNodes[1]){
+			while(document.getElementById("tableauDesDemandes1").firstChild){
+				document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+			}
+			createurDeNotifications(2, "Aucun rappel");
 		}
 	}
+	getList.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList.send();
 }
 
@@ -1096,20 +1243,23 @@ function deleteRappel(){
 	var i = 0;
 	while(lstBoutonValide[i]!=null){
 		lstBoutonValide[i].onclick=function(){
-			var idNum = this.id;
-			idNum = idNum.substr(2);
-			
-			var requeteUpdate = new XMLHttpRequest();
-			requeteUpdate.open("DELETE","../cadrews/rappels/delete");
-			requeteUpdate.responseType = "json";
-			requeteUpdate.onload = function(){
-				while(document.getElementById("tableauDesDemandes1").firstChild){
-					document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
-				}
-				gestionnairePage2("evenements");
-			};
-			requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			requeteUpdate.send("idRappel="+idNum);
+			if (confirm("Êtes vous sur de vouloir supprimer le rappel?") == true) {
+				var idNum = this.id;
+				idNum = idNum.substr(2);
+				
+				var requeteUpdate = new XMLHttpRequest();
+				requeteUpdate.open("DELETE","../cadrews/rappels/delete");
+				requeteUpdate.responseType = "json";
+				requeteUpdate.onload = function(){
+					while(document.getElementById("tableauDesDemandes1").firstChild){
+						document.getElementById("tableauDesDemandes1").removeChild(document.getElementById("tableauDesDemandes1").firstChild);
+					}
+					gestionnairePage2("evenements");
+				};
+				requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				requeteUpdate.send("idRappel="+idNum);
+				createurDeNotifications(1, "Rappel supprime");
+			}
 		}
 		i++;
 	}

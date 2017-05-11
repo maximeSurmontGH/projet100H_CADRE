@@ -9,6 +9,10 @@ function getRessourceDirection(){
 			remplisseur(this.response[i].contenuRessource.split(".")[0] , this.response[i].cheminRessource.split(".")[1], this.response[i].corpsDeMetier, "", this.response[i].idRessource);
 		}
 	}
+	getEmploye.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 }
 
@@ -76,7 +80,12 @@ function remplissageTableau2(){
 	
 		if(document.getElementById("inputRessources").value!=""){
 			getRessourceByNom(document.getElementById("inputRessources").value.toLowerCase());
-			
+		}
+		else{
+			while (table.firstChild) {
+				table.removeChild(table.firstChild);
+			}
+			createurDeNotifications(2, "Veuillez remplir le champs de recherche");
 		}
 		document.getElementById("inputRessources").value="";
 	}
@@ -102,6 +111,10 @@ function getRessourceByNom(poste){
 			createurDeNotifications(4, "Ressource non trouvé.");
 		}
 	}
+	getEmploye.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 }
 
@@ -119,6 +132,10 @@ function remplissageDataListe(){
 			dataliste.appendChild(option);
 		}
 	}
+	getEmploye.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 }
 
@@ -128,24 +145,27 @@ function deleteRessource(){
 	var i = 0;
 	while(nbRessourceSupprimable[i]!=null){
 		nbRessourceSupprimable[i].onclick=function(){
-			var idNum = this.id;
-			idNum = idNum.substr(4);
-			
-			var requeteDelete = new XMLHttpRequest();
-			requeteDelete.open("DELETE","../cadrews/ressources/"+idNum);
-			requeteDelete.responseType = "json";
-			requeteDelete.onload = function(){
-				createurDeNotifications(1, "La ressource a bien été supprimée.");
-				while (document.getElementById("tr"+idNum).firstChild) {
-					document.getElementById("tr"+idNum).removeChild(document.getElementById("tr"+idNum).firstChild);
-				}				
-			};
-			requeteDelete.error=function(error){
-				createurDeNotifications(4, "Ressource non supprimée.");
-				console.error("Erreur de requete ajax de suppression de la ressource : "+error);
-			};
-			
-			requeteDelete.send();
+			if (confirm("Êtes vous sur de vouloir supprimer cette ressource?") == true) {
+				var idNum = this.id;
+				idNum = idNum.substr(4);
+				
+				var requeteDelete = new XMLHttpRequest();
+				requeteDelete.open("DELETE","../cadrews/ressources/"+idNum);
+				requeteDelete.responseType = "json";
+				requeteDelete.onload = function(){
+					createurDeNotifications(1, "La ressource a bien été supprimée.");
+					while (document.getElementById("tr"+idNum).firstChild) {
+						document.getElementById("tr"+idNum).removeChild(document.getElementById("tr"+idNum).firstChild);
+					}		
+					createurDeNotifications(1, "Ressource supprimee.");
+				};
+				requeteDelete.error=function(error){
+					createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+					console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+				};
+				
+				requeteDelete.send();
+			}
 		}
 		i++;
 	}

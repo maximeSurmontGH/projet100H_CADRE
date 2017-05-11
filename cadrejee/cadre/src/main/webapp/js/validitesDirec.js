@@ -52,6 +52,9 @@ function remplissageRecherche(){
 			tab.appendChild(tr2);	
 			
 			getList2.onload=function(){
+				if(this.response.length==0){
+					alert("L'employé recherché n'a pas de validités.");
+				}
 				for (var i=0; i<this.response.length; i++){
 					var tr2 = document.createElement('tr');
 					var td1_1 = document.createElement('td');
@@ -103,6 +106,10 @@ function remplissageRecherche(){
 					
 				}
 			}
+			getList2.error=function(error){
+				createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+				console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+			};
 			getList2.send();
 			
 
@@ -148,6 +155,9 @@ function remplissageRechercheType(){
 			tab.appendChild(tr2);	
 			
 			getList2.onload=function(){
+				if(this.response.length==0){
+					alert("Aucun employé ne possède cette validité.");
+				}
 				for (var i=0; i<this.response.length; i++){
 					var tr2 = document.createElement('tr');
 					var td1_1 = document.createElement('td');
@@ -199,6 +209,10 @@ function remplissageRechercheType(){
 					
 				}
 			}
+			getList2.error=function(error){
+				createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+				console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+			};
 			getList2.send();
 			
 
@@ -304,6 +318,10 @@ function getIdNom(){
 					ul.appendChild(newli);
 				}
 			}
+			getList2.error=function(error){
+				createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+				console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+			};
 			getList2.send();
 }
 
@@ -316,7 +334,10 @@ function getNomDuType(id){
 		a=this.response[id-1].typeValidite;
 	
 	}
-	
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 }
 
@@ -398,6 +419,10 @@ function addvalidite(){
 		
 	}
 		}
+		getList2.error=function(error){
+			createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+			console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+		};
 		getList2.send();
 		}
 }
@@ -415,6 +440,10 @@ function remplissageDataListeEmploye(){
 			dataliste.appendChild(option);
 		}
 	}
+	getEmploye.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 }
 
@@ -431,6 +460,10 @@ function remplissageDataListeTypes(){
 			dataliste.appendChild(option);
 		}
 	}
+	getT.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getT.send();
 }
 

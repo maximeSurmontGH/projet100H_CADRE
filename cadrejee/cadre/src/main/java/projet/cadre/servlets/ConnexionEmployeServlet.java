@@ -57,7 +57,7 @@ public class ConnexionEmployeServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			response.sendRedirect("connexionIntranetEmploye");
+			response.sendRedirect("connexionIntranetEmploye2");
 	}
 
 }

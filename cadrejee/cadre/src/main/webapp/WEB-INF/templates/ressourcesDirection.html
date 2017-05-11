@@ -55,17 +55,17 @@
             <form id="formulaire" action="UploadRessourceServlet" method="post" enctype="multipart/form-data">
               <div class="input-group">
                 <div class="input-group-addon descriptionAjout" > <span> Nom du fichier : </span> </div>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" required>
               </div>
               <div class="input-group">
                 <div class="input-group-addon descriptionAjout" > <span> Corps de metier : </span> </div>
-                <input type="text" class="form-control" name="corps">
+                <input type="text" class="form-control" name="corps" required>
               </div>
 
               <div id="boutonAdd2">
                 <input class="btn btn-primary" type="submit" id="boutonAdd2" value="Ajouter">
               </div>
-              <input type="file" name="fileName" id="choixDuFichier"/>
+              <input type="file" name="fileName" id="choixDuFichier" required/>
             </form>
           </section>
 

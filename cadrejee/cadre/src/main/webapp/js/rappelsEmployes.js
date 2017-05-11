@@ -343,6 +343,10 @@ function getRappels(mois, jour){
 			}
 		}
 	}
+	getEmploye.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 }
 

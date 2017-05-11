@@ -85,6 +85,10 @@ function getAnnuaireEmploye(){
 		}
 	}
 	createurDeNotifications(2, "Affichage de tout l'anuaire par défaut");
+	getEmploye.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 	remplissageTableau();
 }
@@ -115,6 +119,10 @@ function getAnnuaireEmployePoste(poste){
 				continu=0;
 			}
 		}
+		getEmploye.error=function(error){
+			createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+			console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+		};
 		getEmploye.send();
 	}
 	remplissageTableau();
@@ -134,6 +142,10 @@ function remplissageDataListe(){
 			dataliste.appendChild(option);
 		}
 	}
+	getEmploye.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 	
 	remplissageTableau();

@@ -13,29 +13,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import projet.cadre.dao.EmployeDao;
 import projet.cadre.util.MotDePasseUtils;
 
-
-@WebServlet("/connexionIntranetDirection")
-public class ConnexionDirectionServlet extends HttpServlet {
+@WebServlet("/connexionIntranetEmploye2")
+public class ConnexionEmployeServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Map<String,String> directeurAutorise;
+	private Map<String,String> employesAutorises;
 	
 	@Override
 	public void init() throws ServletException {
-		directeurAutorise=new HashMap<>();
-		directeurAutorise.put("direction", "af04f0ed7d34f427c70d6b8bfd2c08a6d2c3e36b6fc80298:a043e4bed45f1ee900f6b60f163f843ed746ebbea4ed286b");
-				
+		EmployeDao employes = new EmployeDao();
+		employesAutorises=employes.hashIdMdp();
+						
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idDirecteurConnecte = (String) request.getSession().getAttribute("directeurConnecte");
-		if (idDirecteurConnecte == null || "".equals(idDirecteurConnecte)) {
-			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/templates/connexionIntranetDirection.html");
+		init();
+		String employeConnecte = (String) request.getSession().getAttribute("employeConnecte");
+		if (employeConnecte == null || "".equals( employeConnecte)) {
+			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/templates/connexionIntranetEmploye2.html");
 			view.forward(request, response);
 			
 		} else {
-			response.sendRedirect("direction/menu");
+			response.sendRedirect("employes/menu");
 		}
 	
 	}
@@ -45,9 +46,9 @@ public class ConnexionDirectionServlet extends HttpServlet {
 		String identifiantSaisi = request.getParameter("inputUser");
 		String motDePasseSaisi = request.getParameter("inputPassword");
 		try {
-			if(directeurAutorise.containsKey(identifiantSaisi) && MotDePasseUtils.validerMotDePasse(motDePasseSaisi, directeurAutorise.get(identifiantSaisi)))
+			if(employesAutorises.containsKey(identifiantSaisi) && MotDePasseUtils.validerMotDePasse(motDePasseSaisi, employesAutorises.get(identifiantSaisi)))
 			{
-				request.getSession().setAttribute("directeurConnecte",identifiantSaisi);
+				request.getSession().setAttribute("employeConnecte",identifiantSaisi);
 			}
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
@@ -56,6 +57,7 @@ public class ConnexionDirectionServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			response.sendRedirect("connexionIntranetDirection2");
+			response.sendRedirect("connexionIntranetEmploye2");
 	}
+
 }

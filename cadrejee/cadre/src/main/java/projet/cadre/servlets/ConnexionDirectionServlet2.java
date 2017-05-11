@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import projet.cadre.util.MotDePasseUtils;
 
 
-@WebServlet("/connexionIntranetDirection")
-public class ConnexionDirectionServlet extends HttpServlet {
+@WebServlet("/connexionIntranetDirection2")
+public class ConnexionDirectionServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Map<String,String> directeurAutorise;
 	
@@ -31,7 +31,7 @@ public class ConnexionDirectionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idDirecteurConnecte = (String) request.getSession().getAttribute("directeurConnecte");
 		if (idDirecteurConnecte == null || "".equals(idDirecteurConnecte)) {
-			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/templates/connexionIntranetDirection.html");
+			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/templates/connexionIntranetDirection2.html");
 			view.forward(request, response);
 			
 		} else {
@@ -56,6 +56,6 @@ public class ConnexionDirectionServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			response.sendRedirect("connexionIntranetDirection2");
+			response.sendRedirect("connexionIntranetDirection");
 	}
 }

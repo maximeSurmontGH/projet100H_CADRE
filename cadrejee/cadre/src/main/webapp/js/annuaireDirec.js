@@ -14,6 +14,10 @@ function remplissageTableau(){
 		deleteEmploye("r"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
 		}
 	}
+	getList2.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getList2.send();
 	
 }
@@ -93,7 +97,8 @@ function deleteEmploye(id){
 	deleteElmt.onload = function(){
 	};
 	deleteElmt.error=function(error){
-		console.error("Erreur de requete ajax"+error);
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
 	};
 	deleteElmt.send();
 }
@@ -107,83 +112,99 @@ function remplissageRecherchebis(){
 		}
 		if(nb==0){
 			var champs=document.getElementById("inputSearch").value;
-			document.getElementById("inputSearch").value="";
-			champs=champs.toLowerCase();
-			var getList2 = new XMLHttpRequest();
-			getList2.open("GET","../cadrews/employes/employeByPosteNom/"+champs,true, null, null);
-			getList2.responseType="json";
-			nb++;
-			var table = document.getElementById("tableauDuPersonnel2");
-			var tr2 = document.createElement('tr');
-			var td1_1 = document.createElement('th');
-			td1_1.innerHTML = "Prénom";
-			var td1_2 = document.createElement('th');
-			td1_2.innerHTML = "Nom";
-			var td1_3 = document.createElement('th');
-			td1_3.innerHTML = "Poste";
-			var td1_4 = document.createElement('th');
-			td1_4.innerHTML = "Numéro";
+			if(champs!=""){
+				document.getElementById("inputSearch").value="";
+				champs=champs.toLowerCase();
+				var getList2 = new XMLHttpRequest();
+				getList2.open("GET","../cadrews/employes/employeByPosteNom/"+champs,true, null, null);
+				getList2.responseType="json";
+				nb++;
+				var table = document.getElementById("tableauDuPersonnel2");
+				var tr2 = document.createElement('tr');
+				var td1_1 = document.createElement('th');
+				td1_1.innerHTML = "Prénom";
+				var td1_2 = document.createElement('th');
+				td1_2.innerHTML = "Nom";
+				var td1_3 = document.createElement('th');
+				td1_3.innerHTML = "Poste";
+				var td1_4 = document.createElement('th');
+				td1_4.innerHTML = "Numéro";
 
-			var td1_6 = document.createElement('th');
-			td1_6.innerHTML = "E-mail";
-			var td1_7 = document.createElement('th');
-			td1_7.innerHTML = "Action";
-			tr2.appendChild(td1_1);
-			tr2.appendChild(td1_2);
-			tr2.appendChild(td1_3);
-			tr2.appendChild(td1_4);
-			tr2.appendChild(td1_6);
-			tr2.appendChild(td1_7);
-			table.appendChild(tr2);
-			
-			getList2.onload=function(){
-				for (var i=0; i<this.response.length; i++){
-					var tr2 = document.createElement('tr');
-					var td1_1 = document.createElement('td');
-					td1_1.innerHTML = this.response[i].prenomEmploye;
-					var td1_2 = document.createElement('td');
-					td1_2.innerHTML = this.response[i].nomEmploye;
-					var td1_3 = document.createElement('td');
-					td1_3.innerHTML = this.response[i].poste;
-					var td1_4 = document.createElement('td');
-					td1_4.innerHTML =this.response[i].telephone;
-			
-					var td1_6 = document.createElement('td');
-					td1_6.innerHTML = this.response[i].email;
-					var td1_7 = document.createElement('td');
-					var a1_7_1 = document.createElement('a');
-					var a1_7_2 = document.createElement('a');
-					a1_7_1.href="#";
-					a1_7_2.href="#";
-					a1_7_2.id="w"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye;
-					a1_7_1.id="x"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye;
-					var span1_7_1 = document.createElement('span');
-					var span1_7_2 = document.createElement('span');
-					span1_7_1.className="glyphicon glyphicon-remove boutons";
-					span1_7_2.className="glyphicon glyphicon-pencil boutons";
-					tr2.appendChild(td1_1);
-					tr2.appendChild(td1_2);
-					tr2.appendChild(td1_3);
-					tr2.appendChild(td1_4);
-					tr2.appendChild(td1_6);
-					a1_7_1.appendChild(span1_7_1);
-					a1_7_2.appendChild(span1_7_2);
-					td1_7.appendChild(a1_7_1);
-					td1_7.appendChild(a1_7_2);
-					tr2.appendChild(td1_7);
-					table.appendChild(tr2);
-					table.appendChild(tr2);
-					
-					
+				var td1_6 = document.createElement('th');
+				td1_6.innerHTML = "E-mail";
+				var td1_7 = document.createElement('th');
+				td1_7.innerHTML = "Action";
+				tr2.appendChild(td1_1);
+				tr2.appendChild(td1_2);
+				tr2.appendChild(td1_3);
+				tr2.appendChild(td1_4);
+				tr2.appendChild(td1_6);
+				tr2.appendChild(td1_7);
+				table.appendChild(tr2);
+				
+				getList2.onload=function(){
+					if(this.response.length==0){
+						while(document.getElementById("tableauDuPersonnel2").firstChild){
+							document.getElementById("tableauDuPersonnel2").removeChild(document.getElementById("tableauDuPersonnel2").firstChild);
+						}
+						createurDeNotifications(2, "Aucune personne correspondante n'a été trouvée.");
+					}
+					for (var i=0; i<this.response.length; i++){
+						var tr2 = document.createElement('tr');
+						var td1_1 = document.createElement('td');
+						td1_1.innerHTML = this.response[i].prenomEmploye;
+						var td1_2 = document.createElement('td');
+						td1_2.innerHTML = this.response[i].nomEmploye;
+						var td1_3 = document.createElement('td');
+						td1_3.innerHTML = this.response[i].poste;
+						var td1_4 = document.createElement('td');
+						td1_4.innerHTML =this.response[i].telephone;
+				
+						var td1_6 = document.createElement('td');
+						td1_6.innerHTML = this.response[i].email;
+						var td1_7 = document.createElement('td');
+						var a1_7_1 = document.createElement('a');
+						var a1_7_2 = document.createElement('a');
+						a1_7_1.href="#";
+						a1_7_2.href="#";
+						a1_7_2.id="w"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye;
+						a1_7_1.id="x"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye;
+						var span1_7_1 = document.createElement('span');
+						var span1_7_2 = document.createElement('span');
+						span1_7_1.className="glyphicon glyphicon-remove boutons";
+						span1_7_2.className="glyphicon glyphicon-pencil boutons";
+						tr2.appendChild(td1_1);
+						tr2.appendChild(td1_2);
+						tr2.appendChild(td1_3);
+						tr2.appendChild(td1_4);
+						tr2.appendChild(td1_6);
+						a1_7_1.appendChild(span1_7_1);
+						a1_7_2.appendChild(span1_7_2);
+						td1_7.appendChild(a1_7_1);
+						td1_7.appendChild(a1_7_2);
+						tr2.appendChild(td1_7);
+						table.appendChild(tr2);
+						table.appendChild(tr2);
+						
+						
+					}
+					for (var i=0; i<this.response.length; i++){
+						modifEmploye("w"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
+						}
+					for (var i=0; i<this.response.length; i++){
+						deleteEmploye("x"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
+						}
 				}
-				for (var i=0; i<this.response.length; i++){
-					modifEmploye("w"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
-					}
-				for (var i=0; i<this.response.length; i++){
-					deleteEmploye("x"+this.response[i].prenomEmploye+"."+this.response[i].nomEmploye);
-					}
+				getList2.error=function(error){
+					createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+					console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+				};
+				
+				getList2.send();
 			}
-			getList2.send();
+			else{
+				createurDeNotifications(2, "Veuillez remplir le champs de recherche");
+			}
 
 		}
 		
@@ -204,6 +225,10 @@ function remplissageDataListe(){
 			dataliste.appendChild(option);
 		}
 	}
+	getEmploye.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getEmploye.send();
 	var getPoste = new XMLHttpRequest();
 	getPoste.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
@@ -215,6 +240,10 @@ function remplissageDataListe(){
 			dataliste.appendChild(option);
 		}
 	}
+	getPoste.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
 	getPoste.send();
 }
 
