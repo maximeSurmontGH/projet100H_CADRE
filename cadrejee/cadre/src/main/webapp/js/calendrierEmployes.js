@@ -135,6 +135,7 @@ function creationTableau(){
   // recuperation de la date du jour
   var ajd = new Date();
   var annee = ajd.getFullYear();
+  
   var mois = ajd.getMonth() + 1;
   var jour = ajd.getDate();
   // savoir si l'annee est ou non bisextile
@@ -144,6 +145,7 @@ function creationTableau(){
   else {
     var bisextile=false;
   }
+  
   //recuperation du jour de la semaine actuel
   var weekday = new Array(7);
   weekday[0] = dimanche;
@@ -170,9 +172,10 @@ function creationTableau(){
   if (mois==11) var mois = novembre;
   if (mois==12) var mois = decembre;
   //change la date pour la date actuel
+  
   document.getElementById("choixMoisAnnee").innerHTML=mois.mois+" "+annee;
   // crée le caledndriee
-  createurTableau(jourDeLaSemaine, mois, jour);
+  createurTableau(jourDeLaSemaine, mois, jour, annee);
 	//changement de mois
 	document.getElementById("flecheLeft").onclick=function(){
 		if(annee%4==0){
@@ -217,7 +220,7 @@ function creationTableau(){
 		}
 		if (jour == 00) jour=mois.nbJour;
 	  // crée le caledndrier
-	  createurTableau(jourDeLaSemaine, mois, jour);
+	  createurTableau(jourDeLaSemaine, mois, jour, annee);
 	}
 	document.getElementById("flecheRight").onclick=function(){
 		if(annee%4==0){
@@ -248,7 +251,9 @@ function creationTableau(){
   		element.removeChild(element.firstChild);
 		}
 		//change la date pour la date actuel
+		
 	    document.getElementById("choixMoisAnnee").innerHTML=mois.mois+" "+annee;
+	    
 		// détermine le jour de la semaine du dernier jour du mois précédant
 		while(jour<=mois.moisAvant.nbJour){
 			if (jourDeLaSemaine.nb == 1) jourDeLaSemaine = mardi;
@@ -262,11 +267,12 @@ function creationTableau(){
 		}
 		if (jour == mois.moisAvant.nbJour+1) jour=1;
 	  // crée le caledndrier
-	  createurTableau(jourDeLaSemaine, mois, jour);
+	  createurTableau(jourDeLaSemaine, mois, jour, annee);
 	}
 }
 
-function createurTableau(jourDeLaSemaine, mois, jour){
+function createurTableau(jourDeLaSemaine, mois, jour, annee){
+	
     jourActuel = jour%7 - jourDeLaSemaine.nb; //nous permet de savoir quel jour de la semaine fut le permier jour du mois
 		if (jourActuel<0) jourActuel+=7;
     jourCumul = 1;
@@ -318,7 +324,7 @@ function createurTableau(jourDeLaSemaine, mois, jour){
     //on supprime le decalage
     var jour=jourActuel;
     if (jour==0){jour=7-jour;}
-    getDemandes(mois.nb, 7-jour, mois.nbJour);
+    getDemandes(mois.nb, 7-jour, mois.nbJour, annee);
 }
 
 // fonction pour ajouter différentes notifs de différents styles.
@@ -658,7 +664,7 @@ function addDemandeConge(){
 
 
 //recuperation des différentes demandes et implementation dans le calendrier
-function getDemandes(mois, jour, moisNbJours){
+function getDemandes(mois, jour, moisNbJours, annee){
 	
 	//demandes de conges
 	var getEmploye = new XMLHttpRequest();
@@ -672,7 +678,7 @@ function getDemandes(mois, jour, moisNbJours){
 			else if(this.response[i].conges_idConge==2){var demande = "demande de conges RTT"}
 			else if(this.response[i].conges_idConge==3){var demande = "demande de conges payés"}
 			else{var demande = "demande de congés non payé"};
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])!=mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
+			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])!=mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois && parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])==annee){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				if(this.response[i].etat=="refuse"){
 					while(jourFin!=-2+jour){
@@ -694,7 +700,7 @@ function getDemandes(mois, jour, moisNbJours){
 				}
 			}
 			
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
+			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois && parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])==annee && parseInt(this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7])==annee){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
 				if(this.response[i].etat=="refuse"){
@@ -717,7 +723,7 @@ function getDemandes(mois, jour, moisNbJours){
 				}
 			}
 			
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])!=mois){
+			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])!=mois && parseInt(this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7])==annee){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
 				if(this.response[i].etat=="refuse"){
@@ -741,30 +747,32 @@ function getDemandes(mois, jour, moisNbJours){
 			}
 			
 			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])<mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])>mois){
-				var jourFin=moisNbJours+1-2+jour;
-				var jourDebut=1-2+jour;
-				if(this.response[i].etat=="refuse"){
-					while(jourDebut!=jourFin){
-						ajoutInfo(jourDebut, "bad", "Refus de la "+demande, "");
-						jourDebut++;
+				if(parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])==annee || parseInt(this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7])==annee){
+					var jourFin=moisNbJours+1-2+jour;
+					var jourDebut=1-2+jour;
+					if(this.response[i].etat=="refuse"){
+						while(jourDebut!=jourFin){
+							ajoutInfo(jourDebut, "bad", "Refus de la "+demande, "");
+							jourDebut++;
+						}
+					} 
+					else if(this.response[i].etat=="attente"){
+						while(jourDebut!=jourFin){
+							ajoutInfo(jourDebut, "info", "Demande en cours de la "+demande, "");
+							jourDebut++;
+						}
 					}
-				} 
-				else if(this.response[i].etat=="attente"){
-					while(jourDebut!=jourFin){
-						ajoutInfo(jourDebut, "info", "Demande en cours de la "+demande, "");
-						jourDebut++;
-					}
-				}
-				else{
-					while(jourDebut!=jourFin){
-						ajoutInfo(jourDebut, "fine", "Acceptation de la "+demande, "");
-						jourDebut++;
+					else{
+						while(jourDebut!=jourFin){
+							ajoutInfo(jourDebut, "fine", "Acceptation de la "+demande, "");
+							jourDebut++;
+						}
 					}
 				}
 			}
 		}
 	}
-	getList2.error=function(error){
+	getEmploye.error=function(error){
 		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
 		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
 	};
@@ -779,7 +787,7 @@ function getDemandes(mois, jour, moisNbJours){
 		for (var i=0; i<this.response.length; i++){
 			//on affiche que les notif du mois affiché
 			var demande = "demande de prêt du véhicule "+this.response[i].vehicules_immatriculation;
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])!=mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
+			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])!=mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois && parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])==annee){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				if(this.response[i].etat=="refuse"){
 					while(jourFin!=-2+jour){
@@ -801,7 +809,7 @@ function getDemandes(mois, jour, moisNbJours){
 				}
 			}
 			
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois){
+			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])==mois && parseInt(this.response[i].dateFin[4]+this.response[i].dateFin[5]+this.response[i].dateFin[6]+this.response[i].dateFin[7])==annee && parseInt(this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7])==annee){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
 				if(this.response[i].etat=="refuse"){
@@ -824,7 +832,7 @@ function getDemandes(mois, jour, moisNbJours){
 				}
 			}
 			
-			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])!=mois){
+			if(parseInt(this.response[i].dateDebut[2]+this.response[i].dateDebut[3])==mois && parseInt(this.response[i].dateFin[2]+this.response[i].dateFin[3])!=mois && parseInt(this.response[i].dateDebut[4]+this.response[i].dateDebut[5]+this.response[i].dateDebut[6]+this.response[i].dateDebut[7])==annee){
 				var jourFin=parseInt(this.response[i].dateFin[0]+this.response[i].dateFin[1])-2+jour;
 				var jourDebut=parseInt(this.response[i].dateDebut[0]+this.response[i].dateDebut[1])-2+jour;
 				if(this.response[i].etat=="refuse"){
@@ -848,7 +856,7 @@ function getDemandes(mois, jour, moisNbJours){
 			}
 		}
 	}
-	getList2.error=function(error){
+	getEmploye.error=function(error){
 		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
 		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
 	};

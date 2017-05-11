@@ -768,7 +768,7 @@ function getHistoriqueVehicule(){
 			createurDeNotifications(2, "Aucune demande en cours");
 		}
 	}
-	getList2.error=function(error){
+	getList.error=function(error){
 		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
 		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
 	};
@@ -828,6 +828,8 @@ function updateDemandeVehicule(){
 			};
 			requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			requeteUpdate.send("id="+idNum+"&nb="+2);
+			createurDeNotifications(1, "Maj de la demande de véhicule réussie");
+
 		}
 		i++;
 	}
@@ -943,6 +945,7 @@ function updateDemandeConge(){
 			};
 			requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			requeteUpdate.send("id="+idNum+"&nb="+2);
+			createurDeNotifications(1, "Maj de la demande de véhicule réussie");
 		}
 		i++;
 	}
@@ -1057,6 +1060,7 @@ function updateDemandeAttestation(){
 			};
 			requeteUpdate.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			requeteUpdate.send("id="+idNum+"&nb="+2);
+			createurDeNotifications(1, "Maj de la demande de véhicule réussie");
 		}
 		i++;
 	}

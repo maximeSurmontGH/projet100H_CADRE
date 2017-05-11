@@ -244,11 +244,11 @@ function creationTableau(){
 		}
 		if (jour == mois.moisAvant.nbJour+1) jour=1;
 	  // crée le caledndrier
-	  createurTableau(jourDeLaSemaine, mois, jour);
+	  createurTableau(jourDeLaSemaine, mois, jour, annee);
 	}
 }
 
-function createurTableau(jourDeLaSemaine, mois, jour){
+function createurTableau(jourDeLaSemaine, mois, jour, annee){
     jourActuel = jour%7 - jourDeLaSemaine.nb; //nous permet de savoir quel jour de la semaine fut le permier jour du mois
 		if (jourActuel<0) jourActuel+=7;
     jourCumul = 1;
@@ -300,7 +300,7 @@ function createurTableau(jourDeLaSemaine, mois, jour){
     //on supprime le decalage
     var jour=jourActuel;
     if (jour==0){jour=7-jour;}
-    getRappels(mois.nb, 7-jour);
+    getRappels(mois.nb, 7-jour, annee);
 }
 
 // fonction pour ajouter différentes notifs de différents styles.
@@ -320,7 +320,7 @@ function ajoutInfo(nb, notif, message, heure){
 }
 
 //recuperation de la liste de tous les conges de l employe et ajout au calendrier
-function getRappels(mois, jour){
+function getRappels(mois, jour, annee){
 	var getEmploye = new XMLHttpRequest();
 	getEmploye.open("GET","../cadrews/rappels/getRappelByIdEmploye/"+document.getElementById('employeId').innerText,true, null, null);
 	getEmploye.responseType="json";
@@ -328,7 +328,7 @@ function getRappels(mois, jour){
 	getEmploye.onload=function(){
 		for (var i=0; i<this.response.length; i++){
 			//on affiche que les notif du mois affiché
-			if(parseInt(this.response[i].dateRappel[2]+this.response[i].dateRappel[3])==mois){
+			if(parseInt(this.response[i].dateRappel[2]+this.response[i].dateRappel[3])==mois && parseInt(this.response[i].dateRappel[4]+this.response[i].dateRappel[5]+this.response[i].dateRappel[6]+this.response[i].dateRappel[7])==annee){
 				if(this.response[i].imprt==3){
 					  ajoutInfo(parseInt(this.response[i].dateRappel[0]+this.response[i].dateRappel[1])-2+jour, "fine", this.response[i].messageRappel, "");
 

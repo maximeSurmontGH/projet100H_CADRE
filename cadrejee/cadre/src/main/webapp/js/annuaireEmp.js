@@ -128,17 +128,19 @@ function getAnnuaireEmployePoste(poste){
 	remplissageTableau();
 }
 
+
+
 //remplis la dataliste avec les choix existant dans la BDD
 function remplissageDataListe(){
 	var getEmploye = new XMLHttpRequest();
 	getEmploye.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
 	getEmploye.responseType="json";
-	
+	var dataliste = document.getElementById("lstAnnuaires");
 	getEmploye.onload=function(){
-		var dataliste = document.getElementById("lstAnnuaires");
+		
 		for (var i=0; i<this.response.length; i++){
 			var option = document.createElement('option');
-			option.value=this.response[i].nomEmploye+" "+this.response[i].prenomEmploye;
+			option.value=this.response[i].nomEmploye;
 			dataliste.appendChild(option);
 		}
 	}
@@ -147,8 +149,21 @@ function remplissageDataListe(){
 		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
 	};
 	getEmploye.send();
-	
-	remplissageTableau();
+	var getPoste = new XMLHttpRequest();
+	getPoste.open("GET","../cadrews/employes/listIdEmploye",true, null, null);
+	getPoste.responseType="json";
+	getPoste.onload=function(){
+		for (var i=0; i<this.response.length; i++){
+			var option = document.createElement('option');
+			option.value=this.response[i].poste;
+			dataliste.appendChild(option);
+		}
+	}
+	getPoste.error=function(error){
+		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
+		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
+	};
+	getPoste.send();
 }
 
 

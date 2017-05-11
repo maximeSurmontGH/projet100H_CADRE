@@ -315,10 +315,7 @@ function gestionnairePage2(pageModifiee){
 			document.getElementsByName("input11.3")[0].placeholder=desRea11;
 		}
 		getList2.send();
-		createurDeLigne ("Texte du paragraphe 'FABRICATION' (séparer chaque section par //)", "message", "7");
-		createurDeLigne ("Texte du paragraphe 'INSTALLATION ET MODIFICATION' (séparer chaque section par //)", "message", "8");
-		createurDeLigne ("Texte du paragraphe 'ENTRETIEN, MAINTENANCE ET CONTROLE' (séparer chaque section par //)", "message", "9");
-	}
+		}
 
 	document.getElementById("boutonRetour").onclick=function(){
 		gestionnairePage();
