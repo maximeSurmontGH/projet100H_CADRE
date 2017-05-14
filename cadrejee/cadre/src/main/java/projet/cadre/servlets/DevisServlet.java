@@ -37,6 +37,7 @@ public class DevisServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nomSociete = req.getParameter("nomSociete");
+		System.out.println(nomSociete);
 		String nomDemandeur = req.getParameter("nomDemandeur"); 
 		String mail = req.getParameter("mail"); 
 		String telephone = req.getParameter("telephone"); 

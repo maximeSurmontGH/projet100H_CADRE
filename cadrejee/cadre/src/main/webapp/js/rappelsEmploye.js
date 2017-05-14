@@ -154,7 +154,7 @@ function creationTableau(){
   //change la date pour la date actuel
   document.getElementById("choixMoisAnnee").innerHTML=mois.mois+" "+annee;
   // crée le caledndriee
-  createurTableau(jourDeLaSemaine, mois, jour);
+  createurTableau(jourDeLaSemaine, mois, jour,annee);
 	//changement de mois
 	document.getElementById("flecheLeft").onclick=function(){
 		if(annee%4==0){
@@ -199,7 +199,7 @@ function creationTableau(){
 		}
 		if (jour == 00) jour=mois.nbJour;
 	  // crée le caledndrier
-	  createurTableau(jourDeLaSemaine, mois, jour);
+	  createurTableau(jourDeLaSemaine, mois, jour, annee);
 	}
 	document.getElementById("flecheRight").onclick=function(){
 		if(annee%4==0){

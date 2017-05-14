@@ -12,23 +12,6 @@ function getSlogan(){
 	getList2.send();
 }
 
-function getImgs(){
-	var getList2 = new XMLHttpRequest();
-	getList2.open("GET","cadrews/elementssite/getElementById/img1",true, null, null);
-	getList2.responseType="json";
-	getList2.onload=function(){
-		console.log("C:/Users/Maxime/Desktop/ITI4/apache-tomcat-8.5.8-windows-x64/apache-tomcat-8.5.8/tmpfiles/"+this.response.contenuElement);
-		document.getElementById("img1").src="../../../../../../ITI4/apache-tomcat-8.5.8-windows-x64/apache-tomcat-8.5.8/tmpfiles/"+this.response.contenuElement;
-	}
-	getList2.error=function(error){
-		createurDeNotifications(4, "Erreur! Votre requête n'a pas abouti");
-		console.error("Erreur de requete ajax de suppression de la ressource : "+error);
-	};
-	getList2.send();
-	
-}
-
-
 function getNomRealisation1(){
 	var getList2 = new XMLHttpRequest();
 	getList2.open("GET","cadrews/elementssite/getElementById/nomRea1",true, null, null);
@@ -407,7 +390,6 @@ function getDesRealisation11(){
 
 window.onload=function(){
 	getSlogan();
-	//getImgs();
 	getNomRealisation1();
 	getDesRealisation1();
 	getNomRealisation2();

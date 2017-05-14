@@ -15,6 +15,11 @@ function getSlogan(){
 function notif(){
 	document.getElementById("ok").onclick=function(){
 		alert("Demande envoyée");
+		document.getElementById("nomContact").value='';
+		document.getElementById("mailContact").value='';
+		document.getElementById("societeContact").value='';
+		document.getElementById("messageContact").value='';
+		
 	}
 }
 
