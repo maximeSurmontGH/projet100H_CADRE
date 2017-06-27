@@ -7,8 +7,11 @@ Find here the source code of the web site I and Chloeé PELLETIER created. This 
 Hoewever we are pretty proud of the job we provided on it for a first project, so take a look if you are brave enought.
 
 /Site Client  : front end of the web site seen by the visitors.
+
 /Site Intranet: front end of the intranet.
+
 /cadrejee     : maven version of the website (front and back end).
 
 BDDINITIALISATION : to initialize the database.
+
 BDDCONTENU        : to fill up the database.
