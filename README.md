@@ -1,4 +1,4 @@
-# projet100H_CADRE - http://www.sascadre.fr/
+# website_CADRE - http://www.sascadre.fr/
 
 HTML 5, CSS 3, JS, J2E, mySQL, MAVEN
 
