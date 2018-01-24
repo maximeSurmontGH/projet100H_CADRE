@@ -1,4 +1,4 @@
-# website_CADRE - http://www.sascadre.fr/
+# CADRE - http://www.sascadre.fr/
 
 HTML 5, CSS 3, JS, J2E, mySQL, MAVEN
 
@@ -6,11 +6,12 @@ Find here the source code of the web site I and Chloé PELLETIER created. This i
 
 Hoewever we are pretty proud of the job we provided on it for a first project, so take a look if you are brave enought.
 
-/Site Client  : front end of the web site seen by the visitors.
+/Site Client  : front end of the web site.
 
 /Site Intranet: front end of the intranet.
 
-/cadrejee     : maven version of the website (front and back end). (/cadre/src/main -> /webapp => front end -> /java/projet/cadre => backend)
+/cadrejee     : maven version of the website (front and back end). 
+                /cadre/src/main -> /webapp => front end -> /java/projet/cadre => backend
 
 BDDInitialisation : to initialize the database.
 
